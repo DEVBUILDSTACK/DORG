@@ -1,6 +1,3 @@
-Here's an improved version of the README.md file with the requested sections added:
-
-```markdown
 # DORG
 
 DECENSAT.org SOCIALfi

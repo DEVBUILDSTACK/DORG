@@ -8,7 +8,7 @@ DORG SQUADS is a comprehensive solution designed to extend the reach of our cont
 
 ## Front-End Interface Mockup
 https://docs.google.com/presentation/d/1M06oKj7ZqPgm0_CDyrdz7c5WJKIT0TfHSdM6stk3Gf0/edit#slide=id.g31c19e1d81d_0_479
-
+ 
 ## Installation Instructions
 
 ### Prerequisites

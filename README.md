@@ -6,6 +6,9 @@ DECENSAT.org SOCIALfi
 
 DORG SQUADS is a comprehensive solution designed to extend the reach of our content and innovation creator users/clients through a dynamic SOCIALfi website and a future cross-platform mobile application. This project leverages the AssurativeV2 back-end Python and FastApi tech stack to deliver a powerful and scalable platform.
 
+## Front-End Interface Mockup
+https://docs.google.com/presentation/d/1M06oKj7ZqPgm0_CDyrdz7c5WJKIT0TfHSdM6stk3Gf0/edit#slide=id.g31c19e1d81d_0_479
+
 ## Installation Instructions
 
 ### Prerequisites

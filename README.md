@@ -1,6 +1,6 @@
 # DORG
 
-DECENSAT.org SOCIALfi
+DECENSAT.org Agentive SOCIAL iMPACT
 
 ## Project Description
 

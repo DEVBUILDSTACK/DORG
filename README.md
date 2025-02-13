@@ -1,13 +1,10 @@
-# DORG
+# D.Money, Decensat DAO
 
-DECENSAT.org Agentive SOCIAL iMPACT
+DECENSAT.money is the Universal Money Address (UMA) DeFi Asset of 456iP affiialted ecosyststem where all ecosystem users and clients are hosted on the Lightning Network for Bitcoin PayFi. Decensat.Money is an innovators Community affiliated with the FUNDIO debt venture studio and FOUNDERS FUNDING platform
 
 ## Project Description
 
-DORG SQUADS is a comprehensive solution designed to extend the reach of our content and innovation creator users/clients through a dynamic SOCIALfi website and a future cross-platform mobile application. This project leverages the AssurativeV2 back-end Python and FastApi tech stack to deliver a powerful and scalable platform.
-
-## Code Parrot Ai analysis of D.Org Front-End Interface Mockup
-https://docs.google.com/presentation/d/1M06oKj7ZqPgm0_CDyrdz7c5WJKIT0TfHSdM6stk3Gf0/edit#slide=id.g31c19e1d81d_0_479
+The DMoney Squads of Creator, Innovators are building a comprehensive socialFi solution designed to extend the reach of Defi and creator education content. Similsr to Fundio this project has been licensed the Assurative (456iP, LLC) back-end tech stack to deliver a powerful and scalable tran4sactional and compliant decentralized finance DApp platform.
  
 ## Installation Instructions
 

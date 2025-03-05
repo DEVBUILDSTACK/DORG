@@ -4,7 +4,7 @@ DECENSAT.money is the Universal Money Address (UMA) DeFi Asset of 456iP affiialt
 
 ## Project Description
 
-The DMoney Squads of Creator, Innovators are building a comprehensive socialFi solution designed to extend the reach of Defi and creator education content. Similsr to Fundio this project has been licensed the Assurative (456iP, LLC) back-end tech stack to deliver a powerful and scalable tran4sactional and compliant decentralized finance DApp platform.
+The Decensat.Money Squads are existing DeFi and Digital Asset Space Content Creators. Innovators that are building, educating, and in the process evangelizing socialFi and extend the reach of Decentralized finance. Similsr to Fundio this project has been licensed in its' use of the Assurative,ai technology stack (456iP, LLC). Specifically, both the common back-end tech stack aids in delivering a powerful and scalable transactional and compliant decentralized finance DApp platform.
  
 ## Installation Instructions
 

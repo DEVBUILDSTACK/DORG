@@ -1,4 +1,4 @@
-# D.Money, Decensat DAO
+# D.Money, Decensat ecosystem embedded wallet stablecoin user supply chain or subscription costs
 
 DECENSAT.money is the Universal Money Address (UMA) DeFi Asset of 456iP affiialted ecosyststem where all ecosystem users and clients are hosted on the Lightning Network for Bitcoin PayFi. Decensat.Money is an innovators Community affiliated with the FUNDIO debt venture studio and FOUNDERS FUNDING platform
 

@@ -1,4 +1,4 @@
-# DATDev, a Decensat ecosystem embedded wallet stablecoin user supply chain or subscription costs
+# DATDev, a Decensat ecosystem Colosseum Fall 2025 Hackathon inspired Fintech4All project.
 
 DATDev is is an innovators Community affiliated with the FUNDIO debt venture LPs and SIGLAYER DEBT VENTURE a gated microVC community
 

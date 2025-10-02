@@ -1,10 +1,10 @@
 # DATDev, a Decensat ecosystem Colosseum Fall 2025 Hackathon inspired Fintech4All project.
 
-DATDev is is an innovators Community affiliated with the FUNDIO debt venture LPs and SIGLAYER DEBT VENTURE a gated microVC community
+DATDev is an inclusive and open innovators Community (while we challenge fintech creativity) and affiliated with the team building FUNDIO.VC and aligned with a SIGLAYER DEBT VENTURE, gated microVC lender community.
 
 ## Project Description
 
-The DATDev Squads are talented Regional Web3 DeFi and Digital Asset Space Content Creators. Innovators that are building, educating, and in the process evangelizing open-source socialFi and advocatine with their time, talent, treasure and sharing the attention economy rewards with DATDev and Learn2Launch youth builders in mentoring and on-project guidance extending the reach of our team's contribution within our corner of Decentralized finance. Similar to Assurative.ai and its' anticipated "Sur" performant smart contract Suite, this is an inclusive social iMPACT "Fintech For All"' fintech project has been licensed in its' use of the Assurative,ai technology stack (456iP, LLC). Specifically, both the common back-end tech stack aids in delivering a powerful and scalable transactional and compliant decentralized finance DApp platform.
+The DATDev Squads are talented Regional OpenSource evangelist DeFi and Digital Asset Space Content Creators. Innovators that are building, educating, and in the process evangelizing open-source socialFi and advocatine with their time, talent, treasure and sharing the attention economy rewards with DATDev and Learn2Launch youth builders in mentoring and on-project guidance extending the reach of our team's contribution within our corner of Decentralized finance. Similar to Assurative.ai and its' anticipated "Sur" performant smart contract Suite, this is an inclusive social iMPACT "Fintech For All" (4all) fintech project has been licensed its' use of the Assurative.ai brand agent "Sura" and any application of the Assurative Multi-Safe EVM predicted Multisig is and when briding via Wormhole to smart contract based short term collateralized lending os extended as per the AMS Affiliate APIKey  "SurPortfolio" (456iP, LLC). Specifically, both the common back-end tech stack aids in delivering a powerful, scalable, transactional permissionless  DeFi DApp platform.
  
 ## Installation Instructions
 

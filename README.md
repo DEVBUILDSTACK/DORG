@@ -1,10 +1,10 @@
-# D.Money, Decensat ecosystem embedded wallet stablecoin user supply chain or subscription costs
+# DATDev, a Decensat ecosystem embedded wallet stablecoin user supply chain or subscription costs
 
-DECENSAT.money is the Universal Money Address (UMA) DeFi Asset of 456iP affiialted ecosyststem where all ecosystem users and clients are hosted on the Lightning Network for Bitcoin PayFi. Decensat.Money is an innovators Community affiliated with the FUNDIO debt venture studio and FOUNDERS FUNDING platform
+DATDev is is an innovators Community affiliated with the FUNDIO debt venture LPs and SIGLAYER DEBT VENTURE a gated microVC community
 
 ## Project Description
 
-The DATDec Squads are talented Web3 DeFi and Digital Asset Space Content Creators. Innovators that are building, educating, and in the process evangelizing socialFi and extend the reach of Decentralized finance. Similar to Assurative.ai and its' anticipated "Sur" performant smart contract sweet this is a iMPACT "Fintech For All"'inclusive fintech project has been licensed in its' use of the Assurative,ai technology stack (456iP, LLC). Specifically, both the common back-end tech stack aids in delivering a powerful and scalable transactional and compliant decentralized finance DApp platform.
+The DATDev Squads are talented Regional Web3 DeFi and Digital Asset Space Content Creators. Innovators that are building, educating, and in the process evangelizing open-source socialFi and advocatine with their time, talent, treasure and sharing the attention economy rewards with DATDev and Learn2Launch youth builders in mentoring and on-project guidance extending the reach of our team's contribution within our corner of Decentralized finance. Similar to Assurative.ai and its' anticipated "Sur" performant smart contract Suite, this is an inclusive social iMPACT "Fintech For All"' fintech project has been licensed in its' use of the Assurative,ai technology stack (456iP, LLC). Specifically, both the common back-end tech stack aids in delivering a powerful and scalable transactional and compliant decentralized finance DApp platform.
  
 ## Installation Instructions
 

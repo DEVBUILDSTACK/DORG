@@ -28,10 +28,6 @@ pub fn pause(ctx: Context<AdminOnly>) -> Result<()> {
 
     vault_state.paused = true;
 
-    msg!("🚨 VAULT PAUSED");
-    msg!("Admin: {}", ctx.accounts.admin.key());
-    msg!("Timestamp: {}", Clock::get()?.unix_timestamp);
-
     Ok(())
 }
 

@@ -52,7 +52,6 @@ pub fn add_token(
     ctx: Context<AddToken>,
     weight_bps: u16,
 ) -> Result<()> {
-
     require!(
         weight_bps <= 10000,
         VaultError::InvalidWeightBps
@@ -77,6 +76,6 @@ pub fn add_token(
         .token_count
         .checked_add(1)
         .ok_or(VaultError::Overflow)?;
-    
+
     Ok(())
 }

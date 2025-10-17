@@ -63,9 +63,7 @@ pub fn deposit(
         VaultError::InsufficientBalance
     );
 
-    // Calculate shares to mint
     let shares_to_mint = if vault_state.total_shares == 0 || vault_state.total_value_usdc == 0 {
-        // first deposit: 1:1 ratio
         amount
     } else {
         // subsequent deposits: shares = (amount * total_shares) / total_value_usdc

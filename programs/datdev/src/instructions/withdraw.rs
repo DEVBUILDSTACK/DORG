@@ -48,6 +48,7 @@ pub fn withdraw_simple(
     let user_account = &mut ctx.accounts.user_account;
     let vault_state = &mut ctx.accounts.vault_state;
 
+
     require!(shares > 0, VaultError::InvalidAmount);
     require!(user_account.shares >= shares, VaultError::NotEnoughShares);
     require!(vault_state.total_shares > 0, VaultError::DivisionByZero);
@@ -86,6 +87,7 @@ pub fn withdraw_simple(
     user_account.shares = user_account.shares.checked_sub(shares).unwrap();
     vault_state.total_shares = vault_state.total_shares.checked_sub(shares).unwrap();
     vault_state.total_value_usdc = vault_state.total_value_usdc.checked_sub(usdc_amount).unwrap();
+
 
     Ok(())
 }

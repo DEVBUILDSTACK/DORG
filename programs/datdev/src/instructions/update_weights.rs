@@ -57,7 +57,6 @@ pub fn update_weights(
     let mut processed_count = 0u8;
 
     for account_info in ctx.remaining_accounts.iter() {
-        // load the account as TokenEntry
         let mut data = account_info.try_borrow_mut_data()?;
         let mut token_entry = TokenEntry::try_deserialize(&mut &data[..])?;
 

@@ -32,18 +32,11 @@ pub fn rebalance(
     let vault_state = &mut ctx.accounts.vault_state;
     let clock = Clock::get()?;
 
-    // const MIN_REBALANCE_INTERVAL: i64 = 12 * 60 * 60; // 12 hours in seconds
-    // require!(
-    //     clock.unix_timestamp >= vault_state.last_rebalance + MIN_REBALANCE_INTERVAL,
-    //     VaultError::RebalanceTooFrequent
-    // );
-
     require!(
         new_total_value_usdc > 0,
         VaultError::InvalidAmount
     );
 
-    // Update vault state
     vault_state.total_value_usdc = new_total_value_usdc;
     vault_state.last_rebalance = clock.unix_timestamp;
 

@@ -31,6 +31,7 @@ pub struct Initialize<'info> {
 
 pub fn initialize(
     ctx: Context<Initialize>,
+    usdc_mint: Pubkey,
     fee_bps: u16,
     performance_fee_bps: u16,
 ) -> Result<()> {
@@ -56,6 +57,7 @@ pub fn initialize(
     vault_state.admin = ctx.accounts.authority.key();
     vault_state.rebalancer = ctx.accounts.authority.key(); 
     vault_state.treasury = ctx.accounts.authority.key();
+    vault_state.usdc_mint = usdc_mint;
     vault_state.token_list = token_list.key();
     vault_state.total_shares = 0;
     vault_state.total_value_usdc = 0;

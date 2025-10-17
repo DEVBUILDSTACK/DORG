@@ -6,6 +6,7 @@ pub struct VaultState {
     pub admin: Pubkey,                // Admin authority
     pub rebalancer: Pubkey,           // Rebalancing authority (can be different from admin)
     pub treasury: Pubkey,             // Treasury account for fees
+    pub usdc_mint: Pubkey,            // USDC mint address (deposit/withdraw token)
     pub token_list: Pubkey,           // Pointer to TokenList account
     pub total_shares: u64,            // Total shares issued
     pub total_value_usdc: u64,        // Total vault value in USDC (last updated)

@@ -46,4 +46,37 @@ pub enum VaultError {
 
     #[msg("Inactive token cannot have weight")]
     InactiveTokenWeight,
+
+    #[msg("Invalid token mint")]
+    InvalidMint,
+
+    #[msg("Invalid token account")]
+    InvalidTokenAccount,
+
+    #[msg("Invalid amount - must be greater than 0")]
+    InvalidAmount,
+
+    #[msg("Insufficient token balance")]
+    InsufficientBalance,
+
+    #[msg("Division by zero")]
+    DivisionByZero,
+
+    #[msg("Insufficient shares minted - amount too small")]
+    InsufficientSharesMinted,
+
+    #[msg("Insufficient shares")]
+    NotEnoughShares,
+
+    #[msg("Invalid account count in remaining accounts")]
+    InvalidAccountCount,
+
+    #[msg("Vault token account not found in remaining accounts")]
+    VaultTokenAccountNotFound,
+
+    #[msg("Vault is already paused")]
+    VaultAlreadyPaused,
+
+    #[msg("Vault is not paused")]
+    VaultNotPaused,
 }

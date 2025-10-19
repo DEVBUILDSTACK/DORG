@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {ISwapRouter} from "../interfaces/ISwapRouter.sol";
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import { ISwapRouter } from "../interfaces/ISwapRouter.sol";
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 /**
  * @title MockSwapRouter
@@ -32,12 +32,16 @@ contract MockSwapRouter is ISwapRouter {
         uint256 amountIn,
         uint256 minAmountOut,
         bytes calldata /* swapData */
-    ) external override returns (uint256 amountOut) {
+    )
+        external
+        override
+        returns (uint256 amountOut)
+    {
         // Transfer tokenIn from caller
         IERC20(tokenIn).safeTransferFrom(msg.sender, address(this), amountIn);
 
         // Calculate output with slippage (1:1 ratio minus slippage)
-        amountOut = (amountIn * (10000 - slippageBps)) / 10000;
+        amountOut = (amountIn * (10_000 - slippageBps)) / 10_000;
 
         // Check slippage protection
         require(amountOut >= minAmountOut, "Slippage exceeded");

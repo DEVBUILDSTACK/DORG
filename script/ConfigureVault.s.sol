@@ -1,17 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {Script} from "forge-std/Script.sol";
-import {console2} from "forge-std/console2.sol";
+import { Script } from "forge-std/Script.sol";
+import { console2 } from "forge-std/console2.sol";
 
-import {BASE10Vault} from "../src/BASE10Vault.sol";
-import {PriceOracle} from "../src/PriceOracle.sol";
+import { BASE10Vault } from "../src/BASE10Vault.sol";
+import { PriceOracle } from "../src/PriceOracle.sol";
 
 /**
  * @title ConfigureVault
  * @notice Post-deployment configuration script for BASE10 Vault
  * @dev Run after Deploy.s.sol to configure price feeds and add tokens
- * 
+ *
  * Usage:
  *   forge script script/ConfigureVault.s.sol \
  *     --rpc-url $BASE_SEPOLIA_RPC_URL \
@@ -55,7 +55,7 @@ contract ConfigureVault is Script {
         // Note: For Base Sepolia testnet, we need to either:
         // 1. Deploy our own mock ERC20 tokens, OR
         // 2. Use existing testnet tokens
-        // 
+        //
         // For this demo, we'll show the configuration pattern
         // The actual token addresses should be replaced with real Base testnet tokens
 
@@ -82,10 +82,7 @@ contract ConfigureVault is Script {
      * @notice Configure all 10 Base ecosystem tokens
      * @dev Uncomment and update addresses for mainnet deployment
      */
-    function configureBaseTokens(
-        address vaultAddress,
-        address oracleAddress
-    ) external {
+    function configureBaseTokens(address vaultAddress, address oracleAddress) external {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
 
         BASE10Vault vault = BASE10Vault(vaultAddress);
@@ -168,14 +165,16 @@ contract ConfigureVault is Script {
             }
 
             // Configure price feed in oracle
-            console2.log("Setting price feed for", config.name);
+            console2.log("Setting price feed for:", config.name);
             oracle.setPriceFeed(config.token, config.priceFeed);
 
             // Add token to vault
-            console2.log("Adding", config.name, "to vault with weight", config.weightBps, "bps");
+            console2.log("Adding token to vault:", config.name);
+            console2.log("Weight (bps):", config.weightBps);
             vault.addToken(config.token, config.weightBps);
 
-            console2.log("[OK]", config.name, "configured\n");
+            console2.log("[OK] Token configured:", config.name);
+            console2.log("");
         }
 
         vm.stopBroadcast();

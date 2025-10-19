@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {MockERC20} from "./MockERC20.sol";
-import {BASE10Vault} from "../BASE10Vault.sol";
+import { MockERC20 } from "./MockERC20.sol";
+import { BASE10Vault } from "../BASE10Vault.sol";
 
 /**
  * @title MaliciousToken
@@ -14,7 +14,7 @@ contract MaliciousToken is MockERC20 {
     bool public shouldAttack;
     address public attackBeneficiary;
 
-    constructor() MockERC20("Malicious Token", "MAL", 6) {}
+    constructor() MockERC20("Malicious Token", "MAL", 6) { }
 
     /**
      * @notice Enable reentrancy attack
@@ -49,7 +49,7 @@ contract MaliciousToken is MockERC20 {
                 // Expected: reentrancy guard should block this
             }
         }
-        
+
         return super.transfer(to, amount);
     }
 
@@ -68,7 +68,7 @@ contract MaliciousToken is MockERC20 {
                 // Expected: reentrancy guard should block this
             }
         }
-        
+
         return super.transferFrom(from, to, amount);
     }
 }

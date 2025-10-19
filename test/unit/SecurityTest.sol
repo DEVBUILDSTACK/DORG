@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {BASE10VaultTestBase} from "../BASE10VaultTestBase.sol";
-import {BASE10Vault} from "../../src/BASE10Vault.sol";
-import {IBASE10Vault} from "../../src/interfaces/IBASE10Vault.sol";
-import {MaliciousToken} from "../../src/mocks/MaliciousToken.sol";
-import {ERC1967Proxy} from "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
-import {console2} from "forge-std/console2.sol";
+import { BASE10VaultTestBase } from "../BASE10VaultTestBase.sol";
+import { BASE10Vault } from "../../src/BASE10Vault.sol";
+import { IBASE10Vault } from "../../src/interfaces/IBASE10Vault.sol";
+import { MaliciousToken } from "../../src/mocks/MaliciousToken.sol";
+import { ERC1967Proxy } from "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
+import { console2 } from "forge-std/console2.sol";
 
 /**
  * @title SecurityTest
@@ -19,12 +19,12 @@ contract SecurityTest is BASE10VaultTestBase {
     /**
      * @notice Test that virtual offset protects against inflation attacks
      * @dev CRITICAL: This is the #1 vulnerability in ERC4626 vaults
-     * 
+     *
      * Attack scenario:
      * 1. Attacker deposits 1 wei, becomes first depositor
      * 2. Attacker donates large amount directly to vault
      * 3. Next depositor's shares round down to 0 (attacker steals deposit)
-     * 
+     *
      * Protection: decimalsOffset = 6 makes attack cost 1M times more
      */
     function test_InflationAttack_WithVirtualOffset() public {
@@ -34,11 +34,9 @@ contract SecurityTest is BASE10VaultTestBase {
         uint256 attackerShares = vault.deposit(1, attacker);
         vm.stopPrank();
 
-
         // Attacker tries to manipulate by direct transfer (donation attack)
         vm.prank(attacker);
         usdc.transfer(address(vault), 10_000e6); // Donate $10,000
-
 
         // Victim deposits normal amount
         uint256 victimDeposit = 1000e6; // $1,000
@@ -46,7 +44,6 @@ contract SecurityTest is BASE10VaultTestBase {
         usdc.approve(address(vault), victimDeposit);
         uint256 victimShares = vault.deposit(victimDeposit, alice);
         vm.stopPrank();
-
 
         // ASSERTION: Victim MUST receive shares (not 0)
         assertGt(victimShares, 0, "Victim received 0 shares - inflation attack successful!");
@@ -163,10 +160,10 @@ contract SecurityTest is BASE10VaultTestBase {
     function test_ReentrancyProtection_Deposit() public {
         // Deploy malicious token (6 decimals like USDC)
         MaliciousToken maliciousToken = new MaliciousToken();
-        
+
         // Mint tokens to attacker (need enough for both deposit and reentrancy attempt)
         maliciousToken.mint(attacker, 10_000e6);
-        
+
         // Deploy a new vault with malicious token as asset
         // Use admin as both admin and fee collector to simplify
         BASE10Vault malVaultImpl = new BASE10Vault();
@@ -181,34 +178,34 @@ contract SecurityTest is BASE10VaultTestBase {
             200,
             admin // admin gets all roles
         );
-        
+
         ERC1967Proxy malProxy = new ERC1967Proxy(address(malVaultImpl), initData);
         BASE10Vault malVault = BASE10Vault(address(malProxy));
-        
+
         // Enable attack on the malicious token
         maliciousToken.enableAttack(address(malVault), attacker);
-        
+
         // Attacker approves vault with enough allowance for both transactions
         vm.startPrank(attacker);
         maliciousToken.approve(address(malVault), type(uint256).max);
-        
+
         // Attempt deposit - reentrancy guard should prevent the attack
         // The malicious token will try to reenter during transferFrom, but it should be blocked
         // The attack will fail silently in the token's transferFrom, so the deposit should succeed
         malVault.deposit(1000e6, attacker);
-        
+
         vm.stopPrank();
-        
+
         // Verify that the deposit succeeded despite the reentrancy attempt
         // With virtual offset of 6, shares will be much higher than assets
         uint256 attackerShares = malVault.balanceOf(attacker);
         assertGt(attackerShares, 0, "Attacker should have received shares");
-        
+
         // Verify attacker only got shares from ONE deposit (not the reentrancy attempt)
         // If reentrancy worked, they would have gotten significantly more shares
         // We deposited 1000e6, so with offset we expect around 1e15 shares (1000e6 * 1e6)
         assertApproxEqAbs(attackerShares, 1000e6 * 1e6, 1e6, "Share amount unexpected");
-        
+
         assertTrue(true, "Reentrancy protection working");
     }
 

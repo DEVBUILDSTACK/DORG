@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {AggregatorV3Interface} from "./interfaces/AggregatorV3Interface.sol";
-import {IPriceOracle} from "./interfaces/IPriceOracle.sol";
-import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-import {PrecisionLib} from "./libraries/PrecisionLib.sol";
+import { AggregatorV3Interface } from "./interfaces/AggregatorV3Interface.sol";
+import { IPriceOracle } from "./interfaces/IPriceOracle.sol";
+import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+import { PrecisionLib } from "./libraries/PrecisionLib.sol";
 
 /**
  * @title PriceOracle
  * @notice Secure price oracle with Chainlink + fallback mechanisms
  * @dev Implements all 5 critical Chainlink safety checks + circuit breakers
- * 
+ *
  * SECURITY FEATURES:
  * 1. Round completeness check (answeredInRound >= roundId)
  * 2. Staleness detection (timestamp within threshold)
@@ -39,7 +39,7 @@ contract PriceOracle is IPriceOracle, Ownable {
 
     /* ========== CONSTRUCTOR ========== */
 
-    constructor(address initialOwner) Ownable(initialOwner) {}
+    constructor(address initialOwner) Ownable(initialOwner) { }
 
     /* ========== EXTERNAL FUNCTIONS ========== */
 
@@ -47,7 +47,7 @@ contract PriceOracle is IPriceOracle, Ownable {
      * @notice Get price for a token with all safety checks
      * @param token Address of the token
      * @return price Price in USD with 18 decimals
-     * 
+     *
      * @dev Implements all 5 Chainlink safety checks:
      * 1. answer > 0
      * 2. updatedAt != 0 && startedAt != 0
@@ -89,7 +89,7 @@ contract PriceOracle is IPriceOracle, Ownable {
      * @notice Get price with fallback to TWAP if Chainlink fails
      * @param token Address of the token
      * @return price Price in USD with 18 decimals
-     * 
+     *
      * @dev For Phase 1, fallback returns last known price
      * Phase 2 will integrate Uniswap V3 TWAP
      */
@@ -107,7 +107,7 @@ contract PriceOracle is IPriceOracle, Ownable {
      * @notice Set Chainlink price feed for a token
      * @param token Address of the token
      * @param feed Address of the Chainlink aggregator
-     * 
+     *
      * @dev Only owner can set price feeds
      */
     function setPriceFeed(address token, address feed) external override onlyOwner {

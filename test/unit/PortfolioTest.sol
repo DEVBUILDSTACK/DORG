@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {BASE10VaultTestBase} from "../BASE10VaultTestBase.sol";
-import {MockERC20} from "../../src/mocks/MockERC20.sol";
-import {console2} from "forge-std/console2.sol";
+import { BASE10VaultTestBase } from "../BASE10VaultTestBase.sol";
+import { MockERC20 } from "../../src/mocks/MockERC20.sol";
+import { console2 } from "forge-std/console2.sol";
 
 /**
  * @title PortfolioTest
@@ -57,7 +57,7 @@ contract PortfolioTest is BASE10VaultTestBase {
         address[] memory tokens = vault.getSupportedTokens();
         uint256[] memory newWeights = new uint256[](10);
         newWeights[0] = 1000; // 10% to AERO
-        newWeights[1] = 500; // 5% 
+        newWeights[1] = 500; // 5%
         newWeights[2] = 500; // 5%
         newWeights[3] = 500; // 5%
         newWeights[4] = 500; // 5%
@@ -107,7 +107,7 @@ contract PortfolioTest is BASE10VaultTestBase {
 
         // Portfolio value should equal deposit (all in USDC, no rebalancing yet)
         uint256 portfolioValue = vault.getPortfolioValue();
-        
+
         // Use approximate equality to handle rounding (within 1 USDC)
         assertApproxEqAbs(portfolioValue, depositAmount, 1e6, "Portfolio value mismatch");
     }

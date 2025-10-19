@@ -1,25 +1,25 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {ERC4626Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC4626Upgradeable.sol";
-import {ERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import {AccessControlUpgradeable} from "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
-import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
-import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
-import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import { ERC4626Upgradeable } from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC4626Upgradeable.sol";
+import { ERC20Upgradeable } from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import { AccessControlUpgradeable } from "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
+import { ReentrancyGuard } from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import { UUPSUpgradeable } from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import { Initializable } from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-import {IBASE10Vault} from "./interfaces/IBASE10Vault.sol";
-import {IPriceOracle} from "./interfaces/IPriceOracle.sol";
-import {ISwapRouter} from "./interfaces/ISwapRouter.sol";
-import {PrecisionLib} from "./libraries/PrecisionLib.sol";
+import { IBASE10Vault } from "./interfaces/IBASE10Vault.sol";
+import { IPriceOracle } from "./interfaces/IPriceOracle.sol";
+import { ISwapRouter } from "./interfaces/ISwapRouter.sol";
+import { PrecisionLib } from "./libraries/PrecisionLib.sol";
 
 /**
  * @title BASE10Vault
  * @notice ERC4626 vault managing a portfolio of 10 Base ecosystem tokens
  * @dev Implements UUPS upgradeability with comprehensive security features
- * 
+ *
  * SECURITY ARCHITECTURE:
  * 1. ERC4626 Inflation Protection: Virtual offset (decimalsOffset = 6)
  * 2. Internal Accounting: Zero reliance on balanceOf()
@@ -27,7 +27,7 @@ import {PrecisionLib} from "./libraries/PrecisionLib.sol";
  * 4. Reentrancy Protection: Guards on all state-changing functions
  * 5. Pause Granularity: 5-level emergency controls
  * 6. UUPS Security: Initialization protection + storage gaps
- * 
+ *
  * @custom:security-contact security@base10.vault
  * @custom:oz-upgrades-from BASE10VaultV1
  */
@@ -57,7 +57,7 @@ contract BASE10Vault is
     uint256 public constant PORTFOLIO_WEIGHT_BPS = 7000; // 70% in tokens
     uint256 public constant RESERVE_WEIGHT_BPS = 3000; // 30% in USDC
     uint256 public constant SECONDS_PER_YEAR = 365 days;
-    uint256 public constant MAX_SWAP_GAS = 500000; // Per-swap gas limit
+    uint256 public constant MAX_SWAP_GAS = 500_000; // Per-swap gas limit
 
     /* ========== STATE VARIABLES ========== */
 
@@ -138,7 +138,10 @@ contract BASE10Vault is
         address feeRecipient_,
         uint256 managementFeeBps_,
         address admin_
-    ) public initializer {
+    )
+        public
+        initializer
+    {
         if (asset_ == address(0)) revert ZeroAddress();
         if (oracle_ == address(0)) revert ZeroAddress();
         if (router_ == address(0)) revert ZeroAddress();
@@ -169,7 +172,7 @@ contract BASE10Vault is
     /**
      * @notice Decimal offset for inflation attack protection
      * @dev Returns 6 (1,000,000x cost multiplier for attacks)
-     * 
+     *
      * SECURITY: This makes inflation attacks economically infeasible
      * - Without offset: $1,000 attack steals $1,000 (profitable)
      * - With offset=6: $1,000,000 attack steals $1 (unprofitable)
@@ -204,7 +207,7 @@ contract BASE10Vault is
      * @notice Add a new token to the portfolio
      * @param token Token address
      * @param weightBps Weight in basis points
-     * 
+     *
      * @dev Only admin can add tokens
      * Total weight must not exceed PORTFOLIO_WEIGHT_BPS (7000 bps)
      */
@@ -223,12 +226,8 @@ contract BASE10Vault is
         _portfolioTokens.push(token);
         _tokenDecimals[token] = IERC20Metadata(token).decimals();
 
-        _tokenInfo[token] = TokenInfo({
-            token: token,
-            weightBps: weightBps,
-            decimals: _tokenDecimals[token],
-            active: true
-        });
+        _tokenInfo[token] =
+            TokenInfo({ token: token, weightBps: weightBps, decimals: _tokenDecimals[token], active: true });
 
         emit TokenAdded(token, weightBps);
     }
@@ -236,7 +235,7 @@ contract BASE10Vault is
     /**
      * @notice Remove a token from the portfolio
      * @param token Token address
-     * 
+     *
      * @dev Only admin, requires token balance to be zero
      */
     function removeToken(address token) external override onlyRole(DEFAULT_ADMIN_ROLE) {
@@ -261,14 +260,15 @@ contract BASE10Vault is
      * @notice Update token weights
      * @param tokens Array of token addresses
      * @param weights Array of new weights in bps
-     * 
+     *
      * @dev Only rebalancer role can update weights
      * Total must equal PORTFOLIO_WEIGHT_BPS (7000 bps)
      */
-    function updateWeights(
-        address[] calldata tokens,
-        uint256[] calldata weights
-    ) external override onlyRole(REBALANCER_ROLE) {
+    function updateWeights(address[] calldata tokens, uint256[] calldata weights)
+        external
+        override
+        onlyRole(REBALANCER_ROLE)
+    {
         if (tokens.length != weights.length) revert InvalidWeights();
         if (tokens.length != _portfolioTokens.length) revert InvalidWeights();
 
@@ -304,7 +304,7 @@ contract BASE10Vault is
     /**
      * @notice Calculate total portfolio value in USDC
      * @return Portfolio value with 6 decimals (USDC)
-     * 
+     *
      * @dev Uses internal balances + oracle prices
      * SECURITY: Internal accounting prevents donation attacks
      */
@@ -339,14 +339,20 @@ contract BASE10Vault is
     /**
      * @notice Execute rebalancing based on keeper intent
      * @param intent Rebalance parameters
-     * 
+     *
      * @dev Uses keeper pattern for off-chain calculation, on-chain execution
      * SECURITY: Gas limits, slippage protection, role-based access
      */
     function executeRebalance(
         RebalanceIntent calldata intent,
         bytes calldata /* signature */
-    ) external override nonReentrant whenNotPaused(PAUSE_REBALANCING) onlyRole(KEEPER_ROLE) {
+    )
+        external
+        override
+        nonReentrant
+        whenNotPaused(PAUSE_REBALANCING)
+        onlyRole(KEEPER_ROLE)
+    {
         if (!canRebalance()) revert RebalanceTooSoon();
         if (block.timestamp > intent.deadline) revert("Intent expired");
         if (executedIntents[intent.intentHash]) revert("Already executed");
@@ -394,7 +400,9 @@ contract BASE10Vault is
         uint256 amountIn,
         uint256 minAmountOut,
         bytes calldata swapData
-    ) internal {
+    )
+        internal
+    {
         if (amountIn == 0) revert ZeroAmount();
         if (_internalBalances[tokenIn] < amountIn) revert InsufficientBalance();
 
@@ -403,9 +411,9 @@ contract BASE10Vault is
 
         // Execute swap with gas limit
         uint256 amountOut;
-        try swapRouter.swap{gas: MAX_SWAP_GAS}(tokenIn, tokenOut, amountIn, minAmountOut, swapData) returns (
-            uint256 _amountOut
-        ) {
+        try swapRouter.swap{
+            gas: MAX_SWAP_GAS
+        }(tokenIn, tokenOut, amountIn, minAmountOut, swapData) returns (uint256 _amountOut) {
             amountOut = _amountOut;
         } catch {
             revert("Swap failed");
@@ -423,7 +431,7 @@ contract BASE10Vault is
     /**
      * @notice Accrue management fees
      * @dev Continuous compounding: feeShares = totalSupply * feeBps * timeElapsed / (10000 * 365 days)
-     * 
+     *
      * SECURITY: Time-weighted, cannot be gamed by timing transactions
      */
     function _accrueFees() internal {
@@ -437,7 +445,7 @@ contract BASE10Vault is
         }
 
         // Calculate fee: shares * feeBps * time / (10000 * year)
-        uint256 feeShares = (totalShares * managementFeeBps * timeDelta) / (10000 * SECONDS_PER_YEAR);
+        uint256 feeShares = (totalShares * managementFeeBps * timeDelta) / (10_000 * SECONDS_PER_YEAR);
 
         if (feeShares > 0) {
             accumulatedFees += feeShares;
@@ -503,7 +511,7 @@ contract BASE10Vault is
     /**
      * @notice Calculate total assets under management
      * @return Total value in USDC (6 decimals)
-     * 
+     *
      * @dev Uses internal accounting + oracle prices
      * Subtracts accrued fees from total value
      */
@@ -523,14 +531,18 @@ contract BASE10Vault is
      * @param assets Amount of USDC to deposit
      * @param receiver Address to receive shares
      * @return shares Amount of vault shares minted
-     * 
+     *
      * @dev Overridden to use internal accounting
      * SECURITY: Internal balance tracking prevents donation attacks
      */
-    function deposit(
-        uint256 assets,
-        address receiver
-    ) public override accruesFees nonReentrant whenNotPaused(PAUSE_DEPOSITS) returns (uint256 shares) {
+    function deposit(uint256 assets, address receiver)
+        public
+        override
+        accruesFees
+        nonReentrant
+        whenNotPaused(PAUSE_DEPOSITS)
+        returns (uint256 shares)
+    {
         if (assets == 0) revert ZeroAmount();
 
         shares = previewDeposit(assets);
@@ -553,15 +565,18 @@ contract BASE10Vault is
      * @param receiver Address to receive assets
      * @param owner Owner of shares
      * @return shares Amount of shares burned
-     * 
+     *
      * @dev Converts portfolio to USDC before withdrawal
      * For pro-rata withdrawal, use emergencyWithdraw()
      */
-    function withdraw(
-        uint256 assets,
-        address receiver,
-        address owner
-    ) public override accruesFees nonReentrant whenNotPaused(PAUSE_WITHDRAWALS) returns (uint256 shares) {
+    function withdraw(uint256 assets, address receiver, address owner)
+        public
+        override
+        accruesFees
+        nonReentrant
+        whenNotPaused(PAUSE_WITHDRAWALS)
+        returns (uint256 shares)
+    {
         if (assets == 0) revert ZeroAmount();
 
         shares = previewWithdraw(assets);
@@ -607,7 +622,7 @@ contract BASE10Vault is
      * @notice Emergency withdrawal (pro-rata tokens)
      * @param receiver Address to receive tokens
      * @return amounts Array of token amounts returned
-     * 
+     *
      * @dev Returns proportional share of all tokens
      * Works even during PAUSE_FULL
      */
@@ -656,7 +671,7 @@ contract BASE10Vault is
     /**
      * @notice Authorize upgrade to new implementation
      * @param newImplementation Address of new implementation
-     * 
+     *
      * @dev Only admin can upgrade
      */
     function _authorizeUpgrade(address newImplementation) internal override onlyRole(DEFAULT_ADMIN_ROLE) {

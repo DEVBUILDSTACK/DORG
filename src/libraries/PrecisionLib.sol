@@ -5,7 +5,7 @@ pragma solidity ^0.8.24;
  * @title PrecisionLib
  * @notice Library for handling decimal normalization across different token standards
  * @dev All internal calculations use 18 decimals for precision
- * 
+ *
  * CRITICAL SECURITY NOTE:
  * This library prevents precision loss when dealing with:
  * - USDC/USDT (6 decimals)
@@ -18,7 +18,7 @@ library PrecisionLib {
     uint256 internal constant INTERNAL_DECIMALS = 18;
     uint256 internal constant PRICE_DECIMALS = 8; // Chainlink
     uint256 internal constant USDC_DECIMALS = 6;
-    uint256 internal constant BPS_DENOMINATOR = 10000; // 100% = 10000 bps
+    uint256 internal constant BPS_DENOMINATOR = 10_000; // 100% = 10000 bps
 
     /* ========== ERRORS ========== */
 
@@ -86,7 +86,7 @@ library PrecisionLib {
      * @param tokenDecimals Decimals of the token
      * @param tokenPrice Price from Chainlink (8 decimals)
      * @return USD value with 18 decimals
-     * 
+     *
      * @dev Formula: (tokenAmount * tokenPrice) normalized to 18 decimals
      * Example: 1000 USDC (6 decimals) at $1.00 (8 decimals)
      * = (1000 * 1e6) * (1 * 1e8) / (1e6 * 1e8) * 1e18 = 1000e18
@@ -95,7 +95,11 @@ library PrecisionLib {
         uint256 tokenAmount,
         uint8 tokenDecimals,
         uint256 tokenPrice // Chainlink price (8 decimals)
-    ) internal pure returns (uint256) {
+    )
+        internal
+        pure
+        returns (uint256)
+    {
         // Normalize token amount to 18 decimals
         uint256 normalizedAmount = normalizeTokenAmount(tokenAmount, tokenDecimals);
 
@@ -113,11 +117,11 @@ library PrecisionLib {
      * @param tokenDecimals Decimals of the token
      * @return Token amount with token decimals
      */
-    function calculateTokenAmount(
-        uint256 usdValue,
-        uint256 tokenPrice,
-        uint8 tokenDecimals
-    ) internal pure returns (uint256) {
+    function calculateTokenAmount(uint256 usdValue, uint256 tokenPrice, uint8 tokenDecimals)
+        internal
+        pure
+        returns (uint256)
+    {
         if (tokenPrice == 0) revert InvalidDecimals();
 
         // Normalize price to 18 decimals

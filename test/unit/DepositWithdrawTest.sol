@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {BASE10VaultTestBase} from "../BASE10VaultTestBase.sol";
-import {console2} from "forge-std/console2.sol";
+import { BASE10VaultTestBase } from "../BASE10VaultTestBase.sol";
+import { console2 } from "forge-std/console2.sol";
 
 /**
  * @title DepositWithdrawTest
@@ -232,17 +232,17 @@ contract DepositWithdrawTest is BASE10VaultTestBase {
 
         // Fee collector should have accrued fees
         uint256 feeShares = vault.balanceOf(feeCollector);
-        
+
         // Fees should be greater than 0
         assertGt(feeShares, 0, "No fees collected");
-        
+
         // With 200 bps annual fee on 100k deposit, after 1 year we expect ~2k in fees
         // This is ~2% of the original deposit value
         // However, due to continuous accrual and share dilution, the exact percentage will vary
         // We check that fees are in a reasonable range (1.5% to 2.5%)
         uint256 totalSharesAfter = vault.totalSupply();
-        uint256 feePercentageBps = (feeShares * 10000) / totalSharesAfter;
-        
+        uint256 feePercentageBps = (feeShares * 10_000) / totalSharesAfter;
+
         assertGt(feePercentageBps, 150, "Fee too low"); // At least 1.5%
         assertLt(feePercentageBps, 250, "Fee too high"); // At most 2.5%
     }

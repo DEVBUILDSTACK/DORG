@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {Script} from "forge-std/Script.sol";
-import {console2} from "forge-std/console2.sol";
+import { Script } from "forge-std/Script.sol";
+import { console2 } from "forge-std/console2.sol";
 
-import {BASE10Vault} from "../src/BASE10Vault.sol";
-import {PriceOracle} from "../src/PriceOracle.sol";
-import {ERC1967Proxy} from "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
+import { BASE10Vault } from "../src/BASE10Vault.sol";
+import { PriceOracle } from "../src/PriceOracle.sol";
+import { ERC1967Proxy } from "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
 
 /**
  * @title Deploy

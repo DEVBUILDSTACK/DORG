@@ -16,11 +16,7 @@ interface ISwapRouter {
      * @param swapData Encoded swap route data from aggregator API
      * @return amountOut Actual amount of tokenOut received
      */
-    function swap(
-        address tokenIn,
-        address tokenOut,
-        uint256 amountIn,
-        uint256 minAmountOut,
-        bytes calldata swapData
-    ) external returns (uint256 amountOut);
+    function swap(address tokenIn, address tokenOut, uint256 amountIn, uint256 minAmountOut, bytes calldata swapData)
+        external
+        returns (uint256 amountOut);
 }

@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {Test} from "forge-std/Test.sol";
-import {console2} from "forge-std/console2.sol";
+import { Test } from "forge-std/Test.sol";
+import { console2 } from "forge-std/console2.sol";
 
-import {BASE10Vault} from "../src/BASE10Vault.sol";
-import {PriceOracle} from "../src/PriceOracle.sol";
-import {MockERC20} from "../src/mocks/MockERC20.sol";
-import {MockSwapRouter} from "../src/mocks/MockSwapRouter.sol";
-import {MockChainlinkOracle} from "../src/mocks/MockChainlinkOracle.sol";
+import { BASE10Vault } from "../src/BASE10Vault.sol";
+import { PriceOracle } from "../src/PriceOracle.sol";
+import { MockERC20 } from "../src/mocks/MockERC20.sol";
+import { MockSwapRouter } from "../src/mocks/MockSwapRouter.sol";
+import { MockChainlinkOracle } from "../src/mocks/MockChainlinkOracle.sol";
 
-import {ERC1967Proxy} from "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
+import { ERC1967Proxy } from "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
 
 /**
  * @title BASE10VaultTestBase
@@ -237,9 +237,12 @@ abstract contract BASE10VaultTestBase is Test {
         uint256 b,
         uint256 maxPercentDelta, // in basis points (100 = 1%)
         string memory err
-    ) internal pure {
+    )
+        internal
+        pure
+    {
         uint256 delta = a > b ? a - b : b - a;
-        uint256 maxDelta = (b * maxPercentDelta) / 10000;
+        uint256 maxDelta = (b * maxPercentDelta) / 10_000;
 
         require(delta <= maxDelta, err);
     }

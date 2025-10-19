@@ -1,22 +1,22 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {Script} from "forge-std/Script.sol";
-import {console2} from "forge-std/console2.sol";
+import { Script } from "forge-std/Script.sol";
+import { console2 } from "forge-std/console2.sol";
 
-import {BASE10Vault} from "../src/BASE10Vault.sol";
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { BASE10Vault } from "../src/BASE10Vault.sol";
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 /**
  * @title SmokeTest
  * @notice Execute smoke tests on deployed BASE10 Vault
  * @dev Tests basic deposit/withdraw flows with real transactions
- * 
+ *
  * Prerequisites:
  * - Vault deployed and configured
  * - Deployer wallet has testnet USDC
  * - Get testnet USDC from: https://faucet.circle.com/
- * 
+ *
  * Usage:
  *   forge script script/SmokeTest.s.sol \
  *     --rpc-url $BASE_SEPOLIA_RPC_URL \

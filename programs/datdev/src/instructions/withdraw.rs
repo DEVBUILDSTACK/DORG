@@ -88,6 +88,5 @@ pub fn withdraw_simple(
     vault_state.total_shares = vault_state.total_shares.checked_sub(shares).unwrap();
     vault_state.total_value_usdc = vault_state.total_value_usdc.checked_sub(usdc_amount).unwrap();
 
-
     Ok(())
 }

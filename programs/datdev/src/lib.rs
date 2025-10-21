@@ -7,6 +7,7 @@ pub mod error;
 pub mod state;
 
 use instructions::*;
+use instructions::update_weights::TokenWeight;
 
 #[program]
 pub mod datdev {
@@ -20,7 +21,7 @@ pub mod datdev {
         instructions::add_token(ctx, weight_bps)
     }
 
-    pub fn update_weights(ctx: Context<UpdateWeights>, new_weights: Vec<(Pubkey, u16)>) -> Result<()> {
+    pub fn update_weights(ctx: Context<UpdateWeights>, new_weights: Vec<TokenWeight>) -> Result<()> {
         instructions::update_weights(ctx, new_weights)
     }
 

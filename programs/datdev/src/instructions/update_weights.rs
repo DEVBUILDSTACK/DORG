@@ -2,6 +2,12 @@ use anchor_lang::prelude::*;
 
 use crate::{error::VaultError, state::{TokenEntry, TokenList, VaultState}};
 
+#[derive(AnchorSerialize, AnchorDeserialize, Clone)]
+pub struct TokenWeight {
+    pub mint: Pubkey,
+    pub weight: u16,
+}
+
 #[derive(Accounts)]
 pub struct UpdateWeights<'info> {
     #[account(mut)]
@@ -25,7 +31,7 @@ pub struct UpdateWeights<'info> {
 
 pub fn update_weights(
     ctx: Context<UpdateWeights>,
-    new_weights: Vec<(Pubkey, u16)>,
+    new_weights: Vec<TokenWeight>,
 ) -> Result<()> {
     let vault_state = &mut ctx.accounts.vault_state;
     let token_list = &ctx.accounts.token_list;
@@ -36,15 +42,15 @@ pub fn update_weights(
         VaultError::InvalidWeightsLength
     );
 
-    let total_weight: u32 = new_weights.iter().map(|(_, weight)| *weight as u32).sum();
+    let total_weight: u32 = new_weights.iter().map(|w| w.weight as u32).sum();
     require!(
         total_weight == 10_000,
         VaultError::InvalidTotalWeight
     );
 
-    for (_, weight) in &new_weights {
+    for weight_entry in &new_weights {
         require!(
-            *weight <= 10_000,
+            weight_entry.weight <= 10_000,
             VaultError::InvalidWeightBps
         );
     }
@@ -67,9 +73,9 @@ pub fn update_weights(
 
         let new_weight = new_weights
             .iter()
-            .find(|(mint, _)| *mint == token_entry.mint)
+            .find(|w| w.mint == token_entry.mint)
             .ok_or(VaultError::TokenMintNotFound)?
-            .1;
+            .weight;
 
         if !token_entry.is_active {
             require!(

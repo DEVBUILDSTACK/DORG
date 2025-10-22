@@ -8,3 +8,5 @@ test-ledger
 .yarn
 
 types.ts
+
+.env

@@ -5,7 +5,7 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-datdev = "4GBv65CdfK7Y4yzVvE5QiPu8t27n6QLX64TCxr1SsJkT"
+datdev = "uUoKq6s3qzAYfRuBuZaqUGzFUem8CjSe4yyYThSoo8y"
 
 [registry]
 url = "https://api.apr.dev"

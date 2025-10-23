@@ -602,11 +602,9 @@
 
 // export default OnboardingFlow;
 
-
-
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, ChevronLeft, BookOpen, TrendingUp, Code2, Sparkles, Check } from 'lucide-react';
-import { Router } from 'next/router';
+import { ChevronRight, ChevronLeft, BookOpen, TrendingUp, Code2, Sparkles, Check, User, Share2, FileText } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const countries = [
   { code: 'US', name: 'United States', flag: '🇺🇸' },
@@ -648,8 +646,10 @@ const roles = [
 ];
 
 const OnboardingFlow = () => {
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [isVisible, setIsVisible] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
     age: '',
@@ -715,18 +715,73 @@ const OnboardingFlow = () => {
     </div>
   );
 
-  const ProgressDots = () => (
-    <div className="flex gap-2 justify-center mb-8">
-      {[1, 2, 3, 4].map(i => (
-        <div
-          key={i}
-          className={`h-1.5 rounded-full transition-all duration-500 ${
-            i === step ? 'w-8 bg-gradient-to-r from-cyan-400 to-violet-500' : 'w-1.5 bg-gray-600'
-          }`}
-        />
-      ))}
-    </div>
-  );
+  const ProgressBar = () => {
+    const steps = [
+      { id: 1, title: 'Get Started', icon: User, subtitle: 'Personal' },
+      { id: 2, title: 'Choose Role', icon: Share2, subtitle: 'Socials' },
+      { id: 3, title: 'Experience', icon: FileText, subtitle: 'Concept Development' },
+      { id: 4, title: 'Complete', icon: Check, subtitle: 'Stage' }
+    ];
+
+    return (
+      <div className="mb-12">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 bg-clip-text text-transparent mb-2">
+            Learn 2 Launch
+          </h1>
+          <p className="text-gray-400">Complete your onboarding journey</p>
+        </div>
+        
+        <div className="flex justify-between items-center max-w-4xl mx-auto px-4">
+          {steps.map((stepItem, index) => {
+            const Icon = stepItem.icon;
+            const isActive = step === stepItem.id;
+            const isCompleted = step > stepItem.id;
+            
+            return (
+              <div key={stepItem.id} className="flex flex-col items-center relative">
+                {/* Connection Line */}
+                {index < steps.length - 1 && (
+                  <div className="absolute top-6 left-12 w-24 h-0.5 bg-gray-700">
+                    <div 
+                      className={`h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-500 ${
+                        isCompleted ? 'w-full' : 'w-0'
+                      }`}
+                    />
+                  </div>
+                )}
+                
+                {/* Step Circle */}
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
+                  isActive 
+                    ? 'border-purple-500 bg-purple-500 shadow-lg shadow-purple-500/50' 
+                    : isCompleted
+                    ? 'border-purple-500 bg-purple-500'
+                    : 'border-gray-600 bg-gray-800'
+                }`}>
+                  <Icon className={`w-5 h-5 ${
+                    isActive || isCompleted ? 'text-white' : 'text-gray-400'
+                  }`} />
+                </div>
+                
+                {/* Step Info */}
+                <div className="mt-3 text-center">
+                  <div className={`text-sm font-semibold ${
+                    isActive ? 'text-white' : isCompleted ? 'text-purple-400' : 'text-gray-500'
+                  }`}>
+                    {stepItem.title}
+                  </div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    {stepItem.subtitle}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
 
   const StepBasicInfo = () => (
     <div className="space-y-6">
@@ -1125,6 +1180,101 @@ const OnboardingFlow = () => {
     );
   };
 
+  const SuccessScreen = () => {
+    const roleInfo = roles.find(r => r.id === formData.role);
+    
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        const dashboardRoutes: Record<string, string> = {
+          student: '/dashboard/student',
+          investor: '/dashboard/investor', 
+          developer: '/dashboard/developer'
+        };
+        
+        router.push(dashboardRoutes[formData.role] || '/dashboard/student');
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }, []);
+
+    return (
+      <div className="text-center space-y-8 animate-in fade-in duration-1000">
+        <div className="relative">
+          <div className="w-24 h-24 mx-auto bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/50 animate-bounce">
+            <Check className="w-12 h-12 text-white" />
+          </div>
+          <div className="absolute inset-0 w-24 h-24 mx-auto bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-ping opacity-20" />
+        </div>
+
+        <div>
+          <h2 className="text-4xl font-bold text-white mb-4">
+            Welcome Aboard! 🎉
+          </h2>
+          <p className="text-xl text-gray-300 mb-2">
+            Hey {formData.fullName.split(' ')[0]}, you're all set!
+          </p>
+          <p className="text-gray-400">
+            Redirecting to your personalized {roleInfo?.title} dashboard...
+          </p>
+        </div>
+
+        <div className="flex items-center justify-center gap-2 text-gray-400">
+          <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+          <div className="w-2 h-2 bg-violet-400 rounded-full animate-pulse delay-200" />
+          <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse delay-400" />
+        </div>
+
+        <div className={`p-6 rounded-xl bg-gradient-to-br ${roleInfo?.gradient} shadow-lg relative overflow-hidden max-w-md mx-auto`}>
+          <div className="relative z-10 text-center">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              {roleInfo && <roleInfo.icon className="w-6 h-6 text-white" />}
+              <h3 className="text-lg font-bold text-white">{roleInfo?.title} Dashboard</h3>
+            </div>
+            <p className="text-white/80 text-sm">
+              Your personalized experience awaits
+            </p>
+          </div>
+          <div className="absolute inset-0 bg-black/20" />
+        </div>
+      </div>
+    );
+  };
+
+  if (showSuccess) {
+    return (
+      <div className="min-h-screen bg-gradient-radial from-[#0B0C14] via-[#101120] to-[#0B0C14] flex items-center justify-center p-4 relative overflow-hidden">
+        <FloatingParticles />
+        
+        {/* Animated background glow */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-2xl">
+          <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-12 relative overflow-hidden">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400/20 via-emerald-500/20 to-green-400/20 opacity-50 animate-pulse" />
+            
+            <div className="relative z-10">
+              <SuccessScreen />
+            </div>
+          </div>
+        </div>
+
+        <style jsx>{`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+          }
+          
+          .bg-gradient-radial {
+            background: radial-gradient(circle at center, #0B0C14 0%, #101120 50%, #0B0C14 100%);
+          }
+        `}</style>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-radial from-[#0B0C14] via-[#101120] to-[#0B0C14] flex items-center justify-center p-4 relative overflow-hidden">
       <FloatingParticles />
@@ -1153,7 +1303,7 @@ const OnboardingFlow = () => {
           <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/20 via-violet-500/20 to-pink-400/20 opacity-50 animate-pulse" />
           
           <div className="relative z-10">
-            <ProgressDots />
+            <ProgressBar />
 
             <div className="transition-all duration-300">
               {step === 1 && <StepBasicInfo />}
@@ -1189,9 +1339,10 @@ const OnboardingFlow = () => {
                 </button>
               ) : (
                 <button
+                  onClick={() => setShowSuccess(true)}
                   className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-400 to-violet-500 hover:shadow-lg hover:shadow-cyan-400/50 rounded-lg text-white font-semibold transition-all"
                 >
-                  Go to Dashboard
+                  Complete Setup
                   <Sparkles className="w-4 h-4" />
                 </button>
               )}

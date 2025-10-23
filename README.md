@@ -1,43 +1,84 @@
-<<<<<<< HEAD
+# DORG - Learn2Launch Platform<<<<<<< HEAD
+
 # DATDev, a Decensat iMPACT inspired "Fintech4All" participant team conpeting for engagement thru the Colosseum Fall 2025 Hackathon.
 
 DATDev ("DAT" is the commonly used acronym for "Digital Asset Treasury") is the pre-formation project directed in accelerating the iMPACT objectives associated with Decensat.org and its affiliate 456iP SigLayer DebtVenture framework.
 
+DATDev ("DAT" is the commonly used acronym for "Digital Asset Treasury") is the pre-formation project directed in accelerating the iMPACT objectives associated with Decensat.org and its affiliate 456iP SigLayer DebtVenture framework.
+
+## Project Description
+
 Project Description:
+
+The DATDev Squad is the "L2Launchpad", inaugural 18+yr. old talent-squad building the L2L platform. Fast-track learning offering curated W3 Treasury tooling for SME's | solo-preneurs. Mentoring builder cohorts through proven curriculum and virtually delivered design thinking and creator cohort-based programming for youth.
 
 The DATDev Squad is the "L2Launchpad", innagural 18+yr. old talent-squad building the L2L platform. Fast-track learning offering curated W3 Treasury tooling for SME's | solo-preneurs. Mentoring builder cohorts thru proven curriculum and virtually delivered design thinking and creator cohort-based programming for youth - Join our L2L Node at https://Lwandisurf.org Ponta Do Oura, Mozambique coming soon'26 
 
+Join our L2L Node at https://Lwandisurf.org Ponta Do Oura, Mozambique coming soon'26
+
 Installation Instructions
+
+## Project Structure
 
 ### Prerequisites
 
-- Python 3.8+
-- FastAPI
-- Docker (optional)
+```
+
+DORG/- Python 3.8+
+
+├── frontend/          # Next.js frontend application- FastAPI
+
+└── README.md         # This file- Docker (optional)
+
+```
 
 ### Steps
 
+## Getting Started
+
 1. Clone the repository:
-   ```sh
+
+### Frontend (Next.js)   ```sh
+
    git clone https://github.com/DEVBUILDSTACK/DORG.git
-   cd DORG
+
+Navigate to the frontend directory:   cd DORG
+
    ```
 
-2. Create a virtual environment and activate it:
-   ```sh
-   python -m venv env
-   source env/bin/activate  # On Windows use `env\Scripts\activate`
+```bash
+
+cd frontend2. Create a virtual environment and activate it:
+
+npm install   ```sh
+
+npm run dev   python -m venv env
+
+```   source env/bin/activate  # On Windows use `env\Scripts\activate`
+
    ```
+
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 3. Install the dependencies:
-   ```sh
+
+See [frontend/README.md](frontend/README.md) for more details.   ```sh
+
    pip install -r requirements.txt
+
+## Contributing Guidelines   ```
+
+
+
+We welcome contributions from the community! Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) for more details.4. Run the application:
+
+   ```sh
+
+## Contact Information   uvicorn app.main:app --reload
+
    ```
 
-4. Run the application:
-   ```sh
-   uvicorn app.main:app --reload
-   ```
+For any questions or suggestions, please contact us at [learn2launch@decensat.org](mailto:learn2launch@decensat.org).
 
 ## Usage Instructions
 

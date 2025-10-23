@@ -25,10 +25,19 @@ import {
   Linkedin
 } from 'lucide-react';
 
+interface Notifications {
+  courseUpdates: boolean;
+  communityPosts: boolean;
+  vaultAlerts: boolean;
+  weeklyDigest: boolean;
+  emailNotifications: boolean;
+  pushNotifications: boolean;
+}
+
 const SettingsPage = () => {
   const [activeTab, setActiveTab] = useState('profile');
   const [showApiKey, setShowApiKey] = useState(false);
-  const [notifications, setNotifications] = useState({
+  const [notifications, setNotifications] = useState<Notifications>({
     courseUpdates: true,
     communityPosts: true,
     vaultAlerts: true,
@@ -58,14 +67,14 @@ const SettingsPage = () => {
     { id: 'data', name: 'Data & Export', icon: Download }
   ];
 
-  const handleNotificationChange = (key) => {
+  const handleNotificationChange = (key: keyof Notifications) => {
     setNotifications(prev => ({
       ...prev,
       [key]: !prev[key]
     }));
   };
 
-  const handleProfileChange = (key, value) => {
+  const handleProfileChange = (key: string, value: string) => {
     setProfile(prev => ({
       ...prev,
       [key]: value
@@ -198,13 +207,13 @@ const SettingsPage = () => {
                     <textarea
                       value={profile.bio}
                       onChange={(e) => handleProfileChange('bio', e.target.value)}
-                      rows="4"
+                      rows={4}
                       className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50 focus:border-[#00E0FF]/50 transition-all resize-none"
                       placeholder="Tell us about yourself..."
                     />
                   </div>
 
-                  {/* Social Links */}
+  {/* Social Links */}
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-4">Social Links</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -284,14 +293,14 @@ const SettingsPage = () => {
                   </div>
 
                   <div className="space-y-6">
-                    {Object.entries({
+                    {(Object.entries({
                       courseUpdates: 'Course updates and new content',
                       communityPosts: 'Community posts and discussions',
                       vaultAlerts: 'Vault performance and alerts',
                       weeklyDigest: 'Weekly progress digest',
                       emailNotifications: 'Email notifications',
                       pushNotifications: 'Push notifications'
-                    }).map(([key, label]) => (
+                    }) as [keyof Notifications, string][]).map(([key, label]) => (
                       <div key={key} className="flex items-center justify-between p-4 bg-gray-900/30 rounded-xl">
                         <div>
                           <p className="font-medium text-white">{label}</p>

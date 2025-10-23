@@ -150,13 +150,13 @@ const VaultsPage = () => {
       case 'apy': return b.apy - a.apy;
       case 'tvl': return b.tvl - a.tvl;
       case 'risk': 
-        const riskOrder = { 'Low': 1, 'Medium': 2, 'High': 3, 'Very High': 4 };
+        const riskOrder: Record<string, number> = { 'Low': 1, 'Medium': 2, 'High': 3, 'Very High': 4 };
         return riskOrder[a.riskLevel] - riskOrder[b.riskLevel];
       default: return 0;
     }
   });
 
-  const getRiskColor = (risk) => {
+  const getRiskColor = (risk: string) => {
     switch (risk) {
       case 'Low': return 'text-green-400 bg-green-500/20';
       case 'Medium': return 'text-yellow-400 bg-yellow-500/20';
@@ -166,7 +166,7 @@ const VaultsPage = () => {
     }
   };
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status: string) => {
     switch (status) {
       case 'active': return 'text-green-400 bg-green-500/20';
       case 'new': return 'text-blue-400 bg-blue-500/20';

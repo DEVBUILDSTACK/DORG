@@ -645,12 +645,31 @@ const roles = [
   },
 ];
 
+interface FormData {
+  fullName: string;
+  age: string;
+  country: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  role: string;
+  codedBefore: string;
+  favoriteSubject: string;
+  whyJoin: string;
+  investmentExp: string;
+  investmentGoal: string;
+  portfolioSize: string;
+  devYears: number;
+  devStack: string[];
+  devInterests: string[];
+}
+
 const OnboardingFlow = () => {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [isVisible, setIsVisible] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     fullName: '',
     age: '',
     country: '',
@@ -683,7 +702,7 @@ const OnboardingFlow = () => {
     localStorage.setItem('learn2launch_onboarding', JSON.stringify(formData));
   }, [formData]);
 
-  const updateField = (field, value) => {
+  const updateField = (field: string, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -959,7 +978,7 @@ const OnboardingFlow = () => {
               value={formData.whyJoin}
               onChange={e => updateField('whyJoin', e.target.value)}
               className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all resize-none"
-              rows="4"
+              rows={4}
               placeholder="Share your goals and aspirations..."
             />
           </div>

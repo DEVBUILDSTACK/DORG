@@ -31,7 +31,7 @@ const LeaderboardPage = () => {
     { id: 10, name: 'Ryan Davis', avatar: '👨‍🔧', xp: 1650, badges: 5, coursesCompleted: 3, weeklyGrowth: 7.9, level: 'Beginner' },
   ];
 
-  const handleSort = (field) => {
+  const handleSort = (field: string) => {
     if (sortBy === field) {
       setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
     } else {
@@ -41,26 +41,26 @@ const LeaderboardPage = () => {
   };
 
   const sortedData = [...leaderboardData].sort((a, b) => {
-    const aVal = a[sortBy];
-    const bVal = b[sortBy];
+    const aVal = a[sortBy as keyof typeof a] as number;
+    const bVal = b[sortBy as keyof typeof b] as number;
     return sortOrder === 'asc' ? aVal - bVal : bVal - aVal;
   });
 
-  const getRankIcon = (rank) => {
+  const getRankIcon = (rank: number) => {
     if (rank === 1) return <Crown className="w-5 h-5 text-yellow-500" />;
     if (rank === 2) return <Medal className="w-5 h-5 text-gray-400" />;
     if (rank === 3) return <Award className="w-5 h-5 text-orange-600" />;
     return <span className="text-gray-400 font-bold">#{rank}</span>;
   };
 
-  const getRankBorder = (rank) => {
+  const getRankBorder = (rank: number) => {
     if (rank === 1) return 'border-yellow-500/50 shadow-yellow-500/20';
     if (rank === 2) return 'border-gray-400/50 shadow-gray-400/20';
     if (rank === 3) return 'border-orange-600/50 shadow-orange-600/20';
     return 'border-gray-700/50';
   };
 
-  const getLevelColor = (level) => {
+  const getLevelColor = (level: string) => {
     switch (level) {
       case 'Expert': return 'text-purple-400 bg-purple-500/20';
       case 'Advanced': return 'text-blue-400 bg-blue-500/20';

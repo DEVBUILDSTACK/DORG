@@ -145,7 +145,7 @@ const CommunityPage = () => {
     { name: 'David Kim', avatar: '👨‍💼', posts: 22, likes: 378, level: 'Intermediate' }
   ];
 
-  const getEngagementColor = (engagement) => {
+  const getEngagementColor = (engagement: string) => {
     switch (engagement) {
       case 'high': return 'border-l-green-500';
       case 'medium': return 'border-l-yellow-500';
@@ -154,7 +154,7 @@ const CommunityPage = () => {
     }
   };
 
-  const getTypeIcon = (type) => {
+  const getTypeIcon = (type: string) => {
     switch (type) {
       case 'announcement': return <Pin className="w-4 h-4 text-blue-400" />;
       case 'discussion': return <MessageCircle className="w-4 h-4 text-green-400" />;
@@ -164,7 +164,7 @@ const CommunityPage = () => {
     }
   };
 
-  const getLevelColor = (level) => {
+  const getLevelColor = (level: string) => {
     switch (level) {
       case 'Team': return 'text-blue-400 bg-blue-500/20';
       case 'Expert': return 'text-purple-400 bg-purple-500/20';

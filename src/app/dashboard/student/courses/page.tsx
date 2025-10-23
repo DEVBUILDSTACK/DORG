@@ -17,6 +17,23 @@ import {
   TrendingUp
 } from 'lucide-react';
 
+interface Course {
+  id: number;
+  title: string;
+  category: string;
+  level: string;
+  duration: string;
+  students: number;
+  rating: number;
+  progress: number;
+  status: string;
+  thumbnail: string;
+  instructor: string;
+  description: string;
+  modules: number;
+  xpReward: number;
+}
+
 const CoursesPage = () => {
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -132,7 +149,7 @@ const CoursesPage = () => {
     ? courses 
     : courses.filter(course => course.category === selectedCategory);
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status: string) => {
     switch (status) {
       case 'completed': return 'text-green-400 bg-green-500/20';
       case 'in-progress': return 'text-blue-400 bg-blue-500/20';
@@ -142,7 +159,7 @@ const CoursesPage = () => {
     }
   };
 
-  const getStatusIcon = (status) => {
+  const getStatusIcon = (status: string) => {
     switch (status) {
       case 'completed': return <CheckCircle className="w-4 h-4" />;
       case 'in-progress': return <Play className="w-4 h-4" />;
@@ -152,7 +169,7 @@ const CoursesPage = () => {
     }
   };
 
-  const getLevelColor = (level) => {
+  const getLevelColor = (level: string) => {
     switch (level) {
       case 'Beginner': return 'text-green-400 bg-green-500/20';
       case 'Intermediate': return 'text-yellow-400 bg-yellow-500/20';
@@ -161,7 +178,7 @@ const CoursesPage = () => {
     }
   };
 
-  const CourseCard = ({ course }) => (
+  const CourseCard = ({ course }: { course: Course }) => (
     <div className="relative group">
       <div className="absolute inset-0 bg-gradient-to-r from-[#00E0FF]/5 to-[#06B6D4]/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
       <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-[#00E0FF]/30 transition-all group-hover:transform group-hover:scale-105">
@@ -253,7 +270,7 @@ const CoursesPage = () => {
     </div>
   );
 
-  const CourseListItem = ({ course }) => (
+  const CourseListItem = ({ course }: { course: Course }) => (
     <div className="relative group">
       <div className="absolute inset-0 bg-gradient-to-r from-[#00E0FF]/5 to-[#06B6D4]/5 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
       <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-4 hover:border-[#00E0FF]/30 transition-all">

@@ -4,8 +4,7 @@ DATDev ("DAT" is the commonly used acronym for "Digital Asset Treasury") is the 
 
 Project Description:
 
-The DATDev Squad is the "L2Launchpad", innagural 18+yr. old talent-squad building the L2L platform; where fast-track learning and W3 Treasury tooling for SME's and solo-preneurs. Mentoring builder cohorts thru proven curriculum and newly introducing an extended 12 week programming with a modern creator curriculum for youth. 
- project and 
+The DATDev Squad is the "L2Launchpad", innagural 18+yr. old talent-squad building the L2L platform; where fast-track learning and W3 Treasury tooling for SME's and solo-preneurs. Mentoring builder cohorts thru proven curriculum and newly introducing an extended 12 week programming with a modern creator curriculum for youth.
 
 Installation Instructions
 

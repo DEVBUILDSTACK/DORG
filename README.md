@@ -1,10 +1,12 @@
 # DATDev, a Decensat ecosystem Colosseum Fall 2025 Hackathon inspired Fintech4All project.
 
-DATDev ("DAT" is the now commonly used acronym for "Digital Asset Treasury") is an inclusive and open innovators Community (while we challenge fintech creativity) and affiliated with the team building FUNDIO.VC and aligned with a SIGLAYER DEBT VENTURE, gated microVC lender community.
+DATDev ("DAT" is the commonly used acronym for "Digital Asset Treasury") is an inclusive and open innovators Community (while we challenge fintech creativity) and affiliated with the team building FUNDIO.VC and aligned with a SIGLAYER DEBT VENTURE, gated microVC lender community.
 
 ## Project Description
 
-The DATDev Squads are talented Regional OpenSource evangelist DeFi and Digital Asset Space Content Creators. Web3 developers who contribute to open-source socialFi through building, educating, and mentorship—sharing attention economy rewards with DATDev and Learn2Launch youth while extending our team’s reach in decentralized finance.​​​​​​​​​​​​ 
+The DATDev Squads are DeFi evangelist, Digital Asset Space DevContent Creators. Web3 developers, and Smart contract cryptographers 
+who contribute to L2L socialFi by building, educating, and mentorship—sharing attention economy rewards with DATDev 
+ project and Learn2Launch youth while extending our core team’s reach in decentralized finance.​​​​​​​​​​​​ 
 Similar to Assurative.ai and its' anticipated "Sur" performant smart contract Suite, DATDev is an inclusive social iMPACT "Fintech For All" (4all Node Miami, Epoch 2)
  coming June's first weekend as our global Launchpad builder event)project has been licensed its' use of the Assurative.ai brand agent "Sura" and any application of the Assurative Multi-Safe EVM predicted Multisig is and when briding via Wormhole to smart contract based short term collateralized lending os extended as per the AMS Affiliate APIKey  "SurPortfolio" (456iP, LLC). Specifically, both the common back-end tech stack aids in delivering a powerful, scalable, transactional permissionless  DeFi DApp platform.
  

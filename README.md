@@ -1,4 +1,4 @@
-# DATDev, a Decensat ecosystem Colosseum Fall 2025 Hackathon inspired "Fintech4All" project.
+# DATDev, a Decensat iMPACT inspired "Fintech4All" participant team conpeting for engagement thru the Colosseum Fall 2025 Hackathon.
 
 DATDev ("DAT" is the commonly used acronym for "Digital Asset Treasury") is the pre-formation project directed in accelerating the iMPACT objectives associated with Decensat.org and its affiliate 456iP SigLayer DebtVenture framework.
 

@@ -1,0 +1,49 @@
+use anchor_lang::prelude::*;
+
+declare_id!("uUoKq6s3qzAYfRuBuZaqUGzFUem8CjSe4yyYThSoo8y");
+
+pub mod instructions;
+pub mod error;
+pub mod state;
+
+use instructions::*;
+use instructions::update_weights::TokenWeight;
+
+#[program]
+pub mod datdev {
+    use super::*;
+
+    pub fn initialize(ctx: Context<Initialize>, usdc_mint: Pubkey, fee_bps: u16, performance_fee_bps: u16) -> Result<()> {
+        instructions::initialize(ctx, usdc_mint, fee_bps, performance_fee_bps)
+    }
+
+    pub fn add_token(ctx: Context<AddToken>, weight_bps: u16) -> Result<()> {
+        instructions::add_token(ctx, weight_bps)
+    }
+
+    pub fn update_weights(ctx: Context<UpdateWeights>, new_weights: Vec<TokenWeight>) -> Result<()> {
+        instructions::update_weights(ctx, new_weights)
+    }
+
+    pub fn deposit(ctx: Context<Deposit>, amount: u64) -> Result<()> {
+        instructions::deposit(ctx, amount)
+    }
+
+    pub fn withdraw(ctx: Context<WithdrawSimple>, shares: u64) -> Result<()> {
+        instructions::withdraw_simple(ctx, shares)
+    }
+
+    pub fn rebalance(ctx: Context<Rebalance>, new_total_value_usdc: u64) -> Result<()> {
+        instructions::rebalance(ctx, new_total_value_usdc)
+    }
+
+    pub fn admin_pause(ctx: Context<AdminOnly>) -> Result<()> {
+        instructions::pause(ctx)
+    }
+
+    pub fn admin_unpause(ctx: Context<AdminOnly>) -> Result<()> {
+        instructions::unpause(ctx)
+    }
+}
+
+

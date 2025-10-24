@@ -1,0 +1,45 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+test = "test"
+cache_path = "cache"
+solc_version = "0.8.24"
+optimizer = true
+optimizer_runs = 200
+via_ir = false
+verbosity = 2
+
+# Security settings
+ignored_error_codes = [2072, 5574, 3860]  # Unused vars, test contract size warnings
+extra_output = ["storageLayout"]
+
+# Test settings
+fuzz_runs = 10000
+fuzz_max_local_rejects = 65536
+fuzz_max_global_rejects = 100000
+
+# Gas reporting
+gas_reports = ["*"]
+gas_reports_ignore = ["test/**/*"]
+
+# Formatter
+[fmt]
+line_length = 120
+tab_width = 4
+bracket_spacing = true
+int_types = "long"
+multiline_func_header = "all"
+quote_style = "double"
+number_underscore = "thousands"
+
+# RPC endpoints for deployment
+[rpc_endpoints]
+base_sepolia = "${BASE_SEPOLIA_RPC_URL}"
+mainnet = "${MAINNET_RPC_URL}"
+
+# Etherscan verification
+[etherscan]
+base_sepolia = { key = "${BASESCAN_API_KEY}" }
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

@@ -1,33 +1,57 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+'use client';
+
+import { useState, useEffect } from 'react';
+import Navbar from '@/components/landing/Navbar';
+import VerticalKnowMoreButton from '@/components/landing/VerticalKnowMoreButton';
+import SectionStudent from '@/components/landing/SectionStudent';
+import SectionDeveloper from '@/components/landing/SectionDeveloper';
+import SectionInvestor from '@/components/landing/SectionInvestor';
+import Footer from '@/components/landing/Footer';
 
 export default function LandingPage() {
+  const [activeSection, setActiveSection] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = [0, 1, 2];
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      sections.forEach((sectionIndex) => {
+        const sectionElement = document.getElementById(`section-${sectionIndex}`);
+        if (sectionElement) {
+          const { offsetTop, offsetHeight } = sectionElement;
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(sectionIndex);
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground px-6">
-      <section className="max-w-3xl text-center space-y-8">
-        <h1 className="text-4xl sm:text-6xl font-bold tracking-tight">
-          Welcome to L2L
-        </h1>
-        <p className="text-lg text-zinc-600 dark:text-zinc-400">
-          Build faster with Next.js + TypeScript + Tailwind.
-        </p>
-        <div className="flex items-center justify-center gap-4 flex-wrap">
-          <Link href="/login">
-            <Button size="lg">Get Started</Button>
-          </Link>
-          
-          <Link href="/dashboard/student">
-            <Button variant="outline" size="lg">Student Dashboard</Button>
-          </Link>
-          <Link href="/dashboard/investor">
-            <Button variant="outline" size="lg">Investor Portal</Button>
-          </Link>
-          <Link href="/dashboard/developer">
-            <Button variant="outline" size="lg">Developer Console</Button>
-          </Link>
-        </div>
-      </section>
-    </main>
+    <div className="relative">
+      {/* Fixed Navbar */}
+      <Navbar />
+
+      {/* Fixed Vertical "Know More" Button */}
+      <VerticalKnowMoreButton activeSection={activeSection} />
+
+      {/* Main Content with Scroll Snapping */}
+      <main className="snap-y snap-mandatory overflow-y-scroll h-screen">
+        <SectionStudent />
+        <SectionDeveloper />
+        <SectionInvestor />
+      </main>
+
+      {/* Footer */}
+      <Footer />
+    </div>
   );
 }
 

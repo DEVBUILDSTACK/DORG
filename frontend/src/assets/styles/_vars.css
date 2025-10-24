@@ -1,0 +1,109 @@
+:root {
+    --primary: #7caf43;
+    --secondary: #10713a;
+
+    /* sizes */
+    --side-xl: 100px;
+    --side-lg: 80px;
+    --side-md: 40px;
+    --side-sm: 20px;
+    --nav-height: 100px;
+
+    /* hero text - responsive */
+    --text-hero: clamp(16rem, 16vw, 20rem);
+
+    /* tailwind text sizes - responsive */
+    --text-xs: clamp(0.75rem, 0.83vw, 0.875rem); /* 12px - 14px */
+    --text-sm: clamp(0.875rem, 0.97vw, 1rem); /* 14px - 16px */
+    --text-base: clamp(1rem, 1.11vw, 1.125rem); /* 16px - 18px */
+    --text-lg: clamp(1.125rem, 1.25vw, 1.25rem); /* 18px - 20px */
+    --text-xl: clamp(1.25rem, 1.39vw, 1.5rem); /* 20px - 24px */
+    --text-2xl: clamp(1.5rem, 1.67vw, 2rem); /* 24px - 32px */
+    --text-3xl: clamp(1.875rem, 2.08vw, 2.5rem); /* 30px - 40px */
+    --text-4xl: clamp(2.25rem, 2.5vw, 3rem); /* 36px - 48px */
+    --text-5xl: clamp(3rem, 3.33vw, 4rem); /* 48px - 64px */
+    --text-6xl: clamp(3.75rem, 4.17vw, 5rem); /* 60px - 80px */
+    --text-7xl: clamp(4.5rem, 5vw, 6rem); /* 72px - 96px */
+    --text-8xl: clamp(6rem, 6.67vw, 8rem); /* 96px - 128px */
+    --text-9xl: clamp(8rem, 8.89vw, 10rem); /* 128px - 160px */
+}
+
+@media screen and (max-width: 1281px) {
+    :root {
+        --text-hero: clamp(14rem, 14vw, 16rem);
+        --text-xs: clamp(0.6rem, 0.75vw, 0.8rem);
+        --text-sm: clamp(0.7rem, 0.85vw, 0.9rem);
+        --text-base: clamp(0.8rem, 1vw, 1.1rem);
+        --text-lg: clamp(0.9rem, 1.1vw, 1.2rem);
+        --text-xl: clamp(1rem, 1.25vw, 1.4rem);
+        --text-2xl: clamp(1.2rem, 1.5vw, 1.8rem);
+        --text-3xl: clamp(1.5rem, 1.8vw, 2.2rem);
+        --text-4xl: clamp(1.8rem, 2.2vw, 2.7rem);
+        --text-5xl: clamp(2.4rem, 3vw, 3.5rem);
+        --text-6xl: clamp(3rem, 3.8vw, 4.5rem);
+        --text-7xl: clamp(3.6rem, 4.5vw, 5.5rem);
+        --text-8xl: clamp(4.8rem, 6vw, 7rem);
+        --text-9xl: clamp(6.4rem, 8vw, 9rem);
+    }
+}
+
+@media screen and (max-width: 1025px) {
+    :root {
+        --text-hero: clamp(12rem, 12vw, 14rem);
+        --text-xs: clamp(0.5rem, 0.7vw, 0.75rem);
+        --text-sm: clamp(0.6rem, 0.8vw, 0.85rem);
+        --text-base: clamp(0.7rem, 0.9vw, 1rem);
+        --text-lg: clamp(0.8rem, 1.05vw, 1.1rem);
+        --text-xl: clamp(0.9rem, 1.2vw, 1.3rem);
+        --text-2xl: clamp(1.1rem, 1.4vw, 1.6rem);
+        --text-3xl: clamp(1.4rem, 1.7vw, 2rem);
+        --text-4xl: clamp(1.7rem, 2.1vw, 2.5rem);
+        --text-5xl: clamp(2.2rem, 2.8vw, 3.2rem);
+        --text-6xl: clamp(2.8rem, 3.5vw, 4rem);
+        --text-7xl: clamp(3.4rem, 4.2vw, 5rem);
+        --text-8xl: clamp(4.5rem, 5.6vw, 6.5rem);
+        --text-9xl: clamp(6rem, 7.5vw, 8.5rem);
+    }
+}
+
+@media screen and (max-width: 769px) {
+    :root {
+        --nav-height: 80px;
+
+        --text-hero: clamp(9rem, 14vw, 12rem);
+        --text-xs: clamp(0.45rem, 0.65vw, 0.7rem);
+        --text-sm: clamp(0.55rem, 0.75vw, 0.8rem);
+        --text-base: clamp(0.65rem, 0.85vw, 0.9rem);
+        --text-lg: clamp(0.75rem, 0.95vw, 1rem);
+        --text-xl: clamp(0.85rem, 1.1vw, 1.2rem);
+        --text-2xl: clamp(1rem, 1.3vw, 1.4rem);
+        --text-3xl: clamp(1.3rem, 1.6vw, 1.8rem);
+        --text-4xl: clamp(1.6rem, 2vw, 2.2rem);
+        --text-5xl: clamp(2rem, 2.6vw, 2.8rem);
+        --text-6xl: clamp(2.5rem, 3.2vw, 3.5rem);
+        --text-7xl: clamp(3rem, 3.8vw, 4.2rem);
+        --text-8xl: clamp(4rem, 5vw, 5.5rem);
+        --text-9xl: clamp(5.5rem, 7vw, 7.5rem);
+    }
+}
+
+@media screen and (max-width: 426px) {
+    :root {
+        --nav-height: 60px;
+
+        --text-hero: clamp(4rem, 7vw, 9rem);
+        --text-xs: clamp(0.4rem, 0.6vw, 0.65rem);
+        --text-sm: clamp(0.5rem, 0.7vw, 0.75rem);
+        --text-base: clamp(0.6rem, 0.8vw, 0.85rem);
+        --text-lg: clamp(0.7rem, 0.9vw, 0.95rem);
+        --text-xl: clamp(0.8rem, 1vw, 1.1rem);
+        --text-2xl: clamp(0.9rem, 1.2vw, 1.3rem);
+        --text-3xl: clamp(1.1rem, 1.4vw, 1.6rem);
+        --text-4xl: clamp(1.4rem, 1.8vw, 2rem);
+        --text-5xl: clamp(1.8rem, 2.4vw, 2.5rem);
+        --text-6xl: clamp(2.2rem, 3vw, 3rem);
+        --text-7xl: clamp(2.8rem, 3.6vw, 3.8rem);
+        --text-8xl: clamp(3.6rem, 4.8vw, 5rem);
+        --text-9xl: clamp(4.8rem, 6.4vw, 6.5rem);
+    }
+}

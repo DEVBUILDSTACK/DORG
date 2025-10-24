@@ -1,0 +1,28 @@
+export type CurrentCohortResponse = {
+    id: string;
+    prelaunch_start_date: string;
+    prelaunch_end_date: string;
+    impact_start_date: string;
+    impact_end_date: string;
+    prelaunch_number_of_weeks: number;
+    impact_num_of_weeks: number;
+    impact_flp_id: string;
+    prelaunch_flp_id: string;
+    target_achieved: boolean;
+    beneficiary_id: string;
+    beneficiary_name: string;
+    beneficiary_description: string;
+    total_amount: number;
+    total_user_count: number;
+    total_lp_count: number;
+    current_bal: string;
+    min_bal: string;
+    max_bal: string;
+    boost_amount: number;
+    boost_yield: string;
+    created_at: string;
+    updated_at: string;
+    remaining_days_to_end_impact: number;
+    remaining_days_to_start_impact: number;
+    remaining_days_to_start_prelaunch: number;
+};

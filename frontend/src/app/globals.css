@@ -1,26 +1,131 @@
+@import "../assets/styles/_vars.css";
+
+@layer theme, base, mantine, components, utilities;
+
 @import "tailwindcss";
 
+@import "@mantine/core/styles.layer.css";
+
+/* @custom-variant dark (&:where(.light, .light *)); */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --h-nav: 80px;
+    --background: #0a1016;
+    --foreground: #ffffff;
+    --color-primary: #8db6f3;
+    --color-secondary: #befd89;
+    --color-dark-green: #163900;
+
+    --color-fundio-primary: #a3e635;
+    --color-fundio-secondary: #c2ff94;
+    --color-fundio-gray: #272727;
+    --color-fundio-dark-green: #163900;
+    --color-fundio-sidebar: #1d1f1b;
+
+    --color-jsonjuice-primary: #8db6f3;
+    --color-jsonjuice-secondary: #010f25;
+
+    --color-c3-background: #181818;
+
+    --color-border: #c2ff9417;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    /* colors */
+    --color-dark-green: #163900;
+    --color-primary: #8db6f3;
+    --color-secondary: #befd89;
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-dark-green: var(--color-dark-green);
+
+    --color-fundio-primary: var(--color-fundio-primary);
+    --color-fundio-secondary: var(--color-fundio-secondary);
+    --color-fundio-gray: var(--color-fundio-gray);
+    --color-fundio-dark-green: var(--color-fundio-dark-green);
+    --color-fundio-sidebar: var(--color-fundio-sidebar);
+
+    --color-jsonjuice-primary: var(--color-jsonjuice-primary);
+    --color-jsonjuice-secondary: var(--color-jsonjuice-secondary);
+
+    --color-c3-background: var(--color-c3-background);
+
+    --color-border: var(--color-border);
+
+    /* text sizes */
+    --text-xs: var(--text-xs);
+    --text-sm: var(--text-sm);
+    --text-base: var(--text-base);
+    --text-lg: var(--text-lg);
+    --text-xl: var(--text-xl);
+    --text-2xl: var(--text-2xl);
+    --text-3xl: var(--text-3xl);
+    --text-4xl: var(--text-4xl);
+    --text-5xl: var(--text-5xl);
+    --text-6xl: var(--text-6xl);
+    --text-7xl: var(--text-7xl);
+    --text-8xl: var(--text-8xl);
+    --text-9xl: var(--text-9xl);
+
+    /* font family */
+    --font-manrope: var(--font-manrope);
+
+    /* sizes */
+    --spacing-h-nav: var(--h-nav);
+
+    /* media query */
+    --breakpoint-3xl: 100rem;
+
+    /* keyframes */
+    --animate-infinite-scroll: 25s linear infinite infinite-scroll-x;
+    --animate-rotate: 3.5s linear infinite rotate;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes infinite-scroll-x {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-manrope);
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #86bb4a1f;
+    border-radius: 5px;
+}
+
+.bg-primary-gradient {
+    @apply bg-linear-to-r from-[var(--color-primary)]/80 to-[var(--color-secondary)];
+}
+
+body {
+    --privy-color-background: var(--background);
+    --privy-color-foreground: var(--foreground);
+    --privy-color-accent: "transparent";
+    --privy-color-accent-dark: "transparent";
 }

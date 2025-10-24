@@ -1,5 +1,5 @@
 {
-  "name": "l2l",
+  "name": "fundio-features-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,19 +9,47 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "lucide-react": "^0.546.0",
+    "@coinbase/cdp-sdk": "^1.38.4",
+    "@coinbase/onchainkit": "^1.1.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@farcaster/miniapp-sdk": "^0.2.1",
+    "@mantine/core": "^8.3.5",
+    "@mantine/hooks": "^8.3.5",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
+    "@mui/styled-engine": "^7.3.3",
+    "@mui/system": "^7.3.3",
+    "@privy-io/react-auth": "^3.4.0",
+    "@tanstack/react-query": "^5.90.5",
+    "@wormhole-foundation/wormhole-connect": "^4.0.0",
+    "apexcharts": "^5.3.5",
+    "iconsax-react": "^0.0.8",
+    "iconsax-reactjs": "^0.0.8",
+    "lucide-react": "^0.548.0",
     "next": "16.0.0",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-apexcharts": "^1.8.0",
+    "react-dom": "19.2.0",
+    "react-icons": "^5.5.0",
+    "react-qr-code": "^2.0.18",
+    "tailwind-merge": "^3.3.1",
+    "viem": "^2.38.3",
+    "wagmi": "^2.18.2",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
-    "tailwindcss": "^4",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.15",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "pnpm@9.15.1+sha512.1acb565e6193efbebda772702950469150cf12bcc764262e7587e71d19dc98a423dff9536e57ea44c49bdf790ff694e83c27be5faa23d67e0c033b583be4bfcf"
 }

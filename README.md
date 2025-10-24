@@ -1,6 +1,6 @@
 # DORG - Learn2Launch Platform<<<<<<< HEAD
 
-# DATDev, a Decensat iMPACT inspired "Fintech4All" participant team conpeting for engagement thru the Colosseum Fall 2025 Hackathon.
+# DATDev, a Decensat iMPACT inspired "Fintech4All" participant team competing for engagement thru the Colosseum Fall 2025 Hackathon.
 
 DATDev ("DAT" is the commonly used acronym for "Digital Asset Treasury") is the pre-formation project directed in accelerating the iMPACT objectives associated with Decensat.org and its affiliate 456iP SigLayer DebtVenture framework.
 

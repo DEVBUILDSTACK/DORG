@@ -12,9 +12,12 @@ export default function VerticalKnowMoreButton({
   activeSection,
 }: VerticalKnowMoreButtonProps) {
   const sections = [
-    { id: 0, label: 'Student', color: '#00E0FF', href: '/courses' },
-    { id: 1, label: 'Developer', color: '#8B5CF6', href: '/dashboard/developer' },
-    { id: 2, label: 'Investor', color: '#FACC15', href: '/vaults' },
+    { id: 0, label: 'Student', color: '#00E0FF', href: '/student' },
+    { id: 1, label: 'Developer', color: '#8B5CF6', href: '/developer' },
+    { id: 2, label: 'Investor', color: '#FACC15', href: '/investor' }, 
+    { id: 3, label: 'Sponsors', color: '#FF007A', href: '/sponsor' },
+    { id: 4, label: 'About', color: '#FF007A', href: '/about' },
+    { id: 5, label: 'Contact', color: '#FF007A', href: '/contact' },
   ];
 
   const currentSection = sections[activeSection] || sections[0];

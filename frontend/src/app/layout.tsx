@@ -96,7 +96,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* MantineProvider wraps first */}
         <MantineProvider defaultColorScheme="dark">
           {/* Then your Wagmi/Privy/OnchainKit context providers */}
-          <Providers>{children}</Providers>
+          {/* <Providers> */}
+            {children}
+            {/* </Providers> */}
         </MantineProvider>
       </body>
     </html>

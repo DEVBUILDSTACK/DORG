@@ -63,19 +63,19 @@ export default function SectionStudent() {
           {/* CTAs */}
           <div className="flex flex-wrap gap-4 pt-4">
             <Link
-              href="/courses"
+              href="/student"
               className="group px-8 py-4 bg-[#00E0FF] text-[#0B0C14] rounded-full font-semibold hover:shadow-[0_0_30px_rgba(0,224,255,0.6)] transition-all duration-300 flex items-center space-x-2"
             >
               <BookOpen className="w-5 h-5" />
-              <span>Explore Courses</span>
+              <span>Learn More</span>
             </Link>
 
             <Link
-              href="/leaderboard"
+              href="/dashboard/student"
               className="px-8 py-4 border border-[#00E0FF]/50 text-[#00E0FF] rounded-full hover:bg-[#00E0FF]/10 hover:shadow-[0_0_20px_rgba(0,224,255,0.3)] transition-all duration-300 flex items-center space-x-2"
             >
               <Trophy className="w-5 h-5" />
-              <span>Join Leaderboard</span>
+              <span>Go to Dashboard</span>
             </Link>
           </div>
         </motion.div>

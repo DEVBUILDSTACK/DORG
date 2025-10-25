@@ -41,7 +41,18 @@ export default function SectionDeveloper() {
                 ease: 'linear',
               }}
             >
-              {'{ blockchain: "innovation" }'}
+              {[
+                '{ defi: "lending" }',
+                '{ vault: "yield" }',
+                '{ dex: "swap" }',
+                '{ oracle: "price" }',
+                '{ staking: "rewards" }',
+                '{ liquidity: "pool" }',
+                '{ governance: "vote" }',
+                '{ nft: "collateral" }',
+                '{ margin: "trading" }',
+                '{ perp: "AMM" }',
+              ][Math.floor(Math.random() * 10)]}
             </motion.div>
           ))}
         </div>
@@ -135,18 +146,18 @@ export default function SectionDeveloper() {
           {/* CTAs */}
           <div className="flex flex-wrap gap-4 pt-4">
             <Link
-              href="/dashboard/developer"
+              href="/developer"
               className="px-8 py-4 bg-gradient-to-r from-[#8B5CF6] to-[#FF007A] text-white rounded-full font-semibold hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] transition-all duration-300 flex items-center space-x-2"
             >
               <Zap className="w-5 h-5" />
-              <span>View Developer Dashboard</span>
+              <span>Learn More</span>
             </Link>
 
             <Link
-              href="/build"
+              href="/dashboard/developer"
               className="px-8 py-4 border border-[#8B5CF6]/50 text-[#8B5CF6] rounded-full hover:bg-[#8B5CF6]/10 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
             >
-              Build With Us
+              Go to Dashboard
             </Link>
           </div>
         </motion.div>

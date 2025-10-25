@@ -6,6 +6,10 @@ import VerticalKnowMoreButton from '@/components/landing/VerticalKnowMoreButton'
 import SectionStudent from '@/components/landing/SectionStudent';
 import SectionDeveloper from '@/components/landing/SectionDeveloper';
 import SectionInvestor from '@/components/landing/SectionInvestor';
+import SectionSponsor from '@/components/landing/SectionSponsor';
+import SectionAbout from '@/components/landing/SectionAbout';
+import SectionHowItWorks from '@/components/landing/SectionHowItWorks';
+import SectionFeatures from '@/components/landing/SectionFeatures';
 import Footer from '@/components/landing/Footer';
 
 export default function LandingPage() {
@@ -13,7 +17,7 @@ export default function LandingPage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = [0, 1, 2];
+      const sections = [0, 1, 2, 3, 4, 5, 6]; // Updated to include sponsor section
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       sections.forEach((sectionIndex) => {
@@ -47,6 +51,10 @@ export default function LandingPage() {
         <SectionStudent />
         <SectionDeveloper />
         <SectionInvestor />
+        <SectionSponsor />
+        <SectionAbout />
+        <SectionHowItWorks />
+        <SectionFeatures />
       </main>
 
       {/* Footer */}

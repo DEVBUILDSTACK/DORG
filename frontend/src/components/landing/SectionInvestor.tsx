@@ -96,18 +96,18 @@ export default function SectionInvestor() {
           {/* CTAs */}
           <div className="flex flex-wrap gap-4 pt-4">
             <Link
-              href="/vaults"
+              href="/investor"
               className="px-8 py-4 bg-gradient-to-r from-[#FACC15] to-[#1E3A8A] text-white rounded-full font-semibold hover:shadow-[0_0_30px_rgba(250,204,21,0.6)] transition-all duration-300 flex items-center space-x-2"
             >
               <TrendingUp className="w-5 h-5" />
-              <span>View Vaults</span>
+              <span>Learn More</span>
             </Link>
 
             <Link
-              href="/early-access"
+              href="/dashboard/investor"
               className="px-8 py-4 border border-[#FACC15]/50 text-[#FACC15] rounded-full hover:bg-[#FACC15]/10 hover:shadow-[0_0_20px_rgba(250,204,21,0.3)] transition-all duration-300"
             >
-              Get Early Access
+              Go to Dashboard
             </Link>
           </div>
         </motion.div>

@@ -1,7 +1,12 @@
+"use client";
+
 import DocumentText from "@/assets/svg/fundio/DocumentText";
 import ManageLps from "@/components/features/fundio/admin-consoles/manage-lps/ManageLps";
 import PageContent from "@/components/layout/PageContent";
 import PageNavbar, { PageNavbarLeftContent } from "@/components/layout/PageNavbar";
+
+// Disable static optimization for this page
+export const dynamic = 'force-dynamic';
 
 const ManageLpsPage = () => {
     return (

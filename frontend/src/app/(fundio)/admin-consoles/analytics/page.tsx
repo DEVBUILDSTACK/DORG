@@ -5,6 +5,9 @@ import Analytics from "@/components/features/fundio/admin-consoles/analytics/Ana
 import PageContent from "@/components/layout/PageContent";
 import PageNavbar, { PageNavbarLeftContent } from "@/components/layout/PageNavbar";
 
+// Disable static optimization for this page
+export const dynamic = 'force-dynamic';
+
 const AnalyticsPage: React.FC = () => {
     return (
         <div>

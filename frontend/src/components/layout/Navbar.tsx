@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
         e.stopPropagation();
         const avatarRef = isMobile ? mobileAvatarRef : desktopAvatarRef;
 
-        if (avatarRef.current) {
+        if (avatarRef?.current && typeof window !== 'undefined') {
             const rect = avatarRef.current.getBoundingClientRect();
             setDialogPosition({
                 top: rect.bottom,

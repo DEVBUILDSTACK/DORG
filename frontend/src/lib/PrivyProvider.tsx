@@ -12,11 +12,22 @@ import { wagmiConfig } from "@/lib/wagmi";
 import { isProduction } from "./constants";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-    const privyAppId = process.env.NEXT_PUBLIC_PRIVY_APP_ID!;
-    const wcProjectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!;
-    const cbApiKey = process.env.NEXT_PUBLIC_COINBASE_API_KEY!;
-    const cpPaymasterUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/paymaster`!;
+    const privyAppId = process.env.NEXT_PUBLIC_PRIVY_APP_ID || 'dummy-app-id';
+    const wcProjectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'dummy-wc-id';
+    const cbApiKey = process.env.NEXT_PUBLIC_COINBASE_API_KEY || 'dummy-cb-key';
+    const cpPaymasterUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/paymaster`;
     const currentChain = isProduction ? base : baseSepolia;
+
+    // Don't render Privy during build time if app ID is missing
+    if (privyAppId === 'dummy-app-id' && typeof window === 'undefined') {
+        return (
+            <WagmiProvider config={wagmiConfig}>
+                <QueryClientProvider client={queryClient}>
+                    {children}
+                </QueryClientProvider>
+            </WagmiProvider>
+        );
+    }
 
     return (
         <WagmiProvider config={wagmiConfig}>

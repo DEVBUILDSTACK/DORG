@@ -5,6 +5,9 @@ import UpgradationPlan from "@/components/features/fundio/sovereign-guidance/set
 import PageContent from "@/components/layout/PageContent";
 import PageNavbar, { PageNavbarLeftContent } from "@/components/layout/PageNavbar";
 
+// Disable static optimization for this page
+export const dynamic = 'force-dynamic';
+
 const UpgradationPlanPage: React.FC = () => {
     return (
         <div>

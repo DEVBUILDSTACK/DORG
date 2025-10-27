@@ -5,6 +5,9 @@ import ManageLPDetails from "@/components/features/fundio/admin-consoles/manage-
 import PageContent from "@/components/layout/PageContent";
 import PageNavbar, { PageNavbarLeftContent } from "@/components/layout/PageNavbar";
 
+// Disable static optimization for this page
+export const dynamic = 'force-dynamic';
+
 const ManageLPDetailsView: React.FC = () => {
     return (
         <div>

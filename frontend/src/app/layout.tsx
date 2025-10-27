@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@mantine/core/styles.css";       // ✅ Mantine v7 global styles
 import "./globals.css";                  // ✅ Your Tailwind styles
 
@@ -67,7 +67,6 @@ export const metadata: Metadata = {
     "Financial Planning",
     "Secure Investments",
   ],
-  themeColor: "#ffffff",
   robots: {
     index: true,
     follow: true,
@@ -80,6 +79,11 @@ export const metadata: Metadata = {
     canonical: "https://fundio-zeta.vercel.app/",
   },
   metadataBase: new URL("https://fundio-zeta.vercel.app"),
+};
+
+// ✅ Viewport configuration (moved from metadata)
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
 };
 
 // ✅ Root layout is a Server Component — no "use client"
@@ -96,9 +100,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* MantineProvider wraps first */}
         <MantineProvider defaultColorScheme="dark">
           {/* Then your Wagmi/Privy/OnchainKit context providers */}
-          {/* <Providers> */}
+          <Providers>
             {children}
-            {/* </Providers> */}
+          </Providers>
         </MantineProvider>
       </body>
     </html>

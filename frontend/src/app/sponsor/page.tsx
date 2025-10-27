@@ -17,8 +17,10 @@ import {
   Sparkles,
   BarChart3,
   MessageSquare,
-  Mail
-} from 'lucide-react';
+  Mail,
+  DollarSign,
+  Share2
+} from '@/components/icons';
 
 export default function SponsorLandingPage() {
   const benefits = [
@@ -108,6 +110,44 @@ export default function SponsorLandingPage() {
       category: "L2 Infrastructure",
       description: "Ethereum L2 scaling solution by Coinbase",
       icon: <Rocket className="w-6 h-6" />,
+      color: "from-[#0052FF] to-[#0041CC]"
+    },
+
+     {
+      name: "INGRAM",
+      category: "L2 Infrastructure",
+      description: "Automating tedium Humanizing B2B.",
+      icon: <Building2 className="w-6 h-6" />,
+      color: "from-[#0052FF] to-[#0041CC]"
+    },
+
+     {
+      name: "Plasma",
+      category: " stablecoins",
+      description: "Redefining how money moves.",
+      icon: <DollarSign className="w-6 h-6" />,
+      color: "from-[#0052FF] to-[#0041CC]"
+    },
+     {
+      name: "Aave",
+      category: "Defi Protocol",
+      description: "Defi Largest  Lending Protocol.",
+      icon: <TrendingUp className="w-6 h-6" />,
+      color: "from-[#0052FF] to-[#0041CC]"
+    },
+     {
+      name: "Woemhole",
+      category: "File Sharing",
+      description: "Simple , Secure, and Fast.",
+      icon: <Share2 className="w-6 h-6" />,
+      color: "from-[#0052FF] to-[#0041CC]"
+    }
+    ,
+     {
+      name: "Resend",
+      category: "Email Delivery",
+      description: "Best wasy to reach humans instead of spam folders",
+      icon: <Mail className="w-6 h-6" />,
       color: "from-[#0052FF] to-[#0041CC]"
     }
   ];
@@ -262,7 +302,7 @@ export default function SponsorLandingPage() {
                 className="px-8 py-4 border border-[#4ECDC4]/50 text-[#4ECDC4] rounded-full hover:bg-[#4ECDC4]/10 transition-all duration-300 flex items-center space-x-2"
               >
                 <Handshake className="w-5 h-5" />
-                <span>Schedule a Call</span>
+                <span>Book a Call</span>
               </Link>
             </div>
 

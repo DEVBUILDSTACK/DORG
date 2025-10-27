@@ -14,14 +14,14 @@ import {
   Search,
   Bell,
   User
-} from 'lucide-react';
+} from '@/components/icons';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard/student', icon: LayoutDashboard },
   { name: 'Courses', href: '/dashboard/student/courses', icon: BookOpen },
   { name: 'Community', href: '/dashboard/student/community', icon: Users },
-  { name: 'Portfolio', href: '/dashboard/student/portfolio', icon: Briefcase },
-  { name: 'Vaults', href: '/dashboard/student/vaults', icon: Vault },
+
+  { name: 'Vaults | LPs', href: '/dashboard/student/vaults', icon: Vault },
   { name: 'Leaderboard', href: '/dashboard/student/leaderboard', icon: Trophy },
   { name: 'Settings', href: '/dashboard/student/settings', icon: Settings },
 ];

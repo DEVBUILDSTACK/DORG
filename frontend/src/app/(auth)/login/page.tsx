@@ -216,18 +216,18 @@ const LoginPage = () => {
             </form>
 
             {/* Divider */}
-            <div className="relative my-8">
+            {/* <div className="relative my-8">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-600/50" />
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-4 bg-black/40 text-gray-400 font-mono">Or continue with</span>
               </div>
-            </div>
+            </div> */}
 
             {/* Social Login */}
             <div className="grid grid-cols-2 gap-4">
-              <button
+              {/* <button
                 type="button"
                 onClick={() => handleSocialLogin('Google')}
                 className="flex items-center justify-center space-x-3 w-full py-4 px-4 bg-black/20 border border-gray-600/30 rounded-2xl hover:bg-black/30 hover:border-[#00E0FF]/30 transition-all group"
@@ -239,16 +239,16 @@ const LoginPage = () => {
                   <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                 </svg>
                 <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors font-mono">Google</span>
-              </button>
+              </button> */}
               
-              <button
+              {/* <button
                 type="button"
                 onClick={() => handleSocialLogin('GitHub')}
                 className="flex items-center justify-center space-x-3 w-full py-4 px-4 bg-black/20 border border-gray-600/30 rounded-2xl hover:bg-black/30 hover:border-[#8B5CF6]/30 transition-all group"
               >
                 <Github className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" />
                 <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors font-mono">GitHub</span>
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

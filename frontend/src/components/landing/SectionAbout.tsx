@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Target, Users, Lightbulb, Globe } from 'lucide-react';
+import { Target, Users, Lightbulb, Globe } from '@/components/icons';
 
 export default function SectionAbout() {
   const features = [
@@ -97,7 +97,7 @@ export default function SectionAbout() {
           
           <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             We're bridging the gap between education, innovation, and investment in the decentralized world. 
-            Our platform empowers the next generation of blockchain builders while connecting them with forward-thinking investors.
+            Our platform empowers the next generation of blockchain builders while connecting them with forward-thinking Treasury.
           </p>
         </motion.div>
 

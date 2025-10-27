@@ -15,7 +15,7 @@ import {
   Bell,
   User,
   TrendingUp
-} from 'lucide-react';
+} from '@/components/icons';
 
 const navigation = [
   { name: 'Overview', href: '/dashboard/investor', icon: BarChart3 },
@@ -48,7 +48,7 @@ export default function InvestorDashboardLayout({
               <span className="text-lg font-bold bg-gradient-to-r from-[#00E0FF] to-[#06B6D4] bg-clip-text text-transparent">
                 Learn2Launch
               </span>
-              <span className="text-xs text-gray-400 -mt-1">Investor Portal</span>
+             
             </div>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function InvestorDashboardLayout({
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-white truncate">Alex Chen</p>
               <div className="flex items-center space-x-2">
-                <span className="text-xs text-[#00E0FF] font-medium">Platinum Investor</span>
+                <span className="text-xs text-[#00E0FF] font-medium">Platinum </span>
                 <div className="w-1 h-1 bg-[#00E0FF] rounded-full animate-pulse" />
               </div>
             </div>

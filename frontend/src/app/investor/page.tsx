@@ -15,7 +15,7 @@ import {
   Eye,
   Target,
   Wallet
-} from 'lucide-react';
+} from '@/components/icons';
 
 export default function InvestorLandingPage() {
   const features = [
@@ -158,16 +158,15 @@ export default function InvestorLandingPage() {
               transition={{ delay: 0.2, type: "spring" }}
               className="inline-block px-4 py-2 bg-[#FACC15]/10 border border-[#FACC15]/30 rounded-full text-[#FACC15] text-sm font-medium"
             >
-              💎 For Investors
+              💎For DAT Holders
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#FACC15] via-[#FFFFFF] to-[#1E3A8A] bg-clip-text text-transparent">
-              Invest Intelligently
+              Automated Allocations
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              Access AI-powered DeFi vaults with real-time analytics. 
-              Grow your portfolio with secure, high-yield investments.
+             Programmatically  Powered DAT DevVaults and Non-Custodial LPs with real-time analytics.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 pt-6">
@@ -175,7 +174,7 @@ export default function InvestorLandingPage() {
                 href="/dashboard/investor"
                 className="group px-8 py-4 bg-gradient-to-r from-[#FACC15] to-[#1E3A8A] text-white rounded-full font-semibold hover:shadow-[0_0_30px_rgba(250,204,21,0.6)] transition-all duration-300 flex items-center space-x-2"
               >
-                <span>Start Investing</span>
+                <span>Allocate</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
 
@@ -197,7 +196,7 @@ export default function InvestorLandingPage() {
               {[
                 { value: "$5M+", label: "Total Value Locked" },
                 { value: "25%", label: "Avg APY" },
-                { value: "1000+", label: "Active Investors" },
+                { value: "1000+", label: "Active Treasurys" },
                 { value: "50+", label: "Vaults Available" }
               ].map((stat, index) => (
                 <motion.div
@@ -390,7 +389,7 @@ export default function InvestorLandingPage() {
                 href="/dashboard/investor"
                 className="inline-flex items-center space-x-2 px-10 py-5 bg-gradient-to-r from-[#FACC15] to-[#1E3A8A] text-white rounded-full font-bold text-lg hover:shadow-[0_0_40px_rgba(250,204,21,0.8)] transition-all duration-300 group"
               >
-                <span>Access Investor Dashboard</span>
+                <span>Access Treasury Dashboard</span>
                 <ChevronRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
               </Link>
 

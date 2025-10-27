@@ -18,7 +18,7 @@ import {
   Zap,
   Activity,
   Database
-} from 'lucide-react';
+} from '@/components/icons';
 
 const navigation = [
   { name: 'Overview', href: '/dashboard/developer', icon: BarChart3 },

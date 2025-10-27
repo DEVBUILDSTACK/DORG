@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Code2, Zap } from 'lucide-react';
+import { Code2, Zap } from '@/components/icons';
+import ScrollButton from './ScrollButton';
 
 export default function SectionDeveloper() {
   return (
@@ -162,6 +163,9 @@ export default function SectionDeveloper() {
           </div>
         </motion.div>
       </div>
+
+      {/* Scroll to Next Section */}
+      <ScrollButton targetSection="section-2" color="#8B5CF6" label="Next: For Treasury" />
     </section>
   );
 }

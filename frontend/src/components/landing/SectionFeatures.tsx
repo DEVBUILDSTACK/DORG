@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CheckCircle, Star, Zap, Shield, Users, TrendingUp } from 'lucide-react';
+import { CheckCircle, Star, Zap, Shield, Users, TrendingUp } from '@/components/icons';
+import ScrollButton from './ScrollButton';
 
 export default function SectionFeatures() {
   const features = [

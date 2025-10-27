@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Handshake, Rocket, Users, TrendingUp, ChevronDown } from 'lucide-react';
+import { Handshake, Rocket, Users, TrendingUp } from '@/components/icons';
+import ScrollButton from './ScrollButton';
 
 export default function SectionSponsor() {
   return (
@@ -168,17 +169,8 @@ export default function SectionSponsor() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="flex flex-col items-center space-y-2 text-[#4ECDC4]/60">
-          <span className="text-sm">Scroll Down</span>
-          <ChevronDown className="w-5 h-5" />
-        </div>
-      </motion.div>
+      {/* Scroll to Next Section */}
+      <ScrollButton targetSection="section-4" color="#4ECDC4" label="Next: About Us" />
     </section>
   );
 }

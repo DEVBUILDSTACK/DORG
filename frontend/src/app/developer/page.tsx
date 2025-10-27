@@ -16,7 +16,7 @@ import {
   TrendingUp,
   Layers,
   Award
-} from 'lucide-react';
+} from '@/components/icons';
 
 export default function DeveloperLandingPage() {
   const features = [
@@ -179,7 +179,7 @@ export default function DeveloperLandingPage() {
               transition={{ delay: 0.2, type: "spring" }}
               className="inline-block px-4 py-2 bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 rounded-full text-[#8B5CF6] text-sm font-medium"
             >
-              ⚡ For Developers
+              ⚡ For Builders
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#8B5CF6] via-[#FF007A] to-[#FACC15] bg-clip-text text-transparent">

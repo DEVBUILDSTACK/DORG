@@ -152,14 +152,20 @@ export default function InvestorLandingPage() {
             transition={{ duration: 0.8 }}
             className="text-center space-y-6"
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, type: "spring" }}
-              className="inline-block px-4 py-2 bg-[#FACC15]/10 border border-[#FACC15]/30 rounded-full text-[#FACC15] text-sm font-medium"
-            >
-              💎For DAT Holders
-            </motion.div>
+            <div className="relative inline-block group">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.2, type: "spring" }}
+                className="inline-block px-4 py-2 bg-[#FACC15]/10 border border-[#FACC15]/30 rounded-full text-[#FACC15] text-sm font-medium cursor-default"
+              >
+                💎For DAT Holders
+              </motion.div>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900/95 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+                Digital Asset Treasury
+                <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900/95"></div>
+              </div>
+            </div>
 
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#FACC15] via-[#FFFFFF] to-[#1E3A8A] bg-clip-text text-transparent">
               Automated Allocations

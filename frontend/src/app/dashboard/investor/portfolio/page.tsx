@@ -27,7 +27,7 @@ export default function InvestorPortfolioPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white">Portfolio Overview</h1>
+          <h1 className="text-3xl font-bold text-white">Treasury Overview</h1>
           <p className="text-gray-400 text-lg">Track your investments, yields, and asset allocation</p>
         </div>
         <div className="flex items-center space-x-4">
@@ -144,7 +144,7 @@ export default function InvestorPortfolioPage() {
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-xl font-semibold text-white flex items-center">
                     <BarChart3 className="w-5 h-5 mr-2 text-[#00E0FF]" />
-                    Portfolio Value Over Time
+                   Treasury Performance over Time
                   </h2>
                   <div className="flex items-center space-x-2">
                     {['1W', '1M', '3M', '1Y', 'ALL'].map((period) => (

@@ -15,7 +15,7 @@ import {
   TrendingUp,
   Target,
   Zap
-} from 'lucide-react';
+} from '@/components/icons';
 
 export default function StudentLandingPage() {
   const features = [
@@ -158,7 +158,7 @@ export default function StudentLandingPage() {
               transition={{ delay: 0.2, type: "spring" }}
               className="inline-block px-4 py-2 bg-[#00E0FF]/10 border border-[#00E0FF]/30 rounded-full text-[#00E0FF] text-sm font-medium"
             >
-              🎓 For Students
+              🎓 For Learners
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#00E0FF] via-[#FFFFFF] to-[#8B5CF6] bg-clip-text text-transparent">
@@ -444,9 +444,9 @@ export default function StudentLandingPage() {
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-white/10">
         <div className="max-w-7xl mx-auto text-center text-gray-400">
-          <p>&copy; 2025 Learn2Launch. Empowering the next generation of developers.</p>
+          <p>&copy; 2025 Learn2Launch. Empowering the next generation of builders.</p>
         </div>
-      </footer>
+      </footer> 
     </div>
   );
 }

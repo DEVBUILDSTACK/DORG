@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Twitter, Linkedin, Github, MessageCircle } from 'lucide-react';
+import { Twitter, Linkedin, Github, MessageCircle } from '@/components/icons';
 import { motion } from 'framer-motion';
 
 export default function Footer() {

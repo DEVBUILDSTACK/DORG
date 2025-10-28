@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@/components/icons';
 import Link from 'next/link';
 
 interface VerticalKnowMoreButtonProps {

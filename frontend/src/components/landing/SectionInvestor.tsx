@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { TrendingUp, Shield } from 'lucide-react';
+import { TrendingUp, Shield } from '@/components/icons';
 
 export default function SectionInvestor() {
   return (
@@ -57,7 +57,7 @@ export default function SectionInvestor() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-6xl mt-12 mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         {/* Left: Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -73,7 +73,7 @@ export default function SectionInvestor() {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            Invest Intelligently with AI-Powered Vaults.
+            DAT Proxy Powered Vaults and Stablecoin Liquidity Pools
           </motion.h1>
 
           <p className="text-xl text-gray-400 leading-relaxed">

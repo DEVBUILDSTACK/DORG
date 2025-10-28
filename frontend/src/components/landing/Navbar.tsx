@@ -79,9 +79,9 @@ export default function Navbar() {
         {/* Desktop Navigation Links */}
         <div className="hidden lg:flex items-center space-x-2">
           {[
-            { name: 'Students', sectionId: 'section-0', icon: '🎓' },
-            { name: 'Developers', sectionId: 'section-1', icon: '⚡' },
-            { name: 'Investors', sectionId: 'section-2', icon: '💎' },
+            { name: 'Learners', sectionId: 'section-0', icon: '🎓' },
+            { name: 'Builders', sectionId: 'section-1', icon: '⚡' },
+            { name: 'Treasury', sectionId: 'section-2', icon: '💎' },
             { name: 'Sponsors', sectionId: 'section-3', icon: '🤝' },
           ].map((item, index) => (
             <motion.button

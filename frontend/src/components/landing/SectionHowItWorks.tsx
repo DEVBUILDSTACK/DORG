@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play } from '@/components/icons';
 import Link from 'next/link';
+import ScrollButton from './ScrollButton';
 
 export default function SectionHowItWorks() {
   const steps = [

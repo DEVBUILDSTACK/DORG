@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { BookOpen, Trophy, ChevronDown } from 'lucide-react';
+import { BookOpen, Trophy } from '@/components/icons';
+import ScrollButton from './ScrollButton';
 
 export default function SectionStudent() {
   return (
@@ -118,17 +119,8 @@ export default function SectionStudent() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="flex flex-col items-center space-y-2 text-[#00E0FF]/60">
-          <span className="text-sm">Scroll Down</span>
-          <ChevronDown className="w-5 h-5" />
-        </div>
-      </motion.div>
+      {/* Scroll to Next Section */}
+      <ScrollButton targetSection="section-1" color="#00E0FF" label="Next: For Builders" />
     </section>
   );
 }

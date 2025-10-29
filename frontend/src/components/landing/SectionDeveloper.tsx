@@ -162,7 +162,7 @@ export default function SectionDeveloper() {
             </Link>
 
             <Link
-              href="/dashboard/developer"
+              href="/developer"
               className="px-8 py-4 border border-[#8B5CF6]/50 text-[#8B5CF6] rounded-full hover:bg-[#8B5CF6]/10 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
             >
               Go to Dashboard

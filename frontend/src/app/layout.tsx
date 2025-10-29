@@ -4,7 +4,7 @@ import "./globals.css";                  // ✅ Your Tailwind styles
 
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import { Manrope } from "next/font/google";
-import Providers from "@/lib/PrivyProvider"; // ✅ Your Wagmi/Privy/OnchainKit wrapper
+import Providers from "@/lib/Providers"; // ✅ Your Wagmi/Privy/OnchainKit wrapper
 
 // ✅ Load font
 const manrope = Manrope({
@@ -99,9 +99,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* MantineProvider wraps first */}
         <MantineProvider defaultColorScheme="dark">
           {/* Then your Wagmi/Privy/OnchainKit context providers */}
-          {/* <Providers> */}
+          <Providers>
             {children}
-          {/* </Providers> */}
+          </Providers>
         </MantineProvider>
       </body>
     </html>

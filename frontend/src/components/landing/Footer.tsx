@@ -102,6 +102,12 @@ export default function Footer() {
 
           {/* Social Links & Legal */}
           <div>
+            {/* Prominent About L2L placed before social icons */}
+            <h3 className="text-white font-bold mb-2">About L2L</h3>
+            <p className="text-gray-300 text-sm mb-4 max-w-xs">
+              Learn2Launch “and its affiliated offering” is not just a marketplace. It’s the economic operating system for global builders — combining transparent project financing, localized education, and decentralized revenue sharing.
+            </p>
+
             <h3 className="text-white font-semibold mb-4">Connect</h3>
             <div className="flex space-x-3 mb-6">
               {socialLinks.map((social) => {

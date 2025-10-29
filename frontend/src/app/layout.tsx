@@ -15,35 +15,35 @@ const manrope = Manrope({
 
 // ✅ SEO / metadata (must stay in a Server Component)
 export const metadata: Metadata = {
-  title: "Fundio | Smart Investments and Funding Solutions",
+  title: "Learn2Launch | L2Launchpad — Fintech For All",
   description:
-    "Discover Fundio for innovative funding options, investment opportunities, and financial growth. Connect with experts for personalized financial advice and secure your future.",
+    "Our developer iMPACT team introduces the adult 18yr+ L2Launchpad as a builder and project accelerant community demonstrating a multi-chain Solana synthetic “DATproxy” Vault allocation solution. As the founding builder bundle team, L2Launchpad is innovating to monetize and successfully launch as a pre-formation and pre-revenue builder marketplace for learning-2-launch. #learn2launch is a “Fintech For All” builder initiative that curates instructive Python-based curriculum for learners 12yr+ to explore debt, equity, yield, and interest using everyday math through hands-on Python projects. The 2025 CypherPunk Hackathon helped evangelize synthetic proxy allocation for SME treasury reserves and supports DevMentors as a non-custodial Digital Asset Treasury alternative.",
   openGraph: {
-    title: "Fundio | Smart Investments and Funding Solutions",
+    title: "Learn2Launch | L2Launchpad — Fintech For All",
     description:
-      "Discover Fundio for innovative funding options, investment opportunities, and financial growth. Connect with experts for personalized financial advice and secure your future.",
+      "L2Launchpad is a builder and project accelerant community showcasing multi-chain Solana synthetic “DATproxy” Vault allocation. Learn, build, and experiment with Python-based Fintech curriculum for ages 12yr+—a ‘Fintech For All’ initiative.",
     type: "website",
-    siteName: "Fundio",
+    siteName: "Learn2Launch",
     images: [
       {
-        url: "https://fundio-zeta.vercel.app/logo.png",
+        url: "https://f4a.vercel.app/",
         width: 200,
         height: 200,
-        alt: "Fundio",
+        alt: "Learn2Launch",
       },
     ],
   },
   twitter: {
-    title: "Fundio | Smart Investments and Funding Solutions",
+    title: "Learn2Launch | L2Launchpad — Fintech For All",
     description:
-      "Discover Fundio for innovative funding options, investment opportunities, and financial growth. Connect with experts for personalized financial advice and secure your future.",
+      "L2Launchpad: a multi-chain Solana synthetic DATproxy builder community and Python-based Fintech curriculum for learners and treasury builders. #learn2launch #L2L #DATDevCommunity",
     card: "summary_large_image",
     images: [
       {
         url: "https://fundio-zeta.vercel.app/logo.png",
         width: 200,
         height: 200,
-        alt: "Fundio",
+        alt: "Learn2Launch",
       },
     ],
   },
@@ -51,21 +51,20 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
   },
   keywords: [
-    "Investments",
-    "Funding",
-    "Financial Solutions",
-    "Loans",
-    "Capital",
-    "Finance",
-    "Investment Opportunities",
-    "Personal Finance",
-    "Business Funding",
-    "Wealth Management",
-    "Startups",
-    "Entrepreneurship",
-    "Economic Growth",
-    "Financial Planning",
-    "Secure Investments",
+    "Learn2Launch",
+    "L2Launchpad",
+    "DATproxy",
+    "Fintech For All",
+    "developer community",
+    "Python curriculum",
+    "digital asset treasury",
+    "synthetic allocation",
+    "Solana",
+    "multi-chain",
+    "treasury",
+    "education",
+    "hackathon",
+    "cypherpunk 2025",
   ],
   robots: {
     index: true,
@@ -76,9 +75,9 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://fundio-zeta.vercel.app/",
+    canonical: "https://f4a.vercel.app",
   },
-  metadataBase: new URL("https://fundio-zeta.vercel.app"),
+  metadataBase: new URL("https://f4a.vercel.app"),
 };
 
 // ✅ Viewport configuration (moved from metadata)

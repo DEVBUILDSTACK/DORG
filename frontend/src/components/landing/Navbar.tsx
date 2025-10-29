@@ -79,10 +79,10 @@ export default function Navbar() {
         {/* Desktop Navigation Links */}
         <div className="hidden lg:flex items-center space-x-2">
           {[
-            { name: 'Learners', sectionId: 'section-0', icon: '🎓' },
-            { name: 'Builders', sectionId: 'section-1', icon: '⚡' },
-            { name: 'Treasury', sectionId: 'section-2', icon: '💎' },
-            { name: 'Sponsors', sectionId: 'section-3', icon: '🤝' },
+            { name: 'Learners', sectionId: 'section-0'},
+            { name: 'Builders', sectionId: 'section-1'},
+            { name: 'Treasury', sectionId: 'section-2'},
+            { name: 'Sponsors', sectionId: 'section-3'},
           ].map((item, index) => (
             <motion.button
               key={item.name}
@@ -95,7 +95,6 @@ export default function Navbar() {
               transition={{ delay: index * 0.1 }}
             >
               <span className="flex items-center space-x-2">
-                <span className="text-sm">{item.icon}</span>
                 <span className="text-sm font-medium">{item.name}</span>
               </span>
               
@@ -114,31 +113,6 @@ export default function Navbar() {
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
-          {/* Network Status Indicator */}
-          {/* <motion.div
-            className="hidden md:flex items-center space-x-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-xs"
-            animate={{
-              scale: [1, 1.05, 1],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-            }}
-          >
-            <motion.div
-              className="w-2 h-2 bg-green-500 rounded-full"
-              animate={{
-                opacity: [1, 0.5, 1],
-              }}
-              transition={{
-                duration: 1,
-                repeat: Infinity,
-              }}
-            />
-            <span>Live on Base</span>
-          </motion.div> */}
-
-          {/* Action Buttons */}
           <div className="flex items-center space-x-3">
             <Link
               href="/onBoarding"

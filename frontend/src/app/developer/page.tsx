@@ -192,8 +192,8 @@ export default function DeveloperLandingPage() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 pt-6">
-              <Link
-                href="/dashboard/developer"
+             <Link
+                href="/builder"
                 className="group px-8 py-4 bg-gradient-to-r from-[#8B5CF6] to-[#FF007A] text-white rounded-full font-semibold hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] transition-all duration-300 flex items-center space-x-2"
               >
                 <span>Start Building</span>
@@ -201,11 +201,11 @@ export default function DeveloperLandingPage() {
               </Link>
 
               <Link
-                href="/dashboard/developer/vaults"
-                className="px-8 py-4 border border-[#8B5CF6]/50 text-[#8B5CF6] rounded-full hover:bg-[#8B5CF6]/10 transition-all duration-300 flex items-center space-x-2"
+                href="/dashboard/developer"
+                className="px-8 py-4 bg-[#8B5CF6]/10 border border-[#8B5CF6]/50 text-[#8B5CF6] rounded-full hover:bg-[#8B5CF6]/20 transition-all duration-300 flex items-center space-x-2"
               >
                 <Terminal className="w-5 h-5" />
-                <span>View Documentation</span>
+                <span>Developer Dashboard</span>
               </Link>
             </div>
 
@@ -487,13 +487,23 @@ export default function DeveloperLandingPage() {
                 Start creating your DeFi vault today and earn revenue from day one
               </p>
 
-              <Link
-                href="/dashboard/developer"
-                className="inline-flex items-center space-x-2 px-10 py-5 bg-gradient-to-r from-[#8B5CF6] to-[#FF007A] text-white rounded-full font-bold text-lg hover:shadow-[0_0_40px_rgba(139,92,246,0.8)] transition-all duration-300 group"
-              >
-                <span>Access Developer Dashboard</span>
-                <ChevronRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-              </Link>
+              <div className="flex flex-col items-center gap-4">
+                <Link
+                  href="/builder"
+                  className="inline-flex items-center space-x-2 px-10 py-5 bg-gradient-to-r from-[#8B5CF6] to-[#FF007A] text-white rounded-full font-bold text-lg hover:shadow-[0_0_40px_rgba(139,92,246,0.8)] transition-all duration-300 group"
+                >
+                  <span>Join Builder Marketplace</span>
+                  <ChevronRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                </Link>
+
+                <Link
+                  href="/dashboard/developer"
+                  className="inline-flex items-center space-x-2 px-10 py-5 bg-white/5 border border-[#8B5CF6]/50 text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300 group"
+                >
+                  <span>Access Developer Dashboard</span>
+                  <ChevronRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                </Link>
+              </div>
 
               <p className="text-sm text-gray-400 mt-6">
                 Free to start • Deploy in minutes • Earn 30% revenue share

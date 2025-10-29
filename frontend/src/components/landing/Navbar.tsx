@@ -3,9 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
+  const { authenticated, user, ready, login, getUserDisplayName } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +18,15 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleGetStarted = () => {
+    if (authenticated && user) {
+      const userRole = user.customMetadata?.role || 'student';
+      router.push(`/dashboard/${userRole}`);
+    } else {
+      login();
+    }
+  };
 
   return (
     <motion.nav
@@ -79,93 +92,79 @@ export default function Navbar() {
         {/* Desktop Navigation Links */}
         <div className="hidden lg:flex items-center space-x-2">
           {[
-            { name: 'Learners', sectionId: 'section-0', icon: '🎓' },
-            { name: 'Builders', sectionId: 'section-1', icon: '⚡' },
-            { name: 'Treasury', sectionId: 'section-2', icon: '💎' },
-            { name: 'Sponsors', sectionId: 'section-3', icon: '🤝' },
+            { name: 'Learners', href: '/student', icon: '🎓' },
+            { name: 'Builders', href: '/developer', icon: '⚡' },
+            { name: 'Treasury', href: '/investor', icon: '💎' },
+            { name: 'Sponsors', href: '/sponsor', icon: '🤝' },
           ].map((item, index) => (
-            <motion.button
+            <Link
               key={item.name}
-              onClick={() => document.getElementById(item.sectionId)?.scrollIntoView({ behavior: 'smooth' })}
-              className="relative group px-4 py-2 rounded-lg text-gray-300 hover:text-[#00E0FF] transition-all duration-300 hover:bg-white/5"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              href={item.href}
             >
-              <span className="flex items-center space-x-2">
-                <span className="text-sm">{item.icon}</span>
-                <span className="text-sm font-medium">{item.name}</span>
-              </span>
-              
-              {/* Hover line effect */}
               <motion.div
-                className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#00E0FF] to-[#8B5CF6] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
-              />
-              
-              {/* Glow effect */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[#00E0FF]/10 to-[#8B5CF6]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"
-              />
-            </motion.button>
+                className="relative group px-4 py-2 rounded-lg text-gray-300 hover:text-[#00E0FF] transition-all duration-300 hover:bg-white/5 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <span className="flex items-center space-x-2">
+                  <span className="text-sm">{item.icon}</span>
+                  <span className="text-sm font-medium">{item.name}</span>
+                </span>
+                
+                {/* Hover line effect */}
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#00E0FF] to-[#8B5CF6] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                />
+                
+                {/* Glow effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-[#00E0FF]/10 to-[#8B5CF6]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"
+                />
+              </motion.div>
+            </Link>
           ))}
         </div>
 
-        {/* Right Section */}
         <div className="flex items-center space-x-4">
-          {/* Network Status Indicator */}
-          {/* <motion.div
-            className="hidden md:flex items-center space-x-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-xs"
-            animate={{
-              scale: [1, 1.05, 1],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-            }}
-          >
-            <motion.div
-              className="w-2 h-2 bg-green-500 rounded-full"
-              animate={{
-                opacity: [1, 0.5, 1],
-              }}
-              transition={{
-                duration: 1,
-                repeat: Infinity,
-              }}
-            />
-            <span>Live on Base</span>
-          </motion.div> */}
-
-          {/* Action Buttons */}
           <div className="flex items-center space-x-3">
-            <Link
-              href="/onBoarding"
-              className="group relative px-5 py-2 border border-[#00E0FF]/50 text-[#00E0FF] rounded-full hover:bg-[#00E0FF]/10 hover:shadow-[0_0_20px_rgba(0,224,255,0.3)] transition-all duration-300 overflow-hidden"
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[#00E0FF]/20 to-[#8B5CF6]/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500"
-              />
-              <span className="relative flex items-center space-x-2">
-                <span className="font-medium">Get Started</span>
-              </span>
-            </Link>
-            
-            <Link
-              href="/login"
-              className="group relative px-5 py-2 bg-gradient-to-r from-[#8B5CF6] to-[#00E0FF] text-white rounded-full hover:shadow-[0_0_25px_rgba(139,92,246,0.6)] hover:scale-105 transition-all duration-300 overflow-hidden"
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[#FACC15] to-[#FF007A] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
-              <span className="relative flex items-center space-x-2">
-                <span className="font-medium">Connect Wallet</span>
-              </span>
-            </Link>
+            {ready && authenticated ? (
+              <div className="flex items-center space-x-3">
+                <div className="hidden md:flex flex-col items-end">
+                  <span className="text-sm text-[#00E0FF] font-medium">
+                    {getUserDisplayName?.() || 'User'}
+                  </span>
+                  <span className="text-xs text-gray-400">Authenticated</span>
+                </div>
+                <button
+                  onClick={handleGetStarted}
+                  className="group relative px-5 py-2 bg-linear-to-r from-[#8B5CF6] to-[#00E0FF] text-white rounded-full hover:shadow-[0_0_25px_rgba(139,92,246,0.6)] hover:scale-105 transition-all duration-300 overflow-hidden"
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-linear-to-r from-[#FACC15] to-[#FF007A] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                  <span className="relative flex items-center space-x-2">
+                    <span className="font-medium">Dashboard</span>
+                  </span>
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={handleGetStarted}
+                className="group relative px-5 py-2 bg-linear-to-r from-[#8B5CF6] to-[#00E0FF] text-white rounded-full hover:shadow-[0_0_25px_rgba(139,92,246,0.6)] hover:scale-105 transition-all duration-300 overflow-hidden"
+              >
+                <motion.div
+                  className="absolute inset-0 bg-linear-to-r from-[#FACC15] to-[#FF007A] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+                <span className="relative flex items-center space-x-2">
+                  <span className="font-medium">Get Started</span>
+                </span>
+              </button>
+            )}
           </div>
 
-          {/* Mobile Menu Button */}
           <motion.button
             className="lg:hidden p-2 text-gray-300 hover:text-[#00E0FF] transition-colors duration-300"
             whileHover={{ scale: 1.1 }}

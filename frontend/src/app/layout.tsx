@@ -4,7 +4,7 @@ import "./globals.css";                  // ✅ Your Tailwind styles
 
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import { Manrope } from "next/font/google";
-import Providers from "@/lib/PrivyProvider"; // ✅ Your Wagmi/Privy/OnchainKit wrapper
+import Providers from "@/lib/Providers"; // ✅ Your Wagmi/Privy/OnchainKit wrapper
 
 // ✅ Load font
 const manrope = Manrope({

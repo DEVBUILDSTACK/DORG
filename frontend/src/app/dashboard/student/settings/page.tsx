@@ -22,8 +22,11 @@ import {
   Link as LinkIcon,
   Github,
   Twitter,
-  Linkedin
+  Linkedin,
+  LogOut
 } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/navigation';
 
 interface Notifications {
   courseUpdates: boolean;
@@ -35,8 +38,11 @@ interface Notifications {
 }
 
 const SettingsPage = () => {
+  const router = useRouter();
+  const { logout, user, getUserDisplayName } = useAuth();
   const [activeTab, setActiveTab] = useState('profile');
   const [showApiKey, setShowApiKey] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [notifications, setNotifications] = useState<Notifications>({
     courseUpdates: true,
     communityPosts: true,
@@ -47,8 +53,8 @@ const SettingsPage = () => {
   });
 
   const [profile, setProfile] = useState({
-    fullName: 'Alex Johnson',
-    email: 'alex.johnson@example.com',
+    fullName: getUserDisplayName?.() || 'User',
+    email: user?.email?.address || user?.google?.email || '',
     phone: '+1 (555) 123-4567',
     location: 'San Francisco, CA',
     bio: 'Web3 enthusiast learning to build the decentralized future',
@@ -79,6 +85,17 @@ const SettingsPage = () => {
       ...prev,
       [key]: value
     }));
+  };
+
+  const handleLogout = async () => {
+    try {
+      setIsLoggingOut(true);
+      await logout();
+      router.push('/');
+    } catch (error) {
+      console.error('Logout failed:', error);
+      setIsLoggingOut(false);
+    }
   };
 
   return (
@@ -399,16 +416,58 @@ const SettingsPage = () => {
                             <button
                               onClick={() => setShowApiKey(!showApiKey)}
                               className="p-2 text-gray-400 hover:text-white transition-colors"
+                              aria-label="Toggle API key visibility"
                             >
                               {showApiKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                             </button>
-                            <button className="p-2 text-gray-400 hover:text-white transition-colors">
+                            <button 
+                              className="p-2 text-gray-400 hover:text-white transition-colors"
+                              aria-label="Regenerate API key"
+                            >
                               <RefreshCw className="w-4 h-4" />
                             </button>
                           </div>
                         </div>
                         <button className="px-4 py-2 bg-[#00E0FF]/20 text-[#00E0FF] rounded-lg hover:bg-[#00E0FF]/30 transition-colors">
                           Generate New Key
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Connected Accounts & Session */}
+                    <div className="p-6 bg-gray-900/30 rounded-xl">
+                      <h3 className="text-lg font-semibold text-white mb-4">Session Management</h3>
+                      <div className="space-y-4">
+                        <div className="p-4 bg-gray-800/50 rounded-lg">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <p className="font-medium text-white">Current Session</p>
+                              <p className="text-sm text-gray-400">
+                                Logged in as {getUserDisplayName?.() || 'User'}
+                              </p>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                              <span className="text-sm text-green-400">Active</span>
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          onClick={handleLogout}
+                          disabled={isLoggingOut}
+                          className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          {isLoggingOut ? (
+                            <>
+                              <div className="w-4 h-4 border-2 border-red-400 border-t-transparent rounded-full animate-spin" />
+                              <span>Logging out...</span>
+                            </>
+                          ) : (
+                            <>
+                              <LogOut className="w-4 h-4" />
+                              <span>Logout</span>
+                            </>
+                          )}
                         </button>
                       </div>
                     </div>

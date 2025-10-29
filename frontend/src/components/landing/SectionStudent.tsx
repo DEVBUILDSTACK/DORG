@@ -72,7 +72,7 @@ export default function SectionStudent() {
             </Link>
 
             <Link
-              href="/dashboard/student"
+              href="/student"
               className="px-8 py-4 border border-[#00E0FF]/50 text-[#00E0FF] rounded-full hover:bg-[#00E0FF]/10 hover:shadow-[0_0_20px_rgba(0,224,255,0.3)] transition-all duration-300 flex items-center space-x-2"
             >
               <Trophy className="w-5 h-5" />

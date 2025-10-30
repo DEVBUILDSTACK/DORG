@@ -35,7 +35,7 @@ export default function SponsorLandingPage() {
     {
       icon: <TrendingUp className="w-8 h-8" />,
       title: "Brand Visibility",
-      description: "Showcase your brand to a highly engaged community of builders and investors.",
+      description: "Showcase your brand to a highly engaged community of builders and treasury managers.",
       color: "from-[#2E865F] to-[#1E5A42]"
     },
     {
@@ -412,8 +412,8 @@ export default function SponsorLandingPage() {
                   <h4 className="text-lg font-bold text-white">GRANT — DECENSAT.org Affiliate</h4>
                   <ul className="text-sm text-gray-300 mt-2 list-disc list-inside space-y-1">
                     <li>Programmatic 12/15/18 month DECENSAT.org affiliate Grant</li>
-                    <li>Monthly yield share as Grant</li>
-                    <li>Fractionally self-configured return of principal</li>
+                    <li>Monthly protocol share as Grant</li>
+                    <li>Fractionally self-configured allocation structure</li>
                   </ul>
                 </div>
               </div>
@@ -437,7 +437,7 @@ export default function SponsorLandingPage() {
                     <li>DECENSAT.org — 12yr+ or 18yr+ targeting learning workshop scholarships for inclusive needs</li>
                     <li>Epoch-based learner cohorts and on-chain attested parent/guardian applicants</li>
                     <li>Programming co-curation and private cohort delivery; DECENSAT.org ecosystem Grant</li>
-                    <li>Monthly yield share as Grant; fractionally self-configured return of principal</li>
+                    <li>Monthly protocol share as Grant; fractionally self-configured allocation structure</li>
                   </ul>
                 </div>
               </div>

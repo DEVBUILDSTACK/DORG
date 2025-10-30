@@ -25,12 +25,13 @@ import {
   Target,
   Sparkles
 } from '@/components/icons';
+import Link from 'next/link';
 
 export default function LandingPage() {
   const { authenticated, ready, user } = useAuth();
   const router = useRouter();
   const [showRoleModal, setShowRoleModal] = useState(false);
-  const [activeTab, setActiveTab] = useState<'student' | 'developer' | 'investor'>('student');
+  const [activeTab, setActiveTab] = useState<'student' | 'developer' | 'treasury'>('student');
 
   useEffect(() => {
     if (!ready) return;
@@ -48,7 +49,7 @@ export default function LandingPage() {
         
         // Ensure both storage locations are synced
         if (privyRole && !localRole) {
-          saveUserRole(privyRole as 'student' | 'developer' | 'investor');
+          saveUserRole(privyRole as 'student' | 'developer' | 'treasury');
         }
 
         // Redirect to the appropriate dashboard
@@ -82,7 +83,7 @@ export default function LandingPage() {
   const pathways = {
     student: {
       badge: { text: 'For Learners', icon: Users, bgColor: 'bg-[#FFE8E0]', textColor: 'text-[#FF6B35]' },
-      title: 'Master Blockchain Development',
+      title: 'Builder & Blockchain Development',
       description: 'Comprehensive DeFi education with hands-on training in smart contracts, Web3 protocols, and real-world project experience.',
       note: undefined,
       stats: [
@@ -112,20 +113,20 @@ export default function LandingPage() {
         { icon: Code, text: 'Open Source Tools' }
       ]
     },
-    investor: {
+    treasury: {
       badge: { text: 'For Treasury', icon: TrendingUp, bgColor: 'bg-green-50', textColor: 'text-green-700' },
       title: 'DAT Proxy Powered Vaults',
-      description: 'Secure treasury management with transparent vaults, stablecoin liquidity pools, and real-time analytics for institutional investors.',
+      description: 'Professional treasury management with transparent vaults, stablecoin liquidity pools, and real-time analytics for institutional allocations.',
       note: undefined,
       stats: [
         { label: 'Total Value Locked', value: '$50M+' },
-        { label: 'Active Investors', value: '5,000+' },
-        { label: 'Average APY', value: '18.5%' }
+        { label: 'Active Treasuries', value: '5,000+' },
+        { label: 'Protocol Efficiency', value: '14.5%' }
       ],
       features: [
-        { icon: Shield, text: 'Secure & Transparent' },
+        { icon: Shield, text: 'Transparent Operations' },
         { icon: BarChart, text: 'Real-time Analytics' },
-        { icon: DollarSign, text: 'High Yield Returns' }
+        { icon: DollarSign, text: 'Efficient Allocation' }
       ]
     }
   };
@@ -167,13 +168,13 @@ export default function LandingPage() {
               </motion.div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#1F2937] mb-6 leading-tight">
-                Learn. Build. Invest.
+                Learn, Build, Launch & Earn
                 <br />
                 <span className="text-[#FF6B35]">All in One Platform</span>
               </h1>
 
               <p className="text-xl text-[#5A6C7D] max-w-3xl mx-auto leading-relaxed">
-                Connecting education, innovation, and institutional investment in decentralized finance.
+                Connecting education, innovation, and institutional allocation in decentralized finance.
                 Choose your pathway and start your DeFi journey today.
               </p>
             </motion.div>
@@ -186,7 +187,7 @@ export default function LandingPage() {
               className="mb-12"
             >
               <div className="flex flex-wrap justify-center gap-4 mb-8">
-                {(Object.keys(pathways) as Array<'student' | 'developer' | 'investor'>).map((key) => {
+                {(Object.keys(pathways) as Array<'student' | 'developer' | 'treasury'>).map((key) => {
                   const pathway = pathways[key];
                   const Icon = pathway.badge.icon;
                   return (
@@ -264,21 +265,41 @@ export default function LandingPage() {
 
                         {/* CTAs */}
                         <div className="flex flex-wrap gap-4 pt-4">
-                          <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="px-8 py-4 bg-[#FF6B35] text-white rounded-xl font-semibold shadow-lg shadow-[#FF6B35]/30 hover:shadow-xl hover:shadow-[#FF6B35]/40 transition-all duration-300 flex items-center space-x-2"
+                          <Link
+                            href={
+                              activeTab === 'student'
+                                ? '/student'
+                                : activeTab === 'developer'
+                                ? '/developer'
+                                : '/investor'
+                            }
                           >
-                            <span>Get Started</span>
-                            <ArrowRight className="w-5 h-5" />
-                          </motion.button>
-                          <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="px-8 py-4 bg-white text-[#FF6B35] rounded-xl font-semibold border-2 border-[#FF6B35] hover:bg-[#FFE8E0] transition-all duration-300"
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="px-8 py-4 bg-[#FF6B35] text-white rounded-xl font-semibold shadow-lg shadow-[#FF6B35]/30 hover:shadow-xl hover:shadow-[#FF6B35]/40 transition-all duration-300 flex items-center space-x-2"
+                            >
+                              <span>Get Started</span>
+                              <ArrowRight className="w-5 h-5" />
+                            </motion.button>
+                          </Link>
+                          <Link
+                            href={
+                              activeTab === 'student'
+                                ? '/dashboard/student'
+                                : activeTab === 'developer'
+                                ? '/dashboard/developer'
+                                : '/dashboard/treasury'
+                            }
                           >
-                            View Dashboard
-                          </motion.button>
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="px-8 py-4 bg-white text-[#FF6B35] rounded-xl font-semibold border-2 border-[#FF6B35] hover:bg-[#FFE8E0] transition-all duration-300"
+                            >
+                              <span>View Dashboard</span>
+                            </motion.button>
+                          </Link>
                         </div>
                       </div>
 
@@ -358,7 +379,7 @@ export default function LandingPage() {
                 {
                   number: '02',
                   title: 'Launch & Showcase',
-                  description: 'Deploy your projects on our platform and present them directly to institutional investors and sponsors.',
+                  description: 'Deploy your projects on our platform and connect with institutional treasuries and sponsors.',
                   icon: Rocket,
                   color: '#FF6B35'
                 },
@@ -444,7 +465,7 @@ export default function LandingPage() {
                 Why Choose Learn2Launch
               </h2>
               <p className="text-xl text-[#5A6C7D] max-w-3xl mx-auto">
-                Experience the perfect blend of education, innovation, and investment opportunities
+                Experience the perfect blend of education, innovation, and allocation opportunities
               </p>
             </motion.div>
 
@@ -467,7 +488,7 @@ export default function LandingPage() {
                 {
                   icon: Users,
                   title: 'Professional Network',
-                  description: 'Connect with investors, mentors, and peers in a thriving community of blockchain innovators.',
+                  description: 'Connect with treasury managers, mentors, and peers in a thriving community of blockchain innovators.',
                   color: '#FF6B35',
                   bgGradient: 'from-purple-50 to-white'
                 }

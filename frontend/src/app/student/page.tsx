@@ -30,7 +30,7 @@ export default function StudentLandingPage() {
     {
       icon: <Code className="w-8 h-8" />,
       title: "Real-World Projects",
-      description: "Build actual DeFi applications, smart contracts, and financial tools that matter.",
+      description: "Build actual DeFi applications, smart contracts, and treasury management tools that matter.",
       color: "from-[#2E865F] to-[#1E5A42]"
     },
     {
@@ -54,7 +54,7 @@ export default function StudentLandingPage() {
     {
       icon: <Rocket className="w-8 h-8" />,
       title: "Career Opportunities",
-      description: "Connect with top companies looking for talented developers and financial analysts.",
+      description: "Connect with top protocols looking for talented developers and treasury managers.",
       color: "from-[#FF6B35] to-[#0A4A7A]"
     }
   ];
@@ -63,7 +63,7 @@ export default function StudentLandingPage() {
     {
       step: "1",
       title: "Choose Your Path",
-      description: "Select from Web3 Development, DeFi Finance, or Full-Stack courses.",
+      description: "Select from Web3 Development, DeFi Protocol Management, or Full-Stack courses.",
       icon: <Target className="w-6 h-6" />
     },
     {

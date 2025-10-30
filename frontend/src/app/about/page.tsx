@@ -10,12 +10,12 @@ export default function AboutPage() {
     {
       icon: Target,
       title: 'Mission-Driven',
-      description: 'Democratizing access to decentralized finance education and institutional investment opportunities'
+      description: 'Democratizing access to decentralized finance education and institutional treasury allocation opportunities'
     },
     {
       icon: Users,
       title: 'Professional Community',
-      description: 'Building a trusted ecosystem of developers, institutions, and qualified investors'
+      description: 'Building a trusted ecosystem of developers, institutions, and treasury managers'
     },
     {
       icon: Lightbulb,
@@ -54,7 +54,7 @@ export default function AboutPage() {
             </h1>
             
             <p className="text-lg lg:text-xl max-w-3xl mx-auto text-[#5A6C7D] leading-relaxed">
-              Bridging education, innovation, and institutional investment in decentralized finance. 
+              Bridging education, innovation, and institutional treasury management in decentralized finance. 
               Empowering the next generation of blockchain builders with professional standards and institutional backing.
             </p>
           </motion.div>
@@ -112,7 +112,7 @@ export default function AboutPage() {
               
               <p className="text-base lg:text-lg">
                 Today, Learn2Launch serves as a bridge—connecting learners with cutting-edge education, 
-                developers with project funding, and institutions with vetted investment opportunities in 
+                developers with project funding, and institutions with vetted allocation opportunities in 
                 the blockchain space.
               </p>
             </div>
@@ -156,8 +156,8 @@ export default function AboutPage() {
               </h3>
               <p className="text-[#5A6C7D] leading-relaxed">
                 To become the world's leading platform for blockchain education and institutional 
-                DeFi investment, fostering innovation while maintaining the highest standards of 
-                professionalism and security.
+                DeFi treasury management, fostering innovation while maintaining the highest standards of 
+                professionalism and transparency.
               </p>
             </div>
 

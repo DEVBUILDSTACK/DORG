@@ -134,46 +134,53 @@ export default function InvestorCohortsPage() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'text-green-400 bg-green-500/20';
-      case 'completed': return 'text-blue-400 bg-blue-500/20';
-      case 'upcoming': return 'text-yellow-400 bg-yellow-500/20';
-      default: return 'text-gray-400 bg-gray-500/20';
+      case 'active': return 'text-[#2E865F] bg-[#2E865F]/10 border border-[#2E865F]/20';
+      case 'completed': return 'text-[#0284C7] bg-[#0284C7]/10 border border-[#0284C7]/20';
+      case 'upcoming': return 'text-[#F59E0B] bg-[#F59E0B]/10 border border-[#F59E0B]/20';
+      default: return 'text-[#5A6C7D] bg-[#F9FAFB] border border-[#E5E7EB]';
     }
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 p-6">
+      {/* Breadcrumbs */}
+      <div className="flex items-center space-x-2 text-sm text-[#5A6C7D]">
+        <span>Dashboard</span>
+        <ChevronRight className="w-4 h-4" />
+        <span className="text-[#FF6B35] font-medium">Cohorts</span>
+      </div>
+
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-white">Cohorts Overview</h1>
-          <p className="text-gray-400 text-lg">Track active and completed educational cohorts across regions</p>
+          <h1 className="text-3xl font-bold text-[#1F2937]">Cohorts <span className="text-[#FF6B35]">Overview</span></h1>
+          <p className="text-[#5A6C7D] text-lg">Track active and completed educational cohorts across regions</p>
         </div>
         <div className="text-right">
-          <p className="text-sm text-gray-400">Total Students Impacted</p>
-          <p className="text-2xl font-bold text-[#00E0FF]">1,247</p>
+          <p className="text-sm text-[#5A6C7D]">Total Students Impacted</p>
+          <p className="text-2xl font-bold text-[#FF6B35] tabular-nums">1,247</p>
         </div>
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { label: 'Active Cohorts', value: '3', icon: Activity, color: 'from-green-500 to-emerald-500' },
-          { label: 'Completed Programs', value: '23', icon: Award, color: 'from-blue-500 to-cyan-500' },
-          { label: 'Success Rate', value: '87%', icon: Target, color: 'from-[#00E0FF] to-[#06B6D4]' },
-          { label: 'Avg. Employment Rate', value: '82%', icon: TrendingUp, color: 'from-purple-500 to-pink-500' },
+          { label: 'Active Cohorts', value: '3', icon: Activity, color: 'from-[#2E865F] to-[#10B981]' },
+          { label: 'Completed Programs', value: '23', icon: Award, color: 'from-[#0284C7] to-[#06B6D4]' },
+          { label: 'Success Rate', value: '87%', icon: Target, color: 'from-[#FF6B35] to-[#F97316]' },
+          { label: 'Avg. Employment Rate', value: '82%', icon: TrendingUp, color: 'from-[#A855F7] to-[#D946EF]' },
         ].map((stat, index) => (
           <div key={index} className="relative group">
-            <div className="absolute inset-0 opacity-20 rounded-2xl blur-xl group-hover:opacity-30 transition-opacity" />
-            <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600/50 transition-all group-hover:transform group-hover:scale-105">
+            <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl" />
+            <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:shadow-lg transition-all">
               <div className="flex items-center justify-between mb-4">
-                <div className={`p-3 rounded-xl bg-gradient-to-r ${stat.color} shadow-lg`}>
+                <div className={`p-3 rounded-xl bg-gradient-to-r ${stat.color} shadow-md`}>
                   <stat.icon className="w-6 h-6 text-white" />
                 </div>
               </div>
               <div>
-                <p className="text-gray-400 text-sm mb-1">{stat.label}</p>
-                <p className="text-2xl font-bold text-white">{stat.value}</p>
+                <p className="text-[#5A6C7D] text-sm mb-1">{stat.label}</p>
+                <p className="text-2xl font-bold text-[#1F2937] tabular-nums">{stat.value}</p>
               </div>
             </div>
           </div>
@@ -181,13 +188,13 @@ export default function InvestorCohortsPage() {
       </div>
 
       {/* Filters */}
-      <div className="flex items-center space-x-4">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         <div className="flex items-center space-x-2">
-          <Filter className="w-4 h-4 text-gray-400" />
+          <Filter className="w-4 h-4 text-[#5A6C7D]" />
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+            className="bg-white border border-[#E5E7EB] rounded-xl px-4 py-2 text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50 focus:border-[#FF6B35]"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -199,7 +206,7 @@ export default function InvestorCohortsPage() {
         <select
           value={filterRegion}
           onChange={(e) => setFilterRegion(e.target.value)}
-          className="bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+          className="bg-white border border-[#E5E7EB] rounded-xl px-4 py-2 text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50 focus:border-[#FF6B35]"
         >
           <option value="all">All Regions</option>
           <option value="mozambique">Mozambique</option>
@@ -214,17 +221,17 @@ export default function InvestorCohortsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {filteredCohorts.map((cohort) => (
           <div key={cohort.id} className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00E0FF]/10 to-[#06B6D4]/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-[#00E0FF]/30 transition-all">
+            <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl" />
+            <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:shadow-lg transition-all">
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">{cohort.name}</h3>
-                  <div className="flex items-center space-x-2 text-sm text-gray-400">
+                  <h3 className="text-lg font-semibold text-[#1F2937] mb-1">{cohort.name}</h3>
+                  <div className="flex items-center space-x-2 text-sm text-[#5A6C7D]">
                     <MapPin className="w-3 h-3" />
                     <span>{cohort.region}</span>
                   </div>
-                  <p className="text-sm text-[#00E0FF] mt-1">{cohort.program}</p>
+                  <p className="text-sm text-[#FF6B35] mt-1 font-medium">{cohort.program}</p>
                 </div>
                 <span className={`px-3 py-1 rounded-lg text-xs font-medium ${getStatusColor(cohort.status)}`}>
                   {cohort.status.charAt(0).toUpperCase() + cohort.status.slice(1)}
@@ -234,12 +241,12 @@ export default function InvestorCohortsPage() {
               {/* Progress Bar */}
               <div className="mb-4">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-gray-400">Progress</span>
-                  <span className="text-sm text-white font-medium">{cohort.progress}%</span>
+                  <span className="text-sm text-[#5A6C7D]">Progress</span>
+                  <span className="text-sm text-[#1F2937] font-medium tabular-nums">{cohort.progress}%</span>
                 </div>
-                <div className="w-full bg-gray-700/50 rounded-full h-2">
+                <div className="w-full bg-[#E5E7EB] rounded-full h-2">
                   <div 
-                    className="bg-gradient-to-r from-[#00E0FF] to-[#06B6D4] h-2 rounded-full transition-all duration-500"
+                    className="bg-[#FF6B35] h-2 rounded-full transition-all duration-500"
                     style={{ width: `${cohort.progress}%` }}
                   />
                 </div>
@@ -247,26 +254,26 @@ export default function InvestorCohortsPage() {
 
               {/* Key Metrics */}
               <div className="grid grid-cols-3 gap-4 mb-4">
-                <div className="text-center">
-                  <p className="text-sm text-gray-400">Students</p>
-                  <p className="text-lg font-bold text-white">{cohort.students}</p>
+                <div className="text-center p-3 bg-[#F9FAFB] rounded-lg">
+                  <p className="text-sm text-[#5A6C7D]">Students</p>
+                  <p className="text-lg font-bold text-[#1F2937] tabular-nums">{cohort.students}</p>
                 </div>
-                <div className="text-center">
-                  <p className="text-sm text-gray-400">Funding</p>
-                  <p className="text-lg font-bold text-[#00E0FF]">{cohort.totalFunding}</p>
+                <div className="text-center p-3 bg-[#F9FAFB] rounded-lg">
+                  <p className="text-sm text-[#5A6C7D]">Funding</p>
+                  <p className="text-lg font-bold text-[#FF6B35] tabular-nums">{cohort.totalFunding}</p>
                 </div>
-                <div className="text-center">
-                  <p className="text-sm text-gray-400">Utilized</p>
-                  <p className="text-lg font-bold text-green-400">{cohort.fundingUtilized}%</p>
+                <div className="text-center p-3 bg-[#F9FAFB] rounded-lg">
+                  <p className="text-sm text-[#5A6C7D]">Utilized</p>
+                  <p className="text-lg font-bold text-[#2E865F] tabular-nums">{cohort.fundingUtilized}%</p>
                 </div>
               </div>
 
               {/* Skills Tags */}
               <div className="mb-4">
-                <p className="text-sm text-gray-400 mb-2">Skills Focus</p>
+                <p className="text-sm text-[#5A6C7D] mb-2">Skills Focus</p>
                 <div className="flex flex-wrap gap-2">
                   {cohort.skills.map((skill, index) => (
-                    <span key={index} className="px-2 py-1 bg-gray-700/50 text-xs text-gray-300 rounded-lg">
+                    <span key={index} className="px-2 py-1 bg-[#F9FAFB] border border-[#E5E7EB] text-xs text-[#1F2937] rounded-lg">
                       {skill}
                     </span>
                   ))}
@@ -275,27 +282,27 @@ export default function InvestorCohortsPage() {
 
               {/* Outcomes (for completed cohorts) */}
               {cohort.status === 'completed' && (
-                <div className="mb-4 p-3 bg-gray-900/30 rounded-lg">
-                  <p className="text-sm text-gray-400 mb-2">Outcomes</p>
+                <div className="mb-4 p-3 bg-[#F9FAFB] rounded-lg border border-[#E5E7EB]">
+                  <p className="text-sm text-[#5A6C7D] mb-2">Outcomes</p>
                   <div className="grid grid-cols-3 gap-2 text-xs">
                     <div className="text-center">
-                      <p className="text-green-400 font-bold">{cohort.outcomes.graduated}</p>
-                      <p className="text-gray-500">Graduated</p>
+                      <p className="text-[#2E865F] font-bold tabular-nums">{cohort.outcomes.graduated}</p>
+                      <p className="text-[#9CA3AF]">Graduated</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-[#00E0FF] font-bold">{cohort.outcomes.employed}</p>
-                      <p className="text-gray-500">Employed</p>
+                      <p className="text-[#FF6B35] font-bold tabular-nums">{cohort.outcomes.employed}</p>
+                      <p className="text-[#9CA3AF]">Employed</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-purple-400 font-bold">{cohort.outcomes.startups}</p>
-                      <p className="text-gray-500">Startups</p>
+                      <p className="text-[#A855F7] font-bold tabular-nums">{cohort.outcomes.startups}</p>
+                      <p className="text-[#9CA3AF]">Startups</p>
                     </div>
                   </div>
                 </div>
               )}
 
               {/* Timeline */}
-              <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
+              <div className="flex items-center justify-between text-sm text-[#5A6C7D] mb-4">
                 <div className="flex items-center space-x-1">
                   <Calendar className="w-3 h-3" />
                   <span>{new Date(cohort.startDate).toLocaleDateString()}</span>
@@ -308,7 +315,7 @@ export default function InvestorCohortsPage() {
               </div>
 
               {/* Action Button */}
-              <button className="w-full flex items-center justify-center space-x-2 py-2 px-4 bg-gray-700/50 hover:bg-gray-600/50 rounded-lg transition-colors text-sm">
+              <button className="w-full flex items-center justify-center space-x-2 py-2 px-4 bg-[#FF6B35] text-white hover:bg-[#E65A2D] rounded-lg transition-colors text-sm font-medium">
                 <span>View Full Report</span>
                 <ExternalLink className="w-4 h-4" />
               </button>

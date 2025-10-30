@@ -22,9 +22,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             appId={privyAppId}
             config={{
                 appearance: {
-                    theme: "dark",
-                    accentColor: "#00E0FF",
-                    logo: "/icon.png",
+                    theme: "light",
+                    accentColor: "#FF6B35",
+                    logo: "/assets/images/l2l.jpg",
                     landingHeader: "Welcome to Learn2Launch",
                     loginMessage: "Sign in to access your personalized dashboard",
                     walletList: ["coinbase_wallet", "metamask"],

@@ -1,6 +1,6 @@
 "use client";
 
-import { SidebarLeft } from "iconsax-reactjs";
+import { Menu } from "lucide-react";
 import React from "react";
 
 import { cn } from "@/lib/utils";
@@ -36,7 +36,7 @@ function PageNavbarIconButton({ ref, className, ...props }: React.ComponentProps
             type="button"
             ref={ref}
             className={cn(
-                "all-center h-8 w-8 duration-200 hover:bg-gray-100 rounded-lg",
+                "flex items-center justify-center h-9 w-9 duration-200 hover:bg-[#F3F4F6] rounded-lg text-[#5A6C7D]",
                 className,
             )}
             {...props}
@@ -52,7 +52,7 @@ function PageNavbarPrimaryButton({ ref, className, ...props }: React.ComponentPr
             type="button"
             ref={ref}
             className={cn(
-                "h-8 gap-1 bg-primary hidden py-1 px-2 duration-200 text-white rounded-lg text-xl md:text-lg md:flex items-center justify-center",
+                "h-9 gap-2 bg-linear-to-r from-[#FF6B35] to-[#E65A2D] hidden py-2 px-4 duration-200 text-white rounded-lg text-sm md:flex items-center justify-center hover:shadow-lg hover:shadow-[#FF6B35]/30 font-medium",
                 className,
             )}
             {...props}
@@ -73,18 +73,19 @@ function PageNavbar({
     return (
         <div
             className={cn(
-                "relative z-50 h-[var(--h-nav)] flex pl-6 lg:pr-20 pr-6 text-white/80 justify-between items-center gap-2 border-b border-white/4 bg-c3-background",
+                "relative z-50 h-16 flex px-6 lg:px-8 text-[#1F2937] justify-between items-center gap-4 border-b border-[#E5E7EB] bg-white",
                 className,
             )}
         >
             <button
                 type="button"
                 onClick={() => setIsSidebarOpen(true)}
-                className="lg:hidden flex items-center justify-center text-gray-500 h-8 w-8"
+                className="lg:hidden flex items-center justify-center text-[#5A6C7D] h-9 w-9 hover:bg-[#F3F4F6] rounded-lg transition-colors"
+                aria-label="Open sidebar menu"
             >
-                <SidebarLeft size={16} />
+                <Menu className="w-5 h-5" />
             </button>
-            <div className=" flex items-center justify-between w-full gap-2">
+            <div className="flex items-center justify-between w-full gap-4">
                 {children}
             </div>
         </div>

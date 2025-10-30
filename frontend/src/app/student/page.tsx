@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Navbar from '@/components/landing/Navbar';
+import Footer from '@/components/landing/Footer';
 import { 
   BookOpen, 
   Trophy, 
@@ -23,37 +25,37 @@ export default function StudentLandingPage() {
       icon: <BookOpen className="w-8 h-8" />,
       title: "Interactive Courses",
       description: "Learn coding and DeFi through hands-on, project-based courses designed by industry experts.",
-      color: "from-[#00E0FF] to-[#0099CC]"
+      color: "from-[#0A4A7A] to-[#0D5C94]"
     },
     {
       icon: <Code className="w-8 h-8" />,
       title: "Real-World Projects",
       description: "Build actual DeFi applications, smart contracts, and financial tools that matter.",
-      color: "from-[#8B5CF6] to-[#6D28D9]"
+      color: "from-[#2E865F] to-[#1E5A42]"
     },
     {
       icon: <Trophy className="w-8 h-8" />,
       title: "Competitive Leaderboard",
       description: "Compete with peers, earn points, and climb the ranks to showcase your skills.",
-      color: "from-[#FACC15] to-[#F59E0B]"
+      color: "from-[#FF6B35] to-[#CC5629]"
     },
     {
       icon: <Award className="w-8 h-8" />,
       title: "Earn Certificates",
       description: "Get recognized with blockchain-verified certificates upon course completion.",
-      color: "from-[#FF007A] to-[#CC0062]"
+      color: "from-[#0A4A7A] to-[#083A5E]"
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: "Community Support",
       description: "Join a vibrant community of learners, mentors, and industry professionals.",
-      color: "from-[#00E0FF] to-[#8B5CF6]"
+      color: "from-[#2E865F] to-[#0A4A7A]"
     },
     {
       icon: <Rocket className="w-8 h-8" />,
       title: "Career Opportunities",
       description: "Connect with top companies looking for talented developers and financial analysts.",
-      color: "from-[#FACC15] to-[#FF007A]"
+      color: "from-[#FF6B35] to-[#0A4A7A]"
     }
   ];
 
@@ -96,38 +98,18 @@ export default function StudentLandingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0B0C14] via-[#101120] to-[#0B0C14]">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0B0C14]/90 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-[#00E0FF] to-[#8B5CF6] bg-clip-text text-transparent">
-            Learn2Launch
-          </Link>
-          <div className="flex items-center space-x-4">
-            <Link 
-              href="/" 
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              Back to Home
-            </Link>
-            <Link
-              href="/dashboard/student"
-              className="px-6 py-2 bg-[#00E0FF] text-[#0B0C14] rounded-full font-semibold hover:shadow-[0_0_20px_rgba(0,224,255,0.6)] transition-all duration-300"
-            >
-              Go to Dashboard
-            </Link>
-          </div>
-        </div>
-      </nav>
-
+    <div className="min-h-screen bg-gradient-to-br from-white via-[#FAFBFC] to-white">
+      <Navbar />
+      
+      <main className="relative pt-24">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 relative overflow-hidden">
+      <section className="relative pt-8 pb-20 px-6 overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0 opacity-20">
           {[...Array(30)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-[#00E0FF] rounded-full"
+              className="absolute w-1 h-1 bg-[#0A4A7A] rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -156,16 +138,16 @@ export default function StudentLandingPage() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, type: "spring" }}
-              className="inline-block px-4 py-2 bg-[#00E0FF]/10 border border-[#00E0FF]/30 rounded-full text-[#00E0FF] text-sm font-medium"
+              className="inline-block px-4 py-2 bg-[#FFE8E0] border border-[#FF6B35] rounded-full text-[#CC5629] text-sm font-medium"
             >
               🎓 For Learners
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#00E0FF] via-[#FFFFFF] to-[#8B5CF6] bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-7xl font-bold text-[#0A4A7A]">
               Master Coding & Finance
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-[#525252] max-w-3xl mx-auto leading-relaxed">
               Transform from beginner to professional developer with our comprehensive 
               courses in Web3, DeFi, and Full-Stack Development.
             </p>
@@ -173,7 +155,7 @@ export default function StudentLandingPage() {
             <div className="flex flex-wrap justify-center gap-4 pt-6">
               <Link
                 href="/dashboard/student"
-                className="group px-8 py-4 bg-[#00E0FF] text-[#0B0C14] rounded-full font-semibold hover:shadow-[0_0_30px_rgba(0,224,255,0.6)] transition-all duration-300 flex items-center space-x-2"
+                className="group px-8 py-4 bg-[#FF6B35] text-white rounded-full font-semibold hover:bg-[#CC5629] hover:shadow-lg transition-all duration-300 flex items-center space-x-2"
               >
                 <span>Start Learning Now</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -181,7 +163,7 @@ export default function StudentLandingPage() {
 
               <Link
                 href="/dashboard/student/leaderboard"
-                className="px-8 py-4 border border-[#00E0FF]/50 text-[#00E0FF] rounded-full hover:bg-[#00E0FF]/10 transition-all duration-300 flex items-center space-x-2"
+                className="px-8 py-4 border-2 border-[#0A4A7A] text-[#0A4A7A] rounded-full hover:bg-[#0A4A7A] hover:text-white transition-all duration-300 flex items-center space-x-2"
               >
                 <Trophy className="w-5 h-5" />
                 <span>View Leaderboard</span>
@@ -206,10 +188,10 @@ export default function StudentLandingPage() {
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.8 + index * 0.1 }}
-                  className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10"
+                  className="p-4 bg-white backdrop-blur-sm rounded-xl border border-gray-200 shadow-sm"
                 >
-                  <div className="text-3xl font-bold text-[#00E0FF]">{stat.value}</div>
-                  <div className="text-sm text-gray-400">{stat.label}</div>
+                  <div className="text-3xl font-bold tabular-nums text-[#FF6B35]">{stat.value}</div>
+                  <div className="text-sm text-[#737373]">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -218,7 +200,7 @@ export default function StudentLandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-6 relative">
+      <section className="py-20 px-6 relative bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -226,10 +208,10 @@ export default function StudentLandingPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0A4A7A] mb-4">
               Why Choose Learn2Launch?
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-[#525252] max-w-2xl mx-auto">
               Everything you need to become a successful developer and launch your career
             </p>
           </motion.div>
@@ -243,13 +225,13 @@ export default function StudentLandingPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="group p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-[#00E0FF]/50 transition-all duration-300"
+                className="group p-6 bg-white backdrop-blur-sm rounded-2xl border border-gray-200 hover:border-[#FF6B35] hover:shadow-lg transition-all duration-300"
               >
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-16 h-16 rounded-xl bg-linear-to-br ${feature.color} flex items-center justify-center mb-4 text-white group-hover:scale-110 transition-transform duration-300`}>
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <h3 className="text-xl font-bold text-[#0F0F0F] mb-2">{feature.title}</h3>
+                <p className="text-[#737373]">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -257,7 +239,7 @@ export default function StudentLandingPage() {
       </section>
 
       {/* Learning Path Section */}
-      <section className="py-20 px-6 relative">
+      <section className="py-20 px-6 relative bg-[#FAFAFA]">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -265,10 +247,10 @@ export default function StudentLandingPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0A4A7A] mb-4">
               Your Learning Journey
             </h2>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-[#525252]">
               A clear path from beginner to professional
             </p>
           </motion.div>
@@ -285,21 +267,21 @@ export default function StudentLandingPage() {
               >
                 {/* Connector Line */}
                 {index < learningPath.length - 1 && (
-                  <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-[#00E0FF] to-transparent" />
+                  <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-linear-to-r from-[#0A4A7A] to-transparent" />
                 )}
 
-                <div className="relative p-6 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-[#00E0FF]/50 transition-all duration-300">
+                <div className="relative p-6 bg-white backdrop-blur-sm rounded-2xl border border-gray-200 hover:border-[#0A4A7A] hover:shadow-lg transition-all duration-300">
                   {/* Step Number */}
-                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-[#00E0FF] to-[#8B5CF6] rounded-full flex items-center justify-center text-xl font-bold shadow-lg">
+                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-linear-to-br from-[#FF6B35] to-[#CC5629] rounded-full flex items-center justify-center text-xl font-bold text-white shadow-lg">
                     {item.step}
                   </div>
 
                   <div className="mt-4">
-                    <div className="w-12 h-12 bg-[#00E0FF]/20 rounded-lg flex items-center justify-center text-[#00E0FF] mb-4">
+                    <div className="w-12 h-12 bg-[#FFE8E0] rounded-lg flex items-center justify-center text-[#FF6B35] mb-4">
                       {item.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                    <p className="text-gray-400 text-sm">{item.description}</p>
+                    <h3 className="text-xl font-bold text-[#0F0F0F] mb-2">{item.title}</h3>
+                    <p className="text-[#737373] text-sm">{item.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -309,7 +291,7 @@ export default function StudentLandingPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 px-6 relative">
+      <section className="py-20 px-6 relative bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -317,10 +299,10 @@ export default function StudentLandingPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#0A4A7A] mb-6">
                 Everything You Need to Succeed
               </h2>
-              <p className="text-xl text-gray-400 mb-8">
+              <p className="text-xl text-[#525252] mb-8">
                 Join thousands of students who have transformed their careers with Learn2Launch
               </p>
 
@@ -334,8 +316,8 @@ export default function StudentLandingPage() {
                     transition={{ delay: index * 0.05 }}
                     className="flex items-center space-x-3"
                   >
-                    <CheckCircle className="w-5 h-5 text-[#00E0FF] flex-shrink-0" />
-                    <span className="text-gray-300">{benefit}</span>
+                    <CheckCircle className="w-5 h-5 text-[#2E865F] shrink-0" />
+                    <span className="text-[#525252]">{benefit}</span>
                   </motion.div>
                 ))}
               </div>
@@ -347,12 +329,12 @@ export default function StudentLandingPage() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="relative p-8 bg-gradient-to-br from-[#00E0FF]/20 to-[#8B5CF6]/20 rounded-3xl border border-[#00E0FF]/30 backdrop-blur-sm">
+              <div className="relative p-8 bg-linear-to-br from-[#F5F5F5] to-white rounded-3xl border-2 border-[#0A4A7A] backdrop-blur-sm shadow-xl">
                 {/* Floating Elements */}
                 <motion.div
                   animate={{ y: [0, -20, 0] }}
                   transition={{ duration: 4, repeat: Infinity }}
-                  className="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-br from-[#00E0FF] to-[#8B5CF6] rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(0,224,255,0.5)]"
+                  className="absolute -top-6 -right-6 w-20 h-20 bg-linear-to-br from-[#FF6B35] to-[#CC5629] rounded-2xl flex items-center justify-center shadow-lg"
                 >
                   <Star className="w-10 h-10 text-white" />
                 </motion.div>
@@ -360,27 +342,27 @@ export default function StudentLandingPage() {
                 <motion.div
                   animate={{ y: [0, 20, 0] }}
                   transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-                  className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-[#FACC15] to-[#FF007A] rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(250,204,21,0.5)]"
+                  className="absolute -bottom-4 -left-4 w-16 h-16 bg-linear-to-br from-[#2E865F] to-[#1E5A42] rounded-xl flex items-center justify-center shadow-lg"
                 >
                   <Zap className="w-8 h-8 text-white" />
                 </motion.div>
 
                 <div className="space-y-6">
-                  <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl">
-                    <span className="text-gray-300">Course Progress</span>
-                    <span className="text-[#00E0FF] font-bold">78%</span>
+                  <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200">
+                    <span className="text-[#525252]">Course Progress</span>
+                    <span className="text-[#0A4A7A] font-bold tabular-nums">78%</span>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl">
-                    <span className="text-gray-300">Projects Completed</span>
-                    <span className="text-[#00E0FF] font-bold">12/15</span>
+                  <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200">
+                    <span className="text-[#525252]">Projects Completed</span>
+                    <span className="text-[#0A4A7A] font-bold tabular-nums">12/15</span>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl">
-                    <span className="text-gray-300">Leaderboard Rank</span>
-                    <span className="text-[#FACC15] font-bold">#47</span>
+                  <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200">
+                    <span className="text-[#525252]">Leaderboard Rank</span>
+                    <span className="text-[#FF6B35] font-bold tabular-nums">#47</span>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl">
-                    <span className="text-gray-300">Certificates Earned</span>
-                    <span className="text-[#8B5CF6] font-bold">3</span>
+                  <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200">
+                    <span className="text-[#525252]">Certificates Earned</span>
+                    <span className="text-[#2E865F] font-bold tabular-nums">3</span>
                   </div>
                 </div>
               </div>
@@ -390,16 +372,16 @@ export default function StudentLandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 relative">
+      <section className="py-20 px-6 relative bg-[#FAFAFA]">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative p-12 bg-gradient-to-br from-[#00E0FF]/20 to-[#8B5CF6]/20 rounded-3xl border border-[#00E0FF]/30 backdrop-blur-sm text-center overflow-hidden"
+            className="relative p-12 bg-linear-to-br from-[#0A4A7A] to-[#083A5E] rounded-3xl border-2 border-[#0D5C94] text-center overflow-hidden shadow-2xl"
           >
             {/* Animated Background */}
-            <div className="absolute inset-0 opacity-30">
+            <div className="absolute inset-0 opacity-10">
               <motion.div
                 animate={{
                   backgroundPosition: ['0% 0%', '100% 100%'],
@@ -411,7 +393,7 @@ export default function StudentLandingPage() {
                 }}
                 className="w-full h-full"
                 style={{
-                  backgroundImage: 'radial-gradient(circle, #00E0FF 1px, transparent 1px)',
+                  backgroundImage: 'radial-gradient(circle, #FFFFFF 1px, transparent 1px)',
                   backgroundSize: '50px 50px',
                 }}
               />
@@ -421,32 +403,28 @@ export default function StudentLandingPage() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                 Ready to Start Your Journey?
               </h2>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-200 mb-8">
                 Join thousands of students already learning and building amazing projects
               </p>
 
               <Link
                 href="/dashboard/student"
-                className="inline-flex items-center space-x-2 px-10 py-5 bg-[#00E0FF] text-[#0B0C14] rounded-full font-bold text-lg hover:shadow-[0_0_40px_rgba(0,224,255,0.8)] transition-all duration-300 group"
+                className="inline-flex items-center space-x-2 px-10 py-5 bg-[#FF6B35] text-white rounded-full font-bold text-lg hover:bg-[#CC5629] hover:shadow-xl transition-all duration-300 group"
               >
                 <span>Access Student Dashboard</span>
                 <ChevronRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
               </Link>
 
-              <p className="text-sm text-gray-400 mt-6">
+              <p className="text-sm text-gray-300 mt-6">
                 No credit card required • Start learning in minutes
               </p>
             </div>
           </motion.div>
         </div>
       </section>
+      </main>
 
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t border-white/10">
-        <div className="max-w-7xl mx-auto text-center text-gray-400">
-          <p>&copy; 2025 Learn2Launch. Empowering the next generation of builders.</p>
-        </div>
-      </footer> 
+      <Footer />
     </div>
   );
 }

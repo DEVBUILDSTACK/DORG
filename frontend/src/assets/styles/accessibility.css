@@ -1,0 +1,38 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--brand-primary);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: var(--radius-md);
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+[role="button"],
+[role="link"] {
+  cursor: pointer;
+}
+
+[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -15,11 +15,17 @@ const Input: React.FC<CustomInputProps> = ({ wrapperClass, inputClass, ...props 
         <MantineTextInput
             classNames={{
                 root: "w-full",
-                wrapper: cn("flex-1 xl:h-10 xl:text-xs text-base", wrapperClass),
-                input: cn("h-full bg-transparent border-white/26 rounded-lg font-manrope placeholder:text-white/50 font-thin xl:text-xs text-base text-white font-medium", inputClass),
-                error: "xl:text-xs text-base",
+                wrapper: cn("flex-1 h-12", wrapperClass),
+                input: cn(
+                    "h-full bg-white border border-[#E5E7EB] rounded-xl text-[#0A4A7A] placeholder:text-[#9CA3AF] transition-all duration-200",
+                    "focus:border-[#0A4A7A] focus:ring-2 focus:ring-[#0A4A7A]/20",
+                    "disabled:bg-[#F9FAFB] disabled:text-[#9CA3AF] disabled:cursor-not-allowed",
+                    inputClass
+                ),
+                label: "text-sm font-semibold text-[#0A4A7A] mb-2",
+                error: "text-sm text-[#DC2626] mt-1",
             }}
-            withErrorStyles={false}
+            withErrorStyles={true}
             {...props}
         />
     );

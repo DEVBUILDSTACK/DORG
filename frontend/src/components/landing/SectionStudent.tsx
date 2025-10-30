@@ -2,125 +2,112 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { BookOpen, Trophy } from '@/components/icons';
+import { BookOpen, Users } from '@/components/icons';
 import ScrollButton from './ScrollButton';
 
 export default function SectionStudent() {
   return (
     <section
       id="section-0"
-      className="snap-start h-screen flex items-center justify-center relative overflow-hidden"
+      className="snap-start min-h-screen flex items-center relative overflow-hidden bg-white py-20"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0B0C14] to-[#101120]">
-        <div className="absolute inset-0 opacity-20">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-[#00E0FF] rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
+      <div className="absolute inset-0 bg-linear-to-br from-gray-50 to-white" />
+
+      <div className="container relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFE8E0] text-[#FF6B35] rounded-full text-sm font-medium">
+              <Users className="w-4 h-4" />
+              <span>For Learners</span>
+            </div>
+
+            <h1 className="text-hero font-bold text-[#1F2937] leading-tight">
+              Master Blockchain Development
+            </h1>
+
+            <p className="text-body-lg text-text-secondary leading-relaxed max-w-xl">
+              Comprehensive education in decentralized finance and smart contract development. 
+              Build real-world projects and launch your career in Web3.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/student"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary text-white rounded-xl font-semibold transition-all duration-300 hover:bg-brand-primary-hover hover:shadow-brand-sm"
+              >
+                <BookOpen className="w-5 h-5" />
+                <span>Explore Courses</span>
+              </Link>
+
+              <Link
+                href="/dashboard/student"
+                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-[#FF6B35] text-[#FF6B35] rounded-xl font-semibold transition-all duration-300 hover:bg-[#FFE8E0] hover:border-[#E65A2D]"
+              >
+                <span>View Dashboard</span>
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200">
+              <div>
+                <div className="text-3xl font-bold text-brand-primary mb-1">500+</div>
+                <div className="text-sm text-text-secondary">Active Learners</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-brand-primary mb-1">50+</div>
+                <div className="text-sm text-text-secondary">Courses</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-brand-primary mb-1">95%</div>
+                <div className="text-sm text-text-secondary">Success Rate</div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="relative bg-linear-to-br from-[#FFE8E0] to-white rounded-2xl p-8 border border-gray-200 shadow-lg">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-text-secondary">Learning Progress</span>
+                  <span className="text-brand-primary font-semibold">72%</span>
+                </div>
+                <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: '72%' }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="h-full bg-brand-primary rounded-full"
+                  />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4 pt-4">
+                  <div className="bg-white rounded-xl p-4 border border-gray-200">
+                    <div className="text-2xl font-bold text-brand-primary mb-1">24</div>
+                    <div className="text-xs text-text-secondary">Courses Completed</div>
+                  </div>
+                  <div className="bg-white rounded-xl p-4 border border-gray-200">
+                    <div className="text-2xl font-bold text-accent-green mb-1">12</div>
+                    <div className="text-xs text-text-secondary">Projects Built</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-        {/* Left: Text Content */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-6"
-        >
-          <motion.h1
-            className="text-5xl md:text-7xl font-bold"
-            style={{
-              background: 'linear-gradient(135deg, #00E0FF 0%, #FFFFFF 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            Learn. Build. Launch.
-          </motion.h1>
-
-          <p className="text-xl text-gray-400 leading-relaxed">
-            Empowering students to master coding and finance through real-world
-            learning.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-4 pt-4">
-            <Link
-              href="/student"
-              className="group px-8 py-4 bg-[#00E0FF] text-[#0B0C14] rounded-full font-semibold hover:shadow-[0_0_30px_rgba(0,224,255,0.6)] transition-all duration-300 flex items-center space-x-2"
-            >
-              <BookOpen className="w-5 h-5" />
-              <span>Learn More</span>
-            </Link>
-
-            <Link
-              href="/student"
-              className="px-8 py-4 border border-[#00E0FF]/50 text-[#00E0FF] rounded-full hover:bg-[#00E0FF]/10 hover:shadow-[0_0_20px_rgba(0,224,255,0.3)] transition-all duration-300 flex items-center space-x-2"
-            >
-              <Trophy className="w-5 h-5" />
-              <span>Go to Dashboard</span>
-            </Link>
-          </div>
-        </motion.div>
-
-        {/* Right: Visual */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative"
-        >
-          <div className="relative w-full aspect-square">
-            {/* Glowing orb effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#00E0FF]/30 to-transparent rounded-full blur-3xl" />
-
-            {/* Floating code blocks */}
-            <motion.div
-              animate={{
-                y: [0, -20, 0],
-                rotate: [0, 5, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className="absolute inset-0 flex items-center justify-center"
-            >
-              <div className="w-64 h-64 border border-[#00E0FF]/30 rounded-2xl backdrop-blur-md bg-[#0B0C14]/50 p-6 space-y-3">
-                {[...Array(5)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="h-2 bg-gradient-to-r from-[#00E0FF] to-transparent rounded"
-                    style={{ width: `${60 + Math.random() * 40}%` }}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Scroll to Next Section */}
-      <ScrollButton targetSection="section-1" color="#00E0FF" label="Next: For Builders" />
+      <ScrollButton targetSection="section-1" label="Next: For Builders" />
     </section>
   );
 }

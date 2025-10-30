@@ -1,0 +1,46 @@
+:root {
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.12), 0 16px 32px rgba(0, 0, 0, 0.12);
+  --shadow-2xl: 0 24px 48px rgba(0, 0, 0, 0.16), 0 48px 96px rgba(0, 0, 0, 0.12);
+  
+  --shadow-brand-sm: 0 4px 12px rgba(10, 74, 122, 0.15);
+  --shadow-brand-md: 0 8px 24px rgba(10, 74, 122, 0.25);
+  
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 624.9375rem;
+}
+
+.elevation-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.elevation-md {
+  box-shadow: var(--shadow-md);
+}
+
+.elevation-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.elevation-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+.elevation-2xl {
+  box-shadow: var(--shadow-2xl);
+}
+
+[data-theme="dark"] {
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.6), 0 16px 32px rgba(0, 0, 0, 0.5);
+  --shadow-2xl: 0 24px 48px rgba(0, 0, 0, 0.7), 0 48px 96px rgba(0, 0, 0, 0.6);
+}

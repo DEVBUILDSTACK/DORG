@@ -69,20 +69,20 @@ export default function InvestorSettingsPage() {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-white">Account Settings</h1>
-        <p className="text-gray-400 text-lg">Manage your investor profile, security, and preferences</p>
+        <h1 className="text-3xl font-bold text-[#1F2937]">Account <span className="text-[#FF6B35]">Settings</span></h1>
+        <p className="text-[#5A6C7D] text-lg">Manage your investor profile, security, and preferences</p>
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex items-center space-x-1 bg-gray-800/30 p-1 rounded-xl w-fit">
+      <div className="flex items-center space-x-1 bg-[#F9FAFB] border border-[#E5E7EB] p-1 rounded-xl w-fit">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
               activeTab === tab.id
-                ? 'bg-[#00E0FF] text-black shadow-lg shadow-[#00E0FF]/30'
-                : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
+                ? 'bg-[#FF6B35] text-white shadow-lg shadow-[#FF6B35]/30'
+                : 'text-[#5A6C7D] hover:text-[#1F2937] hover:bg-white'
             }`}
           >
             <tab.icon className="w-4 h-4" />
@@ -97,11 +97,11 @@ export default function InvestorSettingsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Profile Information */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#00E0FF]/10 to-[#06B6D4]/10 rounded-2xl blur-xl" />
-              <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6">
+              <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl" />
+              <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-lg">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-white">Profile Information</h2>
-                  <button className="flex items-center space-x-2 px-4 py-2 bg-[#00E0FF] text-black rounded-lg hover:shadow-lg hover:shadow-[#00E0FF]/30 transition-all">
+                  <h2 className="text-xl font-semibold text-[#1F2937]">Profile Information</h2>
+                  <button className="flex items-center space-x-2 px-4 py-2 bg-[#FF6B35] text-white rounded-lg hover:shadow-lg hover:shadow-[#FF6B35]/30 transition-all">
                     <Save className="w-4 h-4" />
                     <span>Save Changes</span>
                   </button>
@@ -110,73 +110,73 @@ export default function InvestorSettingsPage() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm text-gray-400 mb-2">First Name</label>
+                      <label className="block text-sm text-[#5A6C7D] mb-2">First Name</label>
                       <input
                         type="text"
                         value={profileData.firstName}
                         onChange={(e) => handleProfileChange('firstName', e.target.value)}
-                        className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+                        className="w-full px-4 py-2 bg-white border border-[#E5E7EB] rounded-lg text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-gray-400 mb-2">Last Name</label>
+                      <label className="block text-sm text-[#5A6C7D] mb-2">Last Name</label>
                       <input
                         type="text"
                         value={profileData.lastName}
                         onChange={(e) => handleProfileChange('lastName', e.target.value)}
-                        className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+                        className="w-full px-4 py-2 bg-white border border-[#E5E7EB] rounded-lg text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">Email Address</label>
+                    <label className="block text-sm text-[#5A6C7D] mb-2">Email Address</label>
                     <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#5A6C7D] w-4 h-4" />
                       <input
                         type="email"
                         value={profileData.email}
                         onChange={(e) => handleProfileChange('email', e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 bg-gray-900/50 border border-gray-700/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+                        className="w-full pl-10 pr-4 py-2 bg-white border border-[#E5E7EB] rounded-lg text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">Phone Number</label>
+                    <label className="block text-sm text-[#5A6C7D] mb-2">Phone Number</label>
                     <div className="relative">
-                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#5A6C7D] w-4 h-4" />
                       <input
                         type="tel"
                         value={profileData.phone}
                         onChange={(e) => handleProfileChange('phone', e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 bg-gray-900/50 border border-gray-700/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+                        className="w-full pl-10 pr-4 py-2 bg-white border border-[#E5E7EB] rounded-lg text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">Company</label>
+                    <label className="block text-sm text-[#5A6C7D] mb-2">Company</label>
                     <div className="relative">
-                      <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                      <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#5A6C7D] w-4 h-4" />
                       <input
                         type="text"
                         value={profileData.company}
                         onChange={(e) => handleProfileChange('company', e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 bg-gray-900/50 border border-gray-700/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+                        className="w-full pl-10 pr-4 py-2 bg-white border border-[#E5E7EB] rounded-lg text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">Location</label>
+                    <label className="block text-sm text-[#5A6C7D] mb-2">Location</label>
                     <div className="relative">
-                      <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                      <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#5A6C7D] w-4 h-4" />
                       <input
                         type="text"
                         value={profileData.location}
                         onChange={(e) => handleProfileChange('location', e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 bg-gray-900/50 border border-gray-700/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+                        className="w-full pl-10 pr-4 py-2 bg-white border border-[#E5E7EB] rounded-lg text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
                       />
                     </div>
                   </div>
@@ -186,17 +186,17 @@ export default function InvestorSettingsPage() {
 
             {/* Investment Preferences */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl blur-xl" />
-              <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6">
-                <h2 className="text-xl font-semibold text-white mb-6">Investment Preferences</h2>
+              <div className="absolute inset-0 bg-[#A855F7]/5 rounded-2xl blur-xl" />
+              <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-lg">
+                <h2 className="text-xl font-semibold text-[#1F2937] mb-6">Investment Preferences</h2>
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">Investor Type</label>
+                    <label className="block text-sm text-[#5A6C7D] mb-2">Investor Type</label>
                     <select
                       value={profileData.investorType}
                       onChange={(e) => handleProfileChange('investorType', e.target.value)}
-                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+                      className="w-full px-4 py-2 bg-white border border-[#E5E7EB] rounded-lg text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
                     >
                       <option value="Individual">Individual</option>
                       <option value="Institutional">Institutional</option>
@@ -206,11 +206,11 @@ export default function InvestorSettingsPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">Risk Tolerance</label>
+                    <label className="block text-sm text-[#5A6C7D] mb-2">Risk Tolerance</label>
                     <select
                       value={profileData.riskTolerance}
                       onChange={(e) => handleProfileChange('riskTolerance', e.target.value)}
-                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+                      className="w-full px-4 py-2 bg-white border border-[#E5E7EB] rounded-lg text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
                     >
                       <option value="Conservative">Conservative</option>
                       <option value="Medium">Medium</option>
@@ -219,11 +219,11 @@ export default function InvestorSettingsPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm text-gray-400 mb-2">Investment Focus</label>
+                    <label className="block text-sm text-[#5A6C7D] mb-2">Investment Focus</label>
                     <select
                       value={profileData.investmentFocus}
                       onChange={(e) => handleProfileChange('investmentFocus', e.target.value)}
-                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+                      className="w-full px-4 py-2 bg-white border border-[#E5E7EB] rounded-lg text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
                     >
                       <option value="Education & Technology">Education & Technology</option>
                       <option value="Sustainable Development">Sustainable Development</option>
@@ -234,17 +234,17 @@ export default function InvestorSettingsPage() {
                   </div>
 
                   {/* Tier Badge */}
-                  <div className="mt-6 p-4 bg-gradient-to-r from-gray-300/20 to-gray-500/20 rounded-lg border border-gray-600/30">
+                  <div className="mt-6 p-4 bg-[#F9FAFB] rounded-lg border border-[#E5E7EB]">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-white font-medium">Current Tier</p>
-                        <p className="text-sm text-gray-400">Based on your investment history</p>
+                        <p className="text-[#1F2937] font-medium">Current Tier</p>
+                        <p className="text-sm text-[#5A6C7D]">Based on your investment history</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-lg font-bold bg-gradient-to-r from-gray-300 to-gray-500 bg-clip-text text-transparent">
+                        <p className="text-lg font-bold text-[#FF6B35]">
                           Platinum Investor
                         </p>
-                        <p className="text-xs text-gray-400">$1M+ invested</p>
+                        <p className="text-xs text-[#5A6C7D]">$1M+ invested</p>
                       </div>
                     </div>
                   </div>
@@ -256,14 +256,14 @@ export default function InvestorSettingsPage() {
 
         {activeTab === 'notifications' && (
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00E0FF]/10 to-[#06B6D4]/10 rounded-2xl blur-xl" />
-            <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6">
-              <h2 className="text-xl font-semibold text-white mb-6">Notification Preferences</h2>
+            <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl" />
+            <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-lg">
+              <h2 className="text-xl font-semibold text-[#1F2937] mb-6">Notification Preferences</h2>
 
               <div className="space-y-6">
                 {/* Investment Notifications */}
                 <div>
-                  <h3 className="text-lg font-medium text-white mb-4">Investment Updates</h3>
+                  <h3 className="text-lg font-medium text-[#1F2937] mb-4">Investment Updates</h3>
                   <div className="space-y-4">
                     {[
                       { key: 'vaultUpdates', label: 'Vault Performance Updates', description: 'Get notified about yield distributions and vault performance' },
@@ -271,15 +271,15 @@ export default function InvestorSettingsPage() {
                       { key: 'cohortProgress', label: 'Cohort Progress Updates', description: 'Updates on educational cohort milestones and completions' },
                       { key: 'yieldDistribution', label: 'Yield Distribution Alerts', description: 'Notifications when yields are distributed to your account' }
                     ].map((item) => (
-                      <div key={item.key} className="flex items-center justify-between p-4 bg-gray-900/30 rounded-lg">
+                      <div key={item.key} className="flex items-center justify-between p-4 bg-[#F9FAFB] rounded-lg border border-[#E5E7EB]">
                         <div>
-                          <p className="text-white font-medium">{item.label}</p>
-                          <p className="text-sm text-gray-400">{item.description}</p>
+                          <p className="text-[#1F2937] font-medium">{item.label}</p>
+                          <p className="text-sm text-[#5A6C7D]">{item.description}</p>
                         </div>
                         <button
                           onClick={() => handleNotificationChange(item.key as keyof typeof notifications)}
                           className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                            notifications[item.key as keyof typeof notifications] ? 'bg-[#00E0FF]' : 'bg-gray-600'
+                            notifications[item.key as keyof typeof notifications] ? 'bg-[#FF6B35]' : 'bg-[#D1D5DB]'
                           }`}
                         >
                           <span
@@ -295,25 +295,25 @@ export default function InvestorSettingsPage() {
 
                 {/* Communication Channels */}
                 <div>
-                  <h3 className="text-lg font-medium text-white mb-4">Communication Channels</h3>
+                  <h3 className="text-lg font-medium text-[#1F2937] mb-4">Communication Channels</h3>
                   <div className="space-y-4">
                     {[
                       { key: 'emailNotifications', label: 'Email Notifications', description: 'Receive notifications via email', icon: Mail },
                       { key: 'pushNotifications', label: 'Push Notifications', description: 'Browser and mobile push notifications', icon: Smartphone },
                       { key: 'smsAlerts', label: 'SMS Alerts', description: 'Critical alerts via SMS', icon: Phone }
                     ].map((item) => (
-                      <div key={item.key} className="flex items-center justify-between p-4 bg-gray-900/30 rounded-lg">
+                      <div key={item.key} className="flex items-center justify-between p-4 bg-[#F9FAFB] rounded-lg border border-[#E5E7EB]">
                         <div className="flex items-center space-x-3">
-                          <item.icon className="w-5 h-5 text-gray-400" />
+                          <item.icon className="w-5 h-5 text-[#5A6C7D]" />
                           <div>
-                            <p className="text-white font-medium">{item.label}</p>
-                            <p className="text-sm text-gray-400">{item.description}</p>
+                            <p className="text-[#1F2937] font-medium">{item.label}</p>
+                            <p className="text-sm text-[#5A6C7D]">{item.description}</p>
                           </div>
                         </div>
                         <button
                           onClick={() => handleNotificationChange(item.key as keyof typeof notifications)}
                           className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                            notifications[item.key as keyof typeof notifications] ? 'bg-[#00E0FF]' : 'bg-gray-600'
+                            notifications[item.key as keyof typeof notifications] ? 'bg-[#FF6B35]' : 'bg-[#D1D5DB]'
                           }`}
                         >
                           <span
@@ -335,42 +335,42 @@ export default function InvestorSettingsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Password & Authentication */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-2xl blur-xl" />
-              <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6">
-                <h2 className="text-xl font-semibold text-white mb-6">Password & Authentication</h2>
+              <div className="absolute inset-0 bg-red-500/5 rounded-2xl blur-xl" />
+              <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-lg">
+                <h2 className="text-xl font-semibold text-[#1F2937] mb-6">Password & Authentication</h2>
 
                 <div className="space-y-4">
-                  <button className="w-full flex items-center justify-between p-4 bg-gray-900/30 rounded-lg hover:bg-gray-900/50 transition-colors">
+                  <button className="w-full flex items-center justify-between p-4 bg-[#F9FAFB] rounded-lg hover:bg-white transition-colors border border-[#E5E7EB]">
                     <div className="flex items-center space-x-3">
-                      <Lock className="w-5 h-5 text-gray-400" />
+                      <Lock className="w-5 h-5 text-[#5A6C7D]" />
                       <div className="text-left">
-                        <p className="text-white font-medium">Change Password</p>
-                        <p className="text-sm text-gray-400">Last changed 3 months ago</p>
+                        <p className="text-[#1F2937] font-medium">Change Password</p>
+                        <p className="text-sm text-[#5A6C7D]">Last changed 3 months ago</p>
                       </div>
                     </div>
-                    <Edit className="w-4 h-4 text-gray-400" />
+                    <Edit className="w-4 h-4 text-[#5A6C7D]" />
                   </button>
 
-                  <button className="w-full flex items-center justify-between p-4 bg-gray-900/30 rounded-lg hover:bg-gray-900/50 transition-colors">
+                  <button className="w-full flex items-center justify-between p-4 bg-[#F9FAFB] rounded-lg hover:bg-white transition-colors border border-[#E5E7EB]">
                     <div className="flex items-center space-x-3">
-                      <Shield className="w-5 h-5 text-green-400" />
+                      <Shield className="w-5 h-5 text-[#2E865F]" />
                       <div className="text-left">
-                        <p className="text-white font-medium">Two-Factor Authentication</p>
-                        <p className="text-sm text-green-400">Enabled</p>
+                        <p className="text-[#1F2937] font-medium">Two-Factor Authentication</p>
+                        <p className="text-sm text-[#2E865F]">Enabled</p>
                       </div>
                     </div>
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-[#2E865F]" />
                   </button>
 
-                  <button className="w-full flex items-center justify-between p-4 bg-gray-900/30 rounded-lg hover:bg-gray-900/50 transition-colors">
+                  <button className="w-full flex items-center justify-between p-4 bg-[#F9FAFB] rounded-lg hover:bg-white transition-colors border border-[#E5E7EB]">
                     <div className="flex items-center space-x-3">
-                      <Smartphone className="w-5 h-5 text-gray-400" />
+                      <Smartphone className="w-5 h-5 text-[#5A6C7D]" />
                       <div className="text-left">
-                        <p className="text-white font-medium">Backup Codes</p>
-                        <p className="text-sm text-gray-400">Generate backup authentication codes</p>
+                        <p className="text-[#1F2937] font-medium">Backup Codes</p>
+                        <p className="text-sm text-[#5A6C7D]">Generate backup authentication codes</p>
                       </div>
                     </div>
-                    <Download className="w-4 h-4 text-gray-400" />
+                    <Download className="w-4 h-4 text-[#5A6C7D]" />
                   </button>
                 </div>
               </div>
@@ -378,9 +378,9 @@ export default function InvestorSettingsPage() {
 
             {/* Login Sessions */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-2xl blur-xl" />
-              <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6">
-                <h2 className="text-xl font-semibold text-white mb-6">Active Sessions</h2>
+              <div className="absolute inset-0 bg-[#A855F7]/5 rounded-2xl blur-xl" />
+              <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-lg">
+                <h2 className="text-xl font-semibold text-[#1F2937] mb-6">Active Sessions</h2>
 
                 <div className="space-y-4">
                   {[
@@ -388,16 +388,16 @@ export default function InvestorSettingsPage() {
                     { device: 'iPhone 15 Pro', location: 'San Francisco, CA', current: false, lastActive: '2 hours ago' },
                     { device: 'Chrome Browser', location: 'New York, NY', current: false, lastActive: '1 day ago' }
                   ].map((session, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-gray-900/30 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-4 bg-[#F9FAFB] rounded-lg border border-[#E5E7EB]">
                       <div className="flex items-center space-x-3">
-                        <div className={`w-3 h-3 rounded-full ${session.current ? 'bg-green-400 animate-pulse' : 'bg-gray-500'}`} />
+                        <div className={`w-3 h-3 rounded-full ${session.current ? 'bg-[#2E865F] animate-pulse' : 'bg-[#D1D5DB]'}`} />
                         <div>
-                          <p className="text-white font-medium">{session.device}</p>
-                          <p className="text-sm text-gray-400">{session.location} • {session.lastActive}</p>
+                          <p className="text-[#1F2937] font-medium">{session.device}</p>
+                          <p className="text-sm text-[#5A6C7D]">{session.location} • {session.lastActive}</p>
                         </div>
                       </div>
                       {!session.current && (
-                        <button className="text-red-400 hover:text-red-300 transition-colors">
+                        <button className="text-red-500 hover:text-red-600 transition-colors">
                           <Trash2 className="w-4 h-4" />
                         </button>
                       )}
@@ -411,58 +411,58 @@ export default function InvestorSettingsPage() {
 
         {activeTab === 'api' && (
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl blur-xl" />
-            <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6">
-              <h2 className="text-xl font-semibold text-white mb-6">API Access</h2>
+            <div className="absolute inset-0 bg-[#A855F7]/5 rounded-2xl blur-xl" />
+            <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-lg">
+              <h2 className="text-xl font-semibold text-[#1F2937] mb-6">API Access</h2>
 
               <div className="space-y-6">
                 {/* API Key */}
-                <div className="p-4 bg-gray-900/30 rounded-lg">
+                <div className="p-4 bg-[#F9FAFB] rounded-lg border border-[#E5E7EB]">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <p className="text-white font-medium">API Key</p>
-                      <p className="text-sm text-gray-400">Use this key to access your portfolio data programmatically</p>
+                      <p className="text-[#1F2937] font-medium">API Key</p>
+                      <p className="text-sm text-[#5A6C7D]">Use this key to access your portfolio data programmatically</p>
                     </div>
                     <button
                       onClick={() => setShowApiKey(!showApiKey)}
-                      className="p-2 hover:bg-gray-700/50 rounded-lg transition-colors"
+                      className="p-2 hover:bg-white rounded-lg transition-colors"
                     >
-                      {showApiKey ? <EyeOff className="w-4 h-4 text-gray-400" /> : <Eye className="w-4 h-4 text-gray-400" />}
+                      {showApiKey ? <EyeOff className="w-4 h-4 text-[#5A6C7D]" /> : <Eye className="w-4 h-4 text-[#5A6C7D]" />}
                     </button>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <code className="flex-1 p-3 bg-gray-800/50 rounded-lg text-sm font-mono text-gray-300">
+                    <code className="flex-1 p-3 bg-white rounded-lg text-sm font-mono text-[#1F2937] border border-[#E5E7EB]">
                       {showApiKey ? 'l2l_live_sk_1234567890abcdef...' : '••••••••••••••••••••••••••••••••'}
                     </code>
-                    <button className="px-4 py-2 bg-[#00E0FF] text-black rounded-lg hover:shadow-lg hover:shadow-[#00E0FF]/30 transition-all">
+                    <button className="px-4 py-2 bg-[#FF6B35] text-white rounded-lg hover:shadow-lg hover:shadow-[#FF6B35]/30 transition-all">
                       Copy
                     </button>
                   </div>
                 </div>
 
                 {/* API Documentation */}
-                <div className="p-4 bg-gray-900/30 rounded-lg">
-                  <h3 className="text-white font-medium mb-2">API Documentation</h3>
-                  <p className="text-sm text-gray-400 mb-4">
+                <div className="p-4 bg-[#F9FAFB] rounded-lg border border-[#E5E7EB]">
+                  <h3 className="text-[#1F2937] font-medium mb-2">API Documentation</h3>
+                  <p className="text-sm text-[#5A6C7D] mb-4">
                     Access comprehensive documentation for integrating with the Learn2Launch API
                   </p>
-                  <button className="flex items-center space-x-2 px-4 py-2 bg-gray-700/50 hover:bg-gray-600/50 rounded-lg transition-colors">
+                  <button className="flex items-center space-x-2 px-4 py-2 bg-white hover:bg-[#F9FAFB] rounded-lg transition-colors border border-[#E5E7EB]">
                     <Globe className="w-4 h-4" />
                     <span>View Documentation</span>
                   </button>
                 </div>
 
                 {/* Rate Limits */}
-                <div className="p-4 bg-gray-900/30 rounded-lg">
-                  <h3 className="text-white font-medium mb-4">Rate Limits</h3>
+                <div className="p-4 bg-[#F9FAFB] rounded-lg border border-[#E5E7EB]">
+                  <h3 className="text-[#1F2937] font-medium mb-4">Rate Limits</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <p className="text-sm text-gray-400">Requests per minute</p>
-                      <p className="text-lg font-bold text-[#00E0FF]">1,000</p>
+                      <p className="text-sm text-[#5A6C7D]">Requests per minute</p>
+                      <p className="text-lg font-bold text-[#FF6B35]">1,000</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400">Daily limit</p>
-                      <p className="text-lg font-bold text-[#00E0FF]">100,000</p>
+                      <p className="text-sm text-[#5A6C7D]">Daily limit</p>
+                      <p className="text-lg font-bold text-[#FF6B35]">100,000</p>
                     </div>
                   </div>
                 </div>
@@ -475,9 +475,9 @@ export default function InvestorSettingsPage() {
           <div className="space-y-6">
             {/* Data Export */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-2xl blur-xl" />
-              <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6">
-                <h2 className="text-xl font-semibold text-white mb-6">Data Export</h2>
+              <div className="absolute inset-0 bg-[#2E865F]/5 rounded-2xl blur-xl" />
+              <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-lg">
+                <h2 className="text-xl font-semibold text-[#1F2937] mb-6">Data Export</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[
@@ -486,12 +486,12 @@ export default function InvestorSettingsPage() {
                     { title: 'Impact Reports', description: 'Social impact metrics and outcomes', format: 'PDF, JSON' },
                     { title: 'Tax Documents', description: 'Annual tax forms and statements', format: 'PDF' }
                   ].map((item, index) => (
-                    <div key={index} className="p-4 bg-gray-900/30 rounded-lg">
-                      <h3 className="text-white font-medium mb-2">{item.title}</h3>
-                      <p className="text-sm text-gray-400 mb-3">{item.description}</p>
+                    <div key={index} className="p-4 bg-[#F9FAFB] rounded-lg border border-[#E5E7EB]">
+                      <h3 className="text-[#1F2937] font-medium mb-2">{item.title}</h3>
+                      <p className="text-sm text-[#5A6C7D] mb-3">{item.description}</p>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-500">{item.format}</span>
-                        <button className="flex items-center space-x-1 px-3 py-1 bg-[#00E0FF] text-black rounded-lg text-sm hover:shadow-lg hover:shadow-[#00E0FF]/30 transition-all">
+                        <span className="text-xs text-[#5A6C7D]">{item.format}</span>
+                        <button className="flex items-center space-x-1 px-3 py-1 bg-[#FF6B35] text-white rounded-lg text-sm hover:shadow-lg hover:shadow-[#FF6B35]/30 transition-all">
                           <Download className="w-3 h-3" />
                           <span>Export</span>
                         </button>
@@ -504,21 +504,21 @@ export default function InvestorSettingsPage() {
 
             {/* Account Deletion */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-2xl blur-xl" />
-              <div className="relative bg-gray-800/50 backdrop-blur-sm border border-red-500/30 rounded-2xl p-6">
+              <div className="absolute inset-0 bg-red-500/5 rounded-2xl blur-xl" />
+              <div className="relative bg-white border border-red-300 rounded-2xl p-6 shadow-lg">
                 <div className="flex items-start space-x-4">
-                  <AlertTriangle className="w-6 h-6 text-red-400 mt-1" />
+                  <AlertTriangle className="w-6 h-6 text-red-500 mt-1" />
                   <div className="flex-1">
-                    <h2 className="text-xl font-semibold text-white mb-2">Delete Account</h2>
-                    <p className="text-gray-400 mb-4">
+                    <h2 className="text-xl font-semibold text-[#1F2937] mb-2">Delete Account</h2>
+                    <p className="text-[#5A6C7D] mb-4">
                       Permanently delete your account and all associated data. This action cannot be undone.
                     </p>
                     <div className="space-y-2 mb-6">
-                      <p className="text-sm text-gray-400">• All investment positions will be liquidated</p>
-                      <p className="text-sm text-gray-400">• Historical data will be permanently removed</p>
-                      <p className="text-sm text-gray-400">• API access will be revoked immediately</p>
+                      <p className="text-sm text-[#5A6C7D]">• All investment positions will be liquidated</p>
+                      <p className="text-sm text-[#5A6C7D]">• Historical data will be permanently removed</p>
+                      <p className="text-sm text-[#5A6C7D]">• API access will be revoked immediately</p>
                     </div>
-                    <button className="flex items-center space-x-2 px-4 py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg hover:bg-red-500/30 transition-colors">
+                    <button className="flex items-center space-x-2 px-4 py-2 bg-red-500/10 text-red-500 border border-red-300 rounded-lg hover:bg-red-500/20 transition-colors">
                       <Trash2 className="w-4 h-4" />
                       <span>Delete Account</span>
                     </button>

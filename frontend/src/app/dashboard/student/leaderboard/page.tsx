@@ -47,26 +47,26 @@ const LeaderboardPage = () => {
   });
 
   const getRankIcon = (rank: number) => {
-    if (rank === 1) return <Crown className="w-5 h-5 text-yellow-500" />;
-    if (rank === 2) return <Medal className="w-5 h-5 text-gray-400" />;
-    if (rank === 3) return <Award className="w-5 h-5 text-orange-600" />;
-    return <span className="text-gray-400 font-bold">#{rank}</span>;
+    if (rank === 1) return <Crown className="w-5 h-5 text-[#F59E0B]" />;
+    if (rank === 2) return <Medal className="w-5 h-5 text-[#9CA3AF]" />;
+    if (rank === 3) return <Award className="w-5 h-5 text-[#FF6B35]" />;
+    return <span className="text-[#5A6C7D] font-bold">#{rank}</span>;
   };
 
   const getRankBorder = (rank: number) => {
-    if (rank === 1) return 'border-yellow-500/50 shadow-yellow-500/20';
-    if (rank === 2) return 'border-gray-400/50 shadow-gray-400/20';
-    if (rank === 3) return 'border-orange-600/50 shadow-orange-600/20';
-    return 'border-gray-700/50';
+    if (rank === 1) return 'border-[#F59E0B]/50 shadow-lg';
+    if (rank === 2) return 'border-[#9CA3AF]/50 shadow-lg';
+    if (rank === 3) return 'border-[#FF6B35]/50 shadow-lg';
+    return 'border-[#E5E7EB]';
   };
 
   const getLevelColor = (level: string) => {
     switch (level) {
-      case 'Expert': return 'text-purple-400 bg-purple-500/20';
-      case 'Advanced': return 'text-blue-400 bg-blue-500/20';
-      case 'Intermediate': return 'text-green-400 bg-green-500/20';
-      case 'Beginner': return 'text-yellow-400 bg-yellow-500/20';
-      default: return 'text-gray-400 bg-gray-500/20';
+      case 'Expert': return 'text-[#A855F7] bg-[#A855F7]/10 border border-[#A855F7]/20';
+      case 'Advanced': return 'text-[#FF6B35] bg-[#FFE8E0] border border-[#FF6B35]/30';
+      case 'Intermediate': return 'text-[#2E865F] bg-[#2E865F]/10 border border-[#2E865F]/20';
+      case 'Beginner': return 'text-[#F59E0B] bg-[#F59E0B]/10 border border-[#F59E0B]/20';
+      default: return 'text-[#5A6C7D] bg-[#F3F4F6] border border-[#E5E7EB]';
     }
   };
 
@@ -74,11 +74,11 @@ const LeaderboardPage = () => {
     <div className="space-y-8">
       {/* Header */}
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-white flex items-center">
-          <Trophy className="w-8 h-8 mr-3 text-yellow-500" />
+        <h1 className="text-3xl font-bold text-[#1F2937] flex items-center">
+          <Trophy className="w-8 h-8 mr-3 text-[#F59E0B]" />
           Leaderboard
         </h1>
-        <p className="text-gray-400 text-lg">See how you stack up against other learners</p>
+        <p className="text-[#5A6C7D] text-lg">See how you stack up against other learners</p>
       </div>
 
       {/* Top 3 Podium */}
@@ -87,26 +87,26 @@ const LeaderboardPage = () => {
           const rank = index + 1;
           const heights = ['h-32', 'h-28', 'h-24'];
           const glowColors = [
-            'from-yellow-500/20 to-yellow-600/20',
-            'from-gray-400/20 to-gray-500/20',
-            'from-orange-600/20 to-orange-700/20'
+            'bg-[#F59E0B]/5',
+            'bg-[#9CA3AF]/5',
+            'bg-[#FF6B35]/5'
           ];
           
           return (
             <div key={user.id} className={`relative group ${rank === 2 ? 'md:order-1' : rank === 1 ? 'md:order-2' : 'md:order-3'}`}>
-              <div className={`absolute inset-0 bg-gradient-to-r ${glowColors[index]} rounded-2xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity`} />
-              <div className={`relative bg-gray-800/50 backdrop-blur-sm border-2 ${getRankBorder(rank)} rounded-2xl p-6 text-center ${heights[index]} flex flex-col justify-center hover:transform hover:scale-105 transition-all shadow-2xl`}>
+              <div className={`absolute inset-0 ${glowColors[index]} rounded-2xl blur-xl`} />
+              <div className={`relative bg-white border-2 ${getRankBorder(rank)} rounded-2xl p-6 text-center ${heights[index]} flex flex-col justify-center hover:transform hover:scale-105 transition-all`}>
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                   {getRankIcon(rank)}
                 </div>
                 <div className="text-4xl mb-2">{user.avatar}</div>
-                <h3 className="font-bold text-white text-lg mb-1">{user.name}</h3>
-                <p className="text-2xl font-bold bg-gradient-to-r from-[#00E0FF] to-[#06B6D4] bg-clip-text text-transparent">
+                <h3 className="font-bold text-[#1F2937] text-lg mb-1">{user.name}</h3>
+                <p className="text-2xl font-bold text-[#FF6B35]">
                   {user.xp.toLocaleString()} XP
                 </p>
                 <div className="flex items-center justify-center space-x-2 mt-2">
-                  <Star className="w-4 h-4 text-yellow-500" />
-                  <span className="text-sm text-gray-400">{user.badges} badges</span>
+                  <Star className="w-4 h-4 text-[#F59E0B]" />
+                  <span className="text-sm text-[#5A6C7D]">{user.badges} badges</span>
                 </div>
               </div>
             </div>
@@ -116,15 +116,15 @@ const LeaderboardPage = () => {
 
       {/* Full Leaderboard Table */}
       <div className="relative group">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#00E0FF]/5 to-[#06B6D4]/5 rounded-2xl blur-xl" />
-        <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden">
+        <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl" />
+        <div className="relative bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden shadow-lg">
           {/* Table Header */}
-          <div className="bg-gray-900/50 border-b border-gray-700/50">
-            <div className="grid grid-cols-12 gap-4 px-6 py-4 text-sm font-medium text-gray-400">
+          <div className="bg-[#F9FAFB] border-b border-[#E5E7EB]">
+            <div className="grid grid-cols-12 gap-4 px-6 py-4 text-sm font-medium text-[#5A6C7D]">
               <div className="col-span-1">Rank</div>
               <div className="col-span-3">Student</div>
               <div 
-                className="col-span-2 flex items-center cursor-pointer hover:text-white transition-colors"
+                className="col-span-2 flex items-center cursor-pointer hover:text-[#FF6B35] transition-colors"
                 onClick={() => handleSort('xp')}
               >
                 XP Points
@@ -133,7 +133,7 @@ const LeaderboardPage = () => {
                 )}
               </div>
               <div 
-                className="col-span-2 flex items-center cursor-pointer hover:text-white transition-colors"
+                className="col-span-2 flex items-center cursor-pointer hover:text-[#FF6B35] transition-colors"
                 onClick={() => handleSort('badges')}
               >
                 Badges
@@ -142,7 +142,7 @@ const LeaderboardPage = () => {
                 )}
               </div>
               <div 
-                className="col-span-2 flex items-center cursor-pointer hover:text-white transition-colors"
+                className="col-span-2 flex items-center cursor-pointer hover:text-[#FF6B35] transition-colors"
                 onClick={() => handleSort('weeklyGrowth')}
               >
                 Weekly Growth
@@ -155,7 +155,7 @@ const LeaderboardPage = () => {
           </div>
 
           {/* Table Body */}
-          <div className="divide-y divide-gray-700/30">
+          <div className="divide-y divide-[#E5E7EB]">
             {sortedData.map((user, index) => {
               const rank = index + 1;
               const isCurrentUser = user.name === 'Alex Johnson'; // Simulate current user
@@ -163,9 +163,9 @@ const LeaderboardPage = () => {
               return (
                 <div 
                   key={user.id} 
-                  className={`grid grid-cols-12 gap-4 px-6 py-4 hover:bg-gray-700/20 transition-colors ${
-                    isCurrentUser ? 'bg-[#00E0FF]/10 border-l-4 border-[#00E0FF]' : ''
-                  } ${rank <= 3 ? 'bg-gradient-to-r from-gray-800/30 to-transparent' : ''}`}
+                  className={`grid grid-cols-12 gap-4 px-6 py-4 hover:bg-[#F9FAFB] transition-colors ${
+                    isCurrentUser ? 'bg-[#FFE8E0] border-l-4 border-[#FF6B35]' : ''
+                  } ${rank <= 3 ? 'bg-[#F9FAFB]' : ''}`}
                 >
                   {/* Rank */}
                   <div className="col-span-1 flex items-center">
@@ -174,7 +174,7 @@ const LeaderboardPage = () => {
                         {getRankIcon(rank)}
                       </div>
                     ) : (
-                      <span className="text-gray-400 font-semibold">#{rank}</span>
+                      <span className="text-[#5A6C7D] font-semibold">#{rank}</span>
                     )}
                   </div>
 
@@ -182,34 +182,34 @@ const LeaderboardPage = () => {
                   <div className="col-span-3 flex items-center space-x-3">
                     <div className="text-2xl">{user.avatar}</div>
                     <div>
-                      <p className={`font-medium ${isCurrentUser ? 'text-[#00E0FF]' : 'text-white'}`}>
+                      <p className={`font-medium ${isCurrentUser ? 'text-[#FF6B35]' : 'text-[#1F2937]'}`}>
                         {user.name} {isCurrentUser && '(You)'}
                       </p>
-                      <p className="text-sm text-gray-400">{user.coursesCompleted} courses completed</p>
+                      <p className="text-sm text-[#5A6C7D]">{user.coursesCompleted} courses completed</p>
                     </div>
                   </div>
 
                   {/* XP Points */}
                   <div className="col-span-2 flex items-center">
                     <div className="flex items-center space-x-2">
-                      <Zap className="w-4 h-4 text-[#00E0FF]" />
-                      <span className="font-bold text-white">{user.xp.toLocaleString()}</span>
+                      <Zap className="w-4 h-4 text-[#FF6B35]" />
+                      <span className="font-bold text-[#1F2937]">{user.xp.toLocaleString()}</span>
                     </div>
                   </div>
 
                   {/* Badges */}
                   <div className="col-span-2 flex items-center">
                     <div className="flex items-center space-x-2">
-                      <Award className="w-4 h-4 text-yellow-500" />
-                      <span className="text-white">{user.badges}</span>
+                      <Award className="w-4 h-4 text-[#F59E0B]" />
+                      <span className="text-[#1F2937]">{user.badges}</span>
                     </div>
                   </div>
 
                   {/* Weekly Growth */}
                   <div className="col-span-2 flex items-center">
                     <div className="flex items-center space-x-2">
-                      <TrendingUp className="w-4 h-4 text-green-500" />
-                      <span className="text-green-400 font-medium">+{user.weeklyGrowth}%</span>
+                      <TrendingUp className="w-4 h-4 text-[#2E865F]" />
+                      <span className="text-[#2E865F] font-medium">+{user.weeklyGrowth}%</span>
                     </div>
                   </div>
 
@@ -228,30 +228,30 @@ const LeaderboardPage = () => {
 
       {/* Your Progress Card */}
       <div className="relative group">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#00E0FF]/10 to-[#06B6D4]/10 rounded-2xl blur-xl" />
-        <div className="relative bg-gray-800/50 backdrop-blur-sm border border-[#00E0FF]/30 rounded-2xl p-6">
-          <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-            <Target className="w-5 h-5 mr-2 text-[#00E0FF]" />
+        <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl" />
+        <div className="relative bg-white border border-[#FF6B35]/30 rounded-2xl p-6 shadow-lg">
+          <h3 className="text-xl font-semibold text-[#1F2937] mb-4 flex items-center">
+            <Target className="w-5 h-5 mr-2 text-[#FF6B35]" />
             Your Progress
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <p className="text-gray-400 text-sm">Current Rank</p>
-              <p className="text-2xl font-bold text-[#00E0FF]">#6</p>
-              <p className="text-xs text-gray-500">↑2 from last week</p>
+            <div className="text-center p-4 bg-[#F9FAFB] rounded-lg">
+              <p className="text-[#5A6C7D] text-sm">Current Rank</p>
+              <p className="text-2xl font-bold text-[#FF6B35]">#6</p>
+              <p className="text-xs text-[#2E865F]">↑2 from last week</p>
             </div>
-            <div className="text-center">
-              <p className="text-gray-400 text-sm">XP to Next Rank</p>
-              <p className="text-2xl font-bold text-white">230</p>
-              <div className="mt-2 bg-gray-700 rounded-full h-2">
-                <div className="bg-gradient-to-r from-[#00E0FF] to-[#06B6D4] h-2 rounded-full" style={{ width: '75%' }} />
+            <div className="text-center p-4 bg-[#F9FAFB] rounded-lg">
+              <p className="text-[#5A6C7D] text-sm">XP to Next Rank</p>
+              <p className="text-2xl font-bold text-[#1F2937]">230</p>
+              <div className="mt-2 bg-[#E5E7EB] rounded-full h-2">
+                <div className="bg-linear-to-r from-[#FF6B35] to-[#E65A2D] h-2 rounded-full" style={{ width: '75%' }} />
               </div>
             </div>
-            <div className="text-center">
-              <p className="text-gray-400 text-sm">Weekly Goal</p>
-              <p className="text-2xl font-bold text-green-400">85%</p>
-              <p className="text-xs text-gray-500">340/400 XP target</p>
+            <div className="text-center p-4 bg-[#F9FAFB] rounded-lg">
+              <p className="text-[#5A6C7D] text-sm">Weekly Goal</p>
+              <p className="text-2xl font-bold text-[#2E865F]">85%</p>
+              <p className="text-xs text-[#5A6C7D]">340/400 XP target</p>
             </div>
           </div>
         </div>

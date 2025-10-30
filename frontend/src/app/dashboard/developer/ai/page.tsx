@@ -13,7 +13,8 @@ import {
   MessageCircle,
   Sparkles,
   Terminal,
-  Book
+  Book,
+  ChevronRight
 } from 'lucide-react';
 
 export default function AIAssistantPage() {
@@ -114,26 +115,33 @@ Would you like me to provide more specific guidance on any particular aspect?`;
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-6">
+      {/* Breadcrumbs */}
+      <div className="flex items-center space-x-2 text-sm text-[#5A6C7D]">
+        <span>Dashboard</span>
+        <ChevronRight className="w-4 h-4" />
+        <span className="text-[#FF6B35] font-medium">AI Assistant</span>
+      </div>
+
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-white">AI Assistant</h1>
-          <p className="text-gray-400 text-lg font-mono">Your intelligent development companion</p>
+          <h1 className="text-3xl font-bold text-[#1F2937]">AI <span className="text-[#FF6B35]">Assistant</span></h1>
+          <p className="text-[#5A6C7D] text-lg">Your intelligent development companion</p>
         </div>
-        <div className="flex items-center space-x-2 px-3 py-1 bg-[#7C3AED]/20 rounded-lg">
-          <Sparkles className="w-4 h-4 text-[#7C3AED]" />
-          <span className="text-sm text-[#7C3AED] font-mono">AI Powered</span>
+        <div className="flex items-center space-x-2 px-3 py-1 bg-[#A855F7]/10 rounded-lg border border-[#A855F7]/20">
+          <Sparkles className="w-4 h-4 text-[#A855F7]" />
+          <span className="text-sm text-[#A855F7] font-medium">AI Powered</span>
         </div>
       </div>
 
       {/* Main Chat Interface */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 h-[calc(100vh-250px)]">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 h-[calc(100vh-280px)]">
         {/* Chat Area */}
         <div className="lg:col-span-3">
           <div className="relative group h-full">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00D1FF]/10 to-[#7C3AED]/10 rounded-2xl blur-xl" />
-            <div className="relative bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6 h-full flex flex-col">
+            <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl" />
+            <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 h-full flex flex-col hover:shadow-lg transition-all">
               
               {/* Chat Messages */}
               <div className="flex-1 overflow-y-auto space-y-4 mb-4">
@@ -141,20 +149,20 @@ Would you like me to provide more specific guidance on any particular aspect?`;
                   <div key={msg.id} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div className={`max-w-[80%] p-4 rounded-2xl ${
                       msg.type === 'user' 
-                        ? 'bg-[#00D1FF] text-black ml-4' 
-                        : 'bg-gray-800/50 text-white mr-4'
+                        ? 'bg-[#FF6B35] text-white ml-4 shadow-md' 
+                        : 'bg-[#F9FAFB] text-[#1F2937] mr-4 border border-[#E5E7EB]'
                     }`}>
                       {msg.type === 'assistant' && (
                         <div className="flex items-center space-x-2 mb-2">
-                          <Bot className="w-4 h-4 text-[#7C3AED]" />
-                          <span className="text-sm text-[#7C3AED] font-mono">DevVault AI</span>
+                          <Bot className="w-4 h-4 text-[#A855F7]" />
+                          <span className="text-sm text-[#A855F7] font-medium">DevVault AI</span>
                         </div>
                       )}
-                      <div className="whitespace-pre-wrap font-mono text-sm">
+                      <div className="whitespace-pre-wrap text-sm">
                         {msg.content}
                       </div>
                       {msg.content.includes('```') && (
-                        <button className="mt-2 flex items-center space-x-1 text-xs opacity-70 hover:opacity-100 transition-opacity">
+                        <button className="mt-2 flex items-center space-x-1 text-xs text-[#5A6C7D] hover:text-[#1F2937] transition-colors">
                           <Copy className="w-3 h-3" />
                           <span>Copy Code</span>
                         </button>
@@ -173,13 +181,14 @@ Would you like me to provide more specific guidance on any particular aspect?`;
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                     placeholder="Ask about vault protocols, APIs, or request code examples..."
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl text-white font-mono focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50"
+                    className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl text-[#1F2937] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50 focus:border-[#FF6B35]"
                   />
                 </div>
                 <button
                   onClick={sendMessage}
                   disabled={!message.trim()}
-                  className="p-3 bg-gradient-to-r from-[#00D1FF] to-[#7C3AED] text-white rounded-xl hover:shadow-lg hover:shadow-[#00D1FF]/30 transition-all disabled:opacity-50"
+                  className="p-3 bg-[#FF6B35] text-white rounded-xl hover:bg-[#E65A2D] hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  aria-label="Send message"
                 >
                   <Send className="w-5 h-5" />
                 </button>
@@ -192,10 +201,10 @@ Would you like me to provide more specific guidance on any particular aspect?`;
         <div className="space-y-6">
           {/* Quick Prompts */}
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl blur-xl" />
-            <div className="relative bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                <Zap className="w-5 h-5 mr-2 text-purple-400" />
+            <div className="absolute inset-0 bg-[#A855F7]/5 rounded-2xl blur-xl" />
+            <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:shadow-lg transition-all">
+              <h3 className="text-lg font-semibold text-[#1F2937] mb-4 flex items-center">
+                <Zap className="w-5 h-5 mr-2 text-[#A855F7]" />
                 Quick Prompts
               </h3>
               <div className="space-y-2">
@@ -203,7 +212,7 @@ Would you like me to provide more specific guidance on any particular aspect?`;
                   <button
                     key={index}
                     onClick={() => setMessage(prompt)}
-                    className="w-full text-left p-3 bg-gray-800/30 hover:bg-gray-800/50 rounded-lg transition-colors text-sm font-mono text-gray-300 hover:text-white"
+                    className="w-full text-left p-3 bg-[#F9FAFB] hover:bg-[#F3F4F6] border border-[#E5E7EB] rounded-lg transition-colors text-sm text-[#5A6C7D] hover:text-[#1F2937]"
                   >
                     {prompt}
                   </button>
@@ -214,10 +223,10 @@ Would you like me to provide more specific guidance on any particular aspect?`;
 
           {/* AI Capabilities */}
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-2xl blur-xl" />
-            <div className="relative bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                <Bot className="w-5 h-5 mr-2 text-green-400" />
+            <div className="absolute inset-0 bg-[#2E865F]/5 rounded-2xl blur-xl" />
+            <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:shadow-lg transition-all">
+              <h3 className="text-lg font-semibold text-[#1F2937] mb-4 flex items-center">
+                <Bot className="w-5 h-5 mr-2 text-[#2E865F]" />
                 AI Capabilities
               </h3>
               <div className="space-y-3">
@@ -228,10 +237,10 @@ Would you like me to provide more specific guidance on any particular aspect?`;
                   { icon: Book, label: 'Best Practices', desc: 'Security & optimization tips' }
                 ].map((capability, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <capability.icon className="w-4 h-4 text-gray-400 mt-1" />
+                    <capability.icon className="w-4 h-4 text-[#5A6C7D] mt-1" />
                     <div>
-                      <p className="text-white font-mono text-sm">{capability.label}</p>
-                      <p className="text-gray-400 text-xs font-mono">{capability.desc}</p>
+                      <p className="text-[#1F2937] font-medium text-sm">{capability.label}</p>
+                      <p className="text-[#5A6C7D] text-xs">{capability.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -244,18 +253,18 @@ Would you like me to provide more specific guidance on any particular aspect?`;
       {/* Action Buttons */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <button className="flex items-center space-x-2 px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 rounded-lg transition-colors">
-            <Download className="w-4 h-4" />
-            <span className="font-mono text-sm">Export Chat</span>
+          <button className="flex items-center space-x-2 px-4 py-2 bg-white border border-[#E5E7EB] hover:bg-[#F9FAFB] rounded-lg transition-colors">
+            <Download className="w-4 h-4 text-[#5A6C7D]" />
+            <span className="text-sm text-[#1F2937]">Export Chat</span>
           </button>
-          <button className="flex items-center space-x-2 px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 rounded-lg transition-colors">
-            <MessageCircle className="w-4 h-4" />
-            <span className="font-mono text-sm">Clear History</span>
+          <button className="flex items-center space-x-2 px-4 py-2 bg-white border border-[#E5E7EB] hover:bg-[#F9FAFB] rounded-lg transition-colors">
+            <MessageCircle className="w-4 h-4 text-[#5A6C7D]" />
+            <span className="text-sm text-[#1F2937]">Clear History</span>
           </button>
         </div>
-        <button className="flex items-center space-x-2 px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 rounded-lg transition-colors">
-          <Settings className="w-4 h-4" />
-          <span className="font-mono text-sm">AI Settings</span>
+        <button className="flex items-center space-x-2 px-4 py-2 bg-white border border-[#E5E7EB] hover:bg-[#F9FAFB] rounded-lg transition-colors">
+          <Settings className="w-4 h-4 text-[#5A6C7D]" />
+          <span className="text-sm text-[#1F2937]">AI Settings</span>
         </button>
       </div>
     </div>

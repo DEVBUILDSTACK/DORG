@@ -2,6 +2,7 @@ import { usePrivy, useWallets } from "@privy-io/react-auth";
 import { useRouter } from "next/navigation";
 
 import useFLPStore from "@/store/useFLPStore";
+import { clearUserRole } from "@/lib/roleStorage";
 
 type UseAuthOptions = {
     onSuccess?: (data: any) => void;
@@ -34,6 +35,10 @@ export const useAuth = (options?: UseAuthOptions) => {
     const handleLogout = async () => {
         try {
             setSignature("");
+            
+            // Clear user role from localStorage
+            clearUserRole();
+            
             await privyLogout();
         } catch (error) {
             options?.onError?.(error);

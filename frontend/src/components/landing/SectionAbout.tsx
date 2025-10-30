@@ -8,155 +8,103 @@ export default function SectionAbout() {
     {
       icon: Target,
       title: 'Mission-Driven',
-      description: 'Democratizing access to DeFi education and investment opportunities'
+      description: 'Democratizing access to decentralized finance education and institutional investment opportunities'
     },
     {
       icon: Users,
-      title: 'Community First',
-      description: 'Building a thriving ecosystem of learners, builders, and investors'
+      title: 'Professional Community',
+      description: 'Building a trusted ecosystem of developers, institutions, and qualified investors'
     },
     {
       icon: Lightbulb,
       title: 'Innovation Hub',
-      description: 'Fostering the next generation of blockchain solutions'
+      description: 'Fostering next-generation blockchain solutions with institutional standards'
     },
     {
       icon: Globe,
-      title: 'Global Impact',
-      description: 'Connecting talent and capital across borders'
+      title: 'Global Network',
+      description: 'Connecting qualified talent and capital across international markets'
     }
   ];
 
   return (
     <section
       id="section-3"
-      className="snap-start h-screen flex items-center relative overflow-hidden"
+      className="snap-start min-h-screen flex items-center relative overflow-hidden py-32 bg-[#FAFBFC]"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#101120] via-[#0B0C14] to-[#1a0b2e]">
-        {/* Side decorations */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#00E0FF]/5 to-transparent" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#8B5CF6]/5 to-transparent" />
-      </div>
-      
-      <div className="absolute inset-0 bg-gradient-to-br from-[#101120] via-[#0B0C14] to-[#1a0b2e]">
-        {/* Floating geometric shapes */}
-        <div className="absolute inset-0">
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                rotate: [0, 360],
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.3, 0.1],
-              }}
-              transition={{
-                duration: 8 + Math.random() * 4,
-                repeat: Infinity,
-                delay: Math.random() * 3,
-              }}
-            >
-              <div 
-                className="w-8 h-8 border border-[#00E0FF]/30"
-                style={{
-                  borderRadius: Math.random() > 0.5 ? '50%' : '0%',
-                  background: `linear-gradient(45deg, ${
-                    Math.random() > 0.5 ? '#00E0FF' : '#8B5CF6'
-                  }20, transparent)`
-                }}
-              />
-            </motion.div>
-          ))}
-        </div>
-      </div>
+      <div className="absolute inset-0 bg-linear-to-br from-[rgba(255,107,53,0.03)] to-transparent" />
 
-      {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
-          <motion.h2
-            className="text-4xl md:text-6xl font-bold mb-6"
-            style={{
-              background: 'linear-gradient(135deg, #00E0FF 0%, #8B5CF6 50%, #FACC15 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
+          <h2 className="text-5xl lg:text-6xl font-bold mb-6 text-[#1F2937]">
             About Learn2Launch
-          </motion.h2>
+          </h2>
           
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            We're bridging the gap between education, innovation, and investment in the decentralized world. 
-            Our platform empowers the next generation of blockchain builders while connecting them with forward-thinking Treasury.
+          <p className="text-lg max-w-3xl mx-auto text-[#5A6C7D]">
+            Bridging education, innovation, and institutional investment in decentralized finance. 
+            Empowering the next generation of blockchain builders with professional standards and institutional backing.
           </p>
         </motion.div>
 
-        {/* Features Grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="group bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 rounded-2xl p-6 hover:border-[#00E0FF]/50 transition-all duration-300"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="p-6 rounded-xl border border-[#E5E7EB] bg-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-[#00E0FF]/20 to-[#8B5CF6]/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-6 h-6 text-[#00E0FF]" />
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-[#FF6B35]/10">
+                  <Icon className="w-6 h-6 text-[#FF6B35]" />
                 </div>
                 
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold mb-3 text-[#FF6B35]">
                   {feature.title}
                 </h3>
                 
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-sm text-[#5A6C7D]">
                   {feature.description}
                 </p>
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
 
-        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-white/10"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-[#E5E7EB]"
         >
           {[
-            { number: '10K+', label: 'Active Learners' },
-            { number: '500+', label: 'Projects Launched' },
-            { number: '$50M+', label: 'Total Value Locked' },
-            { number: '200+', label: 'Global Partners' }
+            { number: '10,000', label: 'Active Developers', suffix: '+' },
+            { number: '500', label: 'Projects Launched', suffix: '+' },
+            { number: '$50M', label: 'Total Value Locked', suffix: '+' },
+            { number: '200', label: 'Institutional Partners', suffix: '+' }
           ].map((stat, index) => (
             <motion.div
               key={index}
-              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+              viewport={{ once: true }}
               className="text-center"
             >
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#00E0FF] to-[#8B5CF6] bg-clip-text text-transparent mb-2">
-                {stat.number}
+              <div className="text-5xl font-bold mb-2 text-[#FF6B35] tabular-nums">
+                {stat.number}{stat.suffix}
               </div>
-              <div className="text-gray-400 text-sm">
+              <div className="text-sm text-[#5A6C7D]">
                 {stat.label}
               </div>
             </motion.div>

@@ -29,7 +29,7 @@ const YieldAccrualChart: React.FC<{ data: GetLpAnalyticsResponse | undefined }> 
         {
             name: "Yield Accrual",
             data: data?.monthly_analytics?.map(item => Number(item.total_yield)) || [],
-            color: "#BEFD89",
+            color: "#FF6B35",
         },
     ];
 
@@ -53,23 +53,22 @@ const YieldAccrualChart: React.FC<{ data: GetLpAnalyticsResponse | undefined }> 
         fill: {
             type: "gradient",
             gradient: {
-                shade: "dark",
+                shade: "light",
                 type: "horizontal",
                 shadeIntensity: 0.5,
-                gradientToColors: ["#BEFD89"], // Green color
+                gradientToColors: ["#2E865F"], // Green color
                 inverseColors: false,
                 opacityFrom: 0.8,
                 opacityTo: 0.8,
-                // stops: [0, 100],
                 colorStops: [
                     {
                         offset: 0,
-                        color: "#8DB6F3", // Blue color
+                        color: "#FF6B35", // Tangerine color
                         opacity: 0.8,
                     },
                     {
                         offset: 100,
-                        color: "#BEFD89", // Green color
+                        color: "#2E865F", // Green color
                         opacity: 0.8,
                     },
                 ],
@@ -77,7 +76,7 @@ const YieldAccrualChart: React.FC<{ data: GetLpAnalyticsResponse | undefined }> 
         },
         grid: {
             show: true,
-            borderColor: "#374151",
+            borderColor: "#E5E7EB",
             strokeDashArray: 0,
             position: "back",
             xaxis: {
@@ -101,7 +100,7 @@ const YieldAccrualChart: React.FC<{ data: GetLpAnalyticsResponse | undefined }> 
             },
             labels: {
                 style: {
-                    colors: "#9CA3AF",
+                    colors: "#5A6C7D",
                     fontSize: "12px",
                     fontFamily: "inherit",
                 },
@@ -112,7 +111,7 @@ const YieldAccrualChart: React.FC<{ data: GetLpAnalyticsResponse | undefined }> 
             tickAmount: 5,
             labels: {
                 style: {
-                    colors: "#9CA3AF",
+                    colors: "#5A6C7D",
                     fontSize: "12px",
                     fontFamily: "inherit",
                 },
@@ -121,7 +120,7 @@ const YieldAccrualChart: React.FC<{ data: GetLpAnalyticsResponse | undefined }> 
         },
         tooltip: {
             enabled: true,
-            theme: "dark",
+            theme: "light",
             style: {
                 fontSize: "12px",
                 fontFamily: "inherit",

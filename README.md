@@ -1,138 +1,222 @@
-# DORG - Learn2Launch Platform<<<<<<< HEAD
+# DORG - Learn2Launch Platform
 
-# DATDev, a Decensat iMPACT inspired "Fintech4All" participant team competing for engagement thru the Colosseum Fall 2025 Hackathon.
+DATDev ("Digital Asset Treasury") is a pre-formation project accelerating the iMPACT objectives associated with Decensat.org and its affiliate 456iP SigLayer DebtVenture framework.
 
-DATDev ("DAT" is the commonly used acronym for "Digital Asset Treasury") is the pre-formation project directed in accelerating the iMPACT objectives associated with Decensat.org and its affiliate 456iP SigLayer DebtVenture framework.
+## Project Overview
 
-## Project Description
+The DATDev Squad powers "L2Launchpad", a comprehensive platform for 18+ year-old builders learning Web3 Treasury tooling. Our platform bridges the gap between traditional finance and Web3 technologies through innovative solutions and educational resources.
 
-Project Description:
+### Core Objectives
+- Empowering SMEs and solo-preneurs with Web3 treasury management tools
+- Building a community-driven learning ecosystem for blockchain development
+- Providing hands-on experience with DeFi and treasury management
+- Facilitating mentor-mentee relationships in the Web3 space
 
-The DATDev Squad is the "L2Launchpad", inaugural 18+yr. old talent-squad building the L2L platform. Fast-track learning offering curated W3 Treasury tooling for SME's | solo-preneurs. Mentoring builder cohorts through proven curriculum and virtually delivered design thinking and creator cohort-based programming for youth.
+### Key Components
+1. **Builder Marketplace**
+   - Project acceleration and incubation
+   - Resource allocation and management
+   - Community-driven development support
 
-Join our L2L Node at https://Lwandisurf.org Ponta Do Oura, Mozambique coming soon'26
+2. **Learning Platform**
+   - Curated W3 Treasury tooling curriculum
+   - Interactive coding exercises
+   - Real-world project implementation
+   - Peer learning opportunities
 
-Installation Instructions
+3. **Treasury Solutions**
+   - Multi-chain Solana synthetic "DATproxy" Vault allocation
+   - Risk management frameworks
+   - Automated treasury operations
+   - Cross-chain asset management
 
-## Project Structure
+## Technical Architecture
+
+### Project Structure
+```
+DORG/
+├── frontend/          # Next.js frontend application
+│   ├── src/
+│   │   ├── app/      # Next.js 13+ app directory with route groups
+│   │   │   ├── (auth)/       # Authentication routes
+│   │   │   ├── (fundio)/     # Main application routes
+│   │   │   ├── (landing-page)/ # Public landing pages
+│   │   │   └── dashboard/    # User dashboards
+│   │   ├── components/   # React components
+│   │   │   ├── features/ # Feature-specific components
+│   │   │   ├── landing/  # Landing page components
+│   │   │   └── ui/       # Reusable UI components
+│   │   ├── lib/      # Core utilities and configurations
+│   │   │   ├── api/     # API integration layers
+│   │   │   ├── fundio/  # Treasury management logic
+│   │   │   └── wagmi.ts # Web3 configuration
+│   │   └── types/    # TypeScript type definitions
+├── backend/          # Python FastAPI backend service
+│   ├── app/         # Application core
+│   │   ├── api/     # API endpoints
+│   │   ├── models/  # Data models
+│   │   └── services/ # Business logic
+└── vaults/          # Smart contract implementations
+    ├── base_vault/  # Base vault implementation
+    │   ├── src/     # Contract source code
+    │   └── test/    # Contract tests
+    └── sol_vault/   # Solana-specific vault
+        ├── programs/ # Solana programs
+        └── tests/   # Integration tests
+```
+
+### Technology Stack
+
+#### Frontend
+- **Framework**: Next.js 16 with App Router
+- **Language**: TypeScript
+- **State Management**: Zustand
+- **Styling**: Tailwind CSS, Mantine UI
+- **Web3**: Wagmi, Privy for wallet integration
+
+#### Backend
+- **Framework**: FastAPI
+- **Language**: Python 3.8+
+- **Database**: PostgreSQL
+- **API Documentation**: OpenAPI (Swagger)
+
+#### Smart Contracts
+- **Networks**: Solana, Ethereum
+- **Tools**: Foundry, Anchor Framework
+- **Testing**: Forge, Jest
 
 ### Prerequisites
 
-```
-
-DORG/- Python 3.8+
-
-├── frontend/          # Next.js frontend application- FastAPI
-
-└── README.md         # This file- Docker (optional)
-
-```
-
-### Steps
+#### Development Environment
+- Node.js 18+
+- Python 3.8+
+- Solana CLI tools
+- Rust (for Solana development)
+- PostgreSQL 14+
+- Redis 6+
 
 ## Getting Started
 
-1. Clone the repository:
+### Frontend Setup
 
-### Frontend (Next.js)   ```sh
-
-   git clone https://github.com/DEVBUILDSTACK/DORG.git
-
-Navigate to the frontend directory:   cd DORG
-
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
    ```
 
-```bash
-
-cd frontend2. Create a virtual environment and activate it:
-
-npm install   ```sh
-
-npm run dev   python -m venv env
-
-```   source env/bin/activate  # On Windows use `env\Scripts\activate`
-
+2. Install dependencies:
+   ```bash
+   npm install
    ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the application.
+3. Set up environment variables:
+   - Copy `.env.example` to `.env.local`
+   - Configure required environment variables
 
-3. Install the dependencies:
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-See [frontend/README.md](frontend/README.md) for more details.   ```sh
+   Access the application at [http://localhost:3000](http://localhost:3000)
 
+### Backend Setup
+
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Create and activate virtual environment:
+   ```bash
+   python -m venv env
+   source env/bin/activate  # On Windows use `env\Scripts\activate`
+   ```
+
+3. Install dependencies:
+   ```bash
    pip install -r requirements.txt
-
-## Contributing Guidelines   ```
-
-
-
-We welcome contributions from the community! Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) for more details.4. Run the application:
-
-   ```sh
-
-## Contact Information   uvicorn app.main:app --reload
-
    ```
 
-For any questions or suggestions, please contact us at [learn2launch@decensat.org](mailto:learn2launch@decensat.org).
-
-## Usage Instructions
-
-### Running Locally
-
-1. Start the development server:
-   ```sh
-   uvicorn app.main:app --reload
+4. Start the backend server:
+   ```bash
+   python main.py
    ```
 
-2. Open your browser and go to `http://localhost:8000`.
+### Smart Contract Development
 
-### Docker
-
-1. Build the Docker image:
-   ```sh
-   docker build -t dorg-squads .
+1. Navigate to vault directory:
+   ```bash
+   cd vaults/base_vault
    ```
 
-2. Run the Docker container:
-   ```sh
-   docker run -p 8000:8000 dorg-squads
+2. Install Foundry dependencies:
+   ```bash
+   forge install
    ```
 
-## Contributing Guidelines
+3. Run tests:
+   ```bash
+   forge test
+   ```
 
-We welcome contributions from the community! Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) for more details.
+### Frontend Deployment
+1. **Production Deployment**
+   ```bash
+   npm run build
+   npm run start
+   ```
+   - Automatic deployments via Vercel
+   - Branch previews for pull requests
+   - Custom domain configuration
 
-## Contact Information
+2. **Environment Configuration**
+   - Set up environment variables
+   - Configure CDN settings
+   - Enable logging and monitoring
 
-For any questions or suggestions, please contact us at [learn2launch@decensat.org](mailto:team@decensat.org).
-```
-=======
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### Backend Deployment
+1. **Container Setup**
+   ```bash
+   docker build -t dorg-backend .
+   docker-compose up -d
+   ```
 
-## Getting Started
+2. **Database Migration**
+   ```bash
+   alembic upgrade head
+   ```
 
-First, run the development server:
+### Smart Contract Deployment
 
+#### Ethereum Contracts
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd vaults/base_vault
+forge script script/Deploy.s.sol \
+  --rpc-url $RPC_URL \
+  --private-key $PRIVATE_KEY \
+  --broadcast \
+  --verify
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Solana Programs
+```bash
+cd vaults/sol_vault
+anchor build
+anchor deploy
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contact
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+For any questions or suggestions, contact us at:
+- Email: learn2launch@decensat.org
+- Website: https://Lwandisurf.org (Coming 2026)
+- Discord: [Join our community](https://discord.gg/learn2launch)
+- Twitter: [@Learn2Launch](https://twitter.com/Learn2Launch)
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+Copyright © 2025 DATDev. All rights reserved.
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
@@ -144,4 +228,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
->>>>>>> origin/frontend

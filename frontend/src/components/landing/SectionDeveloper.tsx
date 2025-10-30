@@ -61,6 +61,13 @@ export default function SectionDeveloper() {
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          {/* Builder marketplace CTA */}
+        <div className="absolute -top-10 right-2 z-20">
+          <Link href="/builder" className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg text-white hover:from-purple-700 hover:to-indigo-700 transition-all">
+            <Zap className="w-4 h-4 mr-2" />
+            Explore Builder Marketplace
+          </Link>
+        </div>
         {/* Left: Visual */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}

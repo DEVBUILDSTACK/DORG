@@ -19,30 +19,30 @@ import {
   Wallet
 } from '@/components/icons';
 
-export default function InvestorLandingPage() {
+export default function TreasuryLandingPage() {
   const features = [
     {
       icon: <Shield className="w-8 h-8" />,
-      title: "Secure & Transparent",
-      description: "All vaults are audited and secured by battle-tested smart contracts on the blockchain.",
+      title: "Permissionless & Transparent",
+      description: "All vaults are cryptographically tested with fully transparent process planning and disclosure of audited smart contract results.",
       color: "from-[#2E865F] to-[#1E5A42]"
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
-      title: "High-Yield Returns",
-      description: "Access AI-powered vaults with optimized strategies for maximum returns.",
+      title: "Efficient Protocol Design",
+      description: "Access AI-powered vaults with optimized strategies for protocol efficiency.",
       color: "from-[#FF6B35] to-[#CC5629]"
     },
     {
       icon: <PieChart className="w-8 h-8" />,
-      title: "Diversified Portfolio",
-      description: "Spread your investments across multiple strategies to minimize risk.",
+      title: "Strategic Reserve Management",
+      description: "Programmatically optimized treasury operations with comprehensive risk management.",
       color: "from-[#0A4A7A] to-[#083A5E]"
     },
     {
       icon: <Eye className="w-8 h-8" />,
       title: "Real-Time Analytics",
-      description: "Track your investments with comprehensive analytics and performance metrics.",
+      description: "Track your treasury with comprehensive analytics, periodic delta-neutral allocation notifications, and performance metrics.",
       color: "from-[#0A4A7A] to-[#2E865F]"
     },
     {
@@ -53,48 +53,48 @@ export default function InvestorLandingPage() {
     },
     {
       icon: <Zap className="w-8 h-8" />,
-      title: "Instant Deposits",
-      description: "Start earning immediately with instant deposits and automated compounding.",
+      title: "Explore Instant Stablecoin Deposits",
+      description: "Position immediately with instant ZELLE ONRAMP to crypto and/or inquire with Sura agentic Guidance related to Stablecoin Liquidity Pool incentives.",
       color: "from-[#2E865F] to-[#FF6B35]"
     }
   ];
 
-  const investmentSteps = [
+  const treasurySteps = [
     {
       step: "1",
       title: "Connect Wallet",
-      description: "Securely connect your Web3 wallet to get started.",
+      description: "Connect your Web3 wallet through our transparent integration.",
       icon: <Wallet className="w-6 h-6" />
     },
     {
       step: "2",
       title: "Browse Vaults",
-      description: "Explore various vaults with different strategies and risk levels.",
+      description: "Explore various vaults with different strategies and risk management approaches.",
       icon: <PieChart className="w-6 h-6" />
     },
     {
       step: "3",
-      title: "Deposit Funds",
-      description: "Choose your vault and deposit funds to start earning.",
+      title: "Configure Treasury",
+      description: "Select your vault configuration and establish your treasury parameters.",
       icon: <DollarSign className="w-6 h-6" />
     },
     {
       step: "4",
-      title: "Track & Earn",
-      description: "Monitor your portfolio and watch your investments grow.",
+      title: "Monitor Operations",
+      description: "Track your treasury metrics and observe protocol efficiency.",
       icon: <TrendingUp className="w-6 h-6" />
     }
   ];
 
   const benefits = [
-    "No minimum investment required",
-    "Withdraw anytime, no penalties",
-    "Automated yield optimization",
-    "Gas-efficient transactions",
-    "Multi-chain support",
-    "Insurance coverage available",
-    "24/7 customer support",
-    "Tax reporting tools"
+    "Flexible allocation thresholds",
+    "Dynamic rebalancing options",
+    "Automated protocol optimization",
+    "Gas-efficient operations",
+    "Multi-chain compatibility",
+    "Comprehensive risk management",
+    "24/7 technical support",
+    "Compliance reporting tools"
   ];
 
   return (
@@ -254,7 +254,7 @@ export default function InvestorLandingPage() {
                     <span className="text-xl font-bold text-[#2E865F] tabular-nums">12-15%</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-[#737373]">Min. Investment</span>
+                    <span className="text-[#737373]">Min. Allocation</span>
                     <span className="font-semibold text-[#0F0F0F] tabular-nums">$1,000</span>
                   </div>
                   <div className="flex justify-between items-center py-2">
@@ -305,11 +305,11 @@ export default function InvestorLandingPage() {
 
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-[#737373]">Target APY</span>
+                    <span className="text-[#737373]">Protocol Efficiency</span>
                     <span className="text-xl font-bold text-[#2E865F] tabular-nums">10-13%</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-[#737373]">Min. Investment</span>
+                    <span className="text-[#737373]">Min. Allocation</span>
                     <span className="font-semibold text-[#0F0F0F] tabular-nums">$1,000</span>
                   </div>
                   <div className="flex justify-between items-center py-2">
@@ -319,11 +319,11 @@ export default function InvestorLandingPage() {
                 </div>
 
                 <p className="text-sm text-[#737373] mb-6">
-                  10 Base ecosystem tokens with gas-free transactions via Plasma integration for efficient portfolio management.
+                  10 Base ecosystem tokens with gas-free transactions via Plasma integration for efficient treasury management.
                 </p>
 
                 <Link
-                  href="/dashboard/investor"
+                  href="/dashboard/treasury"
                   className="block w-full py-3 bg-[#0052FF] text-white rounded-xl text-center font-semibold hover:bg-[#0046DB] transition-colors group-hover:shadow-lg"
                 >
                   Learn More
@@ -363,7 +363,7 @@ export default function InvestorLandingPage() {
                     <span className="text-xl font-bold text-[#2E865F] tabular-nums">14-18%</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-[#737373]">Min. Investment</span>
+                    <span className="text-[#737373]">Min. Allocation</span>
                     <span className="font-semibold text-[#0F0F0F] tabular-nums">$5,000</span>
                   </div>
                   <div className="flex justify-between items-center py-2">
@@ -400,7 +400,7 @@ export default function InvestorLandingPage() {
               <div className="flex-1">
                 <h4 className="text-lg font-bold text-[#0F0F0F] mb-2">We Also List Third-Party Vaults</h4>
                 <p className="text-[#737373]">
-                  Access vetted DeFi vaults from top protocols across multiple chains. All third-party vaults undergo rigorous due diligence and security audits before listing on our platform.
+                        description: "Access vetted DeFi vaults from top protocols across multiple chains. All third-party vaults undergo rigorous due diligence and transparency audits before listing on our platform."
                 </p>
               </div>
               <Link
@@ -424,10 +424,10 @@ export default function InvestorLandingPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-[#0A4A7A] mb-4">
-              Why Invest With Us?
+              Why Choose Our Treasury Solutions?
             </h2>
             <p className="text-xl text-[#525252] max-w-2xl mx-auto">
-              Secure, transparent, and optimized for maximum returns
+              Transparent, efficient, and optimized for protocol management
             </p>
           </motion.div>
 
@@ -463,7 +463,7 @@ export default function InvestorLandingPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-[#0A4A7A] mb-4">
-              Start Investing in 4 Steps
+              Start Programmatically Allocating in 4 Steps
             </h2>
             <p className="text-xl text-[#525252]">
               Simple, secure, and fast
@@ -471,7 +471,7 @@ export default function InvestorLandingPage() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {investmentSteps.map((item, index) => (
+            {treasurySteps.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -30 }}
@@ -480,7 +480,7 @@ export default function InvestorLandingPage() {
                 transition={{ delay: index * 0.2 }}
                 className="relative"
               >
-                {index < investmentSteps.length - 1 && (
+                {index < treasurySteps.length - 1 && (
                   <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-linear-to-r from-[#0A4A7A] to-transparent" />
                 )}
 
@@ -513,10 +513,10 @@ export default function InvestorLandingPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-5xl font-bold text-[#0A4A7A] mb-6">
-                Built for Smart Investors
+                Built for Digital Asset Treasury Management
               </h2>
               <p className="text-xl text-[#525252] mb-8">
-                Everything you need to grow your wealth in DeFi
+                Everything you need for efficient treasury operations in DeFi
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -545,20 +545,20 @@ export default function InvestorLandingPage() {
               <div className="relative p-8 bg-white rounded-3xl border-2 border-[#0A4A7A] shadow-xl">
                 <div className="space-y-6">
                   <div className="flex items-center justify-between p-4 bg-[#FAFAFA] rounded-xl border border-gray-200">
-                    <span className="text-[#525252]">Portfolio Value</span>
+                    <span className="text-[#525252]">Treasury Value</span>
                     <span className="text-[#0A4A7A] font-bold tabular-nums">$125,430</span>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-[#FAFAFA] rounded-xl border border-gray-200">
-                    <span className="text-[#525252]">Total Earned</span>
-                    <span className="text-[#2E865F] font-bold tabular-nums">+$15,230</span>
+                    <span className="text-[#525252]">Protocol Efficiency</span>
+                    <span className="text-[#2E865F] font-bold tabular-nums">12.3%</span>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-[#FAFAFA] rounded-xl border border-gray-200">
                     <span className="text-[#525252]">Active Vaults</span>
                     <span className="text-[#0A4A7A] font-bold tabular-nums">5</span>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-[#FAFAFA] rounded-xl border border-gray-200">
-                    <span className="text-[#525252]">Avg APY</span>
-                    <span className="text-[#FF6B35] font-bold tabular-nums">28.5%</span>
+                    <span className="text-[#525252]">Efficiency Rate</span>
+                    <span className="text-[#FF6B35] font-bold tabular-nums">14.5%</span>
                   </div>
                 </div>
               </div>
@@ -578,10 +578,10 @@ export default function InvestorLandingPage() {
           >
             <div className="relative z-10">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                Ready to Grow Your Wealth?
+                Ready to Optimize Your Treasury?
               </h2>
               <p className="text-xl text-gray-200 mb-8">
-                Join thousands of investors earning passive income through DeFi
+                Join a network of Digital Asset Treasury managers leveraging advanced protocols for efficient asset management and strategic allocation
               </p>
 
               <Link
@@ -593,7 +593,7 @@ export default function InvestorLandingPage() {
               </Link>
 
               <p className="text-sm text-gray-300 mt-6">
-                No minimum investment • Withdraw anytime • Fully transparent
+                Flexible allocations • Dynamic rebalancing • Full transparency
               </p>
             </div>
           </motion.div>

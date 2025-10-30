@@ -5,7 +5,7 @@
 
 const STORAGE_KEY = 'user_role';
 
-export type UserRole = 'student' | 'developer' | 'investor';
+export type UserRole = 'student' | 'developer' | 'treasury';
 
 /**
  * Save user role to localStorage

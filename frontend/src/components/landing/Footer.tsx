@@ -33,7 +33,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-[#5A6C7D] text-sm leading-relaxed max-w-sm">
-              Connecting education, innovation, and institutional investment in decentralized finance. 
+              Connecting education, innovation, and institutional allocation in decentralized finance. 
               Empowering the next generation of blockchain builders.
             </p>
             
@@ -61,8 +61,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { name: 'For Students', href: '/student' },
-                { name: 'For Builders', href: '/builder' },
-                { name: 'For Investors', href: '/investor' },
+                { name: 'For Builders', href: '/developer' },
+                { name: 'For Treasury', href: '/investor' },
                 { name: 'For Sponsors', href: '/sponsor' },
                 ].map((link) => (
                 <li key={link.name}>

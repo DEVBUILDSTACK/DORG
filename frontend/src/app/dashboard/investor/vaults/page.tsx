@@ -116,19 +116,19 @@ export default function InvestorVaultsPage() {
 
   const getRiskColor = (risk: string) => {
     switch (risk) {
-      case 'low': return 'text-green-400 bg-green-500/20';
-      case 'medium': return 'text-yellow-400 bg-yellow-500/20';
-      case 'high': return 'text-red-400 bg-red-500/20';
-      default: return 'text-gray-400 bg-gray-500/20';
+      case 'low': return 'text-[#2E865F] bg-[#2E865F]/10';
+      case 'medium': return 'text-yellow-600 bg-yellow-50';
+      case 'high': return 'text-red-500 bg-red-50';
+      default: return 'text-[#5A6C7D] bg-[#F9FAFB]';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'text-green-400 bg-green-500/20';
-      case 'pending': return 'text-yellow-400 bg-yellow-500/20';
-      case 'closed': return 'text-gray-400 bg-gray-500/20';
-      default: return 'text-gray-400 bg-gray-500/20';
+      case 'active': return 'text-[#2E865F] bg-[#2E865F]/10';
+      case 'pending': return 'text-yellow-600 bg-yellow-50';
+      case 'closed': return 'text-[#5A6C7D] bg-[#F9FAFB]';
+      default: return 'text-[#5A6C7D] bg-[#F9FAFB]';
     }
   };
 
@@ -137,10 +137,10 @@ export default function InvestorVaultsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white">Investment Vaults</h1>
-          <p className="text-gray-400 text-lg">Discover and invest in impactful education and development projects</p>
+          <h1 className="text-3xl font-bold text-[#1F2937]">Investment <span className="text-[#FF6B35]">Vaults</span></h1>
+          <p className="text-[#5A6C7D] text-lg">Discover and invest in impactful education and development projects</p>
         </div>
-        <button className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[#00E0FF] to-[#06B6D4] text-black font-medium rounded-xl hover:shadow-lg hover:shadow-[#00E0FF]/30 transition-all">
+        <button className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[#FF6B35] to-[#E65A2D] text-white font-medium rounded-xl hover:shadow-lg hover:shadow-[#FF6B35]/30 transition-all">
           <Plus className="w-5 h-5" />
           <span>Create Vault</span>
         </button>
@@ -150,22 +150,22 @@ export default function InvestorVaultsPage() {
       <div className="flex items-center justify-between space-x-4">
         <div className="flex items-center space-x-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#5A6C7D] w-4 h-4" />
             <input
               type="text"
               placeholder="Search vaults or regions..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 pr-4 py-2 bg-gray-800/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50 focus:border-[#00E0FF]/50 transition-all"
+              className="pl-10 pr-4 py-2 bg-white border border-[#E5E7EB] rounded-xl text-[#1F2937] placeholder-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50 focus:border-[#FF6B35]/50 transition-all"
             />
           </div>
           
           <div className="flex items-center space-x-2">
-            <Filter className="w-4 h-4 text-gray-400" />
+            <Filter className="w-4 h-4 text-[#5A6C7D]" />
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+              className="bg-white border border-[#E5E7EB] rounded-xl px-4 py-2 text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
             >
               <option value="all">All Categories</option>
               <option value="education">Education</option>
@@ -178,8 +178,8 @@ export default function InvestorVaultsPage() {
         </div>
 
         <div className="text-right">
-          <p className="text-sm text-gray-400">Total Vaults</p>
-          <p className="text-xl font-bold text-[#00E0FF]">{filteredVaults.length}</p>
+          <p className="text-sm text-[#5A6C7D]">Total Vaults</p>
+          <p className="text-xl font-bold text-[#FF6B35]">{filteredVaults.length}</p>
         </div>
       </div>
 
@@ -187,19 +187,19 @@ export default function InvestorVaultsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredVaults.map((vault) => (
           <div key={vault.id} className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00E0FF]/10 to-[#06B6D4]/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-[#00E0FF]/30 transition-all group-hover:transform group-hover:scale-105">
+            <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:border-[#FF6B35]/30 transition-all group-hover:transform group-hover:scale-105 shadow-lg">
               {/* Vault Header */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center space-x-3">
                   <div className="text-3xl">{vault.logo}</div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white group-hover:text-[#00E0FF] transition-colors">
+                    <h3 className="text-lg font-semibold text-[#1F2937] group-hover:text-[#FF6B35] transition-colors">
                       {vault.name}
                     </h3>
                     <div className="flex items-center space-x-2 mt-1">
-                      <Globe className="w-3 h-3 text-gray-400" />
-                      <span className="text-sm text-gray-400">{vault.region}</span>
+                      <Globe className="w-3 h-3 text-[#5A6C7D]" />
+                      <span className="text-sm text-[#5A6C7D]">{vault.region}</span>
                     </div>
                   </div>
                 </div>
@@ -214,44 +214,44 @@ export default function InvestorVaultsPage() {
               </div>
 
               {/* Description */}
-              <p className="text-gray-400 text-sm mb-4">{vault.description}</p>
+              <p className="text-[#5A6C7D] text-sm mb-4">{vault.description}</p>
 
               {/* Key Metrics */}
               <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="text-center p-3 bg-gray-900/30 rounded-lg">
+                <div className="text-center p-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-lg">
                   <div className="flex items-center justify-center mb-1">
-                    <TrendingUp className="w-4 h-4 text-green-400 mr-1" />
-                    <span className="text-sm text-gray-400">APY</span>
+                    <TrendingUp className="w-4 h-4 text-[#2E865F] mr-1" />
+                    <span className="text-sm text-[#5A6C7D]">APY</span>
                   </div>
-                  <p className="text-xl font-bold text-green-400">{vault.apy}%</p>
+                  <p className="text-xl font-bold text-[#2E865F]">{vault.apy}%</p>
                 </div>
-                <div className="text-center p-3 bg-gray-900/30 rounded-lg">
+                <div className="text-center p-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-lg">
                   <div className="flex items-center justify-center mb-1">
-                    <DollarSign className="w-4 h-4 text-[#00E0FF] mr-1" />
-                    <span className="text-sm text-gray-400">TVL</span>
+                    <DollarSign className="w-4 h-4 text-[#FF6B35] mr-1" />
+                    <span className="text-sm text-[#5A6C7D]">TVL</span>
                   </div>
-                  <p className="text-xl font-bold text-[#00E0FF]">{vault.tvl}</p>
+                  <p className="text-xl font-bold text-[#FF6B35]">{vault.tvl}</p>
                 </div>
               </div>
 
               {/* Additional Info */}
               <div className="space-y-2 mb-4">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-400">Participants</span>
-                  <span className="text-white">{vault.participants}</span>
+                  <span className="text-[#5A6C7D]">Participants</span>
+                  <span className="text-[#1F2937]">{vault.participants}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-400">Duration</span>
-                  <span className="text-white">{vault.duration}</span>
+                  <span className="text-[#5A6C7D]">Duration</span>
+                  <span className="text-[#1F2937]">{vault.duration}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-400">Min Investment</span>
-                  <span className="text-white">{vault.minInvestment}</span>
+                  <span className="text-[#5A6C7D]">Min Investment</span>
+                  <span className="text-[#1F2937]">{vault.minInvestment}</span>
                 </div>
                 {vault.yourInvestment !== '$0' && (
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Your Investment</span>
-                    <span className="text-[#00E0FF] font-medium">{vault.yourInvestment}</span>
+                    <span className="text-[#5A6C7D]">Your Investment</span>
+                    <span className="text-[#FF6B35] font-medium">{vault.yourInvestment}</span>
                   </div>
                 )}
               </div>
@@ -259,24 +259,24 @@ export default function InvestorVaultsPage() {
               {/* Action Buttons */}
               <div className="flex items-center space-x-2">
                 {vault.status === 'active' && vault.yourInvestment === '$0' ? (
-                  <button className="flex-1 bg-gradient-to-r from-[#00E0FF] to-[#06B6D4] text-black font-medium py-2 px-4 rounded-lg hover:shadow-lg hover:shadow-[#00E0FF]/30 transition-all">
+                  <button className="flex-1 bg-gradient-to-r from-[#FF6B35] to-[#E65A2D] text-white font-medium py-2 px-4 rounded-lg hover:shadow-lg hover:shadow-[#FF6B35]/30 transition-all">
                     Invest Now
                   </button>
                 ) : vault.status === 'active' && vault.yourInvestment !== '$0' ? (
-                  <button className="flex-1 bg-gray-700/50 hover:bg-gray-600/50 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                  <button className="flex-1 bg-[#F9FAFB] hover:bg-white text-[#1F2937] font-medium py-2 px-4 rounded-lg transition-colors border border-[#E5E7EB]">
                     Add More
                   </button>
                 ) : vault.status === 'pending' ? (
-                  <button className="flex-1 bg-yellow-500/20 text-yellow-400 font-medium py-2 px-4 rounded-lg cursor-not-allowed">
+                  <button className="flex-1 bg-yellow-50 text-yellow-600 font-medium py-2 px-4 rounded-lg cursor-not-allowed border border-yellow-200">
                     Coming Soon
                   </button>
                 ) : (
-                  <button className="flex-1 bg-gray-700/50 text-gray-400 font-medium py-2 px-4 rounded-lg cursor-not-allowed">
+                  <button className="flex-1 bg-[#F9FAFB] text-[#9CA3AF] font-medium py-2 px-4 rounded-lg cursor-not-allowed border border-[#E5E7EB]">
                     Closed
                   </button>
                 )}
-                <button className="p-2 bg-gray-700/50 hover:bg-gray-600/50 rounded-lg transition-colors">
-                  <ExternalLink className="w-4 h-4 text-gray-400" />
+                <button className="p-2 bg-[#F9FAFB] hover:bg-white border border-[#E5E7EB] rounded-lg transition-colors">
+                  <ExternalLink className="w-4 h-4 text-[#5A6C7D]" />
                 </button>
               </div>
             </div>
@@ -286,29 +286,29 @@ export default function InvestorVaultsPage() {
 
       {/* Safety Education Section */}
       <div className="relative group">
-        <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-2xl blur-xl" />
-        <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-yellow-500/30 transition-all">
+        <div className="absolute inset-0 bg-yellow-500/5 rounded-2xl blur-xl" />
+        <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 hover:border-yellow-500/30 transition-all shadow-lg">
           <div className="flex items-start space-x-4">
-            <div className="p-3 bg-yellow-500/20 rounded-xl">
-              <Shield className="w-6 h-6 text-yellow-400" />
+            <div className="p-3 bg-yellow-50 rounded-xl border border-yellow-200">
+              <Shield className="w-6 h-6 text-yellow-600" />
             </div>
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-white mb-2">Investment Safety & Education</h3>
-              <p className="text-gray-400 mb-4">
+              <h3 className="text-lg font-semibold text-[#1F2937] mb-2">Investment Safety & Education</h3>
+              <p className="text-[#5A6C7D] mb-4">
                 Learn about risk management, diversification strategies, and how our vaults work to maximize both financial and social returns.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="flex items-center space-x-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span className="text-gray-300">Smart Contract Audited</span>
+                  <CheckCircle className="w-4 h-4 text-[#2E865F]" />
+                  <span className="text-[#1F2937]">Smart Contract Audited</span>
                 </div>
                 <div className="flex items-center space-x-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span className="text-gray-300">Transparent Reporting</span>
+                  <CheckCircle className="w-4 h-4 text-[#2E865F]" />
+                  <span className="text-[#1F2937]">Transparent Reporting</span>
                 </div>
                 <div className="flex items-center space-x-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span className="text-gray-300">Impact Verification</span>
+                  <CheckCircle className="w-4 h-4 text-[#2E865F]" />
+                  <span className="text-[#1F2937]">Impact Verification</span>
                 </div>
               </div>
             </div>

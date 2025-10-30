@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Twitter, Linkedin, Github, MessageCircle } from '@/components/icons';
 import { motion } from 'framer-motion';
+import l2lLogo from '@/assets/images/l2l.jpg';
 
 export default function Footer() {
   const socialLinks = [
@@ -12,38 +14,41 @@ export default function Footer() {
     { icon: MessageCircle, href: 'https://discord.com', label: 'Discord' },
   ];
 
-  
-
   return (
-    <footer className="relative bg-gradient-to-b from-[#101120] to-[#0B0C14] border-t border-white/5">
-      {/* Gradient divider line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00E0FF] to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
-          {/* Left: Logo & Tagline */}
-          <div className="md:col-span-2 space-y-6">
-            <div className="text-2xl font-bold bg-gradient-to-r from-[#00E0FF] to-[#8B5CF6] bg-clip-text text-transparent">
-              Learn2Launch
+    <footer id="footer" className="relative bg-white border-t border-[#E5E7EB] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 mb-8 sm:mb-12">
+          <div className="sm:col-span-2 space-y-4 sm:space-y-6">
+            <div className="flex items-center space-x-3">
+              <div className="relative w-10 h-10 rounded-lg overflow-hidden shadow-md ring-2 ring-[#FF6B35]/20">
+                <Image
+                  src={l2lLogo}
+                  alt="Learn2Launch Logo"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="text-2xl font-bold text-[#FF6B35]">
+                Learn2Launch
+              </div>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-              Connecting Education, Innovation & Investment in the decentralized future. 
+            <p className="text-[#5A6C7D] text-sm leading-relaxed max-w-sm">
+              Connecting education, innovation, and institutional investment in decentralized finance. 
               Empowering the next generation of blockchain builders.
             </p>
             
-            {/* Newsletter Signup */}
             <div className="space-y-3">
-              <h4 className="text-white font-semibold text-sm">Stay Updated</h4>
-              <div className="flex space-x-2">
+              <h4 className="text-[#FF6B35] font-semibold text-sm">Stay Updated</h4>
+              <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm focus:border-[#00E0FF]/50 focus:outline-none transition-colors duration-300"
+                  className="flex-1 min-w-0 px-3 py-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-lg text-[#1F2937] placeholder-[#9CA3AF] text-sm focus:border-[#FF6B35] focus:outline-none transition-colors duration-300"
                 />
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-4 py-2 bg-gradient-to-r from-[#00E0FF] to-[#8B5CF6] text-white rounded-lg text-sm font-semibold hover:shadow-[0_0_20px_rgba(0,224,255,0.3)] transition-all duration-300"
+                  className="px-4 py-2 bg-[#FF6B35] text-white rounded-lg text-sm font-semibold shadow-sm hover:shadow-md hover:bg-[#E65A2D] transition-all duration-300 whitespace-nowrap"
                 >
                   Subscribe
                 </motion.button>
@@ -51,23 +56,19 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Platform Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Platform</h3>
+            <h3 className="text-[#FF6B35] font-semibold mb-4">Platform</h3>
             <ul className="space-y-3">
               {[
                 { name: 'For Students', href: '/student' },
                 { name: 'For Developers', href: '/developer' },
                 { name: 'For Investors', href: '/investor' },
                 { name: 'For Sponsors', href: '/sponsor' },
-                { name: 'Courses', href: '/courses' },
-                { name: 'Projects', href: '/projects' },
-                { name: 'Mentorship', href: '/mentorship' }
-              ].map((link) => (
+                ].map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-[#00E0FF] transition-colors duration-300 text-sm"
+                    className="text-[#5A6C7D] hover:text-[#FF6B35] transition-colors duration-300 text-sm"
                   >
                     {link.name}
                   </Link>
@@ -76,22 +77,19 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Community Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Community</h3>
+            <h3 className="text-[#FF6B35] font-semibold mb-4">Community</h3>
             <ul className="space-y-3">
               {[
                 { name: 'Blog', href: '/blog' },
                 { name: 'Events', href: '/events' },
                 { name: 'Hackathons', href: '/hackathons' },
-                { name: 'Success Stories', href: '/success-stories' },
                 { name: 'Help Center', href: '/help' },
-                { name: 'API Docs', href: '/docs' }
-              ].map((link) => (
+                ].map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-[#00E0FF] transition-colors duration-300 text-sm"
+                    className="text-[#5A6C7D] hover:text-[#FF6B35] transition-colors duration-300 text-sm"
                   >
                     {link.name}
                   </Link>
@@ -100,10 +98,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social Links & Legal */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Connect</h3>
-            <div className="flex space-x-3 mb-6">
+            <h3 className="text-[#FF6B35] font-semibold mb-4">Connect</h3>
+            <div className="flex flex-wrap gap-3 mb-6">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
@@ -113,7 +110,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}
-                    className="w-9 h-9 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-[#00E0FF] hover:border-[#00E0FF]/50 hover:shadow-[0_0_15px_rgba(0,224,255,0.3)] transition-all duration-300"
+                    className="w-9 h-9 bg-[#F9FAFB] border border-[#E5E7EB] rounded-lg flex items-center justify-center text-[#5A6C7D] hover:text-[#FF6B35] hover:border-[#FF6B35] hover:shadow-sm transition-all duration-300"
                     aria-label={social.label}
                   >
                     <Icon className="w-4 h-4" />
@@ -122,7 +119,6 @@ export default function Footer() {
               })}
             </div>
             
-            {/* Legal Links */}
             <ul className="space-y-2">
               {[
                 { name: 'Privacy Policy', href: '/privacy' },
@@ -132,7 +128,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-500 hover:text-gray-400 transition-colors duration-300 text-xs"
+                    className="text-[#9CA3AF] hover:text-[#5A6C7D] transition-colors duration-300 text-xs"
                   >
                     {link.name}
                   </Link>
@@ -142,44 +138,19 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 border-y border-white/5 mb-8">
-          {[
-            { number: '10,000+', label: 'Active Learners', icon: '👥' },
-            { number: '500+', label: 'Projects Launched', icon: '🚀' },
-            { number: '$50M+', label: 'Total Funding', icon: '💰' },
-            { number: '95%', label: 'Success Rate', icon: '📈' }
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center group cursor-pointer"
-            >
-              <div className="text-2xl mb-1">{stat.icon}</div>
-              <div className="text-lg md:text-xl font-bold bg-gradient-to-r from-[#00E0FF] to-[#8B5CF6] bg-clip-text text-transparent group-hover:from-[#FACC15] group-hover:to-[#FF007A] transition-all duration-300">
-                {stat.number}
-              </div>
-              <div className="text-gray-400 text-xs md:text-sm">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        
 
-        {/* Bottom line */}
-        <div className="flex flex-col md:flex-row items-center justify-between text-center md:text-left text-gray-500 text-sm space-y-4 md:space-y-0">
-          <div>
+        <div className="flex flex-col md:flex-row items-center justify-between text-center md:text-left text-[#9CA3AF] text-sm space-y-4 md:space-y-0">
+          <div className="order-2 md:order-1">
             © {new Date().getFullYear()} Learn2Launch. All Rights Reserved.
           </div>
           
-          <div className="flex items-center space-x-6 text-xs">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-xs order-1 md:order-2">
             <span className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span>Platform Status: Operational</span>
+              <div className="w-2 h-2 bg-[#2E865F] rounded-full animate-pulse"></div>
+              <span className="whitespace-nowrap">Platform Status: Operational</span>
             </span>
-            <span>Built with ❤️ for the Web3 community</span>
+            <span className="whitespace-nowrap">Built for the Web3 Community</span>
           </div>
         </div>
       </div>

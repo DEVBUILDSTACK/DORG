@@ -1,0 +1,7 @@
+/* Note: Google Fonts import moved to globals.css to fix @import order */
+
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';
+@import './elevation.css';
+@import './animations.css';

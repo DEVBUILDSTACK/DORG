@@ -15,13 +15,18 @@ const Select: React.FC<CustomSelectProps> = ({ wrapperClass, selectClass, ...pro
         <MantineSelect
             classNames={{
                 root: "w-full",
-                wrapper: cn("flex-1 xl:h-10 xl:text-xs text-base", wrapperClass),
-                input: cn("h-full bg-transparent border-border rounded-lg font-manrope placeholder:text-white font-thin xl:text-xs text-base text-white", selectClass),
-                dropdown: "bg-fundio-sidebar border-none",
-                option: "text-white hover:bg-fundio-sidebar text-xs",
-                error: "xl:text-xs text-base",
+                wrapper: cn("flex-1 h-12", wrapperClass),
+                input: cn(
+                    "h-full bg-white border border-[#E5E7EB] rounded-xl text-[#0A4A7A] transition-all duration-200",
+                    "focus:border-[#0A4A7A] focus:ring-2 focus:ring-[#0A4A7A]/20",
+                    selectClass
+                ),
+                dropdown: "bg-white border border-[#E5E7EB] rounded-xl shadow-lg mt-1",
+                option: "text-[#0A4A7A] hover:bg-[#F9FAFB] rounded-lg mx-1 px-3",
+                label: "text-sm font-semibold text-[#0A4A7A] mb-2",
+                error: "text-sm text-[#DC2626] mt-1",
             }}
-            withErrorStyles={false}
+            withErrorStyles={true}
             {...props}
         />
     );

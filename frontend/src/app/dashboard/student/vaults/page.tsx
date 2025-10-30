@@ -158,20 +158,20 @@ const VaultsPage = () => {
 
   const getRiskColor = (risk: string) => {
     switch (risk) {
-      case 'Low': return 'text-green-400 bg-green-500/20';
-      case 'Medium': return 'text-yellow-400 bg-yellow-500/20';
-      case 'High': return 'text-orange-400 bg-orange-500/20';
-      case 'Very High': return 'text-red-400 bg-red-500/20';
-      default: return 'text-gray-400 bg-gray-500/20';
+      case 'Low': return 'text-[#2E865F] bg-[#2E865F]/10 border border-[#2E865F]/30';
+      case 'Medium': return 'text-[#F59E0B] bg-[#FEF3C7] border border-[#F59E0B]/30';
+      case 'High': return 'text-[#FF6B35] bg-[#FFE8E0] border border-[#FF6B35]/30';
+      case 'Very High': return 'text-[#DC2626] bg-red-50 border border-[#DC2626]/30';
+      default: return 'text-[#5A6C7D] bg-[#F3F4F6] border border-[#E5E7EB]';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'text-green-400 bg-green-500/20';
-      case 'new': return 'text-blue-400 bg-blue-500/20';
-      case 'premium': return 'text-purple-400 bg-purple-500/20';
-      default: return 'text-gray-400 bg-gray-500/20';
+      case 'active': return 'text-[#2E865F] bg-[#2E865F]/10 border border-[#2E865F]/30';
+      case 'new': return 'text-[#FF6B35] bg-[#FFE8E0] border border-[#FF6B35]/30';
+      case 'premium': return 'text-[#FF6B35] bg-[#FFE8E0] border border-[#FF6B35]/30';
+      default: return 'text-[#5A6C7D] bg-[#F3F4F6] border border-[#E5E7EB]';
     }
   };
 
@@ -179,80 +179,80 @@ const VaultsPage = () => {
   const averageAPY = vaults.filter(v => v.userDeposit > 0).reduce((sum, vault) => sum + vault.apy, 0) / vaults.filter(v => v.userDeposit > 0).length;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* Header */}
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-white flex items-center">
-          <Vault className="w-8 h-8 mr-3 text-[#00E0FF]" />
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#1F2937] flex items-center">
+          <Vault className="w-6 h-6 sm:w-8 sm:h-8 mr-2 sm:mr-3 text-[#FF6B35]" />
           Vaults
         </h1>
-        <p className="text-gray-400 text-lg">Automated yield strategies for maximum returns</p>
+        <p className="text-[#5A6C7D] text-base sm:text-lg">Automated yield strategies for maximum returns</p>
       </div>
 
       {/* Your Vault Summary */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <div className="relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#00E0FF]/10 to-[#06B6D4]/10 rounded-2xl blur-xl" />
-          <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-[#00E0FF]/30 transition-all">
+          <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl" />
+          <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 hover:border-[#FF6B35]/30 transition-all shadow-sm">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-gray-400 text-sm">Total Deposited</p>
-              <DollarSign className="w-5 h-5 text-[#00E0FF]" />
+              <p className="text-[#5A6C7D] text-sm">Total Deposited</p>
+              <DollarSign className="w-5 h-5 text-[#FF6B35]" />
             </div>
-            <p className="text-3xl font-bold text-white">${totalDeposited.toLocaleString()}</p>
-            <p className="text-sm text-gray-400 mt-1">Across 3 vaults</p>
+            <p className="text-2xl sm:text-3xl font-bold text-[#1F2937]">${totalDeposited.toLocaleString()}</p>
+            <p className="text-sm text-[#5A6C7D] mt-1">Across 3 vaults</p>
           </div>
         </div>
 
         <div className="relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-2xl blur-xl" />
-          <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-green-500/30 transition-all">
+          <div className="absolute inset-0 bg-[#2E865F]/5 rounded-2xl blur-xl" />
+          <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 hover:border-[#2E865F]/30 transition-all shadow-sm">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-gray-400 text-sm">Average APY</p>
-              <TrendingUp className="w-5 h-5 text-green-500" />
+              <p className="text-[#5A6C7D] text-sm">Average APY</p>
+              <TrendingUp className="w-5 h-5 text-[#2E865F]" />
             </div>
-            <p className="text-3xl font-bold text-white">{averageAPY.toFixed(1)}%</p>
-            <p className="text-sm text-green-400 mt-1">+2.3% from last month</p>
+            <p className="text-2xl sm:text-3xl font-bold text-[#1F2937]">{averageAPY.toFixed(1)}%</p>
+            <p className="text-sm text-[#2E865F] mt-1">+2.3% from last month</p>
           </div>
         </div>
 
         <div className="relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl blur-xl" />
-          <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-purple-500/30 transition-all">
+          <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl" />
+          <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 hover:border-[#FF6B35]/30 transition-all shadow-sm">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-gray-400 text-sm">Total Yield Earned</p>
-              <Zap className="w-5 h-5 text-purple-500" />
+              <p className="text-[#5A6C7D] text-sm">Total Yield Earned</p>
+              <Zap className="w-5 h-5 text-[#FF6B35]" />
             </div>
-            <p className="text-3xl font-bold text-white">$347</p>
-            <p className="text-sm text-purple-400 mt-1">This month</p>
+            <p className="text-2xl sm:text-3xl font-bold text-[#1F2937]">$347</p>
+            <p className="text-sm text-[#FF6B35] mt-1">This month</p>
           </div>
         </div>
 
         <div className="relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-2xl blur-xl" />
-          <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-yellow-500/30 transition-all">
+          <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl" />
+          <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 hover:border-[#FF6B35]/30 transition-all shadow-sm">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-gray-400 text-sm">Active Positions</p>
-              <Target className="w-5 h-5 text-yellow-500" />
+              <p className="text-[#5A6C7D] text-sm">Active Positions</p>
+              <Target className="w-5 h-5 text-[#FF6B35]" />
             </div>
-            <p className="text-3xl font-bold text-white">3</p>
-            <p className="text-sm text-yellow-400 mt-1">Out of 12 available</p>
+            <p className="text-2xl sm:text-3xl font-bold text-[#1F2937]">3</p>
+            <p className="text-sm text-[#FF6B35] mt-1">Out of 12 available</p>
           </div>
         </div>
       </div>
 
       {/* Filters and Search */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <Filter className="w-5 h-5 text-gray-400" />
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex items-center space-x-4 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0">
+          <Filter className="w-5 h-5 text-[#5A6C7D] shrink-0" />
           <div className="flex items-center space-x-2">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 rounded-xl font-medium transition-all ${
+                className={`px-3 sm:px-4 py-2 rounded-xl font-medium transition-all whitespace-nowrap ${
                   selectedCategory === category.id
-                    ? 'bg-[#00E0FF]/20 text-[#00E0FF] border border-[#00E0FF]/30'
-                    : 'bg-gray-800/50 text-gray-400 hover:text-white hover:bg-gray-700/50'
+                    ? 'bg-[#FFE8E0] text-[#FF6B35] border border-[#FF6B35]/30'
+                    : 'bg-white text-[#5A6C7D] hover:text-[#1F2937] hover:bg-[#F9FAFB] border border-[#E5E7EB]'
                 }`}
               >
                 {category.name} ({category.count})
@@ -261,20 +261,21 @@ const VaultsPage = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+        <div className="flex items-center space-x-4 w-full sm:w-auto">
+          <div className="relative flex-1 sm:flex-initial">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#5A6C7D] w-4 h-4" />
             <input
               type="text"
               placeholder="Search vaults..."
-              className="pl-10 pr-4 py-2 bg-gray-800/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50 focus:border-[#00E0FF]/50 transition-all"
+              className="w-full sm:w-64 pl-10 pr-4 py-2 bg-white border border-[#E5E7EB] rounded-xl text-[#1F2937] placeholder-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50 focus:border-[#FF6B35]/50 transition-all"
             />
           </div>
 
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="px-4 py-2 bg-gray-800/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-[#00E0FF]/50"
+            aria-label="Sort vaults by"
+            className="px-4 py-2 bg-white border border-[#E5E7EB] rounded-xl text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
           >
             <option value="apy">Sort by APY</option>
             <option value="tvl">Sort by TVL</option>
@@ -284,26 +285,26 @@ const VaultsPage = () => {
       </div>
 
       {/* Vaults Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
         {sortedVaults.map((vault) => (
           <div key={vault.id} className="relative group">
-            <div className={`absolute inset-0 bg-gradient-to-r opacity-5 rounded-2xl blur-xl group-hover:opacity-10 transition-opacity ${vault.color.replace('from-', '').replace('to-', '').split(' ').map(c => c + '/20').join(' ')}`} />
-            <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600/50 transition-all group-hover:transform group-hover:scale-[1.02]">
+            <div className={`absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl group-hover:opacity-10 transition-opacity`} />
+            <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 hover:border-[#FF6B35]/30 transition-all group-hover:transform group-hover:scale-[1.01] shadow-sm">
               {/* Vault Header */}
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center space-x-3">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${vault.color} flex items-center justify-center text-2xl`}>
+              <div className="flex items-start justify-between mb-4 gap-3">
+                <div className="flex items-center space-x-3 min-w-0">
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-linear-to-r ${vault.color} flex items-center justify-center text-xl sm:text-2xl shrink-0`}>
                     {vault.icon}
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white group-hover:text-[#00E0FF] transition-colors">
+                  <div className="min-w-0">
+                    <h3 className="text-base sm:text-lg font-semibold text-[#1F2937] group-hover:text-[#FF6B35] transition-colors truncate">
                       {vault.name}
                     </h3>
-                    <p className="text-sm text-gray-400">{vault.protocol}</p>
+                    <p className="text-sm text-[#5A6C7D]">{vault.protocol}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 shrink-0">
                   <span className={`px-2 py-1 rounded-lg text-xs font-medium ${getStatusColor(vault.status)}`}>
                     {vault.status === 'new' ? '🆕 New' : vault.status === 'premium' ? '💎 Premium' : '✅ Active'}
                   </span>
@@ -311,72 +312,72 @@ const VaultsPage = () => {
               </div>
 
               {/* Vault Stats */}
-              <div className="grid grid-cols-3 gap-4 mb-4">
-                <div className="text-center p-3 bg-gray-900/30 rounded-xl">
-                  <p className="text-2xl font-bold text-green-400">{vault.apy}%</p>
-                  <p className="text-xs text-gray-400">APY</p>
+              <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-4">
+                <div className="text-center p-2 sm:p-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl">
+                  <p className="text-xl sm:text-2xl font-bold text-[#2E865F]">{vault.apy}%</p>
+                  <p className="text-xs text-[#5A6C7D]">APY</p>
                 </div>
-                <div className="text-center p-3 bg-gray-900/30 rounded-xl">
-                  <p className="text-lg font-bold text-white">${(vault.tvl / 1000000).toFixed(1)}M</p>
-                  <p className="text-xs text-gray-400">TVL</p>
+                <div className="text-center p-2 sm:p-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl">
+                  <p className="text-base sm:text-lg font-bold text-[#1F2937]">${(vault.tvl / 1000000).toFixed(1)}M</p>
+                  <p className="text-xs text-[#5A6C7D]">TVL</p>
                 </div>
-                <div className="text-center p-3 bg-gray-900/30 rounded-xl">
+                <div className="text-center p-2 sm:p-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl">
                   <span className={`px-2 py-1 rounded-lg text-xs font-medium ${getRiskColor(vault.riskLevel)}`}>
                     {vault.riskLevel}
                   </span>
-                  <p className="text-xs text-gray-400 mt-1">Risk</p>
+                  <p className="text-xs text-[#5A6C7D] mt-1">Risk</p>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-sm text-gray-400 mb-4">{vault.description}</p>
+              <p className="text-sm text-[#5A6C7D] mb-4 line-clamp-2">{vault.description}</p>
 
               {/* Features */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {vault.features.map((feature, index) => (
-                  <span key={index} className="px-2 py-1 bg-[#00E0FF]/10 text-[#00E0FF] text-xs rounded-lg">
+                  <span key={index} className="px-2 py-1 bg-[#FFE8E0] text-[#FF6B35] text-xs rounded-lg border border-[#FF6B35]/20">
                     {feature}
                   </span>
                 ))}
               </div>
 
               {/* Vault Details */}
-              <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 text-sm">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Min Deposit:</span>
-                  <span className="text-white font-medium">${vault.minDeposit}</span>
+                  <span className="text-[#5A6C7D]">Min Deposit:</span>
+                  <span className="text-[#1F2937] font-medium">${vault.minDeposit}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Lock Period:</span>
-                  <span className="text-white font-medium">{vault.lockPeriod}</span>
+                  <span className="text-[#5A6C7D]">Lock Period:</span>
+                  <span className="text-[#1F2937] font-medium">{vault.lockPeriod}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Participants:</span>
-                  <span className="text-white font-medium">{vault.participants.toLocaleString()}</span>
+                  <span className="text-[#5A6C7D]">Participants:</span>
+                  <span className="text-[#1F2937] font-medium">{vault.participants.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Your Deposit:</span>
-                  <span className="text-white font-medium">
+                  <span className="text-[#5A6C7D]">Your Deposit:</span>
+                  <span className="text-[#1F2937] font-medium">
                     {vault.userDeposit > 0 ? `$${vault.userDeposit.toLocaleString()}` : 'None'}
                   </span>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center space-x-3">
+              <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-3">
                 {vault.userDeposit > 0 ? (
                   <>
-                    <button className="flex-1 flex items-center justify-center space-x-2 py-3 px-4 bg-[#00E0FF]/20 text-[#00E0FF] rounded-xl hover:bg-[#00E0FF]/30 transition-colors">
+                    <button className="w-full sm:flex-1 flex items-center justify-center space-x-2 py-3 px-4 bg-[#FF6B35] text-white rounded-xl hover:bg-[#E65A2D] transition-colors font-medium">
                       <TrendingUp className="w-4 h-4" />
                       <span>Manage Position</span>
                     </button>
-                    <button className="flex items-center justify-center space-x-2 py-3 px-4 bg-gray-700/50 text-gray-300 rounded-xl hover:bg-gray-600/50 transition-colors">
+                    <button className="w-full sm:w-auto flex items-center justify-center space-x-2 py-3 px-4 bg-[#F3F4F6] text-[#5A6C7D] rounded-xl hover:bg-[#E5E7EB] transition-colors border border-[#E5E7EB]">
                       <Unlock className="w-4 h-4" />
                       <span>Withdraw</span>
                     </button>
                   </>
                 ) : (
-                  <button className="flex-1 flex items-center justify-center space-x-2 py-3 px-4 bg-gradient-to-r from-[#00E0FF]/20 to-[#06B6D4]/20 text-[#00E0FF] rounded-xl hover:from-[#00E0FF]/30 hover:to-[#06B6D4]/30 transition-all">
+                  <button className="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-[#FF6B35] text-white rounded-xl hover:bg-[#E65A2D] transition-all font-medium shadow-sm">
                     <DollarSign className="w-4 h-4" />
                     <span>Deposit Now</span>
                     <ArrowRight className="w-4 h-4" />
@@ -386,10 +387,10 @@ const VaultsPage = () => {
 
               {/* Risk Warning for High Risk Vaults */}
               {(vault.riskLevel === 'High' || vault.riskLevel === 'Very High') && (
-                <div className="mt-4 p-3 bg-orange-500/10 border border-orange-500/20 rounded-xl">
+                <div className="mt-4 p-3 bg-[#FEF3C7] border border-[#F59E0B]/30 rounded-xl">
                   <div className="flex items-center space-x-2">
-                    <AlertTriangle className="w-4 h-4 text-orange-400" />
-                    <span className="text-xs text-orange-400">
+                    <AlertTriangle className="w-4 h-4 text-[#F59E0B]" />
+                    <span className="text-xs text-[#92400E]">
                       High risk strategy. Only invest what you can afford to lose.
                     </span>
                   </div>
@@ -402,31 +403,31 @@ const VaultsPage = () => {
 
       {/* Educational Section */}
       <div className="relative group">
-        <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-2xl blur-xl" />
-        <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-indigo-500/30 transition-all">
+        <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl" />
+        <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 hover:border-[#FF6B35]/30 transition-all shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-semibold text-white flex items-center">
-              <Shield className="w-5 h-5 mr-2 text-indigo-500" />
+            <h3 className="text-lg sm:text-xl font-semibold text-[#1F2937] flex items-center">
+              <Shield className="w-5 h-5 mr-2 text-[#FF6B35]" />
               Vault Safety & Education
             </h3>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             <div className="space-y-2">
-              <h4 className="font-medium text-white">Risk Management</h4>
-              <p className="text-sm text-gray-400">
+              <h4 className="font-medium text-[#1F2937]">Risk Management</h4>
+              <p className="text-sm text-[#5A6C7D]">
                 All vaults undergo security audits and implement risk controls to protect your funds.
               </p>
             </div>
             <div className="space-y-2">
-              <h4 className="font-medium text-white">Diversification</h4>
-              <p className="text-sm text-gray-400">
+              <h4 className="font-medium text-[#1F2937]">Diversification</h4>
+              <p className="text-sm text-[#5A6C7D]">
                 Spread your investments across multiple vaults to reduce overall portfolio risk.
               </p>
             </div>
             <div className="space-y-2">
-              <h4 className="font-medium text-white">Learn More</h4>
-              <button className="text-indigo-400 hover:text-indigo-300 transition-colors text-sm font-medium">
+              <h4 className="font-medium text-[#1F2937]">Learn More</h4>
+              <button className="text-[#FF6B35] hover:text-[#E65A2D] transition-colors text-sm font-medium">
                 Read Vault Strategies Guide →
               </button>
             </div>

@@ -28,15 +28,15 @@ const Tabs: React.FC<TabsProps> = ({ data, rootClassName, tabButtonClassName, ac
             onClick={() => setActive(index)}
             mod={{ active: active === index }}
             className={cn(
-                "px-5 py-2 xl:text-xs text-base font-semibold",
-                index === 0 && "rounded-l-lg",
-                index === data.length - 1 && "rounded-r-lg",
+                "px-6 py-3 text-sm font-semibold transition-colors duration-200",
+                index === 0 && "rounded-l-xl",
+                index === data.length - 1 && "rounded-r-xl",
                 tabButtonClassName,
             )}
         >
             <span className={cn(
-                "relative z-10",
-                active === index ? (theme === "Fundio" ? "text-c3-background" : "text-black") : (theme === "Fundio" ? "bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text" : "text-primary"),
+                "relative z-10 transition-colors duration-200",
+                active === index ? "text-white" : "text-[#5A6C7D]",
             )}
             >
                 {item}
@@ -46,16 +46,14 @@ const Tabs: React.FC<TabsProps> = ({ data, rootClassName, tabButtonClassName, ac
 
     return (
         <div ref={setRootRef} className="shrink-0 relative">
-            <div className={cn("w-fit rounded-lg border border-[#C2FF94]/10", rootClassName)}>
-                <div className="flex items-center justify-center w-full h-full p-0.5 rounded-xl bg-c3-background">
-                    {controls}
-                </div>
+            <div className={cn("w-fit rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] p-1", rootClassName)}>
+                {controls}
             </div>
 
             <FloatingIndicator
                 target={controlsRefs[active]}
                 parent={rootRef}
-                className={cn("rounded-lg", theme === "Fundio" ? "bg-gradient-to-r from-primary to-secondary" : "bg-primary")}
+                className="rounded-lg bg-[#0A4A7A] shadow-sm"
             />
         </div>
     );

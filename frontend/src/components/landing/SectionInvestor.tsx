@@ -2,134 +2,101 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { TrendingUp, Shield } from '@/components/icons';
+import { TrendingUp, Shield, DollarSign } from '@/components/icons';
+import ScrollButton from './ScrollButton';
 
 export default function SectionInvestor() {
   return (
     <section
       id="section-2"
-      className="snap-start h-screen flex items-center justify-center relative overflow-hidden"
+      className="snap-start min-h-screen flex items-center justify-center relative overflow-hidden py-32 bg-[#FAFBFC]"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0B0C14] via-[#1E3A8A]/20 to-[#101120]">
-        {/* Glowing nodes */}
-        <div className="absolute inset-0">
-          {[...Array(30)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                background: `radial-gradient(circle, ${
-                  Math.random() > 0.5 ? '#FACC15' : '#1E3A8A'
-                } 0%, transparent 70%)`,
-              }}
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0.8, 0.3],
-              }}
-              transition={{
-                duration: 2 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
-        </div>
+      <div className="absolute inset-0 bg-linear-to-br from-[rgba(255,107,53,0.03)] to-transparent" />
 
-        {/* Pulse wave effect */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            background: [
-              'radial-gradient(circle at 20% 50%, rgba(250, 204, 21, 0.1) 0%, transparent 50%)',
-              'radial-gradient(circle at 80% 50%, rgba(30, 58, 138, 0.1) 0%, transparent 50%)',
-              'radial-gradient(circle at 20% 50%, rgba(250, 204, 21, 0.1) 0%, transparent 50%)',
-            ],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl mt-12 mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-        {/* Left: Text Content */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-6"
-        >
-          <motion.h1
-            className="text-5xl md:text-7xl font-bold"
-            style={{
-              background: 'linear-gradient(135deg, #FACC15 0%, #1E3A8A 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="space-y-8"
           >
-            DAT Proxy Powered Vaults and Stablecoin Liquidity Pools
-          </motion.h1>
-
-          <p className="text-xl text-gray-400 leading-relaxed">
-            Access live performance data, diversify smartly, and grow your
-            portfolio.
-          </p>
-
-          {/* Key Features */}
-          <div className="space-y-3">
-            <div className="flex items-center space-x-3">
-              <Shield className="w-5 h-5 text-[#FACC15]" />
-              <span className="text-gray-300">Secure & Transparent</span>
+            <div>
+              <h2 className="text-5xl lg:text-6xl font-bold mb-6 text-[#1F2937]">
+                DAT Proxy Powered Vaults and Stablecoin Liquidity Pools
+              </h2>
+              <p className="text-lg text-[#5A6C7D]">
+                Access live performance data, diversify smartly, and grow your portfolio with institutional-grade DeFi infrastructure.
+              </p>
             </div>
-            <div className="flex items-center space-x-3">
-              <TrendingUp className="w-5 h-5 text-[#FACC15]" />
-              <span className="text-gray-300">Real-time Analytics</span>
+
+            <div className="space-y-4">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#2E865F]/10">
+                  <Shield className="w-6 h-6 text-[#2E865F]" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1 text-[#FF6B35]">Secure & Transparent</h3>
+                  <p className="text-[#5A6C7D]">Bank-grade security with full transparency and real-time auditing</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#2E865F]/10">
+                  <TrendingUp className="w-6 h-6 text-[#2E865F]" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1 text-[#FF6B35]">Real-time Analytics</h3>
+                  <p className="text-[#5A6C7D]">Live performance tracking and portfolio optimization tools</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#2E865F]/10">
+                  <DollarSign className="w-6 h-6 text-[#2E865F]" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1 text-[#FF6B35]">High Yield Returns</h3>
+                  <p className="text-[#5A6C7D]">Competitive APY with automated yield optimization strategies</p>
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-4 pt-4">
-            <Link
-              href="/investor"
-              className="px-8 py-4 bg-gradient-to-r from-[#FACC15] to-[#1E3A8A] text-white rounded-full font-semibold hover:shadow-[0_0_30px_rgba(250,204,21,0.6)] transition-all duration-300 flex items-center space-x-2"
-            >
-              <TrendingUp className="w-5 h-5" />
-              <span>Learn More</span>
-            </Link>
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Link
+                href="/investor"
+                className="inline-flex items-center space-x-3 px-8 py-4 rounded-xl font-semibold bg-[#FF6B35] text-white shadow-md hover:shadow-lg hover:-translate-y-1 hover:bg-[#E65A2D] transition-all duration-300"
+              >
+                <TrendingUp className="w-5 h-5" />
+                <span>Explore Vaults</span>
+              </Link>
 
-            <Link
-              href="/dashboard/investor"
-              className="px-8 py-4 border border-[#FACC15]/50 text-[#FACC15] rounded-full hover:bg-[#FACC15]/10 hover:shadow-[0_0_20px_rgba(250,204,21,0.3)] transition-all duration-300"
-            >
-              Go to Dashboard
-            </Link>
-          </div>
-        </motion.div>
+              <Link
+                href="/dashboard/investor"
+                className="inline-flex items-center px-8 py-4 rounded-xl font-semibold border border-[#D1D5DB] text-[#1F2937] hover:bg-[#F3F4F6] hover:border-[#FF6B35] transition-all duration-300"
+              >
+                View Dashboard
+              </Link>
+            </div>
+          </motion.div>
 
-        {/* Right: Dashboard Preview */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative"
-        >
-          <div className="relative w-full">
-            {/* Dashboard mockup */}
-            <div className="bg-gradient-to-br from-[#1a1a2e] to-[#0B0C14] border border-[#FACC15]/20 rounded-2xl p-6 shadow-[0_0_50px_rgba(250,204,21,0.2)]">
-              {/* Chart */}
-              <div className="space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <div className="p-8 rounded-2xl border border-[#E5E7EB] bg-white shadow-md">
+              <h3 className="text-2xl font-semibold mb-6 text-[#1F2937]">Live Performance</h3>
+              
+              <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-400">Portfolio Value</span>
-                  <span className="text-[#FACC15] font-bold">$1,245,890</span>
+                  <span className="text-sm text-[#5A6C7D]">Portfolio Value</span>
+                  <span className="text-2xl font-bold text-[#1F2937]">$1,245,890</span>
                 </div>
 
-                {/* Animated chart bars */}
                 <div className="grid grid-cols-7 gap-2 h-32 items-end">
                   {[65, 80, 70, 90, 75, 95, 85].map((height, i) => (
                     <motion.div
@@ -137,43 +104,76 @@ export default function SectionInvestor() {
                       initial={{ height: 0 }}
                       whileInView={{ height: `${height}%` }}
                       transition={{ duration: 0.5, delay: i * 0.1 }}
-                      className="bg-gradient-to-t from-[#FACC15] to-[#1E3A8A] rounded-t"
+                      viewport={{ once: true }}
+                      className="bg-linear-to-t from-[#FF6B35] to-[#E65A2D] rounded-t"
                     />
                   ))}
                 </div>
 
-                {/* Stats */}
-                <div className="grid grid-cols-2 gap-4 pt-4">
-                  <div className="bg-[#1E3A8A]/10 border border-[#1E3A8A]/30 rounded-lg p-3">
-                    <div className="text-xs text-gray-400">24h Change</div>
-                    <div className="text-lg font-bold text-green-400">+12.5%</div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-4 rounded-lg border border-[#E5E7EB] bg-[#F9FAFB]">
+                    <div className="text-xs text-[#5A6C7D] mb-1">24h Change</div>
+                    <div className="text-xl font-bold text-[#2E865F]">+12.5%</div>
                   </div>
-                  <div className="bg-[#FACC15]/10 border border-[#FACC15]/30 rounded-lg p-3">
-                    <div className="text-xs text-gray-400">Total ROI</div>
-                    <div className="text-lg font-bold text-[#FACC15]">+45.2%</div>
+                  <div className="p-4 rounded-lg border border-[#FF6B35]/30 bg-[#FFE8E0]">
+                    <div className="text-xs text-[#5A6C7D] mb-1">Total ROI</div>
+                    <div className="text-xl font-bold text-[#FF6B35]">+45.2%</div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Floating badge */}
-            <motion.div
-              animate={{
-                y: [0, -10, 0],
-                rotate: [0, 5, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className="absolute -top-4 -left-4 bg-gradient-to-br from-[#FACC15] to-[#1E3A8A] text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
-            >
-              AI-Powered
-            </motion.div>
-          </div>
-        </motion.div>
+            <div className="grid grid-cols-3 gap-4">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="p-4 rounded-xl border border-[#E5E7EB] bg-white shadow-sm text-center"
+              >
+                <div className="text-2xl font-bold mb-1 text-[#1F2937]">
+                  $50M+
+                </div>
+                <div className="text-xs text-[#5A6C7D]">
+                  Total Locked
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="p-4 rounded-xl border border-[#E5E7EB] bg-white shadow-sm text-center"
+              >
+                <div className="text-2xl font-bold mb-1 text-[#1F2937]">
+                  5,000+
+                </div>
+                <div className="text-xs text-[#5A6C7D]">
+                  Investors
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.5 }}
+                viewport={{ once: true }}
+                className="p-4 rounded-xl border border-[#E5E7EB] bg-white shadow-sm text-center"
+              >
+                <div className="text-2xl font-bold mb-1 text-[#FF6B35]">
+                  18.5%
+                </div>
+                <div className="text-xs text-[#5A6C7D]">
+                  Avg APY
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </div>
+
+      <ScrollButton targetSection="section-3" />
     </section>
   );
 }

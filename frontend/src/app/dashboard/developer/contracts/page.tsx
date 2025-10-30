@@ -86,25 +86,25 @@ export default function SmartContractsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white">Smart Contract Access</h1>
-          <p className="text-gray-400 text-lg font-mono">Direct interaction with deployed contracts</p>
+          <h1 className="text-3xl font-bold text-[#1F2937]">Smart Contract <span className="text-[#FF6B35]">Access</span></h1>
+          <p className="text-[#5A6C7D] text-lg font-mono">Direct interaction with deployed contracts</p>
         </div>
-        <div className="flex items-center space-x-2 px-3 py-1 bg-green-500/20 rounded-lg">
-          <Shield className="w-4 h-4 text-green-400" />
-          <span className="text-sm text-green-400 font-mono">Contracts Verified</span>
+        <div className="flex items-center space-x-2 px-3 py-1 bg-[#2E865F]/10 border border-[#2E865F]/20 rounded-lg">
+          <Shield className="w-4 h-4 text-[#2E865F]" />
+          <span className="text-sm text-[#2E865F] font-mono">Contracts Verified</span>
         </div>
       </div>
 
       {/* Vault Selection */}
       <div className="relative group">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#00D1FF]/10 to-[#7C3AED]/10 rounded-2xl blur-xl" />
-        <div className="relative bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6">
+        <div className="absolute inset-0 bg-[#FF6B35]/5 rounded-2xl blur-xl" />
+        <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-lg">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-white">Select Vault Contract</h2>
+            <h2 className="text-lg font-semibold text-[#1F2937]">Select Vault Contract</h2>
             <select
               value={selectedVault}
               onChange={(e) => setSelectedVault(e.target.value)}
-              className="bg-gray-800/50 border border-gray-700/50 rounded-lg px-4 py-2 text-white font-mono focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50"
+              className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-lg px-4 py-2 text-[#1F2937] font-mono focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
             >
               <option value="sol30">SOL30 Vault (Solana)</option>
               <option value="base10">BASE10 Pool (Base)</option>
@@ -113,28 +113,28 @@ export default function SmartContractsPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <p className="text-sm text-gray-400 font-mono mb-1">Contract Name</p>
-              <p className="text-white font-mono">{selectedVaultData?.name}</p>
+              <p className="text-sm text-[#5A6C7D] font-mono mb-1">Contract Name</p>
+              <p className="text-[#1F2937] font-mono font-medium">{selectedVaultData?.name}</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400 font-mono mb-1">Chain</p>
+              <p className="text-sm text-[#5A6C7D] font-mono mb-1">Chain</p>
               <span className={`px-2 py-1 rounded text-sm font-mono ${
-                selectedVaultData?.chain === 'Solana' ? 'bg-[#00D1FF]/20 text-[#00D1FF]' : 'bg-purple-500/20 text-purple-400'
+                selectedVaultData?.chain === 'Solana' ? 'bg-[#FFE8E0] text-[#FF6B35]' : 'bg-[#A855F7]/10 text-[#A855F7]'
               }`}>
                 {selectedVaultData?.chain}
               </span>
             </div>
             <div>
-              <p className="text-sm text-gray-400 font-mono mb-1">Contract Address</p>
+              <p className="text-sm text-[#5A6C7D] font-mono mb-1">Contract Address</p>
               <div className="flex items-center space-x-2">
-                <code className="text-[#00D1FF] font-mono text-sm">
+                <code className="text-[#FF6B35] font-mono text-sm">
                   {selectedVaultData?.address.slice(0, 8)}...{selectedVaultData?.address.slice(-6)}
                 </code>
-                <button className="p-1 hover:bg-gray-700/50 rounded transition-colors">
-                  <Copy className="w-3 h-3 text-gray-400" />
+                <button className="p-1 hover:bg-[#F9FAFB] rounded transition-colors">
+                  <Copy className="w-3 h-3 text-[#5A6C7D]" />
                 </button>
-                <button className="p-1 hover:bg-gray-700/50 rounded transition-colors">
-                  <ExternalLink className="w-3 h-3 text-gray-400" />
+                <button className="p-1 hover:bg-[#F9FAFB] rounded transition-colors">
+                  <ExternalLink className="w-3 h-3 text-[#5A6C7D]" />
                 </button>
               </div>
             </div>
@@ -146,18 +146,18 @@ export default function SmartContractsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Function Selection */}
         <div className="relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl blur-xl" />
-          <div className="relative bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6 h-fit">
+          <div className="absolute inset-0 bg-[#A855F7]/5 rounded-2xl blur-xl" />
+          <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 h-fit shadow-lg">
             {/* Read/Write Tabs */}
-            <div className="flex items-center space-x-1 bg-gray-800/30 p-1 rounded-lg mb-4">
+            <div className="flex items-center space-x-1 bg-[#F9FAFB] p-1 rounded-lg mb-4 border border-[#E5E7EB]">
               {['read', 'write'].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-all font-mono ${
                     activeTab === tab
-                      ? 'bg-[#00D1FF] text-black shadow-lg shadow-[#00D1FF]/30'
-                      : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
+                      ? 'bg-[#FF6B35] text-white shadow-lg'
+                      : 'text-[#5A6C7D] hover:text-[#1F2937] hover:bg-white'
                   }`}
                 >
                   {tab === 'read' ? 'Read Functions' : 'Write Functions'}
@@ -165,7 +165,7 @@ export default function SmartContractsPage() {
               ))}
             </div>
 
-            <h3 className="text-lg font-semibold text-white mb-4">Available Functions</h3>
+            <h3 className="text-lg font-semibold text-[#1F2937] mb-4">Available Functions</h3>
             <div className="space-y-2">
               {availableFunctions.map((func, index) => (
                 <button
@@ -173,23 +173,23 @@ export default function SmartContractsPage() {
                   onClick={() => setSelectedFunction(func.name)}
                   className={`w-full text-left p-3 rounded-lg transition-all ${
                     selectedFunction === func.name
-                      ? 'bg-[#00D1FF]/20 border border-[#00D1FF]/30 text-[#00D1FF]'
-                      : 'bg-gray-800/30 hover:bg-gray-800/50 text-gray-300'
+                      ? 'bg-[#FFE8E0] border border-[#FF6B35]/30 text-[#FF6B35]'
+                      : 'bg-[#F9FAFB] hover:bg-white text-[#5A6C7D] border border-[#E5E7EB]'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-mono font-medium">{func.name}</span>
                     {activeTab === 'read' ? (
-                      <FileText className="w-4 h-4 text-gray-400" />
+                      <FileText className="w-4 h-4 text-[#5A6C7D]" />
                     ) : (
-                      <Zap className="w-4 h-4 text-yellow-400" />
+                      <Zap className="w-4 h-4 text-[#F59E0B]" />
                     )}
                   </div>
-                  <p className="text-xs text-gray-400 font-mono">
+                  <p className="text-xs text-[#5A6C7D] font-mono">
                     Returns: {func.returns}
                   </p>
                   {func.params.length > 0 && (
-                    <p className="text-xs text-gray-500 font-mono mt-1">
+                    <p className="text-xs text-[#9CA3AF] font-mono mt-1">
                       Params: {func.params.map(p => p.name).join(', ')}
                     </p>
                   )}
@@ -202,14 +202,14 @@ export default function SmartContractsPage() {
         {/* Function Execution */}
         <div className="lg:col-span-2">
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-2xl blur-xl" />
-            <div className="relative bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6">
+            <div className="absolute inset-0 bg-[#2E865F]/5 rounded-2xl blur-xl" />
+            <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-lg">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-lg font-semibold text-white">Function Execution</h3>
+                <h3 className="text-lg font-semibold text-[#1F2937]">Function Execution</h3>
                 {selectedFunction && (
                   <button
                     onClick={executeFunction}
-                    className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[#00D1FF] to-[#7C3AED] text-white rounded-lg hover:shadow-lg hover:shadow-[#00D1FF]/30 transition-all"
+                    className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[#FF6B35] to-[#E65A2D] text-white rounded-lg hover:shadow-lg hover:shadow-[#FF6B35]/30 transition-all"
                   >
                     <Play className="w-4 h-4" />
                     <span className="font-mono">Execute Transaction</span>
@@ -220,21 +220,20 @@ export default function SmartContractsPage() {
               {selectedFunction ? (
                 <div className="space-y-6">
                   {/* Function Details */}
-                  <div className="p-4 bg-gray-800/30 rounded-lg">
-                    <h4 className="text-white font-mono font-medium mb-2">{selectedFunction}</h4>
-                    <div className="text-sm text-gray-400 font-mono">
-                      {availableFunctions.find(f => f.name === selectedFunction)?.params.length === 0 ? (
+                  <div className="p-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-lg">
+                    <h4 className="text-[#1F2937] font-mono font-medium mb-2">{selectedFunction}</h4>
+                    <div className="text-sm text-[#5A6C7D] font-mono">{availableFunctions.find(f => f.name === selectedFunction)?.params.length === 0 ? (
                         <p>No parameters required</p>
                       ) : (
                         <div className="space-y-2">
                           <p>Parameters:</p>
                           {availableFunctions.find(f => f.name === selectedFunction)?.params.map((param, index) => (
                             <div key={index} className="ml-4">
-                              <label className="block text-gray-400 mb-1">{param.name} ({param.type})</label>
+                              <label className="block text-[#5A6C7D] mb-1">{param.name} ({param.type})</label>
                               <input
                                 type="text"
                                 placeholder={`Enter ${param.name}...`}
-                                className="w-full px-3 py-2 bg-gray-900/50 border border-gray-700/50 rounded-lg text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50"
+                                className="w-full px-3 py-2 bg-white border border-[#E5E7EB] rounded-lg text-[#1F2937] font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B35]/50"
                               />
                             </div>
                           ))}
@@ -244,15 +243,15 @@ export default function SmartContractsPage() {
                   </div>
 
                   {/* Transaction Result */}
-                  <div className="p-4 bg-gray-800/30 rounded-lg">
-                    <h4 className="text-white font-mono font-medium mb-2">Transaction Result</h4>
-                    <div className="h-48 bg-gray-900/50 border border-gray-700/50 rounded-lg p-4 overflow-auto">
+                  <div className="p-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-lg">
+                    <h4 className="text-[#1F2937] font-mono font-medium mb-2">Transaction Result</h4>
+                    <div className="h-48 bg-white border border-[#E5E7EB] rounded-lg p-4 overflow-auto">
                       {txResult ? (
-                        <pre className="text-sm font-mono text-gray-300 whitespace-pre-wrap">
+                        <pre className="text-sm font-mono text-[#1F2937] whitespace-pre-wrap">
                           {txResult}
                         </pre>
                       ) : (
-                        <div className="flex items-center justify-center h-full text-gray-500">
+                        <div className="flex items-center justify-center h-full text-[#9CA3AF]">
                           <div className="text-center">
                             <Hash className="w-8 h-8 mx-auto mb-2 opacity-50" />
                             <p className="font-mono text-sm">Execute a function to see results</p>
@@ -264,15 +263,15 @@ export default function SmartContractsPage() {
 
                   {/* Gas Estimation */}
                   {activeTab === 'write' && (
-                    <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                    <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
                       <div className="flex items-start space-x-3">
-                        <AlertTriangle className="w-5 h-5 text-yellow-400 mt-0.5" />
+                        <AlertTriangle className="w-5 h-5 text-yellow-600 mt-0.5" />
                         <div>
-                          <h4 className="text-yellow-400 font-mono font-medium mb-1">Gas Estimation</h4>
-                          <p className="text-sm text-gray-300 font-mono">
+                          <h4 className="text-yellow-700 font-mono font-medium mb-1">Gas Estimation</h4>
+                          <p className="text-sm text-yellow-800 font-mono">
                             Estimated gas: {selectedVaultData?.chain === 'Solana' ? '5,000 lamports' : '21,000 gas units'}
                           </p>
-                          <p className="text-xs text-gray-400 font-mono mt-1">
+                          <p className="text-xs text-yellow-600 font-mono mt-1">
                             This is a write operation that will modify blockchain state
                           </p>
                         </div>
@@ -281,7 +280,7 @@ export default function SmartContractsPage() {
                   )}
                 </div>
               ) : (
-                <div className="flex items-center justify-center h-64 text-gray-500">
+                <div className="flex items-center justify-center h-64 text-[#9CA3AF]">
                   <div className="text-center">
                     <Code2 className="w-12 h-12 mx-auto mb-4 opacity-50" />
                     <p className="font-mono">Select a function to interact with the contract</p>
@@ -296,48 +295,48 @@ export default function SmartContractsPage() {
       {/* Contract Information */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#00D1FF]/10 to-[#7C3AED]/10 rounded-2xl blur-xl" />
-          <div className="relative bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6">
-            <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-              <Shield className="w-5 h-5 mr-2 text-green-400" />
+          <div className="absolute inset-0 bg-[#2E865F]/5 rounded-2xl blur-xl" />
+          <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-lg">
+            <h3 className="text-lg font-semibold text-[#1F2937] mb-4 flex items-center">
+              <Shield className="w-5 h-5 mr-2 text-[#2E865F]" />
               Security Information
             </h3>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-gray-400 font-mono">Contract Verified</span>
-                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span className="text-[#5A6C7D] font-mono">Contract Verified</span>
+                <CheckCircle className="w-4 h-4 text-[#2E865F]" />
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-400 font-mono">Audit Status</span>
-                <span className="text-green-400 font-mono">Passed</span>
+                <span className="text-[#5A6C7D] font-mono">Audit Status</span>
+                <span className="text-[#2E865F] font-mono">Passed</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-400 font-mono">Last Updated</span>
-                <span className="text-gray-300 font-mono">2024-10-15</span>
+                <span className="text-[#5A6C7D] font-mono">Last Updated</span>
+                <span className="text-[#1F2937] font-mono">2024-10-15</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl blur-xl" />
-          <div className="relative bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6">
-            <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-              <Settings className="w-5 h-5 mr-2 text-purple-400" />
+          <div className="absolute inset-0 bg-[#A855F7]/5 rounded-2xl blur-xl" />
+          <div className="relative bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-lg">
+            <h3 className="text-lg font-semibold text-[#1F2937] mb-4 flex items-center">
+              <Settings className="w-5 h-5 mr-2 text-[#A855F7]" />
               Contract Stats
             </h3>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-gray-400 font-mono">Total Value Locked</span>
-                <span className="text-[#00D1FF] font-mono font-bold">$2.4M</span>
+                <span className="text-[#5A6C7D] font-mono">Total Value Locked</span>
+                <span className="text-[#FF6B35] font-mono font-bold">$2.4M</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-400 font-mono">Total Transactions</span>
-                <span className="text-purple-400 font-mono">24,750</span>
+                <span className="text-[#5A6C7D] font-mono">Total Transactions</span>
+                <span className="text-[#A855F7] font-mono">24,750</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-400 font-mono">Active Users</span>
-                <span className="text-green-400 font-mono">1,247</span>
+                <span className="text-[#5A6C7D] font-mono">Active Users</span>
+                <span className="text-[#2E865F] font-mono">1,247</span>
               </div>
             </div>
           </div>

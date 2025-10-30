@@ -1,91 +1,64 @@
+/* Import Google Fonts first - must be before all other rules */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Import design system files */
+@import "../assets/styles/design-system/colors.css";
+@import "../assets/styles/design-system/typography.css";
+@import "../assets/styles/design-system/spacing.css";
+@import "../assets/styles/design-system/elevation.css";
+@import "../assets/styles/design-system/animations.css";
+
+/* Import variables */
 @import "../assets/styles/_vars.css";
 
+/* Define Tailwind layers */
 @layer theme, base, mantine, components, utilities;
 
+/* Import Tailwind CSS */
 @import "tailwindcss";
 
+/* Import Mantine styles */
 @import "@mantine/core/styles.layer.css";
-
-/* @custom-variant dark (&:where(.light, .light *)); */
 
 :root {
     --h-nav: 80px;
-    --background: #0a1016;
-    --foreground: #ffffff;
-    --color-primary: #8db6f3;
-    --color-secondary: #befd89;
-    --color-dark-green: #163900;
+    --background: var(--bg-primary);
+    --foreground: var(--text-primary);
+    --color-primary: var(--brand-primary);
+    --color-secondary: var(--accent-green);
+    --color-dark-green: var(--accent-green-dark);
 
-    --color-fundio-primary: #a3e635;
-    --color-fundio-secondary: #c2ff94;
-    --color-fundio-gray: #272727;
-    --color-fundio-dark-green: #163900;
-    --color-fundio-sidebar: #1d1f1b;
+    --color-fundio-primary: var(--accent-green);
+    --color-fundio-secondary: var(--accent-green-light);
+    --color-fundio-gray: var(--gray-700);
+    --color-fundio-dark-green: var(--accent-green-dark);
+    --color-fundio-sidebar: var(--gray-800);
 
-    --color-jsonjuice-primary: #8db6f3;
-    --color-jsonjuice-secondary: #010f25;
+    --color-jsonjuice-primary: var(--brand-primary);
+    --color-jsonjuice-secondary: var(--primary-10);
 
-    --color-c3-background: #181818;
+    --color-c3-background: var(--gray-900);
 
-    --color-border: #c2ff9417;
-}
-
-@theme inline {
-    /* colors */
+    --color-border: var(--border-primary);
+    
+    /* Tailwind theme colors - converted from @theme */
     --color-dark-green: #163900;
     --color-primary: #8db6f3;
     --color-secondary: #befd89;
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --color-dark-green: var(--color-dark-green);
-
-    --color-fundio-primary: var(--color-fundio-primary);
-    --color-fundio-secondary: var(--color-fundio-secondary);
-    --color-fundio-gray: var(--color-fundio-gray);
-    --color-fundio-dark-green: var(--color-fundio-dark-green);
-    --color-fundio-sidebar: var(--color-fundio-sidebar);
-
-    --color-jsonjuice-primary: var(--color-jsonjuice-primary);
-    --color-jsonjuice-secondary: var(--color-jsonjuice-secondary);
-
-    --color-c3-background: var(--color-c3-background);
-
-    --color-border: var(--color-border);
-
-    /* text sizes */
-    --text-xs: var(--text-xs);
-    --text-sm: var(--text-sm);
-    --text-base: var(--text-base);
-    --text-lg: var(--text-lg);
-    --text-xl: var(--text-xl);
-    --text-2xl: var(--text-2xl);
-    --text-3xl: var(--text-3xl);
-    --text-4xl: var(--text-4xl);
-    --text-5xl: var(--text-5xl);
-    --text-6xl: var(--text-6xl);
-    --text-7xl: var(--text-7xl);
-    --text-8xl: var(--text-8xl);
-    --text-9xl: var(--text-9xl);
-
-    /* font family */
-    --font-manrope: var(--font-manrope);
-
-    /* sizes */
-    --spacing-h-nav: var(--h-nav);
-
-    /* media query */
-    --breakpoint-3xl: 100rem;
-
-    /* keyframes */
+    
+    /* Responsive font sizes inherit from _vars.css */
+    /* Keyframes */
     --animate-infinite-scroll: 25s linear infinite infinite-scroll-x;
     --animate-rotate: 3.5s linear infinite rotate;
+    
+    /* Breakpoints */
+    --breakpoint-3xl: 100rem;
 }
 
 @keyframes infinite-scroll-x {
     from {
         transform: translateX(0);
     }
-
     to {
         transform: translateX(-100%);
     }
@@ -107,8 +80,19 @@ html {
 body {
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--font-manrope);
+    font-family: var(--font-inter);
     overflow-x: hidden;
+    font-feature-settings: 'cv02' 1, 'cv03' 1, 'cv04' 1, 'cv11' 1, 'tnum' 1, 'case' 1, 'zero' 1;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* Privy theming */
+    --privy-color-background: var(--background);
+    --privy-color-foreground: var(--foreground);
+    --privy-color-accent: var(--brand-primary);
+    --privy-color-accent-dark: var(--brand-primary-hover);
 }
 
 ::-webkit-scrollbar {
@@ -124,13 +108,25 @@ body {
     border-radius: 5px;
 }
 
+/* Gradient utility class - using plain CSS instead of @apply */
 .bg-primary-gradient {
-    @apply bg-linear-to-r from-[var(--color-primary)]/80 to-[var(--color-secondary)];
+    background: linear-gradient(to right, rgba(var(--color-primary-rgb), 0.8), var(--color-secondary));
 }
 
-body {
-    --privy-color-background: var(--background);
-    --privy-color-foreground: var(--foreground);
-    --privy-color-accent: "transparent";
-    --privy-color-accent-dark: "transparent";
+*:focus-visible {
+  outline: 3px solid var(--brand-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

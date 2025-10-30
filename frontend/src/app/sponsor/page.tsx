@@ -138,7 +138,7 @@ export default function SponsorLandingPage() {
       color: "from-[#0A4A7A] to-[#2E865F]"
     },
      {
-      name: "Woemhole",
+      name: "Wormhole",
       category: "File Sharing",
       description: "Simple , Secure, and Fast.",
       icon: <Share2 className="w-6 h-6" />,
@@ -355,6 +355,97 @@ export default function SponsorLandingPage() {
         </div>
       </section>
 
+      {/* Featured Sponsors Row (added) */}
+      <section id="featured-sponsors" className="py-12 px-6 relative">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8"
+          >
+            <h3 className="text-2xl md:text-3xl font-semibold text-white">
+              Featured Sponsor Opportunities
+            </h3>
+            <p className="text-sm text-gray-400 max-w-2xl mx-auto mt-2">
+              New program and grant models available for cohort, grant, and enterprise sponsorship.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1: IRL Cohort / FLP COHORT */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.05 }}
+              className="p-6 bg-gradient-to-br from-white/5 to-white/3 backdrop-blur-sm rounded-2xl border border-white/10"
+            >
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#8B5CF6] to-[#6D28D9] flex items-center justify-center">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1 text-left">
+                  <h4 className="text-lg font-bold text-white">IRL Cohort — Hybrid Delivery</h4>
+                  <p className="text-sm text-gray-300 mt-2">
+                    IRL cohort delivered as hybrid.
+                    <br />
+                    Launch: <a href="https://lwandisurf.org" target="_blank" rel="noreferrer" className="text-[#4ECDC4] underline">FLP COHORT</a>
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 2: GRANT */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="p-6 bg-gradient-to-br from-white/5 to-white/3 backdrop-blur-sm rounded-2xl border border-white/10"
+            >
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#FFD93D] to-[#FFA07A] flex items-center justify-center">
+                  <Award className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1 text-left">
+                  <h4 className="text-lg font-bold text-white">GRANT — DECENSAT.org Affiliate</h4>
+                  <ul className="text-sm text-gray-300 mt-2 list-disc list-inside space-y-1">
+                    <li>Programmatic 12/15/18 month DECENSAT.org affiliate Grant</li>
+                    <li>Monthly yield share as Grant</li>
+                    <li>Fractionally self-configured return of principal</li>
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 3: ENTERPRISE SPONSOR */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="p-6 bg-gradient-to-br from-white/5 to-white/3 backdrop-blur-sm rounded-2xl border border-white/10"
+            >
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#00D4AA] to-[#00A896] flex items-center justify-center">
+                  <Building2 className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1 text-left">
+                  <h4 className="text-lg font-bold text-white">Enterprise Sponsor — DECENSAT.org</h4>
+                  <ul className="text-sm text-gray-300 mt-2 list-disc list-inside space-y-1">
+                    <li>DECENSAT.org — 12yr+ or 18yr+ targeting learning workshop scholarships for inclusive needs</li>
+                    <li>Epoch-based learner cohorts and on-chain attested parent/guardian applicants</li>
+                    <li>Programming co-curation and private cohort delivery; DECENSAT.org ecosystem Grant</li>
+                    <li>Monthly yield share as Grant; fractionally self-configured return of principal</li>
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Target Enterprises Section */}
       <section id="partners" className="py-20 px-6 relative bg-white">
         <div className="max-w-7xl mx-auto">
@@ -398,6 +489,56 @@ export default function SponsorLandingPage() {
       {/* Partnership Tiers Section */}
       <section id="tiers" className="py-20 px-6 relative bg-gray-50">
         <div className="max-w-7xl mx-auto">
+          {/* Quick Featured Row above Partnership Tiers (IRL cohort / Grant / Enterprise Sponsor) */}
+          <div className="mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-6"
+            >
+              <h4 className="text-xl md:text-2xl font-semibold text-white">Sponsor Highlights</h4>
+              <p className="text-sm text-gray-400 max-w-2xl mx-auto mt-2">Three highlighted sponsor options for cohorts, grants, and enterprise sponsorships.</p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <motion.div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 rounded-md bg-gradient-to-br from-[#8B5CF6] to-[#6D28D9] flex items-center justify-center">
+                    <Sparkles className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-white font-bold">IRL Cohort — Hybrid</div>
+                    <div className="text-sm text-gray-300">IRL cohort delivered as hybrid. Launch: <a href="https://lwandisurf.org" target="_blank" rel="noreferrer" className="text-[#4ECDC4] underline">FLP COHORT</a></div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 rounded-md bg-gradient-to-br from-[#FFD93D] to-[#FFA07A] flex items-center justify-center">
+                    <Award className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-white font-bold">GRANT — DECENSAT.org</div>
+                    <div className="text-sm text-gray-300">Programmatic 12/15/18 month affiliate grants, monthly yield share as grant, and fractionally self-configured return of principal.</div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 rounded-md bg-gradient-to-br from-[#00D4AA] to-[#00A896] flex items-center justify-center">
+                    <Building2 className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-white font-bold">Enterprise Sponsor — DECENSAT.org</div>
+                    <div className="text-sm text-gray-300">12yr+ or 18yr+ scholarship targeting; epoch-based learner cohorts, on-chain attested guardian applicants, co-curation and private cohort delivery.</div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

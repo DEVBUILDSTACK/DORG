@@ -183,7 +183,7 @@ export default function DeveloperLandingPage() {
                 className="px-8 py-4 border-2 border-[#0A4A7A] text-[#0A4A7A] rounded-full hover:bg-[#0A4A7A] hover:text-white transition-all duration-300 flex items-center space-x-2"
               >
                 <Terminal className="w-5 h-5" />
-                <span>View Documentation</span>
+                <span>Developer Dashboard</span>
               </Link>
             </div>
 

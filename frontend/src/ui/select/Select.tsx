@@ -16,9 +16,9 @@ const Select: React.FC<CustomSelectProps> = ({ wrapperClass, selectClass, ...pro
             classNames={{
                 root: "w-full",
                 wrapper: cn("flex-1 xl:h-10 xl:text-xs text-base", wrapperClass),
-                input: cn("h-full bg-transparent border-border rounded-lg font-manrope placeholder:text-white font-thin xl:text-xs text-base text-white", selectClass),
-                dropdown: "bg-fundio-sidebar border-none",
-                option: "text-white hover:bg-fundio-sidebar text-xs",
+                input: cn("h-full bg-white border border-[#E5E7EB] rounded-lg font-manrope placeholder:text-[#9CA3AF] font-normal xl:text-xs text-base text-[#1F2937] hover:border-[#FF6B35] focus:border-[#FF6B35]", selectClass),
+                dropdown: "bg-white border border-[#E5E7EB] shadow-lg",
+                option: "text-[#1F2937] hover:bg-[#FF6B35]/10 hover:text-[#FF6B35] text-xs transition-colors",
                 error: "xl:text-xs text-base",
             }}
             withErrorStyles={false}

@@ -17,9 +17,9 @@ const CommandControl: React.FC = () => {
     const { setTierData, setAutoRenewalData, setLpsData } = useFLPStore();
 
     useQuery({
-        queryKey: [QUERY_KEY.TIER, { offset: 0, limit: PAGE_LIMIT, platform_name: "Fundio" }],
+        queryKey: [QUERY_KEY.TIER, { offset: 0, limit: PAGE_LIMIT, platform_name: "Learn2Launch" }],
         queryFn: async () => {
-            const data = await getAllTier(0, PAGE_LIMIT, "Fundio");
+            const data = await getAllTier(0, PAGE_LIMIT, "Learn2Launch");
             if (data?.data) {
                 setTierData(data.data);
             }
@@ -43,9 +43,9 @@ const CommandControl: React.FC = () => {
     });
 
     useQuery({
-        queryKey: [QUERY_KEY.LP_TYPE, { offset: 0, limit: PAGE_LIMIT, platform_name: "Fundio", status: "Active" }],
+        queryKey: [QUERY_KEY.LP_TYPE, { offset: 0, limit: PAGE_LIMIT, platform_name: "Learn2Launch", status: "Active" }],
         queryFn: async () => {
-            const data = await getAllLPType(0, PAGE_LIMIT, "Fundio", "Active");
+            const data = await getAllLPType(0, PAGE_LIMIT, "Learn2Launch", "Active");
             if (data?.data) {
                 setLpsData(data.data);
             }
@@ -57,27 +57,32 @@ const CommandControl: React.FC = () => {
 
     return (
         <div>
-            {/* {ready && authenticated
-                ? (
-                        <> */}
             <PageNavbar>
                 <PageNavbarLeftContent className="md:w-1/2 w-full">
-                    <div className="flex items-center gap-3">
-                        <Home className="xl:size-6 lg:size-5 size-4" />
-                        <h2 className="xl:text-base text-xl">SME Command & Control Center</h2>
+                    <div className="flex items-center gap-3 md:ps-10">
+                        <Home className="xl:size-6 lg:size-5 size-4 text-[#FF6B35]" />
+                        <h2 className="xl:text-base text-xl text-[#1F2937] font-semibold">SME Command & Control Center</h2>
                     </div>
                 </PageNavbarLeftContent>
 
                 <PageNavbarRightContent className="md:flex gap-2 hidden">
-                    <Button variant="outline" className="border border-[#FFFFFF]/20 rounded-xl !h-10 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent !px-6 w-fit xl:!text-xs !text-base !font-bold">OnRamp Fiat @ Zelle</Button>
-                    <Button variant="primary" className="rounded-xl !h-10 w-fit !px-4 xl:!text-xs !text-base !font-bold">
+                    <Button 
+                        variant="outline" 
+                        className="border border-[#FF6B35] rounded-xl !h-10 text-[#FF6B35] hover:bg-[#FF6B35]/10 !px-6 w-fit xl:!text-xs !text-base !font-bold"
+                    >
+                        OnRamp Fiat @ Zelle
+                    </Button>
+                    <Button 
+                        variant="primary" 
+                        className="rounded-xl !h-10 w-fit !px-4 xl:!text-xs !text-base !font-bold bg-[#FF6B35] hover:bg-[#FF6B35]/90"
+                    >
                         Liquidity Pools
                         <ExportSquare size={15} />
                     </Button>
                 </PageNavbarRightContent>
             </PageNavbar>
 
-            <PageContent className="bg-transparent xl:pr-0">
+            <PageContent className="bg-white">
                 <CommandControlContent />
             </PageContent>
         </div>

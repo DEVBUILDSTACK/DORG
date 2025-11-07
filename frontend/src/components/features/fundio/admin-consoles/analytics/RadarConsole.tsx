@@ -17,24 +17,23 @@ const wallets = [
 
 const RadarConsole: React.FC = () => {
     return (
-        <div className="bg-fundio-sidebar p-4 rounded-2xl h-full flex flex-col overflow-hidden">
+        <div className="bg-white border border-[#E5E7EB] p-4 rounded-2xl h-full flex flex-col overflow-hidden shadow-sm">
             <div className="flex items-center justify-between mb-3">
-                <h3 className="lg:text-lg text-2xl text-white/62">Defi Treasury Radar Console</h3>
+                <h3 className="lg:text-lg text-2xl text-[#1F2937] font-semibold">Defi Treasury Radar Console</h3>
             </div>
 
             <div className="flex flex-col min-h-0 h-full">
                 <div className="flex-1 overflow-y-auto">
                     {wallets.map((wallet, idx) => (
                         <React.Fragment key={wallet.id}>
-                            <div className="flex items-center justify-between p-3 rounded-lg">
+                            <div className="flex items-center justify-between p-3 rounded-lg hover:bg-[#F9FAFB] transition-colors">
                                 <div className="flex gap-3">
-                                    <PiSealCheckFill className="shrink-0 size-5 text-[#09B285] mt-1" />
+                                    <PiSealCheckFill className="shrink-0 size-5 text-[#10B981] mt-1" />
                                     <div>
-                                        <p className="text-white font-medium text-lg">{wallet.name}</p>
-                                        {/* <p className="text-xs text-gray-400">Address: {wallet.address}</p> */}
+                                        <p className="text-[#1F2937] font-medium text-lg">{wallet.name}</p>
                                         <div className="flex items-center gap-2">
-                                            <span className="xl:text-xs text-base text-white">
-                                                <span className="text-white/80 font-light">Address:</span>
+                                            <span className="xl:text-xs text-base text-[#5A6C7D]">
+                                                <span className="text-[#5A6C7D] font-light">Address:</span>
                                                 {" "}
                                                 {wallet.address.slice(0, 4)}
                                                 ...
@@ -54,21 +53,21 @@ const RadarConsole: React.FC = () => {
                                     </div>
                                 </div>
                                 <div className="text-right">
-                                    <p className="xl:text-xs text-base text-white/80 font-light">Balance</p>
-                                    <p className="xl:text-base text-lg bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold lg:tracking-[-1px]">{wallet.balance}</p>
+                                    <p className="xl:text-xs text-base text-[#5A6C7D] font-light">Balance</p>
+                                    <p className="xl:text-base text-lg text-[#FF6B35] font-bold lg:tracking-[-1px]">{wallet.balance}</p>
                                 </div>
                             </div>
                             {idx < wallets.length - 1 && (
-                                <div className="h-[1px] bg-gradient-to-r from-transparent via-[#BDBF1B]/16 to-transparent" />
+                                <div className="h-[1px] bg-gradient-to-r from-transparent via-[#E5E7EB] to-transparent" />
                             )}
                         </React.Fragment>
                     ))}
                 </div>
 
-                <div className="flex justify-between gap-2 pt-4 mt-auto">
+                <div className="flex justify-between gap-2 pt-4 mt-auto border-t border-[#E5E7EB]">
                     <div className="flex items-center xl:justify-center lg:w-3/5 md:w-full w-2/5">
                         <Button
-                            className="rounded-xl !h-10 xl:!text-xs !text-base !px-4 xl:!w-full md:!w-2/5"
+                            className="rounded-xl !h-10 xl:!text-xs !text-base !px-4 xl:!w-full md:!w-2/5 bg-[#FF6B35] hover:bg-[#FF6B35]/90"
                             labelClass="flex items-center justify-between gap-3 !w-full "
                         >
                             View Details
@@ -77,11 +76,11 @@ const RadarConsole: React.FC = () => {
                     </div>
                     <div className="flex items-center xl:justify-center justify-end lg:w-2/5 md:w-full w-2/5">
                         <Button
-                            variant="light"
-                            labelClass="flex items-center justify-between gap-3 !w-full bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold"
-                            className="rounded-xl !h-10 xl:!text-xs !text-base !px-4 xl:!w-full lg:!w-1/2 md:!w-2/5 bg-[#252525]"
+                            variant="outline"
+                            labelClass="flex items-center justify-between gap-3 !w-full text-[#FF6B35] font-semibold"
+                            className="rounded-xl !h-10 xl:!text-xs !text-base !px-4 xl:!w-full lg:!w-1/2 md:!w-2/5 border-[#FF6B35] hover:bg-[#FF6B35]/10"
                         >
-                            <MdAdd className="shrink-0 size-5.5 text-primary" />
+                            <MdAdd className="shrink-0 size-5.5 text-[#FF6B35]" />
                             Fund Wallet
                         </Button>
                     </div>

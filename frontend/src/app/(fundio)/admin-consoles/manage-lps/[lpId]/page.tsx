@@ -14,13 +14,13 @@ const ManageLPDetailsView: React.FC = () => {
             <PageNavbar>
                 <PageNavbarLeftContent className="md:w-1/2 w-full">
                     <div className="flex items-center gap-3">
-                        <DocumentText className="lg:size-6 size-5" />
-                        <h1 className="xl:text-base text-xl text-white/80">Lender LP Administration Console</h1>
+                        <DocumentText className="lg:size-6 size-5 text-[#FF6B35]" />
+                        <h1 className="xl:text-base text-xl text-[#1F2937] font-semibold">Lender LP Administration Console</h1>
                     </div>
                 </PageNavbarLeftContent>
             </PageNavbar>
 
-            <PageContent className="xl:pr-0">
+            <PageContent className="bg-white">
                 <ManageLPDetails />
             </PageContent>
         </div>

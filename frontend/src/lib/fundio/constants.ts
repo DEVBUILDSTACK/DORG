@@ -2,7 +2,7 @@ import { FtxToken } from "iconsax-reactjs";
 
 import type { SidebarData } from "@/types/general.types";
 
-import C3FudioLogo from "@/assets/svg/fundio/C3FudioLogo";
+import Logo from "@/assets/images/l2l.jpg";
 import DocumentText from "@/assets/svg/fundio/DocumentText";
 import Home from "@/assets/svg/fundio/Home";
 import Shield from "@/assets/svg/fundio/Shield";
@@ -10,10 +10,9 @@ import Users from "@/assets/svg/fundio/Users";
 import HierarchyTree from "@/assets/svg/json-juice/command-center/HierarchyTree";
 
 export const fundioSidebarData: SidebarData = {
-    name: "Fundio",
-    logo: C3FudioLogo,
+    name: "Learn2Launch",
+    logo: Logo,
     theme: "Fundio",
-    // color: "from-[#4A90E2] to-[#357ABD]",
     menuItems: [
         { label: "Command & Control", icon: Home, link: "/command-control" },
         {

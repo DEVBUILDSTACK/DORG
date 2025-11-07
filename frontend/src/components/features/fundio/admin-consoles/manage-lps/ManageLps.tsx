@@ -25,9 +25,9 @@ const ManageLps = () => {
     const { ready, authenticated } = usePrivy();
 
     useQuery({
-        queryKey: [QUERY_KEY.TIER, { offset: 0, limit: 100, platform_name: "Fundio" }],
+        queryKey: [QUERY_KEY.TIER, { offset: 0, limit: 100, platform_name: "Learn2Launch" }],
         queryFn: async () => {
-            const data = await getAllTier(0, 100, "Fundio");
+            const data = await getAllTier(0, 100, "Learn2Launch");
             if (data?.data) {
                 setTierData(data.data);
             }
@@ -51,9 +51,9 @@ const ManageLps = () => {
     });
 
     useQuery({
-        queryKey: [QUERY_KEY.LP_TYPE, { offset: 0, limit: 100, platform_name: "Fundio", status: "Active" }],
+        queryKey: [QUERY_KEY.LP_TYPE, { offset: 0, limit: 100, platform_name: "Learn2Launch", status: "Active" }],
         queryFn: async () => {
-            const data = await getAllLPType(0, 100, "Fundio", "Active");
+            const data = await getAllLPType(0, 100, "Learn2Launch", "Active");
             if (data?.data) {
                 setLpsData(data.data);
             }
@@ -72,9 +72,9 @@ const ManageLps = () => {
     return (
         (ready && authenticated)
             ? (
-                    <div className="w-full bg-fundio-sidebar rounded-xl lg:p-6 p-4">
+                    <div className="w-full bg-white rounded-xl lg:p-6 p-4 border border-gray-200">
                         <div className="flex md:flex-row flex-col md:items-center justify-between gap-2 lg:pb-6 pb-4">
-                            <h2 className="xl:text-lg text-2xl text-white/62">Recent Commitments</h2>
+                            <h2 className="xl:text-lg text-2xl text-[#1F2937] font-semibold">Recent Commitments</h2>
 
                             <div className="flex items-center gap-2 ">
                                 <Select
@@ -83,9 +83,9 @@ const ManageLps = () => {
                                     placeholder="Filter"
                                     data={LP_FILTER}
                                     classNames={{
-                                        input: "text-white border border-border rounded-lg  bg-fundio-sidebar",
-                                        dropdown: "bg-fundio-sidebar border-[#444] rounded-lg",
-                                        option: "text-white hover:bg-white/10",
+                                        input: "text-[#1F2937] border border-gray-200 rounded-lg bg-white",
+                                        dropdown: "bg-white border-gray-200 rounded-lg",
+                                        option: "text-[#1F2937] hover:bg-[#FFE5DC]",
                                     }}
                                     value={filter}
                                     onChange={value => setFilter(value || "")}
@@ -94,7 +94,7 @@ const ManageLps = () => {
                                     <Button
                                         onClick={() => router.push("/admin-consoles/analytics")}
                                         variant="primary"
-                                        className="rounded-lg !h-9 w-fit !px-6 xl:!text-xs !text-base !font-medium"
+                                        className="rounded-lg !h-9 w-fit !px-6 xl:!text-xs !text-base !font-medium bg-[#FF6B35] hover:bg-[#FF8C5A]"
                                     >
                                         View Analytics
                                     </Button>

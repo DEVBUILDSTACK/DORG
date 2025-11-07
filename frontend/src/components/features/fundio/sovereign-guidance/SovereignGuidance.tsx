@@ -12,13 +12,13 @@ const SovereignGuidance: React.FC = () => {
             <PageNavbar>
                 <PageNavbarLeftContent className="md:w-1/2 w-full">
                     <div className="flex items-center gap-3">
-                        <Home className="xl:size-6 lg:size-5 size-4" />
-                        <h2 className="xl:text-base text-xl">Sovereign Guidance AI Preferences</h2>
+                        <Home className="xl:size-6 lg:size-5 size-4 text-[#FF6B35]" />
+                        <h2 className="xl:text-base text-xl text-[#1F2937] font-semibold">Sovereign Guidance AI Preferences</h2>
                     </div>
                 </PageNavbarLeftContent>
             </PageNavbar>
 
-            <PageContent className="bg-transparent xl:pr-0">
+            <PageContent className="bg-white">
                 <SovereignGuidanceContent />
             </PageContent>
         </div>

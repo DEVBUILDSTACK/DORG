@@ -316,7 +316,7 @@ const ManageLPDetails: React.FC = () => {
         {lpDetails && Number(lpDetails?.commited_amount) === 0 && (
           <div
             className={cn(
-              "flex items-center justify-center text-red-400 px-3 py-2 bg-fundio-sidebar rounded-lg ml-3 text-center cursor-pointer"
+              "flex items-center justify-center text-red-500 px-3 py-2 bg-red-50 rounded-lg ml-3 text-center cursor-pointer hover:bg-red-100 transition-colors"
             )}
             onClick={() => {
               openConfirmationModal();
@@ -335,27 +335,27 @@ const ManageLPDetails: React.FC = () => {
           {/* (keeping your original UI/content verbatim) */}
           {/* ---------------- TOP CARDS ---------------- */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
-            <div className="relative group md:col-span-1 col-span-2 w-full h-full flex flex-col items-center justify-end lg:gap-5 gap-3 bg-fundio-sidebar lg:rounded-2xl md:rounded-xl rounded-lg p-5 transition-all duration-700 overflow-hidden">
+            <div className="relative group md:col-span-1 col-span-2 w-full h-full flex flex-col items-center justify-end lg:gap-5 gap-3 bg-white border border-gray-200 lg:rounded-2xl md:rounded-xl rounded-lg p-5 transition-all duration-700 overflow-hidden hover:border-[#FF6B35]">
               <div className="hidden group-hover:block absolute top-0 right-0 w-full h-full rotate-x-180">
-                <Image src={SectionSimulateCapitalBg} alt="YieldBg" className="w-full h-full object-cover" />
+                <Image src={SectionSimulateCapitalBg} alt="YieldBg" className="w-full h-full object-cover opacity-10" />
               </div>
               <div className="flex flex-col lg:gap-5 md:gap-1 gap-2 h-fit w-full items-start justify-end">
-                <h2 className="text-4xl font-medium text-white">
+                <h2 className="text-4xl font-semibold text-[#1F2937]">
                   {formatNumber(Number(lpDetails?.total_commitment))} USDC
                 </h2>
-                <h6 className="text-white/80 font-light xl:text-xs text-lg">Total Commitment</h6>
+                <h6 className="text-[#5A6C7D] font-medium xl:text-xs text-lg">Total Commitment</h6>
               </div>
             </div>
 
-            <div className="relative group w-full h-full flex flex-col items-center justify-center lg:gap-4 gap-2 bg-fundio-sidebar lg:rounded-2xl md:rounded-xl rounded-lg px-5 py-3 transition-all duration-700 overflow-hidden">
+            <div className="relative group w-full h-full flex flex-col items-center justify-center lg:gap-4 gap-2 bg-white border border-gray-200 lg:rounded-2xl md:rounded-xl rounded-lg px-5 py-3 transition-all duration-700 overflow-hidden hover:border-[#FF6B35]">
               <div className="hidden group-hover:block absolute top-0 right-0 w-full h-full rotate-x-180">
-                <Image src={SectionSimulateCapitalBg} alt="YieldBg" className="w-full h-full object-cover" />
+                <Image src={SectionSimulateCapitalBg} alt="YieldBg" className="w-full h-full object-cover opacity-10" />
               </div>
               <div className="flex flex-col lg:gap-2 h-fit w-full items-start justify-end">
-                <h2 className="text-2xl font-medium text-white">
+                <h2 className="text-2xl font-semibold text-[#1F2937]">
                   {formatNumber(Number(lpDetails?.commited_amount))} USDC
                 </h2>
-                <h6 className="text-white/80 font-light xl:text-xs text-base">Committed</h6>
+                <h6 className="text-[#5A6C7D] font-medium xl:text-xs text-base">Committed</h6>
               </div>
 
               <Divider orientation="vertical" classNames={{ root: "shrink-0 border-none h-[1.5px] bg-linear-to-l from-transparent via-[#BDBF1B]/20 to-transparent w-4/5 " }} />
@@ -380,22 +380,22 @@ const ManageLPDetails: React.FC = () => {
               </div>
             </div>
 
-            <div className="relative group w-full h-full flex flex-col items-center justify-center lg:gap-4 gap-2 bg-fundio-sidebar lg:rounded-2xl md:rounded-xl rounded-lg px-5 py-3 transition-all duration-700 overflow-hidden">
+            <div className="relative group w-full h-full flex flex-col items-center justify-center lg:gap-4 gap-2 bg-white border border-gray-200 lg:rounded-2xl md:rounded-xl rounded-lg px-5 py-3 transition-all duration-700 overflow-hidden hover:border-[#FF6B35]">
               <div className="hidden group-hover:block absolute top-0 right-0 w-full h-full rotate-x-180">
-                <Image src={SectionSimulateCapitalBg} alt="YieldBg" className="w-full h-full object-cover" />
+                <Image src={SectionSimulateCapitalBg} alt="YieldBg" className="w-full h-full object-cover opacity-10" />
               </div>
               <div className="flex flex-col lg:gap-2 h-fit w-full items-start justify-end">
-                <h2 className="text-2xl font-medium text-white">{lpDetails?.yield_interest_rate}%</h2>
-                <h6 className="text-white/80 font-light xl:text-xs text-base">Interested Yield</h6>
+                <h2 className="text-2xl font-semibold text-[#1F2937]">{lpDetails?.yield_interest_rate}%</h2>
+                <h6 className="text-[#5A6C7D] font-medium xl:text-xs text-base">Interested Yield</h6>
               </div>
 
-              <Divider orientation="vertical" classNames={{ root: "shrink-0 border-none h-[1.5px] bg-linear-to-l from-transparent via-[#BDBF1B]/20 to-transparent w-4/5" }} />
+              <Divider orientation="vertical" classNames={{ root: "shrink-0 border-none h-[1.5px] bg-linear-to-l from-transparent via-[#FF6B35]/20 to-transparent w-4/5" }} />
 
               <div className="flex flex-col lg:gap-2 h-fit w-full items-start justify-end">
-                <h2 className="text-2xl font-medium text-white">
+                <h2 className="text-2xl font-semibold text-[#1F2937]">
                   {formatNumber(Number(lpDetails?.total_withdrawable_amount))} USDC
                 </h2>
-                <h6 className="text-white/80 font-light xl:text-xs text-base">Total Withdrawable Amount</h6>
+                <h6 className="text-[#5A6C7D] font-medium xl:text-xs text-base">Total Withdrawable Amount</h6>
               </div>
             </div>
           </div>

@@ -9,9 +9,9 @@ export const dynamic = 'force-dynamic';
 
 const FundioLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
-        <div className="grid lg:grid-cols-[240px_1fr] 3xl:grid-cols-[260px_1fr] h-screen bg-c3-background">
+        <div className="grid lg:grid-cols-[256px_1fr] h-screen bg-[#F9FAFB]">
             <Sidebar sidebarData={fundioSidebarData} />
-            <div className="max-h-full overflow-auto hide-scrollbar">{children}</div>
+            <div className="max-h-full overflow-auto hide-scrollbar bg-[#F9FAFB]">{children}</div>
         </div>
     );
 };

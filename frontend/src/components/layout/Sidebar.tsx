@@ -5,6 +5,7 @@ import { ScrollArea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useLogout } from "@privy-io/react-auth";
 import { ChevronDown, LogOut, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useDisconnect } from "wagmi";
@@ -62,13 +63,13 @@ export function Sidebar({ sidebarData }: SidebarProps) {
             className={cn(
               "w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-200",
               (isActive || activeChild)
-                ? "bg-[#0A4A7A]/10 text-[#0A4A7A] font-semibold"
-                : "text-[#5A6C7D] hover:bg-[#F3F4F6] hover:text-[#0A4A7A]"
+                ? "bg-[#FFE5DC] text-[#FF6B35] font-semibold"
+                : "text-[#5A6C7D] hover:bg-[#FFE5DC]/50 hover:text-[#FF6B35]"
             )}
             aria-label={`Toggle ${item.label} menu`}
           >
             <div className="flex items-center space-x-3">
-              <item.icon className="w-5 h-5 shrink-0" />
+              <item.icon className={cn("w-5 h-5 shrink-0", (isActive || activeChild) ? "text-[#FF6B35]" : "text-[#5A6C7D]")} />
               <span className="text-sm">{item.label}</span>
             </div>
             <ChevronDown
@@ -91,8 +92,8 @@ export function Sidebar({ sidebarData }: SidebarProps) {
                     className={cn(
                       "block px-4 py-2 text-sm rounded-lg transition-all duration-200",
                       subActive
-                        ? "bg-[#2E865F]/10 text-[#2E865F] font-semibold border-l-2 border-[#2E865F]"
-                        : "text-[#5A6C7D] hover:bg-[#F3F4F6] hover:text-[#0A4A7A]"
+                        ? "bg-[#FFE5DC] text-[#FF6B35] font-semibold border-l-2 border-[#FF6B35]"
+                        : "text-[#5A6C7D] hover:bg-[#FFE5DC]/50 hover:text-[#FF6B35]"
                     )}
                   >
                     {subItem.label}
@@ -113,11 +114,11 @@ export function Sidebar({ sidebarData }: SidebarProps) {
         className={cn(
           "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200",
           isActive
-            ? "bg-[#0A4A7A]/10 text-[#0A4A7A] font-semibold"
-            : "text-[#5A6C7D] hover:bg-[#F3F4F6] hover:text-[#0A4A7A]"
+            ? "bg-[#FFE5DC] text-[#FF6B35] font-semibold"
+            : "text-[#5A6C7D] hover:bg-[#FFE5DC]/50 hover:text-[#FF6B35]"
         )}
       >
-        <item.icon className="w-5 h-5 shrink-0" />
+        <item.icon className={cn("w-5 h-5 shrink-0", isActive ? "text-[#FF6B35]" : "text-[#5A6C7D]")} />
         <span className="text-sm">{item.label}</span>
       </Link>
     );
@@ -132,14 +133,22 @@ export function Sidebar({ sidebarData }: SidebarProps) {
         )}
       >
         <div className="flex flex-col h-full">
-          <div className="flex items-center justify-between p-6 border-b border-[#E5E7EB]">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-linear-to-br from-[#0A4A7A] to-[#2E865F] rounded-lg" />
-              {sidebarData.logo ? (
-                <sidebarData.logo className="h-6" />
-              ) : (
-                <span className="text-xl font-bold text-[#0A4A7A]">DORG</span>
+          <div className="flex items-center justify-between h-16 px-6 border-b border-[#E5E7EB]">
+            <div className="flex items-center space-x-3">
+              {sidebarData.logo && (
+                typeof sidebarData.logo === 'string' || (typeof sidebarData.logo === 'object' && 'src' in sidebarData.logo) ? (
+                  <Image 
+                    src={sidebarData.logo} 
+                    alt={sidebarData.name || "Logo"} 
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 object-contain rounded-md"
+                  />
+                ) : (
+                  <sidebarData.logo className="h-4 w-4" />
+                )
               )}
+              <span className="text-lg font-bold text-[#1F2937]">{sidebarData.name || "DORG"}</span>
             </div>
             <button
               type="button"

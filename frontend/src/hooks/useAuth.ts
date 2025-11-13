@@ -1,8 +1,9 @@
 import { usePrivy, useWallets } from "@privy-io/react-auth";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 import useFLPStore from "@/store/useFLPStore";
-import { clearUserRole } from "@/lib/roleStorage";
+import { useAuthStore, useUserStore } from "@/store";
 
 type UseAuthOptions = {
     onSuccess?: (data: any) => void;
@@ -13,6 +14,9 @@ type UseAuthOptions = {
 export const useAuth = (options?: UseAuthOptions) => {
     const router = useRouter();
     const { setSignature } = useFLPStore();
+    const authStore = useAuthStore();
+    const userStore = useUserStore();
+    
     const { 
         ready, 
         authenticated, 
@@ -24,9 +28,39 @@ export const useAuth = (options?: UseAuthOptions) => {
 
     const embeddedWallet = wallets.find((wallet) => wallet.walletClientType === "privy");
 
+    // Sync Privy state with Zustand stores
+    useEffect(() => {
+        authStore.setReady(ready);
+    }, [ready, authStore]);
+
+    useEffect(() => {
+        authStore.setAuth(authenticated);
+    }, [authenticated, authStore]);
+
+    useEffect(() => {
+        authStore.setWallets(wallets);
+    }, [wallets, authStore]);
+    
+    useEffect(() => {
+        if (user) {
+            const userData = {
+                id: user.id,
+                email: user.email?.address,
+                name: user.google?.name || user.apple?.email?.split('@')[0],
+                walletAddress: user.wallet?.address,
+                role: user.customMetadata?.role as any,
+                customMetadata: user.customMetadata,
+            };
+            authStore.setUser(userData);
+        } else {
+            authStore.setUser(null);
+        }
+    }, [user, authStore]);
+
     const handleLogin = async () => {
         try {
             await login();
+            options?.onSuccess?.(user);
         } catch (error) {
             options?.onError?.(error);
         }
@@ -36,8 +70,9 @@ export const useAuth = (options?: UseAuthOptions) => {
         try {
             setSignature("");
             
-            // Clear user role from localStorage
-            clearUserRole();
+            // Clear auth and user stores
+            authStore.logout();
+            userStore.reset();
             
             await privyLogout();
         } catch (error) {
@@ -46,21 +81,14 @@ export const useAuth = (options?: UseAuthOptions) => {
     };
 
     return {
-        ready,
-        authenticated,
-        user,
+        ready: authStore.isReady,
+        authenticated: authStore.isAuthenticated,
+        user: authStore.user,
         wallet: embeddedWallet,
-        wallets,
+        wallets: authStore.wallets,
         login: handleLogin,
         logout: handleLogout,
-        isLoading: !ready,
-        getUserDisplayName: () => {
-            if (!user) return null;
-            return user.google?.name || 
-                   user.apple?.email?.split('@')[0] || 
-                   user.email?.address?.split('@')[0] || 
-                   user.wallet?.address?.slice(0, 6) + '...' + user.wallet?.address?.slice(-4) ||
-                   'User';
-        },
+        isLoading: authStore.isLoading,
+        getUserDisplayName: authStore.getUserDisplayName,
     };
 };

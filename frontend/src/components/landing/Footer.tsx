@@ -8,10 +8,10 @@ import l2lLogo from '@/assets/images/l2l.jpg';
 
 export default function Footer() {
   const socialLinks = [
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: Twitter, href: 'https://x.com/L2Launch', label: 'Twitter' },
     { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: MessageCircle, href: 'https://discord.com', label: 'Discord' },
+    { icon: Github, href: 'https://github.com/DEVBUILDSTACK/DORG', label: 'GitHub' },
+    // { icon: MessageCircle, href: 'https://discord.com', label: 'Discord' },
   ];
 
   return (

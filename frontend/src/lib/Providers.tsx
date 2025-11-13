@@ -10,6 +10,7 @@ import queryClient from "@/lib/query.config";
 import { wagmiConfig } from "@/lib/wagmi";
 import { ENV } from "./env";
 import { isProduction } from "./constants";
+import StoreProvider from "@/components/providers/StoreProvider";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
     const privyAppId = process.env.NEXT_PUBLIC_PRIVY_APP_ID!;
@@ -55,7 +56,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
                             },
                         }}
                     >
-                        {children}
+                        <StoreProvider>
+                            {children}
+                        </StoreProvider>
                     </OnchainKitProvider>
                 </WagmiProvider>
             </QueryClientProvider>

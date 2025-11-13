@@ -7,7 +7,7 @@ import Navbar from '@/components/landing/Navbar';
 import Footer from '@/components/landing/Footer';
 import MetadataCollector from '@/components/features/MetadataCollector';
 import { useAuth } from '@/hooks/useAuth';
-import { getUserRole, saveUserRole, clearUserRole } from '@/lib/roleStorage';
+import { useAuthStore, useUserStore, useAuthSync } from '@/store';
 import {
   BookOpen,
   Users,
@@ -28,41 +28,49 @@ import {
 import Link from 'next/link';
 
 export default function LandingPage() {
-  const { authenticated, ready, user } = useAuth();
+  const { authenticated, ready, user, login } = useAuth();
+  const { showRoleModal, setShowRoleModal } = useAuthStore();
+  const { role: userRole, setRole } = useUserStore();
   const router = useRouter();
-  const [showRoleModal, setShowRoleModal] = useState(false);
   const [activeTab, setActiveTab] = useState<'student' | 'developer' | 'treasury'>('student');
+  
+  // Use auth sync hook to keep stores synchronized
+  const { role } = useAuthSync();
+  
+  const handleGetStarted = () => {
+    if (authenticated && user) {
+      const currentRole = user.role || role || userRole || 'student';
+      router.push(`/dashboard/${currentRole}`);
+    } else {
+      login();
+    }
+  };
 
   useEffect(() => {
     if (!ready) return;
 
     if (authenticated && user) {
-      // Try to get role from localStorage first (faster)
-      const localRole = getUserRole();
+      // Check for role from user object or stores
+      const currentRole = user.role || role || userRole;
       
-      // Then check Privy metadata
-      const privyRole = user.customMetadata?.role as string | undefined;
-
-      // If we have a role from either source
-      if (privyRole || localRole) {
-        const role = privyRole || localRole;
-        
-        // Ensure both storage locations are synced
-        if (privyRole && !localRole) {
-          saveUserRole(privyRole as 'student' | 'developer' | 'treasury');
+      if (currentRole) {
+        // Only sync role if it's different to prevent infinite updates
+        if (currentRole !== userRole) {
+          setRole(currentRole);
         }
-
         // Redirect to the appropriate dashboard
-        router.push(`/dashboard/${role}`);
+        router.push(`/dashboard/${currentRole}`);
       } else {
-        // No role found in either location - show modal
+        // No role found - show modal
         setShowRoleModal(true);
       }
     } else {
-      // Clear localStorage if user is not authenticated
-      clearUserRole();
+      // Clear modal state if user is not authenticated
+      if (!authenticated && showRoleModal) {
+        setShowRoleModal(false);
+      }
     }
-  }, [authenticated, ready, user, router]);
+  }, [authenticated, ready, user?.role, role, router]); // Removed dependencies that could cause infinite loops
 
   const handleRoleSelected = () => {
     setShowRoleModal(false);
@@ -442,7 +450,7 @@ export default function LandingPage() {
                 className="px-8 py-4 bg-[#FF6B35] text-white rounded-xl font-semibold shadow-lg shadow-[#FF6B35]/30 hover:shadow-xl hover:shadow-[#FF6B35]/40 transition-all duration-300 inline-flex items-center space-x-2"
               >
                 <Play className="w-5 h-5" />
-                <span>Start Your Journey</span>
+                <span onClick={handleGetStarted}>Start Your Journey</span>
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
             </motion.div>
@@ -531,7 +539,9 @@ export default function LandingPage() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-white text-[#FF6B35] rounded-xl font-semibold border-2 border-[#FF6B35] hover:bg-[#FFE8E0] transition-all duration-300 inline-flex items-center space-x-2"
               >
+                <Link href={"/about"}>
                 <span>Explore All Features</span>
+                </Link>
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
             </motion.div>

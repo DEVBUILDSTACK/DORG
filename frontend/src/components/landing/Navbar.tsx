@@ -33,7 +33,7 @@ export default function Navbar() {
       document.body.style.overflow = 'unset';
     };
   }, [isMobileMenuOpen]);
-
+ 
   const handleGetStarted = () => {
     if (authenticated && user) {
       const userRole = user.customMetadata?.role || 'student';

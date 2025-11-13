@@ -54,7 +54,7 @@ const SettingsPage = () => {
 
   const [profile, setProfile] = useState({
     fullName: getUserDisplayName?.() || 'User',
-    email: user?.email?.address || user?.google?.email || '',
+    email: user?.email || '',
     phone: '+1 (555) 123-4567',
     location: 'San Francisco, CA',
     bio: 'Web3 enthusiast learning to build the decentralized future',

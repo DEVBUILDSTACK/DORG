@@ -16,11 +16,11 @@ export const wagmiConfig = createConfig({
     },
     connectors: [
         injected({ shimDisconnect: true }),
-        // keep your Coinbase Wallet behavior; uses centralized env for logo/name
+        // Coinbase Wallet connector - support both extension and mobile
         coinbaseWallet({
             appName: ENV.APP_NAME,
             appLogoUrl: ENV.APP_ICON_URL,
-            preference: { options: "smartWalletOnly" },
+            preference: "all", // Support both smart wallet and EOA
         }),
         ...(ENV.WC_PROJECT_ID
             ? [
@@ -31,8 +31,8 @@ export const wagmiConfig = createConfig({
                         metadata: {
                             name: ENV.APP_NAME,
                             description: `${ENV.APP_NAME} dapp`,
-                            url: ENV.APP_URL, // ideally absolute https in production
-                            icons: [ENV.APP_ICON_URL], // prefer absolute https URL
+                            url: ENV.APP_URL,
+                            icons: [ENV.APP_ICON_URL],
                         },
                     }),
                 ]

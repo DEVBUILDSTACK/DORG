@@ -32,8 +32,12 @@ const WormholeConnectNoSSR = dynamic<WormholeConnectProps>(
         }),
     { ssr: false },
 );
-// Client-safe env var (warning about process.env can be ignored or keep as-is)
+// Client-safe env var
 const WC_PROJECT_ID = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || "";
+
+if (!WC_PROJECT_ID) {
+    console.warn("[WormholeBridge] NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID not set. Bridge may not work properly.");
+}
 
 export default function WormholeBridgeModal({
     isOpen,

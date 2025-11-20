@@ -1,20 +1,15 @@
 // app/api/session/route.ts
 import "server-only";
-import { generateJwt } from "@coinbase/cdp-sdk/auth";
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const ID = process.env.CDP_API_KEY_ID!;
-const RAW_SECRET = process.env.CDP_API_KEY_SECRET!;
-
-function normalizeSecret(raw: string): string {
-    const fixed = raw.replace(/\\n/g, "\n").trim();
-    if (fixed.startsWith("-----BEGIN") && fixed.includes("END"))
-        return fixed; // PEM
-    return fixed.replace(/\s+/g, ""); // base64
-}
+// Coinbase OnRamp API credentials
+// When you create an API key on Coinbase Developer Portal, you get:
+// 1. API Key (public) - this is your key identifier
+// 2. Private Key (secret) - used to sign requests (not needed for basic OnRamp)
+const COINBASE_API_KEY = process.env.NEXT_PUBLIC_COINBASE_API_KEY!;
 
 type Addr = { address: string; blockchains: ("base")[] };
 
@@ -39,9 +34,10 @@ function normalizeAddresses(input: any): Addr[] {
 
 export async function POST(req: Request) {
     try {
-        if (!ID || !RAW_SECRET) {
+        // Check for required Coinbase API Key
+        if (!COINBASE_API_KEY) {
             return NextResponse.json(
-                { error: "Missing CDP_API_KEY_ID or CDP_API_KEY_SECRET" },
+                { error: "Missing NEXT_PUBLIC_COINBASE_API_KEY. Get it from Coinbase Developer Portal." },
                 { status: 500 },
             );
         }
@@ -49,6 +45,7 @@ export async function POST(req: Request) {
         const body = await req.json().catch(() => ({}));
         const addresses = normalizeAddresses(body?.addresses);
         const assets = Array.isArray(body?.assets) && body.assets.length ? body.assets : ["USDC"];
+        const presetAmount = body?.presetAmount;
 
         if (!addresses.length) {
             return NextResponse.json(
@@ -60,20 +57,29 @@ export async function POST(req: Request) {
             );
         }
 
-        // Sign JWT for Coinbase Onramp
-        const jwt = await generateJwt({
-            apiKeyId: ID,
-            apiKeySecret: normalizeSecret(RAW_SECRET),
-            requestMethod: "POST",
-            requestHost: "api.developer.coinbase.com",
-            requestPath: "/onramp/v1/token",
-            expiresIn: 120,
-        });
+        // Coinbase OnRamp v1 API
+        // Documentation: https://docs.cdp.coinbase.com/onramp/docs/api-configurations
+        const requestBody: any = { 
+            destination_wallets: addresses.map(addr => ({
+                address: addr.address,
+                blockchains: addr.blockchains,
+                assets: assets
+            }))
+        };
 
-        const upstream = await fetch("https://api.developer.coinbase.com/onramp/v1/token", {
+        // Add preset amount if provided
+        if (presetAmount) {
+            requestBody.presetFiatAmount = presetAmount;
+            requestBody.defaultAsset = assets[0] || "USDC";
+        }
+
+        const upstream = await fetch("https://api.developer.coinbase.com/onramp/v1/buy/options", {
             method: "POST",
-            headers: { "Authorization": `Bearer ${jwt}`, "Content-Type": "application/json" },
-            body: JSON.stringify({ addresses, assets }),
+            headers: { 
+                "Authorization": `Bearer ${COINBASE_API_KEY}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestBody),
             cache: "no-store",
         });
 
@@ -86,25 +92,40 @@ export async function POST(req: Request) {
         }
 
         if (!upstream.ok) {
-            const baseMsg = json?.error || json?.message || text || "Coinbase Onramp error";
+            const baseMsg = json?.error || json?.message || text || "Coinbase OnRamp error";
+            const errorDetails = json?.error_details || json?.details || "";
+            
             const mapped
                 = upstream.status === 401
-                    ? `${baseMsg} (check CDP keys & server time; JWT must be valid)`
+                    ? `${baseMsg} - Invalid API key. Check NEXT_PUBLIC_COINBASE_API_KEY in .env`
                     : upstream.status === 403
-                        ? `${baseMsg} (add your origin to Allowed Origins in the Coinbase developer dashboard)`
+                        ? `${baseMsg} - Add your domain to Allowed Origins in Coinbase Developer Portal`
                         : upstream.status === 400
-                            ? `${baseMsg} (did you send addresses[] with blockchains:["base"]? is the address checksummed/valid?)`
-                            : baseMsg;
+                            ? `${baseMsg} ${errorDetails ? `(${errorDetails})` : ""}`
+                            : `${baseMsg} ${errorDetails}`;
 
+            console.error("[onramp] API error:", { status: upstream.status, message: mapped, response: json });
             return NextResponse.json({ error: mapped }, { status: upstream.status });
         }
 
-        const token = json?.token as string | undefined;
-        if (!token) {
-            return NextResponse.json({ error: "No token in response" }, { status: 502 });
+        // Coinbase OnRamp buy/options endpoint returns a URL to redirect to
+        const buyUrl = json?.buy_url || json?.url;
+        if (buyUrl) {
+            return NextResponse.json({ url: buyUrl, token: buyUrl }, { headers: { "Cache-Control": "no-store" } });
         }
 
-        return NextResponse.json({ token }, { headers: { "Cache-Control": "no-store" } });
+        // Fallback: try to get token for older API format
+        const token = json?.token;
+        if (token) {
+            return NextResponse.json({ token }, { headers: { "Cache-Control": "no-store" } });
+        }
+
+        // If no URL or token, return error
+        console.error("[onramp] Unexpected response format:", json);
+        return NextResponse.json({ 
+            error: "Unexpected response from Coinbase OnRamp API. Check server logs.",
+            details: json 
+        }, { status: 502 });
     } catch (e: any) {
         console.error("[onramp] server error", e);
         return NextResponse.json({ error: e?.message ?? "Unexpected server error" }, { status: 500 });

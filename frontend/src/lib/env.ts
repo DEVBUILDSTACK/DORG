@@ -10,6 +10,9 @@ export const ENV = {
     APP_ICON_URL: "/icon.png",
 
     WC_PROJECT_ID: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!,
+    COINBASE_API_KEY: process.env.NEXT_PUBLIC_COINBASE_API_KEY!,
+    CDP_PROJECT_ID: process.env.NEXT_PUBLIC_CDP_PROJECT_ID!,
+    PRIVY_APP_ID: process.env.NEXT_PUBLIC_PRIVY_APP_ID!,
 
     BASE_RPC: "https://mainnet.base.org",
     BASE_SEPOLIA_RPC: "https://base-sepolia-rpc.publicnode.com",

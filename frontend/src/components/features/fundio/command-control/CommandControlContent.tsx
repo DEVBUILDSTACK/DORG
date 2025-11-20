@@ -14,9 +14,9 @@ import SwitchArrow from "@/assets/svg/fundio/command-control/SwitchArrow";
 
 // local feature blocks
 import DealFi from "./DealFi";
-import OnrampModal from "./OnchainKitOnRampModal"; // expects: { isOpen, onClose }
+import OnrampModal from "./OnchainKitOnRampModalEnhanced"; // Enhanced version with presets
 import PEGRateChecker from "./PEGRateChecker";
-import { WalletDashboard } from "./WalletDashboard";
+import { WalletDashboard } from "./WalletDashboardNew";
 import WormholeBridgeModal from "./WormholeBridgeModal"; // expects: { isOpen, onCloseAction }
 
 type Card = {

@@ -297,7 +297,7 @@ export default function LandingPage() {
                                 ? '/dashboard/student'
                                 : activeTab === 'developer'
                                 ? '/dashboard/developer'
-                                : '/dashboard/treasury'
+                                : '/dashboard/investor'
                             }
                           >
                             <motion.button

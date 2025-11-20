@@ -1,16 +1,21 @@
 "use client";
 
-import React from 'react';
 import { TrendingUp, DollarSign, Users, Target, ArrowUpRight, ArrowDownRight, Vault, Briefcase, PieChart, BarChart3, Calendar, Shield, ExternalLink, CheckCircle, Clock } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function InvestorOverviewPage() {
+
+const { user, getUserDisplayName } = useAuth();
+  const displayName = getUserDisplayName?.() || 'Student';
+  const firstName = displayName.split(' ')[0];
+  
   return (
     <div className="space-y-6 sm:space-y-8">
       <div className="space-y-2">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">
-              Investor <span className="text-[#FF6B35]">Portfolio</span>
+              {firstName} <span className="text-[#FF6B35]">Portfolio</span>
             </h1>
             <p className="text-[#5A6C7D] text-base sm:text-lg">Track your vault investments and returns</p>
           </div>

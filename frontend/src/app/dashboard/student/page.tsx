@@ -1,16 +1,20 @@
 "use client";
 
-import React from 'react';
-import { BookOpen, TrendingUp, Vault, Trophy, Users, Target, ArrowRight, Play, Star } from 'lucide-react';
+import { BookOpen, Vault, Trophy, Users, Target, ArrowRight, Play, Star } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
 
 const DashboardPage = () => {
+  const { user, getUserDisplayName } = useAuth();
+  const displayName = getUserDisplayName?.() || 'Student';
+  const firstName = displayName.split(' ')[0];
+
   return (
     <div className="space-y-6 sm:space-y-8">
       <div className="space-y-2">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-[#1F2937]">
-              Welcome back, <span className="text-[#FF6B35]">Alex</span>
+              Welcome back, <span className="text-[#FF6B35]">{firstName}</span>
             </h1>
             <p className="text-[#5A6C7D] text-base sm:text-lg">Here is your learning progress and achievements</p>
           </div>

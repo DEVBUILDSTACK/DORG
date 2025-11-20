@@ -3,7 +3,7 @@ import { PrivyClient } from "@privy-io/server-auth";
 
 const privyClient = new PrivyClient(
     process.env.NEXT_PUBLIC_PRIVY_APP_ID!,
-    process.env.PRIVY_APP_SECRET!
+    process.env.NEXT_PUBLIC_PRIVY_APP_SECRET!
 );
 
 export async function POST(request: NextRequest) {

@@ -14,7 +14,7 @@ function PageContent({
     return (
         <main
             className={cn(
-                "h-[calc(100vh-var(--h-nav)-1rem)] space-y-4 xl:pr-20",
+                "h-[calc(100vh-var(--h-nav)-1rem)] space-y-4 md:pl-10",
                 mainClassName,
             )}
         >

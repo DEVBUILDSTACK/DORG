@@ -28,11 +28,12 @@
     --color-secondary: var(--accent-green);
     --color-dark-green: var(--accent-green-dark);
 
-    --color-fundio-primary: var(--accent-green);
-    --color-fundio-secondary: var(--accent-green-light);
-    --color-fundio-gray: var(--gray-700);
-    --color-fundio-dark-green: var(--accent-green-dark);
-    --color-fundio-sidebar: var(--gray-800);
+    /* Updated Fundio variables for Tangerine theme */
+    --color-fundio-primary: #FF6B35;
+    --color-fundio-secondary: #FFE5DC;
+    --color-fundio-gray: #5A6C7D;
+    --color-fundio-dark-green: #1F2937;
+    --color-fundio-sidebar: #FFFFFF;
 
     --color-jsonjuice-primary: var(--brand-primary);
     --color-jsonjuice-secondary: var(--primary-10);

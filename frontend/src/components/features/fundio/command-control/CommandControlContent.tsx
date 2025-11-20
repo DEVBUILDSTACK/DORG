@@ -8,6 +8,9 @@ import React, { useCallback, useState } from "react";
 
 // assets/icons
 import { SectionSimulateCapitalBg } from "@/assets/images";
+import BridgeDecor from "@/assets/svg/fundio/command-control/BridgeDecor";
+import CrossChainDecor from "@/assets/svg/fundio/command-control/CrossChainDecor";
+import OnRampDecor from "@/assets/svg/fundio/command-control/OnRampDecor";
 import Plus from "@/assets/svg/fundio/command-control/Plus";
 import SandBox from "@/assets/svg/fundio/command-control/SandBox";
 import SwitchArrow from "@/assets/svg/fundio/command-control/SwitchArrow";
@@ -24,12 +27,13 @@ type Card = {
   label: string;
   description: string;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement> & { className?: string }>;
+  decorIcon: React.ComponentType<React.SVGProps<SVGSVGElement> & { className?: string }>;
 };
 
 const commandControlCardData: Card[] = [
-  { id: 1, label: "Stable Coin Cross Chain", description: "SWAP", icon: SwitchArrow },
-  { id: 2, label: "OnRamp/Buy", description: "DIGITAL CURRENCY", icon: Plus },
-  { id: 3, label: "Buy Digital Currencies", description: "BRIDGE", icon: SandBox },
+  { id: 1, label: "Stable Coin Cross Chain", description: "SWAP", icon: SwitchArrow, decorIcon: CrossChainDecor },
+  { id: 2, label: "OnRamp/Buy", description: "DIGITAL CURRENCY", icon: Plus, decorIcon: OnRampDecor },
+  { id: 3, label: "Buy Digital Currencies", description: "BRIDGE", icon: SandBox, decorIcon: BridgeDecor },
 ];
 
 const CommandControlContent: React.FC = () => {
@@ -73,24 +77,22 @@ const CommandControlContent: React.FC = () => {
                 if (e.key === "Enter" || e.key === " ") handleCardClick(item.id);
               }}
               className="relative group w-full h-full flex flex-col items-center justify-center lg:gap-5 gap-3
-                         bg-fundio-sidebar rounded-2xl p-5 transition-all duration-700 overflow-hidden
-                         cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                         bg-white border border-[#E5E7EB] hover:border-[#FF6B35] rounded-2xl p-5 transition-all duration-300 overflow-hidden
+                         cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35] shadow-sm hover:shadow-md"
             >
-              <div className="hidden group-hover:block absolute top-0 right-0 w-full h-full rotate-x-180">
-                <Image
-                  src={SectionSimulateCapitalBg}
-                  alt="YieldBg"
-                  className="w-full h-full object-cover"
-                />
+              <div className="hidden group-hover:block absolute inset-0 bg-linear-to-br from-[#FFE5DC]/30 via-[#FFF5F2]/20 to-[#FF6B35]/10 rounded-2xl" />
+
+              <div className="absolute top-0 left-0 w-full flex justify-center pt-2 opacity-100 group-hover:opacity-80 transition-opacity duration-300">
+                <item.decorIcon className="w-24 h-16" />
               </div>
 
-              <div className="flex items-center justify-end w-full">
-                <item.icon className="lg:size-11 md:size-10 size-8" />
+              <div className="flex items-center justify-end w-full relative z-10">
+                <item.icon className="lg:size-11 md:size-10 size-8 text-[#FF6B35]" />
               </div>
 
-              <div className="flex flex-col lg:gap-5 h-fit w-full items-start justify-center">
-                <h2 className="lg:text-2xl md:text-xl font-medium text-white">{item.label}</h2>
-                <h6 className="text-white/80 font-light lg:text-xs md:text-sm text-base">
+              <div className="flex flex-col lg:gap-5 h-fit w-full items-start justify-center relative z-10">
+                <h2 className="lg:text-2xl md:text-xl font-medium text-[#1F2937]">{item.label}</h2>
+                <h6 className="text-[#5A6C7D] font-light lg:text-xs md:text-sm text-base">
                   {item.description}
                 </h6>
               </div>
@@ -99,19 +101,19 @@ const CommandControlContent: React.FC = () => {
         </div>
 
         {/* Wallet status toggle */}
-        <div className="flex items-center gap-3">
-          <span className="text-white/80 font-semibold text-base">Wallet Status</span>
+        <div className="flex items-center gap-3 bg-white border border-[#E5E7EB] rounded-xl p-4">
+          <span className="text-[#1F2937] font-semibold text-base">Wallet Status</span>
           <Switch
             checked={isChecked}
             onChange={handleSwitchChange}
             classNames={{
               track:
-                "bg-gradient-to-r from-[#BDBF1B] to-[#86BB4A] shadow-inner shadow-black/50 cursor-pointer",
-              thumb: "shadow shadow-black/50",
+                "bg-gradient-to-r from-[#FF6B35] to-[#FF8C5A] shadow-inner shadow-black/10 cursor-pointer",
+              thumb: "shadow shadow-black/20",
             }}
             thumbIcon={<></>}
           />
-          <span className="text-white/80 font-semibold text-base">Juice DealFI</span>
+          <span className="text-[#1F2937] font-semibold text-base">Juice DealFI</span>
         </div>
 
         {/* Main content area */}
@@ -131,7 +133,7 @@ const CommandControlContent: React.FC = () => {
               )
             ) : (
               <Skeleton
-                classNames={{ root: "before:bg-[#1D1F1B] after:bg-gray-400/5 rounded-2xl" }}
+                classNames={{ root: "before:bg-[#E5E7EB] after:bg-[#F9FAFB] rounded-2xl" }}
                 height={300}
               />
             )}

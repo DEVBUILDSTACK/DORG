@@ -30,7 +30,7 @@ export type MenuItem = {
 
 export type SidebarData = {
     name: string;
-    logo: React.FC<IconComponent>;
-    theme: "Fundio" | "JsonJuice";
+    logo?: React.FC<IconComponent> | string | { src: string; height: number; width: number };
+    theme: "Fundio" | "JsonJuice" ;
     menuItems: MenuItem[];
 };

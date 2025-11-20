@@ -378,26 +378,30 @@ export default function OnrampModal({ isOpen, onClose }: OnrampModalProps) {
             withCloseButton
             title={(
                 <Group gap="xs">
-                    <Text fw={600} component="span">Onramp / Buy</Text>
+                    <Text fw={600} component="span" c="#1F2937">Onramp / Buy</Text>
                 </Group>
             )}
-            styles={{ body: { paddingTop: 0 } }}
+            styles={{ 
+                body: { paddingTop: 0 },
+                header: { backgroundColor: '#FFFFFF', borderBottom: '1px solid #E5E7EB' },
+                content: { backgroundColor: '#FFFFFF' }
+            }}
         >
-            <Divider mb="sm" />
+            <Divider mb="sm" color="#E5E7EB" />
             <ScrollArea h="65vh">
                 <Stack gap="md">
                     {/* Wallet connect */}
-                    <Paper withBorder p="md" radius="md">
-                        <Text fw={600} size="sm" mb="xs" component="div">
+                    <Paper withBorder p="md" radius="md" style={{ borderColor: '#E5E7EB', backgroundColor: '#FFFFFF' }}>
+                        <Text fw={600} size="sm" mb="xs" component="div" c="#1F2937">
                             🔗 Coinbase Wallet
                         </Text>
 
-                        <Paper withBorder p="sm" radius="md">
+                        <Paper withBorder p="sm" radius="md" style={{ borderColor: '#E5E7EB', backgroundColor: '#F9FAFB' }}>
                             {isConnected && connectedAddress
                                 ? (
                                         <Stack gap={6}>
-                                            <Text size="xs" c="dimmed" component="div">Connected address</Text>
-                                            <Text size="sm" ff="monospace" style={{ wordBreak: "break-all" }} component="div">
+                                            <Text size="xs" c="#5A6C7D" component="div">Connected address</Text>
+                                            <Text size="sm" ff="monospace" style={{ wordBreak: "break-all" }} component="div" c="#1F2937">
                                                 {connectedAddress}
                                             </Text>
                                             <Button color="red" onClick={() => disconnect()} h={30} w={120}>
@@ -407,7 +411,7 @@ export default function OnrampModal({ isOpen, onClose }: OnrampModalProps) {
                                     )
                                 : (
                                         <Stack gap="xs">
-                                            <Text size="xs" c="dimmed" component="div">No wallet connected.</Text>
+                                            <Text size="xs" c="#5A6C7D" component="div">No wallet connected.</Text>
                                             <CoinbaseConnectOnly
                                                 onMobileConnectStarted={() => {
                                                     if (!isMobileUA())
@@ -424,12 +428,11 @@ export default function OnrampModal({ isOpen, onClose }: OnrampModalProps) {
                                 disabled={!isConnected || !connectedAddress}
                                 h={42}
                                 variant="filled"
-                                color="yellow"
-                                style={{ color: "black" }}
+                                style={{ backgroundColor: '#FF6B35', color: 'white' }}
                             >
                                 Fund with Coinbase Pay (Base)
                             </Button>
-                            <Text size="xs" c="dimmed" component="div">
+                            <Text size="xs" c="#5A6C7D" component="div">
                                 As soon as your phone connects, we open
                                 {" "}
                                 <b>Coinbase Pay</b>
@@ -437,7 +440,7 @@ export default function OnrampModal({ isOpen, onClose }: OnrampModalProps) {
                                 automatically.
                             </Text>
                             {err && (
-                                <Text size="xs" c="orange" component="div">
+                                <Text size="xs" c="#FF6B35" component="div">
                                     {err}
                                 </Text>
                             )}
@@ -447,12 +450,17 @@ export default function OnrampModal({ isOpen, onClose }: OnrampModalProps) {
                     {/* Extras */}
                     <Stack gap="xs">
                         <Group justify="space-between">
-                            <Text fw={600} component="div">💳 Instant Funding</Text>
-                            <Text size="xs" c="dimmed" component="div">Always Available</Text>
+                            <Text fw={600} component="div" c="#1F2937">💳 Instant Funding</Text>
+                            <Text size="xs" c="#5A6C7D" component="div">Always Available</Text>
                         </Group>
 
                         <Stack gap="xs">
-                            <Button onClick={ensureBaseThenOpenPay} disabled={!isConnected || !connectedAddress} h={44}>
+                            <Button 
+                                onClick={ensureBaseThenOpenPay} 
+                                disabled={!isConnected || !connectedAddress} 
+                                h={44}
+                                style={{ backgroundColor: '#FF6B35', color: 'white', borderColor: '#FF6B35' }}
+                            >
                                 <Group justify="space-between" w="100%">
                                     <Group gap="sm">
                                         <div
@@ -460,7 +468,7 @@ export default function OnrampModal({ isOpen, onClose }: OnrampModalProps) {
                                                 width: 32,
                                                 height: 32,
                                                 borderRadius: 16,
-                                                background: "rgba(255,255,255,.08)",
+                                                background: "#FFE5DC",
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",
@@ -468,14 +476,19 @@ export default function OnrampModal({ isOpen, onClose }: OnrampModalProps) {
                                         />
                                         <div>
                                             <Text fw={600} size="sm" component="span">Coinbase Pay</Text>
-                                            <Text size="xs" c="dimmed" component="span">Uses connected wallet</Text>
+                                            <Text size="xs" c="white" component="span" style={{ opacity: 0.8 }}>Uses connected wallet</Text>
                                         </div>
                                     </Group>
                                     <ArrowRight2 size={16} />
                                 </Group>
                             </Button>
 
-                            <Button variant="outline" onClick={openCoinbaseWalletSite} h={38}>
+                            <Button 
+                                variant="outline" 
+                                onClick={openCoinbaseWalletSite} 
+                                h={38}
+                                style={{ borderColor: '#FF6B35', color: '#FF6B35' }}
+                            >
                                 <Group justify="space-between" w="100%">
                                     <Group gap="sm">
                                         <div
@@ -483,13 +496,13 @@ export default function OnrampModal({ isOpen, onClose }: OnrampModalProps) {
                                                 width: 24,
                                                 height: 24,
                                                 borderRadius: 12,
-                                                background: "rgba(255,255,255,.08)",
+                                                background: "#FFE5DC",
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",
                                             }}
                                         />
-                                        <Text size="sm" component="span">Create / Manage Coinbase Wallet</Text>
+                                        <Text size="sm" component="span" c="#FF6B35">Create / Manage Coinbase Wallet</Text>
                                     </Group>
                                     <ArrowRight2 size={16} />
                                 </Group>
@@ -497,19 +510,19 @@ export default function OnrampModal({ isOpen, onClose }: OnrampModalProps) {
                         </Stack>
                     </Stack>
 
-                    <Paper withBorder p="md" radius="md">
+                    <Paper withBorder p="md" radius="md" style={{ borderColor: '#E5E7EB', backgroundColor: '#F9FAFB' }}>
                         <Group gap="xs" mb={4}>
-                            <Shield size={14} />
-                            <Text size="xs" fw={600} component="div">Base Network Optimized</Text>
+                            <Shield size={14} color="#FF6B35" />
+                            <Text size="xs" fw={600} component="div" c="#1F2937">Base Network Optimized</Text>
                         </Group>
-                        <Text size="xs" c="dimmed" component="div">
+                        <Text size="xs" c="#5A6C7D" component="div">
                             Fast transactions (~2s) • Low fees (~$0.01) • Great for DeFi
                         </Text>
                     </Paper>
 
-                    <Alert variant="light" color="blue" icon={<InfoCircle size={14} />}>
-                        <Text size="xs" component="div">
-                            Connect on your phone — we’ll launch
+                    <Alert variant="light" color="orange" icon={<InfoCircle size={14} />} style={{ backgroundColor: '#FFE5DC', borderColor: '#FF6B35' }}>
+                        <Text size="xs" component="div" c="#1F2937">
+                            Connect on your phone — we'll launch
                             {" "}
                             <b>Coinbase Pay</b>
                             {" "}
@@ -519,8 +532,13 @@ export default function OnrampModal({ isOpen, onClose }: OnrampModalProps) {
                 </Stack>
             </ScrollArea>
 
-            <Divider mt="sm" mb="sm" />
-            <Button variant="outline" fullWidth onClick={onClose}>
+            <Divider mt="sm" mb="sm" color="#E5E7EB" />
+            <Button 
+                variant="outline" 
+                fullWidth 
+                onClick={onClose}
+                style={{ borderColor: '#E5E7EB', color: '#5A6C7D' }}
+            >
                 Close
             </Button>
         </Modal>

@@ -19,9 +19,9 @@ const CommandControl: React.FC = () => {
     const [parentControlsOpen, setParentControlsOpen] = useState(false);
 
     useQuery({
-        queryKey: [QUERY_KEY.TIER, { offset: 0, limit: PAGE_LIMIT, platform_name: "Fundio" }],
+        queryKey: [QUERY_KEY.TIER, { offset: 0, limit: PAGE_LIMIT, platform_name: "Learn2Launch" }],
         queryFn: async () => {
-            const data = await getAllTier(0, PAGE_LIMIT, "Fundio");
+            const data = await getAllTier(0, PAGE_LIMIT, "Learn2Launch");
             if (data?.data) {
                 setTierData(data.data);
             }
@@ -45,9 +45,9 @@ const CommandControl: React.FC = () => {
     });
 
     useQuery({
-        queryKey: [QUERY_KEY.LP_TYPE, { offset: 0, limit: PAGE_LIMIT, platform_name: "Fundio", status: "Active" }],
+        queryKey: [QUERY_KEY.LP_TYPE, { offset: 0, limit: PAGE_LIMIT, platform_name: "Learn2Launch", status: "Active" }],
         queryFn: async () => {
-            const data = await getAllLPType(0, PAGE_LIMIT, "Fundio", "Active");
+            const data = await getAllLPType(0, PAGE_LIMIT, "Learn2Launch", "Active");
             if (data?.data) {
                 setLpsData(data.data);
             }
@@ -59,14 +59,11 @@ const CommandControl: React.FC = () => {
 
     return (
         <div>
-            {/* {ready && authenticated
-                ? (
-                        <> */}
             <PageNavbar>
                 <PageNavbarLeftContent className="md:w-1/2 w-full">
-                    <div className="flex items-center gap-3">
-                        <Home className="xl:size-6 lg:size-5 size-4" />
-                        <h2 className="xl:text-base text-xl">SME Command & Control Center</h2>
+                    <div className="flex items-center gap-3 md:ps-10">
+                        <Home className="xl:size-6 lg:size-5 size-4 text-[#FF6B35]" />
+                        <h2 className="xl:text-base text-xl text-[#1F2937] font-semibold">SME Command & Control Center</h2>
                     </div>
                 </PageNavbarLeftContent>
 
@@ -87,7 +84,7 @@ const CommandControl: React.FC = () => {
                 </PageNavbarRightContent>
             </PageNavbar>
 
-            <PageContent className="bg-transparent xl:pr-0">
+            <PageContent className="bg-white">
                 <CommandControlContent />
             </PageContent>
 

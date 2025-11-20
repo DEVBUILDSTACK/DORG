@@ -72,8 +72,8 @@ export default function WormholeBridgeModal({
             wallets: { walletConnectProjectId: WC_PROJECT_ID },
             ui: {
                 title: network === "Testnet" ? "Wormhole Bridge (Testnet)" : "Wormhole Bridge",
-                mode: "dark",
-                primary: "#16a34a",
+                mode: "light",
+                primary: "#FF6B35",
             },
         }),
         [network],
@@ -84,16 +84,16 @@ export default function WormholeBridgeModal({
 
     return (
         <div className="fixed inset-0 z-50 bg-black/70 p-4 flex items-center justify-center">
-            <div className="bg-[#111318] rounded-xl w-full max-w-2xl max-h-[90vh] overflow-hidden border border-gray-800">
+            <div className="bg-white rounded-xl w-full max-w-2xl max-h-[90vh] overflow-hidden border border-[#E5E7EB] shadow-xl">
                 {/* Header */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-800">
-                    <h2 className="text-white font-semibold">
+                <div className="flex items-center justify-between p-4 border-b border-[#E5E7EB]">
+                    <h2 className="text-[#1F2937] font-semibold">
                         {network === "Testnet" ? "Wormhole Bridge (Testnet)" : "Wormhole Bridge"}
                     </h2>
                     <button
                         type="button"
                         onClick={onCloseAction}
-                        className="w-8 h-8 rounded-full text-gray-300 hover:text-white hover:bg-gray-700"
+                        className="w-8 h-8 rounded-full text-[#5A6C7D] hover:text-[#FF6B35] hover:bg-[#FFE5DC]"
                         aria-label="Close"
                     >
                         ✕
@@ -101,13 +101,13 @@ export default function WormholeBridgeModal({
                 </div>
 
                 {/* Network Toggle */}
-                <div className="p-3 border-b border-gray-800">
-                    <div className="mx-auto w-fit bg-gray-800/60 rounded-lg p-1 flex gap-1">
+                <div className="p-3 border-b border-[#E5E7EB]">
+                    <div className="mx-auto w-fit bg-[#FFE5DC] rounded-lg p-1 flex gap-1">
                         <button
                             type="button"
                             onClick={() => setNetwork("Testnet")}
                             className={`px-4 py-2 rounded-md text-sm font-medium transition ${
-                                network === "Testnet" ? "bg-emerald-500 text-white" : "text-gray-300 hover:bg-gray-700"
+                                network === "Testnet" ? "bg-[#FF6B35] text-white" : "text-[#5A6C7D] hover:bg-white"
                             }`}
                         >
                             Testnet
@@ -116,13 +116,13 @@ export default function WormholeBridgeModal({
                             type="button"
                             onClick={() => setNetwork("Mainnet")}
                             className={`px-4 py-2 rounded-md text-sm font-medium transition ${
-                                network === "Mainnet" ? "bg-emerald-500 text-white" : "text-gray-300 hover:bg-gray-700"
+                                network === "Mainnet" ? "bg-[#FF6B35] text-white" : "text-[#5A6C7D] hover:bg-white"
                             }`}
                         >
                             Mainnet
                         </button>
                     </div>
-                    <p className="mt-2 text-center text-xs text-gray-400">
+                    <p className="mt-2 text-center text-xs text-[#5A6C7D]">
                         Sepolia, Base Sepolia, Arbitrum Sepolia, Optimism Sepolia, Solana Devnet, etc.
                     </p>
                 </div>
@@ -132,8 +132,8 @@ export default function WormholeBridgeModal({
                     {mounted ? <WormholeConnectNoSSR key={`wh-${network}`} config={config} /> : null}
                 </div>
 
-                <div className="p-3 border-t border-gray-800 bg-black/30 text-center">
-                    <span className="text-[11px] text-gray-500">Powered by Wormhole</span>
+                <div className="p-3 border-t border-[#E5E7EB] bg-[#F9FAFB] text-center">
+                    <span className="text-[11px] text-[#5A6C7D]">Powered by Wormhole</span>
                 </div>
             </div>
         </div>

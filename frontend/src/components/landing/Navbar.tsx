@@ -7,13 +7,14 @@ import { useAuth } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import l2lLogo from '@/assets/images/l2l.jpg';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogOut, User, ChevronDown } from 'lucide-react';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const router = useRouter();
-  const { authenticated, user, ready, login, getUserDisplayName } = useAuth();
+  const { authenticated, user, ready, login, logout, getUserDisplayName } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +34,24 @@ export default function Navbar() {
       document.body.style.overflow = 'unset';
     };
   }, [isMobileMenuOpen]);
+
+  // Close user menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.user-menu-container')) {
+        setIsUserMenuOpen(false);
+      }
+    };
+
+    if (isUserMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isUserMenuOpen]);
  
   const handleGetStarted = () => {
     if (authenticated && user) {
@@ -44,11 +63,19 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
+  const handleLogout = async () => {
+    setIsUserMenuOpen(false);
+    setIsMobileMenuOpen(false);
+    await logout();
+    router.push('/');
+  };
+
   const navLinks = [
     { name: 'About', href: '/about' },
     { name: 'Learners', href: '/student' },
     { name: 'Builders', href: '/developer' },
     { name: 'Treasury', href: '/investor' },
+    { name: 'Payment', href: '/command-control' },
     { name: 'Sponsors', href: '/sponsor' },
   ];
 
@@ -106,16 +133,55 @@ export default function Navbar() {
             {/* Desktop CTA & Mobile Menu Button */}
             <div className="flex items-center space-x-3 md:space-x-4">
               {ready && authenticated ? (
-                <div className="hidden md:flex items-center space-x-3">
-                  <span className={`text-sm font-medium ${isScrolled ? 'text-gray-700' : 'text-white'}`}>
-                    {getUserDisplayName?.() || 'User'}
-                  </span>
-                  <button
-                    onClick={handleGetStarted}
-                    className="px-4 md:px-6 py-2 md:py-2.5 bg-linear-to-r from-[#FF6B35] to-[#E65A2D] text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:from-[#E65A2D] hover:to-[#CC5629] hover:scale-105 transition-all duration-300 text-sm md:text-base"
-                  >
-                    Dashboard
-                  </button>
+                <div className="hidden md:flex items-center space-x-3 user-menu-container relative">
+                  {/* User Dropdown */}
+                  <div className="relative">
+                    <button
+                      onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                      className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                        isScrolled 
+                          ? 'text-gray-700 hover:bg-gray-100' 
+                          : 'text-white hover:bg-white/10'
+                      }`}
+                    >
+                      <User className="w-4 h-4" />
+                      <span className="text-sm font-medium">
+                        {getUserDisplayName?.() || 'User'}
+                      </span>
+                      <ChevronDown className={`w-4 h-4 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    <AnimatePresence>
+                      {isUserMenuOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden z-50"
+                        >
+                          <div className="py-2">
+                            <button
+                              onClick={handleGetStarted}
+                              className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center space-x-2"
+                            >
+                              <User className="w-4 h-4" />
+                              <span>Dashboard</span>
+                            </button>
+                            <div className="border-t border-gray-100 my-1" />
+                            <button
+                              onClick={handleLogout}
+                              className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 flex items-center space-x-2"
+                            >
+                              <LogOut className="w-4 h-4" />
+                              <span>Logout</span>
+                            </button>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </div>
               ) : (
                 <button
@@ -205,6 +271,13 @@ export default function Navbar() {
                           className="w-full px-6 py-3 bg-linear-to-r from-[#FF6B35] to-[#E65A2D] text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:from-[#E65A2D] hover:to-[#CC5629] transition-all duration-300"
                         >
                           Go to Dashboard
+                        </button>
+                        <button
+                          onClick={handleLogout}
+                          className="w-full px-6 py-3 bg-gray-100 text-red-600 rounded-xl font-semibold hover:bg-red-50 transition-all duration-300 flex items-center justify-center space-x-2"
+                        >
+                          <LogOut className="w-4 h-4" />
+                          <span>Logout</span>
                         </button>
                       </div>
                     ) : (

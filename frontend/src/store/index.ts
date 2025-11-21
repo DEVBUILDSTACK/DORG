@@ -20,6 +20,8 @@ export type {
 
 // Specialized stores
 export { default as useFLPStore } from './useFLPStore';
+export { default as useWalletStore } from './useWalletStore';
+export { default as useParentControlsStore } from './useParentControlsStore';
 
 // Store hooks
 export * from './hooks';
@@ -30,6 +32,8 @@ import { useAuthStore } from './useAuthStore';
 import { useAppStore } from './useAppStore';
 import { useUserStore } from './useUserStore';
 import useFLPStore from './useFLPStore';
+import useWalletStore from './useWalletStore';
+import useParentControlsStore from './useParentControlsStore';
 
 // Re-export commonly used store combinations
 export const useGlobalState = () => ({
@@ -40,9 +44,8 @@ export const useGlobalState = () => ({
 });
 
 // Store reset utility
-export const resetAllStores = () => {
-  useAuthStore.getState().reset();
-  useUserStore.getState().reset();
+export const clearAllStores = () => {
+  useAuthStore.getState().logout();
   useFLPStore.getState().clearFLPData();
   useFLPStore.getState().clearTierData();
   useFLPStore.getState().clearLpsData();
@@ -50,6 +53,8 @@ export const resetAllStores = () => {
   useFLPStore.getState().clearSignature();
   useFLPStore.getState().clearStepCount();
   useFLPStore.getState().clearCohortPhase();
+  useWalletStore.getState().clearWallets();
+  useParentControlsStore.getState().clearParentControls();
 };
 
 // Store sync utilities
@@ -80,6 +85,8 @@ if (process.env.NODE_ENV === 'development') {
       user: useUserStore,
       central: useCentralStore,
       flp: useFLPStore,
+      wallet: useWalletStore,
+      parentControls: useParentControlsStore,
     };
   }
 }

@@ -114,6 +114,22 @@ body {
     background: linear-gradient(to right, rgba(var(--color-primary-rgb), 0.8), var(--color-secondary));
 }
 
+.bg-c3-background {
+    background-color: var(--color-c3-background);
+}
+
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-tertiary {
+    color: var(--text-tertiary);
+}
+
 *:focus-visible {
   outline: 3px solid var(--brand-primary);
   outline-offset: 2px;

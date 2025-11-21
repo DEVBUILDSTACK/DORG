@@ -15,14 +15,14 @@ import {
   Bell,
   User,
   Terminal,
-  Zap,
   Activity,
-  Database,
   Menu,
   X,
-  LogOut
+  LogOut,
+  ChevronDown
 } from '@/components/icons';
 import { useAuth } from '@/hooks/useAuth';
+import { ProtectedRoute } from '@/components/providers/ProtectedRoute';
 
 const navigation = [
   { name: 'Overview', href: '/dashboard/developer', icon: BarChart3 },
@@ -41,8 +41,9 @@ export default function DeveloperDashboardLayout({
 }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { logout } = useAuth();
+  const { logout, user, getUserDisplayName } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const handleLogout = async () => {
@@ -57,7 +58,8 @@ export default function DeveloperDashboardLayout({
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFBFC] text-[#1F2937]">
+    <ProtectedRoute redirectTo="/">
+      <div className="min-h-screen bg-[#FAFBFC] text-[#1F2937]">
       {/* Mobile Overlay */}
       {mobileMenuOpen && (
         <div 
@@ -156,7 +158,7 @@ export default function DeveloperDashboardLayout({
               <User className="w-5 h-5 text-white" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-[#1F2937] truncate">Alex Chen</p>
+              <p className="text-sm font-medium text-[#1F2937] truncate">{getUserDisplayName?.() || 'Developer'}</p>
               <div className="flex items-center space-x-2">
                 <span className="text-xs text-[#FF6B35] font-medium">Pro Developer</span>
                 <div className="w-1 h-1 bg-[#FF6B35] rounded-full animate-pulse" />
@@ -227,6 +229,57 @@ export default function DeveloperDashboardLayout({
                   <p className="text-xs text-[#5A6C7D]">Rate Limit</p>
                   <p className="text-sm font-bold text-[#FF6B35] font-mono">847/1000</p>
                 </div>
+
+                {/* User Dropdown */}
+                <div className="hidden sm:block relative">
+                  <button
+                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                    className="flex items-center space-x-2 px-3 py-2 rounded-xl hover:bg-[#F9FAFB] transition-colors"
+                  >
+                    <div className="w-8 h-8 bg-gradient-to-r from-[#FF6B35] to-[#A855F7] rounded-full flex items-center justify-center shadow-md shadow-[#FF6B35]/20">
+                      <User className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-sm font-medium text-[#1F2937]">{getUserDisplayName?.() || 'Developer'}</span>
+                    <ChevronDown className={`w-4 h-4 text-[#5A6C7D] transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  {/* Dropdown Menu */}
+                  {userMenuOpen && (
+                    <>
+                      <div 
+                        className="fixed inset-0 z-40" 
+                        onClick={() => setUserMenuOpen(false)}
+                      />
+                      <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-[#E5E7EB] overflow-hidden z-50">
+                        <div className="p-3 border-b border-[#E5E7EB] bg-[#F9FAFB]">
+                          <p className="text-sm font-medium text-[#1F2937]">{getUserDisplayName?.() || 'Developer'}</p>
+                          {/* <p className="text-xs text-[#5A6C7D] truncate">{(user?.email as any)?.address || user?.email || 'dev@example.com'}</p> */}
+                        </div>
+                        <div className="py-2">
+                          <Link
+                            href="/dashboard/developer/settings"
+                            className="flex items-center space-x-2 px-4 py-2 text-sm text-[#1F2937] hover:bg-[#F9FAFB] transition-colors"
+                            onClick={() => setUserMenuOpen(false)}
+                          >
+                            <Settings className="w-4 h-4" />
+                            <span>Settings</span>
+                          </Link>
+                          <button
+                            onClick={() => {
+                              setUserMenuOpen(false);
+                              handleLogout();
+                            }}
+                            disabled={isLoggingOut}
+                            className="w-full flex items-center space-x-2 px-4 py-2 text-sm text-[#DC2626] hover:bg-[#FEE2E2] transition-colors disabled:opacity-50"
+                          >
+                            <LogOut className="w-4 h-4" />
+                            <span>{isLoggingOut ? 'Logging out...' : 'Logout'}</span>
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -243,5 +296,6 @@ export default function DeveloperDashboardLayout({
         <Bot className="w-6 h-6 text-white" />
       </button>
     </div>
+    </ProtectedRoute>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import { ExportSquare } from "iconsax-reactjs";
-import React from "react";
+import { ExportSquare, Shield } from "iconsax-reactjs";
+import React, { useState } from "react";
 
 import Home from "@/assets/svg/fundio/Home";
 import PageContent from "@/components/layout/PageContent";
@@ -12,9 +12,11 @@ import { PAGE_LIMIT, QUERY_KEY } from "@/lib/landing-page/constants";
 import useFLPStore from "@/store/useFLPStore";
 
 import CommandControlContent from "./CommandControlContent";
+import ParentControlsModal from "./ParentControlsModal";
 
 const CommandControl: React.FC = () => {
     const { setTierData, setAutoRenewalData, setLpsData } = useFLPStore();
+    const [parentControlsOpen, setParentControlsOpen] = useState(false);
 
     useQuery({
         queryKey: [QUERY_KEY.TIER, { offset: 0, limit: PAGE_LIMIT, platform_name: "Learn2Launch" }],
@@ -68,14 +70,14 @@ const CommandControl: React.FC = () => {
                 <PageNavbarRightContent className="md:flex gap-2 hidden">
                     <Button 
                         variant="outline" 
-                        className="border border-[#FF6B35] rounded-xl !h-10 text-[#FF6B35] hover:bg-[#FF6B35]/10 !px-6 w-fit xl:!text-xs !text-base !font-bold"
+                        className="border border-[#FFFFFF]/20 rounded-xl !h-10 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent !px-6 w-fit xl:!text-xs !text-base !font-bold"
+                        onClick={() => setParentControlsOpen(true)}
                     >
-                        OnRamp Fiat @ Zelle
+                        <Shield size={15} />
+                        Parent Controls
                     </Button>
-                    <Button 
-                        variant="primary" 
-                        className="rounded-xl !h-10 w-fit !px-4 xl:!text-xs !text-base !font-bold bg-[#FF6B35] hover:bg-[#FF6B35]/90"
-                    >
+                    <Button variant="outline" className="border border-[#FFFFFF]/20 rounded-xl !h-10 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent !px-6 w-fit xl:!text-xs !text-base !font-bold">OnRamp Fiat @ Zelle</Button>
+                    <Button variant="primary" className="rounded-xl !h-10 w-fit !px-4 xl:!text-xs !text-base !font-bold">
                         Liquidity Pools
                         <ExportSquare size={15} />
                     </Button>
@@ -85,6 +87,11 @@ const CommandControl: React.FC = () => {
             <PageContent className="bg-white">
                 <CommandControlContent />
             </PageContent>
+
+            <ParentControlsModal 
+                isOpen={parentControlsOpen} 
+                onClose={() => setParentControlsOpen(false)} 
+            />
         </div>
     );
 };

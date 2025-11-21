@@ -17,9 +17,11 @@ import {
   TrendingUp,
   Menu,
   X,
-  LogOut
+  LogOut,
+  ChevronDown
 } from '@/components/icons';
 import { useAuth } from '@/hooks/useAuth';
+import { ProtectedRoute } from '@/components/providers/ProtectedRoute';
 
 const navigation = [
   { name: 'Overview', href: '/dashboard/investor', icon: BarChart3 },
@@ -38,8 +40,9 @@ export default function InvestorDashboardLayout({
 }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { logout } = useAuth();
+  const { logout, user, getUserDisplayName } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const handleLogout = async () => {
@@ -54,7 +57,8 @@ export default function InvestorDashboardLayout({
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFBFC] text-[#1F2937]">
+    <ProtectedRoute redirectTo="/">
+      <div className="min-h-screen bg-[#FAFBFC] text-[#1F2937]">
       {/* Mobile Overlay */}
       {mobileMenuOpen && (
         <div 
@@ -120,34 +124,15 @@ export default function InvestorDashboardLayout({
 
         {/* Bottom Investor Profile Section */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-[#E5E7EB] space-y-2">
-          <div className="flex items-center space-x-3 p-3 rounded-xl bg-[#F9FAFB] hover:bg-[#F0F1F3] transition-colors cursor-pointer group">
-            <div className="w-10 h-10 bg-gradient-to-r from-[#FF6B35] to-[#FF8C5A] rounded-full flex items-center justify-center shadow-md shadow-[#FF6B35]/20">
-              <User className="w-5 h-5 text-white" />
+          <div className="flex items-center space-x-3 p-3 rounded-xl bg-[#F9FAFB] hover:bg-[#F0F1F3] transition-colors cursor-pointer">
+            <div className="w-8 h-8 bg-gradient-to-r from-[#2E865F] to-[#FF6B35] rounded-full flex items-center justify-center shadow-md shadow-[#2E865F]/20">
+              <User className="w-4 h-4 text-white" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-[#1F2937] truncate">Alex Chen</p>
-              <div className="flex items-center space-x-2">
-                <span className="text-xs text-[#FF6B35] font-medium">Platinum </span>
-                <div className="w-1 h-1 bg-[#FF6B35] rounded-full animate-pulse" />
-              </div>
-            </div>
-            <div className="text-right">
-              <p className="text-xs text-[#5A6C7D]">Portfolio</p>
-              <p className="text-sm font-bold text-[#FF6B35]">$127.5K</p>
+              <p className="text-sm font-medium text-[#1F2937] truncate">{getUserDisplayName?.() || 'Investor'}</p>
+              <p className="text-xs text-[#5A6C7D] truncate">Treasury Manager</p>
             </div>
           </div>
-          
-          {/* Logout Button */}
-          <button
-            onClick={handleLogout}
-            disabled={isLoggingOut}
-            className="w-full flex items-center space-x-3 p-3 rounded-xl text-[#DC2626] hover:bg-[#FEE2E2] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <LogOut className="w-4 h-4" />
-            <span className="text-sm font-medium">
-              {isLoggingOut ? 'Logging out...' : 'Logout'}
-            </span>
-          </button>
         </div>
       </div>
 
@@ -189,6 +174,57 @@ export default function InvestorDashboardLayout({
                   <p className="text-xs text-[#5A6C7D]">Current APY</p>
                   <p className="text-sm font-bold text-[#2E865F]">+14.2%</p>
                 </div>
+
+                {/* User Dropdown */}
+                <div className="hidden sm:block relative">
+                  <button
+                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                    className="flex items-center space-x-2 px-3 py-2 rounded-xl hover:bg-[#F9FAFB] transition-colors"
+                  >
+                    <div className="w-8 h-8 bg-gradient-to-r from-[#2E865F] to-[#FF6B35] rounded-full flex items-center justify-center shadow-md shadow-[#2E865F]/20">
+                      <User className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-sm font-medium text-[#1F2937]">{getUserDisplayName?.() || 'Investor'}</span>
+                    <ChevronDown className={`w-4 h-4 text-[#5A6C7D] transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  {/* Dropdown Menu */}
+                  {userMenuOpen && (
+                    <>
+                      <div 
+                        className="fixed inset-0 z-40" 
+                        onClick={() => setUserMenuOpen(false)}
+                      />
+                      <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-[#E5E7EB] overflow-hidden z-50">
+                        <div className="p-3 border-b border-[#E5E7EB] bg-[#F9FAFB]">
+                          <p className="text-sm font-medium text-[#1F2937]">{getUserDisplayName?.() || 'Investor'}</p>
+                          {/* <p className="text-xs text-[#5A6C7D] truncate">{(user?.email as any)?.address || user?.email || 'investor@example.com'}</p> */}
+                        </div>
+                        <div className="py-2">
+                          <Link
+                            href="/dashboard/investor/settings"
+                            className="flex items-center space-x-2 px-4 py-2 text-sm text-[#1F2937] hover:bg-[#F9FAFB] transition-colors"
+                            onClick={() => setUserMenuOpen(false)}
+                          >
+                            <Settings className="w-4 h-4" />
+                            <span>Settings</span>
+                          </Link>
+                          <button
+                            onClick={() => {
+                              setUserMenuOpen(false);
+                              handleLogout();
+                            }}
+                            disabled={isLoggingOut}
+                            className="w-full flex items-center space-x-2 px-4 py-2 text-sm text-[#DC2626] hover:bg-[#FEE2E2] transition-colors disabled:opacity-50"
+                          >
+                            <LogOut className="w-4 h-4" />
+                            <span>{isLoggingOut ? 'Logging out...' : 'Logout'}</span>
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -200,5 +236,6 @@ export default function InvestorDashboardLayout({
         </main>
       </div>
     </div>
+    </ProtectedRoute>
   );
 }
